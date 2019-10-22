@@ -11,5 +11,6 @@ func Has(db *gorm.DB, replacement interface{}) func(id uint) (has bool, err erro
 		} else if err == gorm.ErrRecordNotFound {
 			err = nil
 		}
+		return
 	}
 }

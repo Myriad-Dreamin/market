@@ -11,5 +11,6 @@ func Where1(creator func() interface{}, template string, db *gorm.DB) func(id in
 			object = nil
 			err = nil
 		}
+		return
 	}
 }

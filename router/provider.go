@@ -12,6 +12,7 @@ type Provider struct {
 	objectRouter *ObjectRouter
 	userRouter *UserRouter
 	goodsRouter *GoodsRouter
+	needsRouter *NeedsRouter
 }
 
 func NewProvider(namespace string) *Provider {

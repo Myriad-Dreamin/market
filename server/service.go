@@ -12,6 +12,7 @@ type serviceResult struct {
 
 func (srv *Server) PrepareService() bool {
 	for _, serviceResult := range []serviceResult{
+		{"needsDB", types.Decay(service.NewNeedsService(srv.Logger, srv.DatabaseProvider, srv.cfg))},
 		{"goodsDB", types.Decay(service.NewGoodsService(srv.Logger, srv.DatabaseProvider, srv.cfg))},
 		{"userDB", types.Decay(service.NewUserService(srv.Logger, srv.DatabaseProvider, srv.jwtMW, srv.cfg))},
 		{"objectService", types.Decay(service.NewObjectService(srv.Logger, srv.DatabaseProvider, srv.cfg))},

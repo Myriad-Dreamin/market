@@ -2,22 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d33caeea-6f6c-4429-8ab1-6d64520d9a9b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/service/statistic/show.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/user/buy.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/user/sell.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/goods/list.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/goods/list.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/goods/object/get.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/goods/object/gulp.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/goods/object/list.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/goods/object/post.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/goods/object/put.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/goods/object/service.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/goods/post.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/goods/post.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/user/get.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/user/get.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/user/list.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/user/list.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/user/put.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/user/put.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/types/interface.go" beforeDir="false" afterPath="$PROJECT_DIR$/types/interface.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/db-layer/crud-dao/has.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/db-layer/crud-dao/has.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/db-layer/crud-dao/where.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/db-layer/crud-dao/where.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/db-layer/goods.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/db-layer/goods.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/db-layer/register.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/db-layer/register.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/sp-layer/provider.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/sp-layer/provider.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/router/provider.go" beforeDir="false" afterPath="$PROJECT_DIR$/router/provider.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/router/root-router.go" beforeDir="false" afterPath="$PROJECT_DIR$/router/root-router.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/db.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/db.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/provider.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/provider.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -32,7 +27,7 @@
       </list>
     </option>
   </component>
-  <component name="GOROOT" path="D:\Go" />
+  <component name="GOROOT" path="$PROJECT_DIR$/../../../../../go" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
