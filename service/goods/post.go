@@ -13,6 +13,11 @@ type PostReply struct {
 	Goods *model.Goods `json:"goods"`
 }
 
+/*
+我要卖功能模块：默认显示当前自己已发布的所有物品信息；发布新的物品信息；修改自己已发布未成交物品信息；删除自己已发布未成交物品信息；
+我要买功能模块：默认显示当前已发布的所有物品信息；发布自己新的物品购买需求信息；修改自己已发布未成交的购买需求信息；删除已发布未成交的购买需求信息；
+*/
+
 func GoodsToPostReply(obj *model.Goods) *PostReply {
 	return &PostReply{
 		Code:   types.CodeOK,

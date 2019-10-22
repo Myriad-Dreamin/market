@@ -7,7 +7,7 @@ import (
 )
 
 type ListReply struct {
-	Code    int            `json:"code"`
+	Code  int          `json:"code"`
 	Users []model.User `json:"users"`
 }
 
@@ -18,9 +18,12 @@ func UsersToListReply(obj []model.User) (reply *ListReply) {
 	return
 }
 
+/*
+可以查询当前所有用户基本信息
+*/
+
 func (srv *Service) FilterOn(c *gin.Context, page, pageSize int) (interface{}, error) {
 	// parse c
-
 
 	objs, err := srv.db.QueryChain().Page(page, pageSize).Query()
 	if err != nil {
@@ -28,4 +31,3 @@ func (srv *Service) FilterOn(c *gin.Context, page, pageSize int) (interface{}, e
 	}
 	return UsersToListReply(objs), nil
 }
-
