@@ -1,26 +1,33 @@
 package userservice
 
 import (
+	"github.com/Myriad-Dreamin/gin-middleware/auth/jwt"
 	"github.com/Myriad-Dreamin/ginx/config"
 	"github.com/Myriad-Dreamin/ginx/model"
 	base_service "github.com/Myriad-Dreamin/ginx/service/base-service"
 	"github.com/Myriad-Dreamin/ginx/types"
+	"github.com/casbin/casbin/v2"
 )
 
 type Service struct {
 	base_service.CRUDService
 	base_service.ListService
 	db     *model.UserDB
+	enforcer *casbin.SyncedEnforcer
 	logger types.Logger
+	middleware *jwt.Middleware
 }
 
 
-func NewService(logger types.Logger, provider *model.Provider, _ *config.ServerConfig) (a *Service, err error) {
-	a = new(Service)
-	a.db = provider.UserDB()
-	a.logger = logger
-	a.CRUDService = base_service.NewCRUDService(a, "id")
-	a.ListService = base_service.NewListService(a, "id")
+func NewService(logger types.Logger, provider *model.Provider, middleware *jwt.Middleware, _ *config.ServerConfig) (a types.UserService, err error) {
+	srv := new(Service)
+	srv.db = provider.UserDB()
+	srv.enforcer = provider.Enforcer()
+	srv.logger = logger
+	srv.middleware = middleware
+	srv.CRUDService = base_service.NewCRUDService(srv, "id")
+	srv.ListService = base_service.NewListService(srv, "id")
+	a = srv
 	return
 }
 

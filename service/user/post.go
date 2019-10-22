@@ -9,13 +9,13 @@ import (
 )
 
 type PostReply struct {
-	Code   int           `json:"code"`
+	Code int         `json:"code"`
 	User *model.User `json:"user"`
 }
 
 func UserToPostReply(obj *model.User) *PostReply {
 	return &PostReply{
-		Code:   types.CodeOK,
+		Code: types.CodeOK,
 		User: obj,
 	}
 }
@@ -33,4 +33,3 @@ func (srv *Service) SerializePost(c *gin.Context) base_service.CRUDEntity {
 	// fill here
 	return obj
 }
-

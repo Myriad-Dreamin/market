@@ -28,13 +28,12 @@ type UserService interface {
 	Put(c *gin.Context)
 	// /:id/password PUT
 	ChangePassword(c *gin.Context)
-	// /:id/grant PUT
-	Grant(c *gin.Context)
+	//// /:id/grant PUT
+	//Grant(c *gin.Context)
 	// /:id GET
 	Get(c *gin.Context)
 	// /:id DELETE
 	Delete(c *gin.Context)
-	// /:id POST
 }
 
 /* goods

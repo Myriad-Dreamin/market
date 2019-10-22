@@ -94,7 +94,7 @@ func New(cfgPath string) (srv *Server) {
 	}
 
 	if err := srv.Module.Install(srv.RouterProvider); err != nil {
-		fmt.Println("install Router provider error", err)
+		fmt.Println("install router provider error", err)
 	}
 	if err := srv.Module.Install(srv.DatabaseProvider); err != nil {
 		fmt.Println("install database provider error", err)

@@ -2,21 +2,42 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d33caeea-6f6c-4429-8ab1-6d64520d9a9b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/service/user/interface_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/crypto/password.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/crypto/password_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model/db-layer/crud-dao/has.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model/db-layer/crud-dao/where.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model/sp-layer/enforcer.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rbac/rbac-file.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rbac/rbac-file_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rbac/rbac-gorm.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rbac/rbac-xorm.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rbac/rbac.conf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rbac/rbac.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rbac/regep_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rbac/test.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/gin-helper/auth.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/user/change-password.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/user/login.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/user/register.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/user/register.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/create-template.sh" beforeDir="false" afterPath="$PROJECT_DIR$/create-template.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/db-layer/crud-dao/id.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/db-layer/crud-dao/id.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/db-layer/object.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/db-layer/object.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/db-layer/register.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/db-layer/register.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/db-layer/submission.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/db-layer/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/db-layer/user.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/sp-layer/provider.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/sp-layer/provider.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/router/object-router.go" beforeDir="false" afterPath="$PROJECT_DIR$/router/object-router.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/router/provider.go" beforeDir="false" afterPath="$PROJECT_DIR$/router/provider.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/router/root-router.go" beforeDir="false" afterPath="$PROJECT_DIR$/router/root-router.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/db.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/db.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/sp-layer/submission.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/sp-layer/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/sp-layer/user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/router/user-router.go" beforeDir="false" afterPath="$PROJECT_DIR$/router/user-router.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/middleware.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/middleware.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/service.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/base-service/crud.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/base-service/crud.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/object/gulp.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/object/gulp.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/object/post.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/object/post.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service/provider.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/provider.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/user/post.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/user/post.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/user/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/user/service.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/types/interface.go" beforeDir="false" afterPath="$PROJECT_DIR$/types/interface.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -32,7 +53,7 @@
       </list>
     </option>
   </component>
-  <component name="GOROOT" path="$PROJECT_DIR$/../../../../../go" />
+  <component name="GOROOT" path="D:\Go" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -49,7 +70,15 @@
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
+    <property name="settings.editor.selected.configurable" value="go.vgo" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\project\go\src\github.com\Myriad-Dreamin\market\model\sp-layer" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\project\go\src\github.com\Myriad-Dreamin\market" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">

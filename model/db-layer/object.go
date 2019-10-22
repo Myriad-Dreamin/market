@@ -8,9 +8,17 @@ import (
 	"time"
 )
 
+func wrapToObject(object interface{}, err error) (*Object, error) {
+	return object.(*Object), err
+}
+
+func ObjectFactory() interface{} {
+	return new(Object)
+}
+
 var (
 	objectModel         *dorm.Model
-	objectIDFunc           = crud_dao.ID(db)
+	objectIDFunc           = crud_dao.ID(ObjectFactory, db)
 	objectCreateFunc       = crud_dao.Create(db)
 	objectDeleteFunc       = crud_dao.Delete(db)
 	objectUpdateFunc       = crud_dao.Update(db)
@@ -70,9 +78,7 @@ func GetObjectDB(logger types.Logger) (*ObjectDB, error) {
 }
 
 func (objectDB *ObjectDB) ID(id uint) (object *Object, err error) {
-	object = new(Object)
-	err = objectIDFunc(object, id)
-	return
+	return wrapToObject(objectIDFunc(id))
 }
 
 type ObjectQuery struct {

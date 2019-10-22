@@ -14,7 +14,7 @@ type Provider struct {
 	objectDB *ObjectDB
 	goodsDB *GoodsDB
 	userDB *UserDB
-	submissionDB *SubmissionDB
+	enforcer *Enforcer
 }
 
 func NewProvider(namespace string) *Provider {
@@ -31,12 +31,12 @@ func (s *Provider) Register(name string, database interface{}) {
 	}
 
 	switch ss := database.(type) {
+	case *Enforcer:
+		s.enforcer = ss
 	case *GoodsDB:
 		s.goodsDB = ss
 	case *UserDB:
 		s.userDB = ss
-	case *SubmissionDB:
-		s.submissionDB = ss
 	case *ObjectDB:
 		s.objectDB = ss
 	default:
