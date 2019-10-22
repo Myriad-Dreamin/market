@@ -1,4 +1,4 @@
-package objectservice
+package userservice
 
 import (
 	"github.com/Myriad-Dreamin/ginx/model"
@@ -6,7 +6,7 @@ import (
 )
 
 func (srv *Service) CreateEntity(id uint) base_service.CRUDEntity {
-	return &model.Object{ID: id}
+	return &model.User{ID: id}
 }
 
 func (srv *Service) GetEntity(id uint) (base_service.CRUDEntity, error) {
@@ -14,17 +14,17 @@ func (srv *Service) GetEntity(id uint) (base_service.CRUDEntity, error) {
 }
 
 func (srv *Service) ResponsePost(obj base_service.CRUDEntity) interface{} {
-	return ObjectToPostReply(obj.(*model.Object))
+	return UserToPostReply(obj.(*model.User))
 }
 
 func (srv *Service) ResponseGet(obj base_service.CRUDEntity) interface{} {
-	return ObjectToGetReply(obj.(*model.Object))
+	return UserToGetReply(obj.(*model.User))
 }
 
 func (srv *Service) GetPutRequest() interface{} {
 	return new(PutRequest)
 }
 
-func (srv *Service) FillPutFields(object base_service.CRUDEntity, req interface{}) []string {
-	return srv.fillPutFields(object.(*model.Object), req.(*PutRequest))
+func (srv *Service) FillPutFields(user base_service.CRUDEntity, req interface{}) []string {
+	return srv.fillPutFields(user.(*model.User), req.(*PutRequest))
 }

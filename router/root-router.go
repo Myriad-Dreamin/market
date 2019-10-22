@@ -12,20 +12,24 @@ type RootRouter struct {
 	AuthRouter *Router
 	Auth       *Middleware
 
-	ObjectRouter *ObjectRouter
+	//ObjectRouter *ObjectRouter
+	UserRouter *UserRouter
+	GoodsRouter *GoodsRouter
 }
 
 func NewRootRouter(serviceProvider *service.Provider, jwtMW *jwt.Middleware, routerAuthMW *Middleware) (r *RootRouter) {
 	rr := NewRouterGroup()
-	apiRouterV2 := rr.Group("/v1")
-	authRouterV2 := apiRouterV2.Group("", jwtMW.Build())
+	apiRouterV1 := rr.Group("/v1")
+	authRouterV1 := apiRouterV1.Group("", jwtMW.Build())
 
 	r = &RootRouter{
 		Root:       rr,
-		Router:     apiRouterV2,
-		AuthRouter: authRouterV2,
+		Router:     apiRouterV1,
+		AuthRouter: authRouterV1,
 		Auth:       routerAuthMW,
 	}
-	r.ObjectRouter = BuildObjectRouter(r, serviceProvider)
+	//r.ObjectRouter = BuildObjectRouter(r, serviceProvider)
+	r.UserRouter = BuildUserRouter(r, serviceProvider)
+	r.GoodsRouter = BuildGoodsRouter(r, serviceProvider)
 	return
 }

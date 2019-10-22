@@ -8,20 +8,20 @@ import (
 
 
 
-type CRUDObject interface {
+type CRUDEntity interface {
 	Create() (int64, error)
 	UpdateFields(fields []string) (int64, error)
 	Delete() (int64, error)
 }
 
 type CRUDObjectToolLite interface {
-	CreateObject(id uint) CRUDObject
-	GetObject(id uint) (CRUDObject, error)
-	SerializePost(c *gin.Context) CRUDObject
-	ResponsePost(obj CRUDObject) interface{}
-	ResponseGet(obj CRUDObject) interface{}
+	CreateEntity(id uint) CRUDEntity
+	GetEntity(id uint) (CRUDEntity, error)
+	SerializePost(c *gin.Context) CRUDEntity
+	ResponsePost(obj CRUDEntity) interface{}
+	ResponseGet(obj CRUDEntity) interface{}
 	GetPutRequest() interface{}
-	FillPutFields(object CRUDObject, req interface{}) []string
+	FillPutFields(object CRUDEntity, req interface{}) []string
 }
 
 type CRUDService struct {
@@ -43,7 +43,7 @@ func (srv *CRUDService) Delete(c *gin.Context) {
 	if !ok {
 		return
 	}
-	if ginhelper.DeleteObj(c, srv.Tool.CreateObject(id)) {
+	if ginhelper.DeleteObj(c, srv.Tool.CreateEntity(id)) {
 		c.JSON(http.StatusOK, &ginhelper.ResponseOK)
 	}
 }
@@ -54,7 +54,7 @@ func (srv *CRUDService) Get(c *gin.Context) {
 	if !ok {
 		return
 	}
-	obj, err := srv.Tool.GetObject(id)
+	obj, err := srv.Tool.GetEntity(id)
 	if ginhelper.MaybeSelectError(c, obj, err) {
 		return
 	}
@@ -70,7 +70,7 @@ func (srv *CRUDService) Put(c *gin.Context) {
 		return
 	}
 
-	object, err := srv.Tool.GetObject(id)
+	object, err := srv.Tool.GetEntity(id)
 	if ginhelper.MaybeSelectError(c, object, err) {
 		return
 	}

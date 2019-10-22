@@ -1,0 +1,57 @@
+package router
+
+import (
+	"github.com/Myriad-Dreamin/ginx/service"
+)
+
+type UserRouter struct {
+	*Router
+	Auth       *Middleware
+	IDRouter   *UserIDRouter
+
+	Post    *LeafRouter
+	GetList *LeafRouter
+}
+
+type UserIDRouter struct {
+	*Router
+	Auth *Middleware
+
+	Get    *LeafRouter
+	Put    *LeafRouter
+	Delete *LeafRouter
+}
+
+func BuildUserRouter(parent *RootRouter, serviceProvider *service.Provider) (router *UserRouter) {
+	userService := serviceProvider.UserService()
+	router = &UserRouter{
+		Router:     parent.Router.Extend("user"),
+		Auth:       parent.Auth.Copy(),
+	}
+	router.GetList = router.GET("user-list", userService.List)
+	router.Post = router.POST("/user", userService.Post)
+
+	router.IDRouter = router.IDRouter.subBuild(router, serviceProvider)
+
+	return
+}
+
+func (*UserIDRouter) subBuild(parent *UserRouter, serviceProvider *service.Provider) (
+	router *UserIDRouter) {
+
+	userService := serviceProvider.UserService()
+
+	router = &UserIDRouter{
+		Router: parent.Group("/user/:id"),
+		Auth:   parent.Auth.MustGroup("user", "id"),
+	}
+
+	router.Get = router.GET("", userService.Get)
+	router.Put = router.PUT("", userService.Put)
+	router.Delete = router.DELETE("", userService.Delete)
+	return
+}
+
+func (s *Provider) UserRouter() *UserRouter {
+	return s.userRouter
+}

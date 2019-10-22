@@ -14,6 +14,8 @@ type dbResult struct {
 func (srv *Server) registerDatabaseService() bool {
 
 	for _, dbResult := range []dbResult{
+		{"goodsDB", types.Decay(model.NewGoodsDB(srv.Logger, srv.cfg))},
+		{"userDB", types.Decay(model.NewUserDB(srv.Logger, srv.cfg))},
 		{"objectDB", types.Decay(model.NewObjectDB(srv.Logger, srv.cfg))},
 	} {
 		if dbResult.Err != nil {

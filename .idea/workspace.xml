@@ -2,8 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d33caeea-6f6c-4429-8ab1-6d64520d9a9b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/service/user/interface_test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/create-template.sh" beforeDir="false" afterPath="$PROJECT_DIR$/create-template.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/db-layer/object.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/db-layer/object.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/db-layer/register.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/db-layer/register.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/sp-layer/provider.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/sp-layer/provider.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/router/object-router.go" beforeDir="false" afterPath="$PROJECT_DIR$/router/object-router.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/router/provider.go" beforeDir="false" afterPath="$PROJECT_DIR$/router/provider.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/router/root-router.go" beforeDir="false" afterPath="$PROJECT_DIR$/router/root-router.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/db.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/db.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/base-service/crud.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/base-service/crud.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/object/gulp.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/object/gulp.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/object/post.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/object/post.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/provider.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/provider.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/interface.go" beforeDir="false" afterPath="$PROJECT_DIR$/types/interface.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,7 +32,7 @@
       </list>
     </option>
   </component>
-  <component name="GOROOT" path="D:\Go" />
+  <component name="GOROOT" path="$PROJECT_DIR$/../../../../../go" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -26,6 +40,7 @@
     <option name="indexEntireGoPath" value="false" />
   </component>
   <component name="ProjectId" id="1SYGwJhsvxgZQBLLm3LCF9EOuv4" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="DefaultGoTemplateProperty" value="Go File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -56,7 +71,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

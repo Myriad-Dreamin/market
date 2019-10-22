@@ -1,4 +1,4 @@
-package objectservice
+package goodsservice
 
 import (
 	"github.com/Myriad-Dreamin/ginx/model"
@@ -10,13 +10,13 @@ import (
 
 type PostReply struct {
 	Code   int           `json:"code"`
-	Object *model.Object `json:"object"`
+	Goods *model.Goods `json:"goods"`
 }
 
-func ObjectToPostReply(obj *model.Object) *PostReply {
+func GoodsToPostReply(obj *model.Goods) *PostReply {
 	return &PostReply{
 		Code:   types.CodeOK,
-		Object: obj,
+		Goods: obj,
 	}
 }
 
@@ -29,7 +29,7 @@ func (srv *Service) SerializePost(c *gin.Context) base_service.CRUDEntity {
 		return nil
 	}
 
-	var obj = new(model.Object)
+	var obj = new(model.Goods)
 	// fill here
 	return obj
 }

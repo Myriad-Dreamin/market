@@ -10,11 +10,11 @@ import (
 
 var (
 	objectModel         *dorm.Model
-	objIDFunc           = crud_dao.ID(db)
-	objCreateFunc       = crud_dao.Create(db)
-	objDeleteFunc       = crud_dao.Delete(db)
-	objUpdateFunc       = crud_dao.Update(db)
-	objUpdateFieldsFunc = crud_dao.UpdateFields(objectModel)
+	objectIDFunc           = crud_dao.ID(db)
+	objectCreateFunc       = crud_dao.Create(db)
+	objectDeleteFunc       = crud_dao.Delete(db)
+	objectUpdateFunc       = crud_dao.Update(db)
+	objectUpdateFieldsFunc = crud_dao.UpdateFields(objectModel)
 )
 
 type Object struct {
@@ -44,19 +44,19 @@ func (d Object) GetID() uint {
 }
 
 func (d *Object) Create() (int64, error) {
-	return objCreateFunc(d)
+	return objectCreateFunc(d)
 }
 
 func (d *Object) Update() (int64, error) {
-	return objUpdateFunc(d)
+	return objectUpdateFunc(d)
 }
 
 func (d *Object) UpdateFields(fields []string) (int64, error) {
-	return objUpdateFieldsFunc(d, fields)
+	return objectUpdateFieldsFunc(d, fields)
 }
 
 func (d *Object) Delete() (int64, error) {
-	return objDeleteFunc(d)
+	return objectDeleteFunc(d)
 }
 
 type ObjectDB struct{}
@@ -69,9 +69,9 @@ func GetObjectDB(logger types.Logger) (*ObjectDB, error) {
 	return new(ObjectDB), nil
 }
 
-func (objDB *ObjectDB) ID(id uint) (obj *Object, err error) {
-	obj = new(Object)
-	err = objIDFunc(obj, id)
+func (objectDB *ObjectDB) ID(id uint) (object *Object, err error) {
+	object = new(Object)
+	err = objectIDFunc(object, id)
 	return
 }
 
@@ -79,30 +79,30 @@ type ObjectQuery struct {
 	db *gorm.DB
 }
 
-func (objDB *ObjectDB) QueryChain() *ObjectQuery {
+func (objectDB *ObjectDB) QueryChain() *ObjectQuery {
 	return &ObjectQuery{db: db}
 }
 
-func (objDB *ObjectQuery) Order(order string, reorder ...bool) *ObjectQuery {
-	objDB.db = objDB.db.Order(order, reorder...)
-	return objDB
+func (objectDB *ObjectQuery) Order(order string, reorder ...bool) *ObjectQuery {
+	objectDB.db = objectDB.db.Order(order, reorder...)
+	return objectDB
 }
 
-func (objDB *ObjectQuery) Page(page, pageSize int) *ObjectQuery {
-	objDB.db = objDB.db.Limit(pageSize).Offset((page - 1) * pageSize)
-	return objDB
+func (objectDB *ObjectQuery) Page(page, pageSize int) *ObjectQuery {
+	objectDB.db = objectDB.db.Limit(pageSize).Offset((page - 1) * pageSize)
+	return objectDB
 }
-func (objDB *ObjectQuery) BeforeID(id uint) *ObjectQuery {
-	objDB.db = objDB.db.Where("id <= ?", id)
-	return objDB
-}
-
-func (objDB *ObjectQuery) Preload() *ObjectQuery {
-	objDB.db = objDB.db.Set("gorm:auto_preload", true)
-	return objDB
+func (objectDB *ObjectQuery) BeforeID(id uint) *ObjectQuery {
+	objectDB.db = objectDB.db.Where("id <= ?", id)
+	return objectDB
 }
 
-func (objDB *ObjectQuery) Query() (objs []Object, err error) {
-	err = objDB.db.Find(&objs).Error
+func (objectDB *ObjectQuery) Preload() *ObjectQuery {
+	objectDB.db = objectDB.db.Set("gorm:auto_preload", true)
+	return objectDB
+}
+
+func (objectDB *ObjectQuery) Query() (objects []Object, err error) {
+	err = objectDB.db.Find(&objects).Error
 	return
 }

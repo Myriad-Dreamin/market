@@ -51,3 +51,7 @@ func (*ObjectIDRouter) subBuild(parent *ObjectRouter, serviceProvider *service.P
 	router.Delete = router.DELETE("", objectService.Delete)
 	return
 }
+
+func (s *Provider) ObjectRouter() *ObjectRouter {
+	return s.objectRouter
+}
