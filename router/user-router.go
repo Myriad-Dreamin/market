@@ -9,6 +9,7 @@ type UserRouter struct {
 	Auth     *Middleware
 	IDRouter *UserIDRouter
 
+	Login          *LeafRouter
 	Register *LeafRouter
 	//GetList *LeafRouter
 }
@@ -17,7 +18,6 @@ type UserIDRouter struct {
 	*Router
 	Auth *Middleware
 
-	Login          *LeafRouter
 	ChangePassword *LeafRouter
 	Get            *LeafRouter
 	Put            *LeafRouter
@@ -32,6 +32,7 @@ func BuildUserRouter(parent *RootRouter, serviceProvider *service.Provider) (rou
 	}
 	//router.GetList = router.GET("user-list", userService.List)
 	router.Register = router.POST("/user", userService.Register)
+	router.Login = router.POST("/login", userService.Login)
 
 	router.IDRouter = router.IDRouter.subBuild(router, serviceProvider)
 
@@ -49,7 +50,6 @@ func (*UserIDRouter) subBuild(parent *UserRouter, serviceProvider *service.Provi
 	}
 
 	router.Get = router.GET("", userService.Get)
-	router.Login = router.POST("", userService.Login)
 	router.ChangePassword = router.POST("/password", userService.ChangePassword)
 	router.Put = router.PUT("", userService.Put)
 	router.Delete = router.DELETE("", userService.Delete)

@@ -1,6 +1,7 @@
 package userservice
 
 import (
+	"fmt"
 	"github.com/Myriad-Dreamin/market/model"
 	ginhelper "github.com/Myriad-Dreamin/market/service/gin-helper"
 	"github.com/Myriad-Dreamin/market/types"
@@ -119,6 +120,7 @@ func (srv *Service) Login(c *gin.Context) {
 		user.LastLogin = time.Now()
 
 		var identities []string
+		fmt.Println(user.ID)
 		if srv.enforcer.HasGroupingPolicy("user:"+strconv.Itoa(int(user.ID)), "admin") {
 			identities = append(identities, "admin")
 		}

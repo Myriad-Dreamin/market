@@ -33,7 +33,7 @@ func (srv *Service) FilterOn(c *gin.Context, page, pageSize int) (interface{}, e
 	if c.IsAborted() {
 		return nil, nil
 	}
-	return NeedssToListReply(result.([]model.Needs)), nil
+	return GoodssToListReply(result.([]model.Goods)), nil
 }
 
 

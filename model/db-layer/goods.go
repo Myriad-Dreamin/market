@@ -23,7 +23,7 @@ func GoodssFactory() interface{} {
 }
 
 var (
-	goodsModel         *dorm.Model
+	goodsModel         =new(dorm.Model)
 	goodsIDFunc           = crud_dao.ID(GoodsFactory, db)
 	goodsCreateFunc       = crud_dao.Create(db)
 	goodsDeleteFunc       = crud_dao.Delete(db)
@@ -63,7 +63,11 @@ func (Goods) migrate() error {
 	}
 
 	//db.AddIndex()
-	goodsModel, err = dormDB.Model(&Goods{})
+	model, err := dormDB.Model(&Goods{})
+	if err != nil {
+		return err
+	}
+	*goodsModel = *model
 	return err
 }
 

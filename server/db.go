@@ -80,7 +80,7 @@ func (srv *Server) PrepareDatabase() bool {
 		srv.Logger.Debug("rbac to database error", "error", err)
 		return false
 	}
-	srv.ServiceProvider.Register(rbac.GetEnforcer())
+	srv.DatabaseProvider.Register("enforcer", rbac.GetEnforcer())
 
 
 	return srv.registerDatabaseService()

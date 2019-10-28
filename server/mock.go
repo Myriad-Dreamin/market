@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
+	"encoding/xml"
 	"fmt"
 	"github.com/Myriad-Dreamin/market/mock"
 	dblayer "github.com/Myriad-Dreamin/market/model/db-layer"
@@ -117,6 +118,8 @@ type Request = http.Request
 
 type ResponseI interface {
 	Body() *bytes.Buffer
+	JSON(x interface{}) error
+	XML(x interface{}) error
 	Code() int
 	Flushed() bool
 	Flush()
@@ -130,6 +133,14 @@ type Response struct {
 
 func (r *Response) Body() *bytes.Buffer {
 	return r.r.Body
+}
+
+func (r *Response) JSON(v interface{}) error {
+	return json.NewDecoder(r.r.Body).Decode(v)
+}
+
+func (r *Response) XML(v interface{}) error {
+	return xml.NewDecoder(r.r.Body).Decode(v)
 }
 
 func (r *Response) Code() int {

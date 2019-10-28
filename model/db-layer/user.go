@@ -19,7 +19,7 @@ func UserFactory() interface{} {
 }
 
 var (
-	userModel            *dorm.Model
+	userModel            = new(dorm.Model)
 	userIDFunc           = crud_dao.ID(UserFactory, db)
 	userCreateFunc       = crud_dao.Create(db)
 	userDeleteFunc       = crud_dao.Delete(db)
@@ -56,7 +56,11 @@ func (User) migrate() error {
 	}
 
 	//db.AddIndex()
-	userModel, err = dormDB.Model(&User{})
+	model, err := dormDB.Model(&User{})
+	if err != nil {
+		return err
+	}
+	*userModel = *model
 	return err
 }
 

@@ -26,6 +26,7 @@ require (
 	github.com/google/go-cmp v0.3.0 // indirect
 	github.com/jinzhu/gorm v1.9.11
 	github.com/pelletier/go-toml v1.5.0
+	github.com/prometheus/common v0.2.0
 	github.com/stretchr/testify v1.3.0
 	github.com/tecbot/gorocksdb v0.0.0-20190930194452-65a88f08537a
 	github.com/ugorji/go v1.1.7 // indirect

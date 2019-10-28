@@ -18,7 +18,7 @@ func ObjectFactory() interface{} {
 }
 
 var (
-	objectModel         *dorm.Model
+	objectModel         =new(dorm.Model)
 	objectIDFunc           = crud_dao.ID(ObjectFactory, db)
 	objectCreateFunc       = crud_dao.Create(db)
 	objectDeleteFunc       = crud_dao.Delete(db)
@@ -44,7 +44,12 @@ func (Object) migrate() error {
 	}
 
 	//db.AddIndex()
-	objectModel, err = dormDB.Model(&Object{})
+	model, err := dormDB.Model(&Object{})
+	if err != nil {
+		return err
+	}
+	*objectModel = *model
+
 	return err
 }
 

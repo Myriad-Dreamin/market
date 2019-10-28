@@ -205,8 +205,8 @@ func AddFunction(name string, function func(args ...interface{}) (interface{}, e
 	rbace.AddFunction(name, function)
 }
 
-func GetEnforcer() casbin.SyncedEnforcer {
-	return *rbace
+func GetEnforcer() *casbin.SyncedEnforcer {
+	return rbace
 }
 
 func registerEnforcer(e *casbin.SyncedEnforcer) error {

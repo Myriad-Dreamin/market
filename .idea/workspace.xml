@@ -2,20 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d33caeea-6f6c-4429-8ab1-6d64520d9a9b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/model/db-layer/crud-dao/filter.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/db-layer/crud-dao/page.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/db-layer/filter.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/db-layer/general-dao/filter_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/db-layer/general-dao/goods-filter.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/filter.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/goods-service/filter-on.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/db-layer/goods.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/db-layer/goods.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/db-layer/needs.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/db-layer/needs.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/db-layer/object.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/db-layer/object.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/db-layer/stat-fee.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/db-layer/stat-fee.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/db-layer/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/db-layer/user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/sp-layer/needs.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/sp-layer/needs.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rbac/rbac.go" beforeDir="false" afterPath="$PROJECT_DIR$/rbac/rbac.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/router/user-router.go" beforeDir="false" afterPath="$PROJECT_DIR$/router/user-router.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/db.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/db.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/mock.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/mock.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service/goods/list.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/goods/list.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/goods/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/goods/service.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/needs/list.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/needs/list.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/needs/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/needs/service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/user/login.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/user/login.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/user/register_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/test/user/register_test.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -114,5 +116,8 @@
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
     <proxy>https://goproxy.io</proxy>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/market$TestFilter_in_github_com_Myriad_Dreamin_market_model_db_layer_general_dao.out" NAME="TestFilter in github.com/Myriad-Dreamin/market/model/db-layer/general-dao Coverage Results" MODIFIED="1572278128524" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

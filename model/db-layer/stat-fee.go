@@ -18,7 +18,7 @@ func StatFeeFactory() interface{} {
 }
 
 var (
-	statFeeModel         *dorm.Model
+	statFeeModel         = new(dorm.Model)
 	statFeeIDFunc           = crud_dao.ID(StatFeeFactory, db)
 	statFeeCreateFunc       = crud_dao.Create(db)
 	statFeeDeleteFunc       = crud_dao.Delete(db)
@@ -44,7 +44,11 @@ func (StatFee) migrate() error {
 	}
 
 	//db.AddIndex()
-	statFeeModel, err = dormDB.Model(&StatFee{})
+	model, err := dormDB.Model(&StatFee{})
+	if err != nil {
+		return err
+	}
+	*statFeeModel = *model
 	return err
 }
 

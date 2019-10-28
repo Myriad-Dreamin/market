@@ -31,7 +31,7 @@ type NeedsDB struct {
 	dblayer.NeedsDB
 }
 
-func NewNeedsDB(logger types.Logger, cf *config.ServerConfig) (*NeedsDB, error) {
+func NewNeedsDB(logger types.Logger, cfg *config.ServerConfig) (*NeedsDB, error) {
 	cdb, err := dblayer.NewNeedsDB(logger, cfg)
 	if err != nil {
 		return nil, err
