@@ -4,6 +4,7 @@ import (
 	"github.com/Myriad-Dreamin/dorm"
 	"github.com/Myriad-Dreamin/market/config"
 	crud_dao "github.com/Myriad-Dreamin/market/model/db-layer/crud-dao"
+	general_dao "github.com/Myriad-Dreamin/market/model/db-layer/general-dao"
 	"github.com/Myriad-Dreamin/market/types"
 	"github.com/jinzhu/gorm"
 	"time"
@@ -17,6 +18,10 @@ func GoodsFactory() interface{} {
 	return new(Goods)
 }
 
+func GoodssFactory() interface{} {
+	return new([]Goods)
+}
+
 var (
 	goodsModel         *dorm.Model
 	goodsIDFunc           = crud_dao.ID(GoodsFactory, db)
@@ -24,12 +29,14 @@ var (
 	goodsDeleteFunc       = crud_dao.Delete(db)
 	goodsUpdateFunc       = crud_dao.Update(db)
 	goodsUpdateFieldsFunc = crud_dao.UpdateFields(goodsModel)
+	goodsFilter = general_dao.GoodsFilterFunc(GoodssFactory, db)
 )
 
 type Goods struct {
 	ID        uint      `dorm:"id" gorm:"column:id;primary_key;not_null"`
-	CreatedAt time.Time `dorm:"created_at" gorm:"column:created_at;default:CURRENT_TIMESTAMP;not null" json:"created_at"`
-	UpdatedAt time.Time `dorm:"updated_at" gorm:"column:updated_at;default:CURRENT_TIMESTAMP;not null;" json:"updated_at"`
+	CreatedAt time.Time `dorm:"created_at" gorm:"column:created_at;default:CURRENT_TIMESTAMP;not null"`
+	UpdatedAt time.Time `dorm:"updated_at" gorm:"column:updated_at;default:CURRENT_TIMESTAMP;not null;"`
+	EndAt time.Time `dorm:"end_at" gorm:"column:end_at;default:CURRENT_TIMESTAMP;not null;"`
 
 	Seller uint `dorm:"seller" gorm:"column:seller;not_null"`
 	Buyer uint `dorm:"buyer" gorm:"column:buyer;not_null"`
@@ -37,7 +44,6 @@ type Goods struct {
 	Name string `dorm:"name" gorm:"column:name;not_null"`
 	MinPrice uint64 `dorm:"min_price" gorm:"column:min_price;not_null"`
 	IsFixed bool `dorm:"is_fixed" gorm:"column:is_fixed;not_null"`
-	EndDuration time.Duration `dorm:"ddd" gorm:"column:ddd;not_null"`
 	Description string `dorm:"description" gorm:"column:description;not_null"`
 	Status uint8 `dorm:"status" gorm:"column:status;not_null"`
 
@@ -97,6 +103,19 @@ func (goodsDB *GoodsDB) ID(id uint) (goods *Goods, err error) {
 
 type GoodsQuery struct {
 	db *gorm.DB
+}
+
+func (goodsDB *GoodsDB) Filter(f *GoodsFilter) (goodss []Goods, err error) {
+	i, err := goodsFilter(f)
+	if err != nil {
+		return nil, err
+	}
+	goodss = *i.(*[]Goods)
+	return
+}
+
+func (goodsDB *GoodsDB) FilterI(f *GoodsFilter) (interface{}, error) {
+	return goodsDB.Filter(f)
 }
 
 func (goodsDB *GoodsDB) QueryChain() *GoodsQuery {

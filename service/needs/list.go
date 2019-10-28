@@ -19,13 +19,10 @@ func NeedssToListReply(obj []model.Needs) (reply *ListReply) {
 }
 
 func (srv *Service) FilterOn(c *gin.Context, page, pageSize int) (interface{}, error) {
-	// parse c
-
-
-	objs, err := srv.db.QueryChain().Page(page, pageSize).Query()
-	if err != nil {
-		return nil, err
+	result := srv.filterFunc(c)
+	if c.IsAborted() {
+		return nil, nil
 	}
-	return NeedssToListReply(objs), nil
+	return NeedssToListReply(result.([]model.Needs)), nil
 }
 

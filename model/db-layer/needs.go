@@ -4,6 +4,7 @@ import (
 	"github.com/Myriad-Dreamin/dorm"
 	"github.com/Myriad-Dreamin/market/config"
 	crud_dao "github.com/Myriad-Dreamin/market/model/db-layer/crud-dao"
+	general_dao "github.com/Myriad-Dreamin/market/model/db-layer/general-dao"
 	"github.com/Myriad-Dreamin/market/types"
 	"github.com/jinzhu/gorm"
 	"time"
@@ -17,6 +18,10 @@ func NeedsFactory() interface{} {
 	return new(Needs)
 }
 
+func NeedssFactory() interface{} {
+	return new([]Needs)
+}
+
 var (
 	needsModel         *dorm.Model
 	needsIDFunc           = crud_dao.ID(NeedsFactory, db)
@@ -24,12 +29,14 @@ var (
 	needsDeleteFunc       = crud_dao.Delete(db)
 	needsUpdateFunc       = crud_dao.Update(db)
 	needsUpdateFieldsFunc = crud_dao.UpdateFields(needsModel)
+	needsFilter = general_dao.GoodsFilterFunc(NeedssFactory, db)
 )
 
 type Needs struct {
 	ID        uint      `dorm:"id" gorm:"column:id;primary_key;not_null"`
 	CreatedAt time.Time `dorm:"created_at" gorm:"column:created_at;default:CURRENT_TIMESTAMP;not null" json:"created_at"`
 	UpdatedAt time.Time `dorm:"updated_at" gorm:"column:updated_at;default:CURRENT_TIMESTAMP;not null" json:"updated_at"`
+	EndAt time.Time `dorm:"end_at" gorm:"column:end_at;default:CURRENT_TIMESTAMP;not null;"`
 
 	Buyer uint `dorm:"buyer" gorm:"column:buyer;not_null"`
 	Seller uint `dorm:"seller" gorm:"column:seller;not_null"`
@@ -98,6 +105,19 @@ func (needsDB *NeedsDB) ID(id uint) (needs *Needs, err error) {
 
 type NeedsQuery struct {
 	db *gorm.DB
+}
+
+func (needsDB *NeedsDB) Filter(f *GoodsFilter) (needss []Needs, err error) {
+	i, err := needsFilter(f)
+	if err != nil {
+		return nil, err
+	}
+	needss = *i.(*[]Needs)
+	return
+}
+
+func (needsDB *NeedsDB) FilterI(f *GoodsFilter) (interface{}, error) {
+	return needsDB.Filter(f)
 }
 
 func (needsDB *NeedsDB) QueryChain() *NeedsQuery {
