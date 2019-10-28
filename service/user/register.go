@@ -1,7 +1,6 @@
 package userservice
 
 import (
-	"fmt"
 	"github.com/Myriad-Dreamin/market/model"
 	"github.com/Myriad-Dreamin/market/rbac"
 	ginhelper "github.com/Myriad-Dreamin/market/service/gin-helper"
@@ -60,13 +59,17 @@ func (srv *Service) Register(c *gin.Context) {
 
 	var user = new(model.User)
 	user.Name = req.Name
+	/**
+	要求密码不少于6位，必须含有两个数字，不能与原来的密码相似，不能都为大写或小写
+	*/
 	user.Password = req.Password
+
+
 	user.NickName = req.NickName
 	user.Phone = req.Phone
 	user.RegisterCity = req.RegisterCity
 	//user.Gender = req.Gender
 	//user.Email = req.Email
-	fmt.Println("post bind")
 
 	// check default value
 	aff, err := user.Register()

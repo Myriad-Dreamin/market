@@ -29,6 +29,15 @@ type Goods struct {
 	ID        uint      `dorm:"id" gorm:"column:id;primary_key;not_null"`
 	CreatedAt time.Time `dorm:"created_at" gorm:"column:created_at;default:CURRENT_TIMESTAMP;not null" json:"created_at"`
 	UpdatedAt time.Time `dorm:"updated_at" gorm:"column:updated_at;default:CURRENT_TIMESTAMP;not null;" json:"updated_at"`
+
+	Owner uint `dorm:"owner" gorm:"column:owner;not_null"`
+	Type uint8 `dorm:"g_type" gorm:"column:g_type;not_null"`
+	Name string `dorm:"name" gorm:"column:name;not_null"`
+	MinPrice uint `dorm:"min_price" gorm:"column:min_price;not_null"`
+	IsFixed bool `dorm:"is_fixed" gorm:"column:is_fixed;not_null"`
+	EndDuration time.Duration `dorm:"ddd" gorm:"column:ddd;not_null"`
+	Description string `dorm:"description" gorm:"column:description;not_null"`
+	Status uint8 `dorm:"status" gorm:"column:status;not_null"`
 }
 
 // TableName specification

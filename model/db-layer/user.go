@@ -37,10 +37,10 @@ type User struct {
 
 	NickName     string `dorm:"nick_name" gorm:"column:nick_name;unique;not_null"`
 	Name         string `dorm:"name" gorm:"column:name;unique;not_null"`
-	Password     string `dorm:"password" gorm:"column:password;unique;not_null"`
+	Password     string `dorm:"password" gorm:"column:password;not_null"`
 	Phone        string `dorm:"phone" gorm:"column:phone;unique;not_null"`
-	Rank         string `dorm:"rank" gorm:"column:rank;unique;not_null"`
-	RegisterCity string `dorm:"register_city" gorm:"column:register_city;unique;not_null"`
+	//Rank         string `dorm:"rank" gorm:"column:rank;unique;not_null"`
+	RegisterCity string `dorm:"register_city" gorm:"column:register_city;not_null"`
 }
 
 // TableName specification
