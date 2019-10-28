@@ -3,7 +3,7 @@ package dblayer
 import (
 	"github.com/Myriad-Dreamin/core-oj/config"
 	"github.com/Myriad-Dreamin/dorm"
-	"github.com/Myriad-Dreamin/ginx/types"
+	"github.com/Myriad-Dreamin/market/types"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 )

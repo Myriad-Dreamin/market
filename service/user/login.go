@@ -1,9 +1,9 @@
 package userservice
 
 import (
-	"github.com/Myriad-Dreamin/ginx/model"
-	ginhelper "github.com/Myriad-Dreamin/ginx/service/gin-helper"
-	"github.com/Myriad-Dreamin/ginx/types"
+	"github.com/Myriad-Dreamin/market/model"
+	ginhelper "github.com/Myriad-Dreamin/market/service/gin-helper"
+	"github.com/Myriad-Dreamin/market/types"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"strconv"

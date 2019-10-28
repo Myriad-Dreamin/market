@@ -1,9 +1,9 @@
 package splayer
 
 import (
-	"github.com/Myriad-Dreamin/ginx/config"
-	dblayer "github.com/Myriad-Dreamin/ginx/model/db-layer"
-	"github.com/Myriad-Dreamin/ginx/types"
+	"github.com/Myriad-Dreamin/market/config"
+	dblayer "github.com/Myriad-Dreamin/market/model/db-layer"
+	"github.com/Myriad-Dreamin/market/types"
 )
 
 type User = dblayer.User

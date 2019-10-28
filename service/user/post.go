@@ -1,10 +1,10 @@
 package userservice
 
 import (
-	"github.com/Myriad-Dreamin/ginx/model"
-	base_service "github.com/Myriad-Dreamin/ginx/service/base-service"
-	ginhelper "github.com/Myriad-Dreamin/ginx/service/gin-helper"
-	"github.com/Myriad-Dreamin/ginx/types"
+	"github.com/Myriad-Dreamin/market/model"
+	base_service "github.com/Myriad-Dreamin/market/service/base-service"
+	ginhelper "github.com/Myriad-Dreamin/market/service/gin-helper"
+	"github.com/Myriad-Dreamin/market/types"
 	"github.com/gin-gonic/gin"
 )
 
@@ -28,6 +28,7 @@ func (srv *Service) SerializePost(c *gin.Context) base_service.CRUDEntity {
 	if !ginhelper.BindRequest(c, req) {
 		return nil
 	}
+
 
 	var obj = new(model.User)
 	// fill here

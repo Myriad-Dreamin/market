@@ -1,9 +1,9 @@
 package model
 
 import (
-	"github.com/Myriad-Dreamin/ginx/config"
-	splayer "github.com/Myriad-Dreamin/ginx/model/sp-layer"
-	"github.com/Myriad-Dreamin/ginx/types"
+	"github.com/Myriad-Dreamin/market/config"
+	splayer "github.com/Myriad-Dreamin/market/model/sp-layer"
+	"github.com/Myriad-Dreamin/market/types"
 )
 
 type Needs = splayer.Needs

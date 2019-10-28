@@ -2,10 +2,10 @@ package service
 
 import (
 	"github.com/Myriad-Dreamin/gin-middleware/auth/jwt"
-	"github.com/Myriad-Dreamin/ginx/config"
-	"github.com/Myriad-Dreamin/ginx/model"
-	userservice "github.com/Myriad-Dreamin/ginx/service/user"
-	"github.com/Myriad-Dreamin/ginx/types"
+	"github.com/Myriad-Dreamin/market/config"
+	"github.com/Myriad-Dreamin/market/model"
+	userservice "github.com/Myriad-Dreamin/market/service/user"
+	"github.com/Myriad-Dreamin/market/types"
 )
 
 type UserService = types.UserService

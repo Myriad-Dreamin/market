@@ -2,8 +2,8 @@ package server
 
 import (
 	"fmt"
-	"github.com/Myriad-Dreamin/ginx/service"
-	"github.com/Myriad-Dreamin/ginx/types"
+	"github.com/Myriad-Dreamin/market/service"
+	"github.com/Myriad-Dreamin/market/types"
 )
 type serviceResult struct {
 	serviceName string

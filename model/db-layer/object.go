@@ -2,8 +2,8 @@ package dblayer
 
 import (
 	"github.com/Myriad-Dreamin/dorm"
-	crud_dao "github.com/Myriad-Dreamin/ginx/model/db-layer/crud-dao"
-	"github.com/Myriad-Dreamin/ginx/types"
+	crud_dao "github.com/Myriad-Dreamin/market/model/db-layer/crud-dao"
+	"github.com/Myriad-Dreamin/market/types"
 	"github.com/jinzhu/gorm"
 	"time"
 )

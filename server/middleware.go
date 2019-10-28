@@ -2,9 +2,9 @@ package server
 
 import (
 	"github.com/Myriad-Dreamin/gin-middleware/auth/jwt"
-	"github.com/Myriad-Dreamin/ginx/router"
-	ginhelper "github.com/Myriad-Dreamin/ginx/service/gin-helper"
-	"github.com/Myriad-Dreamin/ginx/types"
+	"github.com/Myriad-Dreamin/market/router"
+	ginhelper "github.com/Myriad-Dreamin/market/service/gin-helper"
+	"github.com/Myriad-Dreamin/market/types"
 	"github.com/gin-contrib/cors"
 	//"github.com/Myriad-Dreamin/gin-middleware/auth/privileger"
 	"github.com/gin-gonic/gin"

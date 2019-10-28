@@ -1,7 +1,7 @@
 package base_service
 
 import (
-	ginhelper "github.com/Myriad-Dreamin/ginx/service/gin-helper"
+	ginhelper "github.com/Myriad-Dreamin/market/service/gin-helper"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )

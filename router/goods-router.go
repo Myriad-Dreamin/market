@@ -1,7 +1,7 @@
 package router
 
 import (
-	"github.com/Myriad-Dreamin/ginx/service"
+	"github.com/Myriad-Dreamin/market/service"
 )
 
 type GoodsRouter struct {

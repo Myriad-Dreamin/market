@@ -2,9 +2,9 @@ package dblayer
 
 import (
 	"github.com/Myriad-Dreamin/dorm"
-	"github.com/Myriad-Dreamin/ginx/crypto"
-	crud_dao "github.com/Myriad-Dreamin/ginx/model/db-layer/crud-dao"
-	"github.com/Myriad-Dreamin/ginx/types"
+	"github.com/Myriad-Dreamin/market/crypto"
+	crud_dao "github.com/Myriad-Dreamin/market/model/db-layer/crud-dao"
+	"github.com/Myriad-Dreamin/market/types"
 	"github.com/jinzhu/gorm"
 	"time"
 )

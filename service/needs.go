@@ -1,10 +1,10 @@
 package service
 
 import (
-	"github.com/Myriad-Dreamin/ginx/config"
-	"github.com/Myriad-Dreamin/ginx/model"
-	needsservice "github.com/Myriad-Dreamin/ginx/service/needs"
-	"github.com/Myriad-Dreamin/ginx/types"
+	"github.com/Myriad-Dreamin/market/config"
+	"github.com/Myriad-Dreamin/market/model"
+	needsservice "github.com/Myriad-Dreamin/market/service/needs"
+	"github.com/Myriad-Dreamin/market/types"
 )
 
 type NeedsService = needsservice.Service

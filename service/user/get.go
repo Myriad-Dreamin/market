@@ -1,8 +1,8 @@
 package userservice
 
 import (
-	"github.com/Myriad-Dreamin/ginx/model"
-	"github.com/Myriad-Dreamin/ginx/types"
+	"github.com/Myriad-Dreamin/market/model"
+	"github.com/Myriad-Dreamin/market/types"
 )
 
 type GetReply struct {

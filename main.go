@@ -2,7 +2,7 @@ package main
 
 import (
 	"flag"
-	"github.com/Myriad-Dreamin/ginx/server"
+	"github.com/Myriad-Dreamin/market/server"
 	_ "net/http/pprof"
 )
 

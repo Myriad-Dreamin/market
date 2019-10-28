@@ -1,6 +1,6 @@
 package model
 
-import splayer "github.com/Myriad-Dreamin/ginx/model/sp-layer"
+import splayer "github.com/Myriad-Dreamin/market/model/sp-layer"
 
 type Provider = splayer.Provider
 

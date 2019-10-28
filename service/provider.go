@@ -9,6 +9,7 @@ type Provider struct {
 	needsService *NeedsService
 	goodsService *GoodsService
 	userService UserService
+
 }
 
 func (s *Provider) Register(service interface{}) {

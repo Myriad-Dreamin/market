@@ -1,7 +1,7 @@
 package splayer
 
 import (
-	"github.com/Myriad-Dreamin/ginx/types"
+	"github.com/Myriad-Dreamin/market/types"
 	"github.com/gomodule/redigo/redis"
 )
 

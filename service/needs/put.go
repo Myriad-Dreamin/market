@@ -1,6 +1,6 @@
 package needsservice
 
-import "github.com/Myriad-Dreamin/ginx/model"
+import "github.com/Myriad-Dreamin/market/model"
 
 type PutRequest struct {
 }

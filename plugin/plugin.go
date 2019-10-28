@@ -2,10 +2,10 @@ package plugin
 
 import (
 	"context"
-	"github.com/Myriad-Dreamin/ginx/config"
-	"github.com/Myriad-Dreamin/ginx/model"
-	"github.com/Myriad-Dreamin/ginx/service"
-	"github.com/Myriad-Dreamin/ginx/types"
+	"github.com/Myriad-Dreamin/market/config"
+	"github.com/Myriad-Dreamin/market/model"
+	"github.com/Myriad-Dreamin/market/service"
+	"github.com/Myriad-Dreamin/market/types"
 )
 
 type Logger = types.Logger

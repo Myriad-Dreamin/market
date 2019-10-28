@@ -5,13 +5,13 @@ import (
 	"fmt"
 	"github.com/DeanThompson/ginpprof"
 	"github.com/Myriad-Dreamin/gin-middleware/auth/jwt"
-	"github.com/Myriad-Dreamin/ginx/config"
-	"github.com/Myriad-Dreamin/ginx/model"
-	dblayer "github.com/Myriad-Dreamin/ginx/model/db-layer"
-	"github.com/Myriad-Dreamin/ginx/plugin"
-	"github.com/Myriad-Dreamin/ginx/router"
-	"github.com/Myriad-Dreamin/ginx/service"
-	"github.com/Myriad-Dreamin/ginx/types"
+	"github.com/Myriad-Dreamin/market/config"
+	"github.com/Myriad-Dreamin/market/model"
+	dblayer "github.com/Myriad-Dreamin/market/model/db-layer"
+	"github.com/Myriad-Dreamin/market/plugin"
+	"github.com/Myriad-Dreamin/market/router"
+	"github.com/Myriad-Dreamin/market/service"
+	"github.com/Myriad-Dreamin/market/types"
 	"github.com/gin-gonic/gin"
 	"github.com/gomodule/redigo/redis"
 	"github.com/jinzhu/gorm"
@@ -58,8 +58,8 @@ func (srv *Server) Terminate() {
 	syscall.Exit(0)
 }
 
-func New(cfgPath string) (srv *Server) {
-	srv = new(Server)
+func newServer() *Server {
+	srv := new(Server)
 
 	srv.Module = make(types.Module)
 	srv.ServiceProvider = new(service.Provider)
@@ -67,7 +67,11 @@ func New(cfgPath string) (srv *Server) {
 	srv.RouterProvider = router.NewProvider("/Router")
 
 	_ = model.SetProvider(srv.DatabaseProvider)
+	return srv
+}
 
+func New(cfgPath string) (srv *Server) {
+	srv = newServer()
 	if !(srv.InstantiateLogger() &&
 		srv.LoadConfig(cfgPath) &&
 		srv.PrepareDatabase()) {
@@ -79,9 +83,7 @@ func New(cfgPath string) (srv *Server) {
 			printStack()
 			srv.Logger.Error("panic error", "error", err)
 			srv.Terminate()
-		}
-
-		if srv == nil {
+		} else if srv == nil {
 			srv.Terminate()
 		}
 	}()
@@ -111,14 +113,11 @@ func New(cfgPath string) (srv *Server) {
 
 func (srv *Server) Inject(plugins ...plugin.Plugin) (injectSuccess bool) {
 	defer func() {
-
 		if err := recover(); err != nil {
 			printStack()
 			srv.Logger.Error("panic error", "error", err)
 			srv.Terminate()
-		}
-
-		if injectSuccess == false {
+		} else if injectSuccess == false {
 			srv.Terminate()
 		}
 	}()
@@ -180,3 +179,4 @@ func (srv *Server) ServeWithPProf(port string) {
 	ginpprof.Wrap(srv.RouterEngine)
 	srv.Serve(port)
 }
+

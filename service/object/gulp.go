@@ -1,8 +1,8 @@
 package objectservice
 
 import (
-	"github.com/Myriad-Dreamin/ginx/model"
-	base_service "github.com/Myriad-Dreamin/ginx/service/base-service"
+	"github.com/Myriad-Dreamin/market/model"
+	base_service "github.com/Myriad-Dreamin/market/service/base-service"
 )
 
 func (srv *Service) CreateEntity(id uint) base_service.CRUDEntity {

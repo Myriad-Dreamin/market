@@ -2,10 +2,12 @@ package model
 
 import (
 	"errors"
-	"github.com/Myriad-Dreamin/ginx/config"
-	"github.com/Myriad-Dreamin/ginx/model/db-layer"
-	"github.com/Myriad-Dreamin/ginx/types"
+	"github.com/Myriad-Dreamin/market/config"
+	"github.com/Myriad-Dreamin/market/model/db-layer"
+	"github.com/Myriad-Dreamin/market/types"
 	"github.com/jinzhu/gorm"
+
+	_ "github.com/jinzhu/gorm/dialects/sqlite"
 )
 
 func Register(rdb *gorm.DB, logger types.Logger) error {
@@ -66,3 +68,9 @@ func OpenORM(cfg *config.ServerConfig) (*gorm.DB, error) {
 
 	return db, nil
 }
+
+func MockORM(_ *config.ServerConfig) (*gorm.DB, error) {
+
+	return gorm.Open("sqlite3", "./test.db")
+}
+

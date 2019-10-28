@@ -2,10 +2,10 @@ package userservice
 
 import (
 	"github.com/Myriad-Dreamin/gin-middleware/auth/jwt"
-	"github.com/Myriad-Dreamin/ginx/config"
-	"github.com/Myriad-Dreamin/ginx/model"
-	base_service "github.com/Myriad-Dreamin/ginx/service/base-service"
-	"github.com/Myriad-Dreamin/ginx/types"
+	"github.com/Myriad-Dreamin/market/config"
+	"github.com/Myriad-Dreamin/market/model"
+	base_service "github.com/Myriad-Dreamin/market/service/base-service"
+	"github.com/Myriad-Dreamin/market/types"
 	"github.com/casbin/casbin/v2"
 )
 

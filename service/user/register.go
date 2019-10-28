@@ -1,10 +1,11 @@
 package userservice
 
 import (
-	"github.com/Myriad-Dreamin/gin-middleware/sample/user/rbac"
-	"github.com/Myriad-Dreamin/ginx/model"
-	ginhelper "github.com/Myriad-Dreamin/ginx/service/gin-helper"
-	"github.com/Myriad-Dreamin/ginx/types"
+	"fmt"
+	"github.com/Myriad-Dreamin/market/model"
+	"github.com/Myriad-Dreamin/market/rbac"
+	ginhelper "github.com/Myriad-Dreamin/market/service/gin-helper"
+	"github.com/Myriad-Dreamin/market/types"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"strconv"
@@ -65,6 +66,7 @@ func (srv *Service) Register(c *gin.Context) {
 	user.RegisterCity = req.RegisterCity
 	//user.Gender = req.Gender
 	//user.Email = req.Email
+	fmt.Println("post bind")
 
 	// check default value
 	aff, err := user.Register()

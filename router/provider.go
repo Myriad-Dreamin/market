@@ -2,7 +2,7 @@ package router
 
 import (
 	"fmt"
-	"github.com/Myriad-Dreamin/ginx/types"
+	"github.com/Myriad-Dreamin/market/types"
 	"path"
 )
 

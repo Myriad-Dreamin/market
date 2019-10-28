@@ -2,8 +2,8 @@ package dblayer
 
 import (
 	"github.com/Myriad-Dreamin/dorm"
-	crud_dao "github.com/Myriad-Dreamin/ginx/model/db-layer/crud-dao"
-	"github.com/Myriad-Dreamin/ginx/types"
+	crud_dao "github.com/Myriad-Dreamin/market/model/db-layer/crud-dao"
+	"github.com/Myriad-Dreamin/market/types"
 	"github.com/jinzhu/gorm"
 	"time"
 )
@@ -28,7 +28,7 @@ var (
 type Needs struct {
 	ID        uint      `dorm:"id" gorm:"column:id;primary_key;not_null"`
 	CreatedAt time.Time `dorm:"created_at" gorm:"column:created_at;default:CURRENT_TIMESTAMP;not null" json:"created_at"`
-	UpdatedAt time.Time `dorm:"updated_at" gorm:"column:updated_at;default:CURRENT_TIMESTAMP;not null;" json:"updated_at"`
+	UpdatedAt time.Time `dorm:"updated_at" gorm:"column:updated_at;default:CURRENT_TIMESTAMP;not null" json:"updated_at"`
 }
 
 // TableName specification

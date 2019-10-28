@@ -2,8 +2,9 @@ package server
 
 import (
 	"fmt"
-	"github.com/Myriad-Dreamin/ginx/model"
-	"github.com/Myriad-Dreamin/ginx/types"
+	"github.com/Myriad-Dreamin/market/model"
+	"github.com/Myriad-Dreamin/market/rbac"
+	"github.com/Myriad-Dreamin/market/types"
 )
 
 type dbResult struct {
@@ -33,7 +34,7 @@ func (srv *Server) PrepareDatabase() bool {
 	cfg := srv.cfg
 	srv.DB, err = model.OpenORM(cfg)
 	if err != nil {
-		srv.Logger.Debug("open database error", "error", err)
+		srv.Logger.Error("open database error", "error", err)
 		return false
 	}
 
@@ -74,6 +75,38 @@ func (srv *Server) PrepareDatabase() bool {
 	//	srv.Logger.Debug("register redis error", "error", err)
 	//	return false
 	//}
+	err = rbac.InitGorm(srv.DB, "rbac.conf")
+	if err != nil {
+		srv.Logger.Debug("rbac to database error", "error", err)
+		return false
+	}
+	srv.ServiceProvider.Register(rbac.GetEnforcer())
+
+
+	return srv.registerDatabaseService()
+}
+
+
+func (srv *Server) MockDatabase() bool {
+	var err error
+	srv.DB, err = model.MockORM(srv.cfg)
+	if err != nil {
+		srv.Logger.Error("open database error", "error", err)
+		return false
+	}
+
+	err = model.Register(srv.DB, srv.Logger)
+	if err != nil {
+		srv.Logger.Error("register and migrate error", "error", err)
+		return false
+	}
+
+	err = rbac.InitGorm(srv.DB, "rbac.conf")
+	if err != nil {
+		srv.Logger.Debug("rbac to database error", "error", err)
+		return false
+	}
+	srv.DatabaseProvider.Register("enforcer", rbac.GetEnforcer())
 
 	return srv.registerDatabaseService()
 }
