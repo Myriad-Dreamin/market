@@ -31,8 +31,8 @@ type UserDB struct {
 	dblayer.UserDB
 }
 
-func NewUserDB(logger types.Logger, _ *config.ServerConfig) (*UserDB, error) {
-	cdb, err := dblayer.NewUserDB(logger)
+func NewUserDB(logger types.Logger, cfg *config.ServerConfig) (*UserDB, error) {
+	cdb, err := dblayer.NewUserDB(logger, cfg)
 	if err != nil {
 		return nil, err
 	}
@@ -41,8 +41,8 @@ func NewUserDB(logger types.Logger, _ *config.ServerConfig) (*UserDB, error) {
 	return db, nil
 }
 
-func GetUserDB(logger types.Logger, _ *config.ServerConfig) (*UserDB, error) {
-	cdb, err := dblayer.GetUserDB(logger)
+func GetUserDB(logger types.Logger, cfg *config.ServerConfig) (*UserDB, error) {
+	cdb, err := dblayer.GetUserDB(logger, cfg)
 	if err != nil {
 		return nil, err
 	}

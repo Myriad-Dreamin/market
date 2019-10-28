@@ -2,6 +2,7 @@ package dblayer
 
 import (
 	"github.com/Myriad-Dreamin/dorm"
+	"github.com/Myriad-Dreamin/market/config"
 	crud_dao "github.com/Myriad-Dreamin/market/model/db-layer/crud-dao"
 	"github.com/Myriad-Dreamin/market/types"
 	"github.com/jinzhu/gorm"
@@ -69,11 +70,11 @@ func (d *Object) Delete() (int64, error) {
 
 type ObjectDB struct{}
 
-func NewObjectDB(logger types.Logger) (*ObjectDB, error) {
+func NewObjectDB(logger types.Logger, _ *config.ServerConfig) (*ObjectDB, error) {
 	return new(ObjectDB), nil
 }
 
-func GetObjectDB(logger types.Logger) (*ObjectDB, error) {
+func GetObjectDB(logger types.Logger, _ *config.ServerConfig) (*ObjectDB, error) {
 	return new(ObjectDB), nil
 }
 

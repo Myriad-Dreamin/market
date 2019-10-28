@@ -2,6 +2,7 @@ package dblayer
 
 import (
 	"github.com/Myriad-Dreamin/dorm"
+	"github.com/Myriad-Dreamin/market/config"
 	crud_dao "github.com/Myriad-Dreamin/market/model/db-layer/crud-dao"
 	"github.com/Myriad-Dreamin/market/types"
 	"github.com/jinzhu/gorm"
@@ -30,14 +31,18 @@ type Goods struct {
 	CreatedAt time.Time `dorm:"created_at" gorm:"column:created_at;default:CURRENT_TIMESTAMP;not null" json:"created_at"`
 	UpdatedAt time.Time `dorm:"updated_at" gorm:"column:updated_at;default:CURRENT_TIMESTAMP;not null;" json:"updated_at"`
 
-	Owner uint `dorm:"owner" gorm:"column:owner;not_null"`
+	Seller uint `dorm:"seller" gorm:"column:seller;not_null"`
+	Buyer uint `dorm:"buyer" gorm:"column:buyer;not_null"`
 	Type uint8 `dorm:"g_type" gorm:"column:g_type;not_null"`
 	Name string `dorm:"name" gorm:"column:name;not_null"`
-	MinPrice uint `dorm:"min_price" gorm:"column:min_price;not_null"`
+	MinPrice uint64 `dorm:"min_price" gorm:"column:min_price;not_null"`
 	IsFixed bool `dorm:"is_fixed" gorm:"column:is_fixed;not_null"`
 	EndDuration time.Duration `dorm:"ddd" gorm:"column:ddd;not_null"`
 	Description string `dorm:"description" gorm:"column:description;not_null"`
 	Status uint8 `dorm:"status" gorm:"column:status;not_null"`
+
+	BuyerFee uint64 `dorm:"buyer_fee" gorm:"column:buyer_fee;not_null"`
+	SellerFee uint64 `dorm:"seller_fee" gorm:"column:seller_fee;not_null"`
 }
 
 // TableName specification
@@ -78,11 +83,11 @@ func (d *Goods) Delete() (int64, error) {
 
 type GoodsDB struct{}
 
-func NewGoodsDB(logger types.Logger) (*GoodsDB, error) {
+func NewGoodsDB(logger types.Logger, _ *config.ServerConfig) (*GoodsDB, error) {
 	return new(GoodsDB), nil
 }
 
-func GetGoodsDB(logger types.Logger) (*GoodsDB, error) {
+func GetGoodsDB(logger types.Logger, _ *config.ServerConfig) (*GoodsDB, error) {
 	return new(GoodsDB), nil
 }
 

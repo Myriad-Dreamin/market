@@ -2,12 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d33caeea-6f6c-4429-8ab1-6d64520d9a9b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/model/db-layer/stat-fee.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model/stat-fee.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/db-layer/goods.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/db-layer/goods.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/db-layer/needs.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/db-layer/needs.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/db-layer/object.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/db-layer/object.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/db-layer/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/db-layer/user.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/user/register.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/user/register.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/sp-layer/goods.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/sp-layer/goods.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/sp-layer/needs.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/sp-layer/needs.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/sp-layer/object.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/sp-layer/object.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/sp-layer/provider.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/sp-layer/provider.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/sp-layer/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/sp-layer/user.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -38,19 +44,20 @@
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/model/db-layer" />
     <property name="settings.editor.selected.configurable" value="go.vgo" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\project\go\src\github.com\Myriad-Dreamin\market\model\db-layer" />
+      <recent name="$PROJECT_DIR$/test/user" />
+      <recent name="E:\project\go\src\github.com\Myriad-Dreamin\market\service\user" />
+      <recent name="E:\project\go\src\github.com\Myriad-Dreamin\market" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/mock-protocol" />
       <recent name="$PROJECT_DIR$/mock-protocol/stream.go" />
       <recent name="E:\project\go\src\github.com\Myriad-Dreamin\market\model\sp-layer" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/test/user" />
-      <recent name="E:\project\go\src\github.com\Myriad-Dreamin\market\service\user" />
-      <recent name="E:\project\go\src\github.com\Myriad-Dreamin\market" />
     </key>
   </component>
   <component name="RunDashboard">

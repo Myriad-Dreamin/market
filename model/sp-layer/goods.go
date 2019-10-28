@@ -31,8 +31,8 @@ type GoodsDB struct {
 	dblayer.GoodsDB
 }
 
-func NewGoodsDB(logger types.Logger, _ *config.ServerConfig) (*GoodsDB, error) {
-	cdb, err := dblayer.NewGoodsDB(logger)
+func NewGoodsDB(logger types.Logger, cfg *config.ServerConfig) (*GoodsDB, error) {
+	cdb, err := dblayer.NewGoodsDB(logger, cfg)
 	if err != nil {
 		return nil, err
 	}
@@ -41,8 +41,8 @@ func NewGoodsDB(logger types.Logger, _ *config.ServerConfig) (*GoodsDB, error) {
 	return db, nil
 }
 
-func GetGoodsDB(logger types.Logger, _ *config.ServerConfig) (*GoodsDB, error) {
-	cdb, err := dblayer.GetGoodsDB(logger)
+func GetGoodsDB(logger types.Logger, cfg *config.ServerConfig) (*GoodsDB, error) {
+	cdb, err := dblayer.GetGoodsDB(logger, cfg)
 	if err != nil {
 		return nil, err
 	}

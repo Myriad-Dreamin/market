@@ -2,6 +2,7 @@ package splayer
 
 import (
 	"fmt"
+	dblayer "github.com/Myriad-Dreamin/market/model/db-layer"
 	"github.com/Myriad-Dreamin/market/types"
 	"path"
 )
@@ -15,6 +16,7 @@ type Provider struct {
 	needsDB *NeedsDB
 	goodsDB *GoodsDB
 	userDB *UserDB
+	statFeeDB *dblayer.StatFeeDB
 	enforcer *Enforcer
 }
 
@@ -42,6 +44,8 @@ func (s *Provider) Register(name string, database interface{}) {
 		s.userDB = ss
 	case *ObjectDB:
 		s.objectDB = ss
+	case *dblayer.StatFeeDB:
+		s.statFeeDB = ss
 	default:
 		if mm, ok := ss.(types.Moduler); ok {
 			// todo:
@@ -61,3 +65,8 @@ if err := s.BaseModuler.Replace(path.Join(s.Namespace, name), router); err != ni
 	panic(fmt.Errorf("unknown router %T", router))
 }
  */
+
+
+func (s *Provider) StatFeeDB() *dblayer.StatFeeDB {
+	return s.statFeeDB
+}
