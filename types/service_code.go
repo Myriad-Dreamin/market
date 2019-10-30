@@ -59,4 +59,10 @@ const (
 	CodeStatError
 )
 
+const (
+	CodeGoodsStatusUnknown int = iota + 12000
+	CodeGoodsStatusFinished
+	CodeGoodsLifeTimeout
+)
+
 

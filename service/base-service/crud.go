@@ -21,7 +21,7 @@ type CRUDObjectToolLite interface {
 	ResponsePost(obj CRUDEntity) interface{}
 	ResponseGet(obj CRUDEntity) interface{}
 	GetPutRequest() interface{}
-	FillPutFields(object CRUDEntity, req interface{}) []string
+	FillPutFields(c *gin.Context, object CRUDEntity, req interface{}) []string
 }
 
 type CRUDService struct {
@@ -75,7 +75,12 @@ func (srv *CRUDService) Put(c *gin.Context) {
 		return
 	}
 
-	if ginhelper.UpdateFields(c, object, srv.Tool.FillPutFields(object, req)) {
+	fields := srv.Tool.FillPutFields(c, object, req)
+	if c.IsAborted() {
+		return
+	}
+
+	if ginhelper.UpdateFields(c, object, fields) {
 		c.JSON(http.StatusOK, &ginhelper.ResponseOK)
 	}
 }
