@@ -3,7 +3,7 @@ package user
 import (
 	"encoding/json"
 	"errors"
-	"fmt"
+	"github.com/Myriad-Dreamin/market/lib/tracer"
 	"github.com/Myriad-Dreamin/market/server"
 	userservice "github.com/Myriad-Dreamin/market/service/user"
 	"log"
@@ -82,45 +82,60 @@ func (t *Tester) Release() {
 	tester.Mocker.ReleaseMock()
 }
 
-var tester = StartTester()
-
-func TestMain(m *testing.M) {
-	defer tester.Release()
+func (t *Tester) MakeAdminContext() bool {
 	resp := tester.Post("/v1/user", userservice.RegisterRequest{
-		Name:         "123",
-		Password:     "123",
-		NickName:     "123",
-		Phone:        "123",
-		RegisterCity: "123",
+		Name:         "admin_context",
+		Password:     "admin",
+		NickName:     "admin_context",
+		Phone:        "1234567891011",
+		RegisterCity: "Qing Dao S.D.",
 	})
 	if !tester.NoErr(resp) {
-		return
+		return false
 	}
 
 	var r userservice.RegisterReply
 	err := resp.JSON(&r)
 	if err != nil {
 		log.Fatal(err)
-		return
+		return false
 	}
 	resp = tester.Post("/v1/login",
 		userservice.LoginRequest{
-		ID:         r.ID,
-		Password:     "123",
-	})
+			ID:         r.ID,
+			Password:     "admin",
+		})
 	if !tester.NoErr(resp) {
-		return
+		return false
 	}
 
 	var r2 userservice.LoginReply
 	err = resp.JSON(&r2)
 	if err != nil {
 		log.Fatal(err)
-		return
+		return false
 	}
 
-	fmt.Println(r2)
+	//fmt.Println(r2)
+	//r2.RefreshToken
+	tester.UseToken(r2.Token)
+	return true
+}
 
+var tester = StartTester()
+
+func TestMain(m *testing.M) {
+	defer func() {
+		if err := recover(); err != nil {
+			tracer.PrintStack()
+			tester.Logger.Error("panic", "error", err)
+		}
+		tester.Release()
+		print("here")
+	}()
+	if !tester.MakeAdminContext() {
+		return
+	}
 	m.Run()
 }
 

@@ -2,21 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d33caeea-6f6c-4429-8ab1-6d64520d9a9b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/lib/tracer/tracer.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/db-layer/goods.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/db-layer/goods.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/db-layer/needs.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/db-layer/needs.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/db-layer/object.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/db-layer/object.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/db-layer/stat-fee.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/db-layer/stat-fee.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/db-layer/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/db-layer/user.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/sp-layer/needs.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/sp-layer/needs.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rbac/rbac.go" beforeDir="false" afterPath="$PROJECT_DIR$/rbac/rbac.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/router/user-router.go" beforeDir="false" afterPath="$PROJECT_DIR$/router/user-router.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/db.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/db.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/db-layer/register.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/db-layer/register.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/orm.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/orm.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/mock.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/mock.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/goods/list.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/goods/list.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/user/login.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/user/login.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/user/register_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/test/user/register_test.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -48,20 +41,23 @@
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/model/db-layer" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../dorm" />
     <property name="settings.editor.selected.configurable" value="go.vgo" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/mock-protocol" />
-      <recent name="$PROJECT_DIR$/mock-protocol/stream.go" />
-      <recent name="E:\project\go\src\github.com\Myriad-Dreamin\market\model\sp-layer" />
+    <key name="GoMoveDeclarationDialog.RECENT_KEY">
+      <recent name="$PROJECT_DIR$/lib/trace.go" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\project\go\src\github.com\Myriad-Dreamin\market\model\db-layer" />
       <recent name="$PROJECT_DIR$/test/user" />
       <recent name="E:\project\go\src\github.com\Myriad-Dreamin\market\service\user" />
       <recent name="E:\project\go\src\github.com\Myriad-Dreamin\market" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/mock-protocol" />
+      <recent name="$PROJECT_DIR$/mock-protocol/stream.go" />
+      <recent name="E:\project\go\src\github.com\Myriad-Dreamin\market\model\sp-layer" />
     </key>
   </component>
   <component name="RunDashboard">

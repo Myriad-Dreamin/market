@@ -6,6 +6,7 @@ import (
 	"github.com/DeanThompson/ginpprof"
 	"github.com/Myriad-Dreamin/gin-middleware/auth/jwt"
 	"github.com/Myriad-Dreamin/market/config"
+	"github.com/Myriad-Dreamin/market/lib/tracer"
 	"github.com/Myriad-Dreamin/market/model"
 	dblayer "github.com/Myriad-Dreamin/market/model/db-layer"
 	"github.com/Myriad-Dreamin/market/plugin"
@@ -15,16 +16,9 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/gomodule/redigo/redis"
 	"github.com/jinzhu/gorm"
-	"runtime"
 	"sync"
 	"syscall"
 )
-
-func printStack() {
-	var buf [1024 * 10]byte
-	n := runtime.Stack(buf[:], false)
-	fmt.Printf("==> %s\n", string(buf[:n]))
-}
 
 type Server struct {
 	cfg    *config.ServerConfig
@@ -80,7 +74,7 @@ func New(cfgPath string) (srv *Server) {
 	}
 	defer func() {
 		if err := recover(); err != nil {
-			printStack()
+			tracer.PrintStack()
 			srv.Logger.Error("panic error", "error", err)
 			srv.Terminate()
 		} else if srv == nil {
@@ -114,7 +108,7 @@ func New(cfgPath string) (srv *Server) {
 func (srv *Server) Inject(plugins ...plugin.Plugin) (injectSuccess bool) {
 	defer func() {
 		if err := recover(); err != nil {
-			printStack()
+			tracer.PrintStack()
 			srv.Logger.Error("panic error", "error", err)
 			srv.Terminate()
 		} else if injectSuccess == false {
@@ -139,7 +133,7 @@ func (srv *Server) Inject(plugins ...plugin.Plugin) (injectSuccess bool) {
 func (srv *Server) Serve(port string) {
 	defer func() {
 		if err := recover(); err != nil {
-			printStack()
+			tracer.PrintStack()
 			srv.Logger.Error("panic error", "error", err)
 			srv.Terminate()
 		}

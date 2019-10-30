@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"encoding/xml"
 	"fmt"
+	"github.com/Myriad-Dreamin/market/lib/tracer"
 	"github.com/Myriad-Dreamin/market/mock"
 	dblayer "github.com/Myriad-Dreamin/market/model/db-layer"
 	"github.com/stretchr/testify/assert"
@@ -13,7 +14,6 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"net/url"
-	"os"
 	"strings"
 	"testing"
 )
@@ -21,6 +21,7 @@ import (
 type Mocker struct {
 	*Server
 	cancel        func()
+	header map[string]string
 	contextHelper *testing.T
 }
 
@@ -32,6 +33,7 @@ type MockerContext struct {
 func Mock() (srv *Mocker) {
 	srv = new(Mocker)
 	srv.Server = newServer()
+	srv.header = make(map[string]string)
 	if !(srv.InstantiateLogger() &&
 		srv.MockDatabase()) {
 		srv = nil
@@ -39,7 +41,7 @@ func Mock() (srv *Mocker) {
 	}
 	defer func() {
 		if err := recover(); err != nil {
-			printStack()
+			tracer.PrintStack()
 			srv.Logger.Error("panic error", "error", err)
 			srv.Terminate()
 		} else if srv == nil {
@@ -63,7 +65,7 @@ func Mock() (srv *Mocker) {
 
 	defer func() {
 		if err := recover(); err != nil {
-			printStack()
+			tracer.PrintStack()
 			srv.Logger.Error("panic error", "error", err)
 			srv.Terminate()
 		}
@@ -108,9 +110,6 @@ func (mocker *Mocker) ReleaseMock() {
 	if mocker.cancel != nil {
 		mocker.cancel()
 		mocker.cancel = nil
-	}
-	if err := os.Remove("./test.db"); err != nil {
-		mocker.Logger.Error("clear db error", "error", err)
 	}
 }
 
@@ -241,6 +240,9 @@ func (mocker *Mocker) Method(method, path string, params ...interface{}) Respons
 		return nil
 	}
 	r.Header.Set("Content-Type", contentType)
+	for k, v := range mocker.header {
+		r.Header.Set(k, v)
+	}
 	return mocker.mockServe(r)
 }
 
@@ -278,5 +280,14 @@ func (mocker *Mocker) Put(path string, params ...interface{}) ResponseI {
 
 func (mocker *Mocker) Trace(path string, params ...interface{}) ResponseI {
 	return mocker.Method(http.MethodTrace, path, params...)
+}
+
+func (mocker *Mocker) SetHeader(k, v string) {
+	mocker.header[k] = v
+}
+
+func (mocker *Mocker) UseToken(token string) {
+	mocker.header[mocker.jwtMW.JWTHeaderKey] =
+		mocker.jwtMW.JWTHeaderPrefixWithSplitChar + token
 }
 

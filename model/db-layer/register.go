@@ -5,7 +5,6 @@ import (
 	"github.com/Myriad-Dreamin/dorm"
 	"github.com/Myriad-Dreamin/market/types"
 	"github.com/jinzhu/gorm"
-	_ "github.com/jinzhu/gorm/dialects/mysql"
 )
 
 func migrates() error {

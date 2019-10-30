@@ -25,6 +25,7 @@ require (
 	github.com/gomodule/redigo v2.0.0+incompatible
 	github.com/google/go-cmp v0.3.0 // indirect
 	github.com/jinzhu/gorm v1.9.11
+	github.com/mattn/go-sqlite3 v1.11.1-0.20191008083825-3f45aefa8dc8
 	github.com/pelletier/go-toml v1.5.0
 	github.com/prometheus/common v0.2.0
 	github.com/stretchr/testify v1.3.0

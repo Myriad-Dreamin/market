@@ -7,7 +7,8 @@ import (
 	"github.com/Myriad-Dreamin/market/types"
 	"github.com/jinzhu/gorm"
 
-	_ "github.com/jinzhu/gorm/dialects/sqlite"
+	_ "github.com/jinzhu/gorm/dialects/mysql"
+	_ "github.com/mattn/go-sqlite3"
 )
 
 func Register(rdb *gorm.DB, logger types.Logger) error {
@@ -71,6 +72,6 @@ func OpenORM(cfg *config.ServerConfig) (*gorm.DB, error) {
 
 func MockORM(_ *config.ServerConfig) (*gorm.DB, error) {
 
-	return gorm.Open("sqlite3", "./test.db")
+	return gorm.Open("sqlite3", ":memory:")
 }
 
