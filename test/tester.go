@@ -1,4 +1,4 @@
-package user
+package tester
 
 import (
 	"encoding/json"
@@ -6,6 +6,7 @@ import (
 	"github.com/Myriad-Dreamin/market/lib/tracer"
 	"github.com/Myriad-Dreamin/market/server"
 	userservice "github.com/Myriad-Dreamin/market/service/user"
+	"io"
 	"log"
 	"testing"
 )
@@ -58,39 +59,27 @@ type ErrorObject struct {
 	Error string `json:"error"`
 }
 
-func (t *TesterContext) NoErr(resp server.ResponseI) bool {
-	t.t.Helper()
-	if resp.Code() != 200 {
-		t.t.Error("resp has bad code ", resp.Code())
-		return false
+func (t *TesterContext) DecodeJSON(body io.Reader, req interface{}) interface{} {
+	if err := json.NewDecoder(body).Decode(req); err != nil {
+		t.t.Fatal(err)
 	}
-	body := resp.Body()
-	var obj ErrorObject
-	if err := json.Unmarshal(body.Bytes(), &obj); err != nil {
-		t.t.Error(err)
-		return false
-	}
-	if len(obj.Error) != 0 || obj.Code != 0 {
-		t.t.Errorf("Code, Error (%v, %v)", obj.Code, obj.Error)
-	}
-	return true
-	//if gjson
+	return req
 }
 
 
 func (t *Tester) Release() {
-	tester.Mocker.ReleaseMock()
+	t.Mocker.ReleaseMock()
 }
 
 func (t *Tester) MakeAdminContext() bool {
-	resp := tester.Post("/v1/user", userservice.RegisterRequest{
+	resp := t.Post("/v1/user", userservice.RegisterRequest{
 		Name:         "admin_context",
 		Password:     "admin",
 		NickName:     "admin_context",
 		Phone:        "1234567891011",
 		RegisterCity: "Qing Dao S.D.",
 	})
-	if !tester.NoErr(resp) {
+	if !t.NoErr(resp) {
 		return false
 	}
 
@@ -100,12 +89,12 @@ func (t *Tester) MakeAdminContext() bool {
 		log.Fatal(err)
 		return false
 	}
-	resp = tester.Post("/v1/login",
+	resp = t.Post("/v1/login",
 		userservice.LoginRequest{
 			ID:         r.ID,
 			Password:     "admin",
 		})
-	if !tester.NoErr(resp) {
+	if !t.NoErr(resp) {
 		return false
 	}
 
@@ -118,42 +107,21 @@ func (t *Tester) MakeAdminContext() bool {
 
 	//fmt.Println(r2)
 	//r2.RefreshToken
-	tester.UseToken(r2.Token)
+	t.UseToken(r2.Token)
 	return true
 }
 
-var tester = StartTester()
-
-func TestMain(m *testing.M) {
+func (t *Tester) Main(m *testing.M) {
 	defer func() {
 		if err := recover(); err != nil {
 			tracer.PrintStack()
-			tester.Logger.Error("panic", "error", err)
+			t.Logger.Error("panic", "error", err)
 		}
-		tester.Release()
+		t.Release()
 		print("here")
 	}()
-	if !tester.MakeAdminContext() {
+	if !t.MakeAdminContext() {
 		return
 	}
 	m.Run()
 }
-
-func TestRegister(t *testing.T) {
-	a := tester.Context(t)
-	a.Equal(0, 0, "a")
-	resp := tester.Post("/v1/user", userservice.RegisterRequest{
-		Name:         "234",
-		Password:     "234",
-		NickName:     "234",
-		Phone:        "234",
-		RegisterCity: "234",
-	})
-	a.NoErr(resp)
-
-}
-
-func TestRegister2(t *testing.T) {
-
-}
-

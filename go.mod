@@ -7,7 +7,7 @@ require (
 	github.com/DATA-DOG/go-sqlmock v1.3.3
 	github.com/DeanThompson/ginpprof v0.0.0-20190408063150-3be636683586
 	github.com/Myriad-Dreamin/core-oj v1.0.1
-	github.com/Myriad-Dreamin/dorm v0.0.0-20191013084426-e3037dd81959
+	github.com/Myriad-Dreamin/dorm v0.0.0-20191029104746-dbf265ce2754
 	github.com/Myriad-Dreamin/gin-middleware v0.0.0-20191001110659-e6949e7c287e
 	github.com/casbin/casbin v1.9.1
 	github.com/casbin/casbin/v2 v2.0.1

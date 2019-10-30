@@ -1,130 +1,82 @@
 package config
 
-import (
-	"encoding/json"
-	"encoding/xml"
-	"fmt"
-	"io/ioutil"
-	"os"
-	"testing"
+import "testing"
 
-	// "github.com/pelletier/go-toml"
-	btoml "github.com/BurntSushi/toml"
-	"github.com/pelletier/go-toml"
-	"gopkg.in/yaml.v2"
-)
-
-func TestJSON(t *testing.T) {
-	var config ServerConfig
-
-	f, err := os.Open("server-config.example.json")
-	if err != nil {
-		t.Error(err)
-		return
+func TestLoad(t *testing.T) {
+	type args struct {
+		config     *ServerConfig
+		configpath string
 	}
-	defer f.Close()
-
-	b, err := ioutil.ReadAll(f)
-	if err != nil {
-		t.Error(err)
-		return
+	tests := []struct {
+		name    string
+		args    args
+		wantErr bool
+	}{
+		{"test-load-json", args{
+			new(ServerConfig), "server-config.example.json",
+		}, false},
+		{"test-load-try", args{
+			new(ServerConfig), "server-config.example",
+		}, false},
+		{"test-load-nothing", args{
+			new(ServerConfig), "server-config.error",
+		}, true},
 	}
-	err = json.Unmarshal(b, &config)
-	if err != nil {
-		t.Error(err)
-		return
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if err := Load(tt.args.config, tt.args.configpath); (err != nil) != tt.wantErr {
+				t.Errorf("Load() error = %v, wantErr %v", err, tt.wantErr)
+			}
+		})
 	}
-	fmt.Println(config)
 }
 
-func TestYAML(t *testing.T) {
-	var config ServerConfig
-
-	f, err := os.Open("server-config.example.yml")
-	if err != nil {
-		t.Error(err)
-		return
+func TestLoadStatic(t *testing.T) {
+	type args struct {
+		config     interface{}
+		configpath string
 	}
-	defer f.Close()
-
-	b, err := ioutil.ReadAll(f)
-	if err != nil {
-		t.Error(err)
-		return
+	tests := []struct {
+		name    string
+		args    args
+		wantErr bool
+	}{
+		{"test-load-json", args{
+			new(ServerConfig), "server-config.example.json",
+		}, false},
+		{"test-load-try", args{
+			new(ServerConfig), "server-config.example",
+		}, false},
+		{"test-load-nothing", args{
+			new(ServerConfig), "server-config.error",
+		}, true},
 	}
-	err = yaml.Unmarshal(b, &config)
-	if err != nil {
-		t.Error(err)
-		return
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if err := LoadStatic(tt.args.config, tt.args.configpath); (err != nil) != tt.wantErr {
+				t.Errorf("LoadStatic() error = %v, wantErr %v", err, tt.wantErr)
+			}
+		})
 	}
-	fmt.Println(config)
 }
 
-func TestTOML(t *testing.T) {
-	var config ServerConfig
-
-	f, err := os.Open("server-config.example.toml")
-	if err != nil {
-		t.Error(err)
-		return
+func TestSave(t *testing.T) {
+	type args struct {
+		config     *ServerConfig
+		configpath string
 	}
-	defer f.Close()
-
-	b, err := ioutil.ReadAll(f)
-	if err != nil {
-		t.Error(err)
-		return
+	tests := []struct {
+		name    string
+		args    args
+		wantErr bool
+	}{
+		// TODO: Add test cases.
 	}
-	err = toml.Unmarshal(b, &config)
-	if err != nil {
-		t.Error(err)
-		return
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if err := Save(tt.args.config, tt.args.configpath); (err != nil) != tt.wantErr {
+				t.Errorf("Save() error = %v, wantErr %v", err, tt.wantErr)
+			}
+		})
 	}
-	fmt.Println(config)
-}
-
-func TestBTOML(t *testing.T) {
-	var config ServerConfig
-
-	f, err := os.Open("server-config.example.toml")
-	if err != nil {
-		t.Error(err)
-		return
-	}
-	defer f.Close()
-
-	b, err := ioutil.ReadAll(f)
-	if err != nil {
-		t.Error(err)
-		return
-	}
-	_, err = btoml.Decode(string(b), &config)
-	if err != nil {
-		t.Error(err)
-		return
-	}
-	fmt.Println(config)
-}
-
-func TestXML(t *testing.T) {
-	var config ServerConfig
-
-	f, err := os.Open("server-config.example.xml")
-	if err != nil {
-		t.Error(err)
-		return
-	}
-	defer f.Close()
-
-	b, err := ioutil.ReadAll(f)
-	if err != nil {
-		t.Error(err)
-		return
-	}
-	err = xml.Unmarshal(b, &config)
-	if err != nil {
-		t.Error(err)
-		return
-	}
-	fmt.Println(config)
 }

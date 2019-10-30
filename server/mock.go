@@ -9,6 +9,7 @@ import (
 	"github.com/Myriad-Dreamin/market/lib/tracer"
 	"github.com/Myriad-Dreamin/market/mock"
 	dblayer "github.com/Myriad-Dreamin/market/model/db-layer"
+	ginhelper "github.com/Myriad-Dreamin/market/service/gin-helper"
 	"github.com/stretchr/testify/assert"
 	"io"
 	"net/http"
@@ -18,11 +19,23 @@ import (
 	"testing"
 )
 
+type ContextHelper interface {
+	Helper()
+	Log(args ...interface{})
+	Fatal(args ...interface{})
+	Error(args ...interface{})
+	Logf(format string, args ...interface{})
+	Fatalf(format string, args ...interface{})
+	Errorf(format string, args ...interface{})
+}
+
 type Mocker struct {
 	*Server
 	cancel        func()
 	header map[string]string
-	contextHelper *testing.T
+	contextHelper ContextHelper
+	shouldPrintRequest bool
+	assertNoError bool
 }
 
 type MockerContext struct {
@@ -93,6 +106,10 @@ func Mock() (srv *Mocker) {
 
 	srv.cancel = cancel
 	return
+}
+
+func (mocker *Mocker) PrintRequest(p bool) {
+	mocker.shouldPrintRequest = p
 }
 
 func (mocker *Mocker) Context(t *testing.T) *MockerContext {
@@ -185,10 +202,22 @@ func newResponse() *Response {
 	return &Response{r: new(httptest.ResponseRecorder)}
 }
 
-func (srv *Server) mockServe(r *Request) (w *Response) {
+func (mocker *Mocker) mockServe(r *Request) (w *Response) {
+
+	if mocker.shouldPrintRequest {
+		fmt.Println("Method:", r.Method, "url:", r.URL, "http:",  r.Proto)
+		fmt.Println("Header:", r.Header)
+	}
+
 	w = newResponse()
 	w.r.Body = bytes.NewBuffer(nil)
-	srv.RouterEngine.ServeHTTP(w.r, r)
+	mocker.RouterEngine.ServeHTTP(w.r, r)
+
+	if mocker.contextHelper != nil && mocker.assertNoError {
+		if !mocker.NoErr(w) {
+			mocker.contextHelper.Fatal("stopped by assertion")
+		}
+	}
 
 	return
 }
@@ -201,6 +230,9 @@ func (mocker *Mocker) report(err error) {
 		mocker.Logger.Error("error occurs", "error", err)
 	}
 }
+
+
+
 
 func (mocker *Mocker) Method(method, path string, params ...interface{}) ResponseI {
 	var body io.Reader
@@ -291,3 +323,30 @@ func (mocker *Mocker) UseToken(token string) {
 		mocker.jwtMW.JWTHeaderPrefixWithSplitChar + token
 }
 
+func (mocker *MockerContext) AssertNoError(noErr bool) *MockerContext {
+	mocker.assertNoError = noErr
+	return mocker
+}
+
+
+func (mocker *Mocker) NoErr(resp ResponseI) bool {
+	if mocker.contextHelper == nil {
+		panic("only used in test")
+	}
+	mocker.contextHelper.Helper()
+	if resp.Code() != 200 {
+		mocker.contextHelper.Error("resp has bad code ", resp.Code())
+		return false
+	}
+	body := resp.Body()
+	var obj ginhelper.ErrorSerializer
+	if err := json.Unmarshal(body.Bytes(), &obj); err != nil {
+		mocker.contextHelper.Error(err)
+		return false
+	}
+	if len(obj.Error) != 0 || obj.Code != 0 {
+		mocker.contextHelper.Errorf("Code, Error (%v, %v)", obj.Code, obj.Error)
+	}
+	return true
+	//if gjson
+}

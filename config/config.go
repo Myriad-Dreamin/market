@@ -6,6 +6,7 @@ import (
 	"errors"
 	"io/ioutil"
 	"os"
+	"strings"
 	"time"
 
 	"github.com/pelletier/go-toml"
@@ -50,66 +51,51 @@ type ServerConfig struct {
 	RedisConfig    *RedisConfig    `json:"redis" yaml:"redis" toml:"redis" xml:"redis"`
 }
 
-func Load(config *ServerConfig, configpath string) error {
+func Load(config *ServerConfig, configPath string) error {
+	return LoadStatic(config, configPath)
+}
+
+func unmarshal(config interface{}, unmarshaler func(b []byte, i interface{}) error,
+	configPath string) error {
+	f, err := os.Open(configPath)
+	if err != nil {
+		return err
+	}
+
+	b, err := ioutil.ReadAll(f)
+	_ = f.Close()
+	if err != nil {
+		return err
+	}
+	err = unmarshaler(b, config)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+func LoadStatic(config interface{}, configPath string) error {
+
 	for _, configX := range []struct {
 		Type      string
 		Unmarshal func([]byte, interface{}) error
 	}{
 		{".json", json.Unmarshal}, {".yml", yaml.Unmarshal},
 		{".toml", toml.Unmarshal}, {".xml", xml.Unmarshal}} {
-		if _, err := os.Stat(configpath + configX.Type); err == nil {
-			f, err := os.Open(configpath + configX.Type)
-			if err != nil {
-				return err
-			}
 
-			b, err := ioutil.ReadAll(f)
-			_ = f.Close()
-			if err != nil {
-				return err
-			}
-			err = configX.Unmarshal(b, config)
-			if err != nil {
-				return err
-			}
-			config.LoadType = configX.Type
-			return nil
+		if strings.HasSuffix(configPath, configX.Type) {
+			return unmarshal(config, configX.Unmarshal, configPath)
+		}
+
+		if _, err := os.Stat(configPath + configX.Type); err == nil {
+			return unmarshal(config, configX.Unmarshal, configPath + configX.Type)
 		}
 	}
 
 	return errors.New("no such file in the root directory")
 }
 
-func LoadStatic(config interface{}, configpath string) error {
-	for _, configX := range []struct {
-		Type      string
-		Unmarshal func([]byte, interface{}) error
-	}{
-		{".json", json.Unmarshal}, {".yml", yaml.Unmarshal},
-		{".toml", toml.Unmarshal}, {".xml", xml.Unmarshal}} {
-		if _, err := os.Stat(configpath + configX.Type); err == nil {
-			f, err := os.Open(configpath + configX.Type)
-			if err != nil {
-				return err
-			}
-
-			b, err := ioutil.ReadAll(f)
-			_ = f.Close()
-			if err != nil {
-				return err
-			}
-			err = configX.Unmarshal(b, config)
-			if err != nil {
-				return err
-			}
-			return nil
-		}
-	}
-
-	return errors.New("no such file in the root directory")
-}
-
-func Save(config *ServerConfig, configpath string) error {
+func Save(config *ServerConfig, configPath string) error {
 	var b []byte
 	var err error
 	switch config.LoadType {
@@ -134,8 +120,8 @@ func Save(config *ServerConfig, configpath string) error {
 			return err
 		}
 	}
-	if _, err := os.Stat(configpath + config.LoadType); err == nil {
-		f, err := os.OpenFile(configpath+config.LoadType, os.O_WRONLY|os.O_TRUNC, 0333)
+	if _, err := os.Stat(configPath + config.LoadType); err == nil {
+		f, err := os.OpenFile(configPath+config.LoadType, os.O_WRONLY|os.O_TRUNC, 0333)
 		if err != nil {
 			return err
 		}

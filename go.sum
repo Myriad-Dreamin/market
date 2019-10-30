@@ -15,6 +15,8 @@ github.com/Myriad-Dreamin/core-oj v1.0.1 h1:9qyJ9+XFX1dPBF/a3sP1596q4wyL+ycRZa7F
 github.com/Myriad-Dreamin/core-oj v1.0.1/go.mod h1:Bzykxe9H/YQkIXpqDy1Pk6sWduxwJ503opA/rH8nEQ4=
 github.com/Myriad-Dreamin/dorm v0.0.0-20191013084426-e3037dd81959 h1:LOH+oUeRD8b5nZ6b4oRCA5G2PK/lUXRjGh0cyKG3Y+s=
 github.com/Myriad-Dreamin/dorm v0.0.0-20191013084426-e3037dd81959/go.mod h1:PslXh2y7FV+0hxbEhyoK7BXZMy/NsKZKRQovUlpkfAQ=
+github.com/Myriad-Dreamin/dorm v0.0.0-20191029104746-dbf265ce2754 h1:hWqjmlHu6ktTd3DSEZz9IWWBj/prFSA9PWeCqHNFGWk=
+github.com/Myriad-Dreamin/dorm v0.0.0-20191029104746-dbf265ce2754/go.mod h1:seclVAhgZxO4QmqSRwX2PyCJaQ1wAgVn1q5VJkXdMrk=
 github.com/Myriad-Dreamin/gin-middleware v0.0.0-20191001110659-e6949e7c287e h1:SiTngy6SDwkInN5KCqJ9YE+zXMLcwRf4lNKesU8dVFs=
 github.com/Myriad-Dreamin/gin-middleware v0.0.0-20191001110659-e6949e7c287e/go.mod h1:7VGIeMy+H3Yt4jpyPLdSvgemq++kSO8sP4PlPbotXOI=
 github.com/Shopify/sarama v1.19.0/go.mod h1:FVkBWblsNy7DGZRfXLU0O9RCGt5g3g3yEuWXgklEdEo=
@@ -330,6 +332,7 @@ google.golang.org/appengine v1.1.0/go.mod h1:EbEs0AVv82hx2wNQdGPgUI5lhzA/G0D9Ywl
 google.golang.org/appengine v1.4.0/go.mod h1:xpcJRLb0r/rnEns0DIKYYv+WjYCduHsrkT7/EB5XEv4=
 google.golang.org/appengine v1.6.0 h1:Tfd7cKwKbFRsI8RMAD3oqqw7JPFRrvFlOsfbgVkjOOw=
 google.golang.org/appengine v1.6.0/go.mod h1:xpcJRLb0r/rnEns0DIKYYv+WjYCduHsrkT7/EB5XEv4=
+google.golang.org/appengine v1.6.5/go.mod h1:8WjMMxjGQR8xUklV/ARdw2HLXBOI7O7uCIDZVag1xfc=
 google.golang.org/genproto v0.0.0-20180817151627-c66870c02cf8/go.mod h1:JiN7NxoALGmiZfu7CAH4rXhgtRTLTxftemlI0sWmxmc=
 google.golang.org/genproto v0.0.0-20181029155118-b69ba1387ce2/go.mod h1:JiN7NxoALGmiZfu7CAH4rXhgtRTLTxftemlI0sWmxmc=
 google.golang.org/genproto v0.0.0-20190307195333-5fe7a883aa19/go.mod h1:VzzqZJRnGkLBvHegQrXjBqPurQTc5/KpmUdxsrq26oE=
