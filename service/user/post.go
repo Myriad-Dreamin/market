@@ -20,6 +20,11 @@ func UserToPostReply(obj *model.User) *PostReply {
 	}
 }
 
+
+/*
+1）	创建用户类：用户标识、用户名、登录密码、用户类型（系统管理员/普通用户）、用户姓名、手机号码(11位数字)、用户级别（钻石级、重要、一般）、注册城市（统计分析时可以考虑）、注册时间、修改时间。在后台数据库至少要建立一个管理员用户,用户名：admin,密码admin。
+*/
+
 type PostRequest struct {
 }
 

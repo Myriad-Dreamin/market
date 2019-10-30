@@ -11,6 +11,10 @@ type ListReply struct {
 	Needss []model.Needs `json:"needss"`
 }
 
+/*
+注意货主姓名、电话号码信息不可见。
+*/
+
 func NeedssToListReply(obj []model.Needs) (reply *ListReply) {
 	reply = new(ListReply)
 	reply.Code = types.CodeOK

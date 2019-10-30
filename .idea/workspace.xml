@@ -2,17 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d33caeea-6f6c-4429-8ab1-6d64520d9a9b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/service/goods/delete.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/needs/delete.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/object/delete.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/user/delete.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/base-service/crud.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/base-service/crud.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/goods/gulp.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/goods/gulp.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/needs/gulp.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/needs/gulp.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/object/gulp.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/object/gulp.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/user/gulp.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/user/gulp.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/types/interface.go" beforeDir="false" afterPath="$PROJECT_DIR$/types/interface.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/db-layer/stat-fee.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/db-layer/stat-fee.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/goods/delete.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/goods/delete.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/goods/list.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/goods/list.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/needs/delete.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/needs/delete.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/needs/list.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/needs/list.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/user/list.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/user/list.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/user/post.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/user/post.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

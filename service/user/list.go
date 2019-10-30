@@ -20,7 +20,7 @@ func UsersToListReply(obj []model.User) (reply *ListReply) {
 }
 
 /*
-可以查询当前所有用户基本信息
+可以查询当前所有用户基本信息；查询一定条件的物品及其状态信息，点击某一物品标识可显示货主信息；查询购物需求信息，点击某一标识可显示求购用户基本信息；查询一定条件下当前已经成交物品的累计中介费收益信息。
 */
 
 func (srv *Service) FilterOn(c *gin.Context) (interface{}, error) {

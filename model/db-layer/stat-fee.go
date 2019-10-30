@@ -9,6 +9,11 @@ import (
 	"time"
 )
 
+/*
+买家支付中介费（成交价格*0.02）、卖家支付中介费（成交价格*0.01）。
+中介收益汇总表：日期（YYYYMMDD）、地域（省-市）、物品类型、成交笔数、中介费收入金额。
+*/
+
 func wrapToStatFee(statFee interface{}, err error) (*StatFee, error) {
 	return statFee.(*StatFee), err
 }
