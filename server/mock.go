@@ -12,9 +12,11 @@ import (
 	ginhelper "github.com/Myriad-Dreamin/market/service/gin-helper"
 	"github.com/stretchr/testify/assert"
 	"io"
+	"log"
 	"net/http"
 	"net/http/httptest"
 	"net/url"
+	"os"
 	"strings"
 	"testing"
 )
@@ -27,6 +29,29 @@ type ContextHelper interface {
 	Logf(format string, args ...interface{})
 	Fatalf(format string, args ...interface{})
 	Errorf(format string, args ...interface{})
+}
+
+type helper struct {
+	*log.Logger
+}
+
+func (h helper) Helper() {
+}
+
+func (h helper) Log(args ...interface{}) {
+	h.Logger.Println(args...)
+}
+
+func (h helper) Error(args ...interface{}) {
+	h.Logger.Println(args...)
+}
+
+func (h helper) Logf(format string, args ...interface{}) {
+	h.Logger.Printf(format, args...)
+}
+
+func (h helper) Errorf(format string, args ...interface{}) {
+	h.Logger.Printf(format, args...)
 }
 
 type Mocker struct {
@@ -105,6 +130,7 @@ func Mock() (srv *Mocker) {
 	}
 
 	srv.cancel = cancel
+	srv.contextHelper = &helper{log.New(os.Stdout, "mocker", log.Ldate|log.Ltime|log.Llongfile|log.LstdFlags)}
 	return
 }
 

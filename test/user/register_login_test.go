@@ -1,6 +1,7 @@
 package user
 
 import (
+	"github.com/Myriad-Dreamin/market/model"
 	userservice "github.com/Myriad-Dreamin/market/service/user"
 	tester "github.com/Myriad-Dreamin/market/test"
 	"testing"
@@ -14,7 +15,7 @@ func TestMain(m *testing.M) {
 }
 
 func TestRegisterLogin(t *testing.T) {
-	a := srv.Context(t)
+	srv := srv.Context(t).AssertNoError(true)
 	var (
 		name  = "chan tan"
 		nick  = "tan chan"
@@ -28,24 +29,24 @@ func TestRegisterLogin(t *testing.T) {
 		Phone:        phone,
 		RegisterCity: "tan arch",
 	})
-	a.NoErr(resp)
-	id := a.DecodeJSON(resp.Body(),
+	id := srv.DecodeJSON(resp.Body(),
 		new(userservice.RegisterReply)).(*userservice.RegisterReply).ID
 	resp = srv.Post("/v1/login", userservice.LoginRequest{
 		ID:       id,
 		Password: pswd,
 	})
-	a.NoErr(resp)
 	resp = srv.Post("/v1/login", userservice.LoginRequest{
 		Name:     name,
 		Password: pswd,
 	})
-	a.NoErr(resp)
 	resp = srv.Post("/v1/login", userservice.LoginRequest{
 		Phone:    phone,
 		Password: pswd,
 	})
-	a.NoErr(resp)
+	_, err := (&model.User{ID:id}).Delete()
+	if ! srv.NoError(err, "delete error") {
+		return
+	}
 }
 
 func TestRegister2(t *testing.T) {

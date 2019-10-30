@@ -2,29 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d33caeea-6f6c-4429-8ab1-6d64520d9a9b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/config/static_config_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mock/json.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mock/json_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mock/map-stream.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mock/protobuf.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mock/protobuf_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mock/stream.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mock/xml.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mock/xml_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mock/yaml.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/goods-service/list-filter.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/tester.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/user/get_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/user/register_login_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/user/get-list_test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/config_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/config/config_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mock/serialize-protocol.go" beforeDir="false" afterPath="$PROJECT_DIR$/mock/serialize-protocol.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/router/user-router.go" beforeDir="false" afterPath="$PROJECT_DIR$/router/user-router.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/mock.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/mock.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/user/login.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/user/login.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/user/register_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/base-service/list.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/base-service/list.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/gin-helper/helper.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/gin-helper/helper.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/goods/list.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/goods/list.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/needs/list.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/needs/list.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/object/list.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/object/list.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/user/list.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/user/list.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/tester.go" beforeDir="false" afterPath="$PROJECT_DIR$/test/tester.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/user/get_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/test/user/get_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/user/register_login_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/test/user/register_login_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/interface.go" beforeDir="false" afterPath="$PROJECT_DIR$/types/interface.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -196,7 +187,7 @@
     <SUITE FILE_PATH="coverage/market$go_test_github_com_Myriad_Dreamin_market_config.out" NAME="go test github.com/Myriad-Dreamin/market/config Coverage Results" MODIFIED="1572417095442" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/market$TestJSON_in_github_com_Myriad_Dreamin_market_config.out" NAME="TestJSON in github.com/Myriad-Dreamin/market/config Coverage Results" MODIFIED="1572416295765" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/market$go_test_mock.out" NAME="go test mock Coverage Results" MODIFIED="1572427181686" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/market$go_test_user.out" NAME="go test user Coverage Results" MODIFIED="1572429772055" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/market$go_test_user.out" NAME="go test user Coverage Results" MODIFIED="1572434171704" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/market$TestFilter_in_github_com_Myriad_Dreamin_market_model_db_layer_general_dao.out" NAME="TestFilter in github.com/Myriad-Dreamin/market/model/db-layer/general-dao Coverage Results" MODIFIED="1572278128524" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/market$TestLoad_in_github_com_Myriad_Dreamin_market_config.out" NAME="TestLoad in github.com/Myriad-Dreamin/market/config Coverage Results" MODIFIED="1572416958546" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/market$TestProtoMessage_Serialize_in_github_com_Myriad_Dreamin_market_mock.out" NAME="TestProtoMessage_Serialize in github.com/Myriad-Dreamin/market/mock Coverage Results" MODIFIED="1572426707570" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

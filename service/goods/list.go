@@ -28,7 +28,7 @@ func GoodssToListReply(obj []model.Goods) (reply *ListReply) {
 	return
 }
 
-func (srv *Service) FilterOn(c *gin.Context, page, pageSize int) (interface{}, error) {
+func (srv *Service) FilterOn(c *gin.Context) (interface{}, error) {
 	result := srv.filterFunc(c)
 	if c.IsAborted() {
 		return nil, nil

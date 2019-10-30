@@ -34,6 +34,9 @@ type UserService interface {
 	Get(c *gin.Context)
 	// /:id DELETE
 	Delete(c *gin.Context)
+
+	// user-list GET
+	List(c *gin.Context)
 }
 
 /* goods

@@ -36,22 +36,9 @@ func (t *Tester) Context(tt *testing.T) (s *TesterContext) {
 	}
 }
 
-func (t *Tester) NoErr(resp server.ResponseI) bool {
-	if resp.Code() != 200 {
-		log.Fatal("resp has bad code ", resp.Code(), resp.Body().String())
-		return false
-	}
-	body := resp.Body()
-	var obj ErrorObject
-	if err := json.Unmarshal(body.Bytes(), &obj); err != nil {
-		log.Fatal(err)
-		return false
-	}
-	if len(obj.Error) != 0 || obj.Code != 0 {
-		log.Fatalf("Code, Error (%v, %v)", obj.Code, obj.Error)
-	}
-	return true
-	//if gjson
+func (t *TesterContext) AssertNoError(noErr bool) *TesterContext {
+	t.MockerContext = t.MockerContext.AssertNoError(noErr)
+	return t
 }
 
 type ErrorObject struct {

@@ -11,7 +11,7 @@ type UserRouter struct {
 
 	Login          *LeafRouter
 	Register *LeafRouter
-	//GetList *LeafRouter
+	GetList *LeafRouter
 }
 
 type UserIDRouter struct {
@@ -30,7 +30,7 @@ func BuildUserRouter(parent *RootRouter, serviceProvider *service.Provider) (rou
 		Router: parent.Router.Extend("user"),
 		Auth:   parent.Auth.Copy(),
 	}
-	//router.GetList = router.GET("user-list", userService.List)
+	router.GetList = router.GET("user-list", userService.List)
 	router.Register = router.POST("/user", userService.Register)
 	router.Login = router.POST("/login", userService.Login)
 

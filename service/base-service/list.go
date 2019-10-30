@@ -7,7 +7,7 @@ import (
 )
 
 type ListableObjectToolLite interface {
-	FilterOn(c *gin.Context, page, pageSize int) (interface{}, error)
+	FilterOn(c *gin.Context) (interface{}, error)
 }
 
 type ListService struct {
@@ -24,12 +24,7 @@ func NewListService(tool ListableObjectToolLite, k string) ListService {
 
 
 func (srv *ListService) List(c *gin.Context) {
-	page, pageSize, ok := ginhelper.RosolvePageVariable(c)
-	if !ok {
-		return
-	}
-
-	result, err := srv.tool.FilterOn(c, page, pageSize)
+	result, err := srv.tool.FilterOn(c)
 	if c.IsAborted() || ginhelper.MaybeOnlySelectError(c, err) {
 		return
 	}
