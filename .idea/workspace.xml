@@ -2,20 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d33caeea-6f6c-4429-8ab1-6d64520d9a9b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/test/user/get-list_test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/router/user-router.go" beforeDir="false" afterPath="$PROJECT_DIR$/router/user-router.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/mock.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/mock.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/base-service/list.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/base-service/list.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/gin-helper/helper.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/gin-helper/helper.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/goods/list.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/goods/list.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/needs/list.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/needs/list.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/object/list.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/object/list.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/user/list.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/user/list.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/tester.go" beforeDir="false" afterPath="$PROJECT_DIR$/test/tester.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/user/get_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/test/user/get_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/user/register_login_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/test/user/register_login_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/types/interface.go" beforeDir="false" afterPath="$PROJECT_DIR$/types/interface.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/db-layer/needs.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/db-layer/needs.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/goods/post.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/goods/post.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/needs/post.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/needs/post.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/object/post.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/object/post.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/user/post.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/user/post.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

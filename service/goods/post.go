@@ -26,15 +26,29 @@ func GoodsToPostReply(obj *model.Goods) *PostReply {
 }
 
 type PostRequest struct {
+	Type uint8 `json:"g_type" form:"g_type"`
+	Name string `json:"name" form:"name"`
+	MinPrice uint64 `json:"min_price" form:"min_price"`
+	IsFixed bool `json:"is_fixed" form:"is_fixed"`
+	Description string `json:"description" form:"description"`
 }
 
 func (srv *Service) SerializePost(c *gin.Context) base_service.CRUDEntity {
-	var req = new(PostRequest)
-	if !ginhelper.BindRequest(c, req) {
+	var req PostRequest
+	if !ginhelper.BindRequest(c, &req) {
 		return nil
 	}
 
 	var obj = new(model.Goods)
+
+	var claims = ginhelper.GetCustomFields(c)
+	obj.Seller = uint(claims.UID)
+	obj.Type = req.Type
+	obj.Name = req.Name
+	obj.MinPrice = req.MinPrice
+	obj.IsFixed = req.IsFixed
+	obj.Description = req.Description
+
 	// fill here
 	return obj
 }

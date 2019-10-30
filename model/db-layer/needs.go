@@ -42,8 +42,8 @@ type Needs struct {
 	Seller uint `dorm:"seller" gorm:"column:seller;not_null"`
 	Type uint8 `dorm:"g_type" gorm:"column:g_type;not_null"`
 	Name string `dorm:"name" gorm:"column:name;not_null"`
-	MinPrice uint `dorm:"min_price" gorm:"column:min_price;not_null"`
-	MaxPrice uint `dorm:"min_price" gorm:"column:max_price;not_null"`
+	MinPrice uint64 `dorm:"min_price" gorm:"column:min_price;not_null"`
+	MaxPrice uint64 `dorm:"min_price" gorm:"column:max_price;not_null"`
 	IsFixed bool `dorm:"is_fixed" gorm:"column:is_fixed;not_null"`
 	EndDuration time.Duration `dorm:"ddd" gorm:"column:ddd;not_null"`
 	Description string `dorm:"description" gorm:"column:description;not_null"`

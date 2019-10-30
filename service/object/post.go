@@ -24,8 +24,8 @@ type PostRequest struct {
 }
 
 func (srv *Service) SerializePost(c *gin.Context) base_service.CRUDEntity {
-	var req = new(PostRequest)
-	if !ginhelper.BindRequest(c, req) {
+	var req PostRequest
+	if !ginhelper.BindRequest(c, &req) {
 		return nil
 	}
 
