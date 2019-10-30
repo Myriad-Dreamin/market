@@ -18,6 +18,7 @@ type CRUDObjectToolLite interface {
 	CreateEntity(id uint) CRUDEntity
 	GetEntity(id uint) (CRUDEntity, error)
 	SerializePost(c *gin.Context) CRUDEntity
+	DeleteHook(c *gin.Context, obj CRUDEntity) bool
 	ResponsePost(obj CRUDEntity) interface{}
 	ResponseGet(obj CRUDEntity) interface{}
 	GetPutRequest() interface{}
@@ -43,7 +44,15 @@ func (srv *CRUDService) Delete(c *gin.Context) {
 	if !ok {
 		return
 	}
-	if ginhelper.DeleteObj(c, srv.Tool.CreateEntity(id)) {
+	obj, err := srv.Tool.GetEntity(id)
+	if ginhelper.MaybeSelectError(c, obj, err) {
+		return
+	}
+	if !srv.Tool.DeleteHook(c, obj) {
+		return
+	}
+
+	if ginhelper.DeleteObj(c, obj) {
 		c.JSON(http.StatusOK, &ginhelper.ResponseOK)
 	}
 }

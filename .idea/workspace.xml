@@ -2,19 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d33caeea-6f6c-4429-8ab1-6d64520d9a9b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/types/goods_status.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/types/goods_type.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/goods/delete.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/needs/delete.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/object/delete.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/user/delete.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/db-layer/goods.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/db-layer/goods.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/db-layer/needs.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/db-layer/needs.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service/base-service/crud.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/base-service/crud.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/goods/post.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/goods/post.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/goods/put.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/goods/put.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/needs/post.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/needs/post.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/needs/put.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/needs/put.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/object/put.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/object/put.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/user/put.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/user/put.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/types/service_code.go" beforeDir="false" afterPath="$PROJECT_DIR$/types/service_code.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/goods/gulp.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/goods/gulp.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/needs/gulp.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/needs/gulp.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/object/gulp.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/object/gulp.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/user/gulp.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/user/gulp.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/interface.go" beforeDir="false" afterPath="$PROJECT_DIR$/types/interface.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -51,7 +49,7 @@
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../dorm" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/service/user" />
     <property name="settings.editor.selected.configurable" value="preferences.editor" />
   </component>
   <component name="RecentsManager">
@@ -64,10 +62,11 @@
       <recent name="$PROJECT_DIR$/lib/trace.go" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\project\go\src\github.com\Myriad-Dreamin\market\service\user" />
+      <recent name="E:\project\go\src\github.com\Myriad-Dreamin\market\service\goods" />
+      <recent name="E:\project\go\src\github.com\Myriad-Dreamin\market\service\needs" />
       <recent name="E:\project\go\src\github.com\Myriad-Dreamin\market\model\db-layer" />
       <recent name="$PROJECT_DIR$/test/user" />
-      <recent name="E:\project\go\src\github.com\Myriad-Dreamin\market\service\user" />
-      <recent name="E:\project\go\src\github.com\Myriad-Dreamin\market" />
     </key>
   </component>
   <component name="RunDashboard">

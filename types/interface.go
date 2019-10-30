@@ -57,6 +57,8 @@ type GoodsService interface {
 	Get(c *gin.Context)
 	// / GET
 	List(c *gin.Context)
+
+	// Buy(c *gin.Context)
 }
 
 /* needs
@@ -77,6 +79,8 @@ type NeedsService interface {
 	Get(c *gin.Context)
 	// / GET
 	List(c *gin.Context)
+
+	// Sell(c *gin.Context)
 }
 
 
