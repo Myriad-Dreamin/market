@@ -75,7 +75,7 @@ func (srv *Server) PrepareDatabase() bool {
 	//	srv.Logger.Debug("register redis error", "error", err)
 	//	return false
 	//}
-	err = rbac.InitGorm(srv.DB, "rbac.conf")
+	err = rbac.InitGorm(srv.DB)
 	if err != nil {
 		srv.Logger.Debug("rbac to database error", "error", err)
 		return false
@@ -101,7 +101,7 @@ func (srv *Server) MockDatabase() bool {
 		return false
 	}
 
-	err = rbac.InitGorm(srv.DB, "rbac.conf")
+	err = rbac.InitGorm(srv.DB)
 	if err != nil {
 		srv.Logger.Debug("rbac to database error", "error", err)
 		return false

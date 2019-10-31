@@ -1,4 +1,4 @@
-package user
+package tests
 
 import (
 	"fmt"
@@ -6,10 +6,13 @@ import (
 	"testing"
 )
 
-func TestList(t *testing.T) {
+func testList(t *testing.T) {
 	srv := srv.Context(t).AssertNoError(true)
+	srv.PrintRequest(true)
+
 	resp := srv.Get("/v1/user-list?page=1&page_size=1")
 
 	reply := srv.DecodeJSON(resp.Body(), new(userservice.ListReply)).(*userservice.ListReply)
 	fmt.Println(reply)
 }
+

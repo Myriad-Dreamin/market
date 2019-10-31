@@ -27,6 +27,7 @@ func init() {
 }
 
 func main() {
+
 	fmt.Println("hello code gen", *source, *destination)
 	if *source == defaultSourceValue {
 		fmt.Println("must input source path")
@@ -42,7 +43,7 @@ func main() {
 		fmt.Println(packageName)
 		fmt.Println(packageSet.Scope, packageSet.Imports)
 		var funcs []*ast.FuncDecl
-		var types []*ast.TypeSpec
+		var typeSpecs []*ast.TypeSpec
 		for i := range packageSet.Files {
 			file := packageSet.Files[i]
 			for _, d := range file.Decls {
@@ -53,20 +54,32 @@ func main() {
 					isGendecl && tyGenDecl.Tok == token.TYPE {
 					for idt := range tyGenDecl.Specs {
 						if typeSpec, ok := tyGenDecl.Specs[idt].(*ast.TypeSpec); ok {
-							types = append(types, typeSpec)
+							typeSpecs = append(typeSpecs, typeSpec)
 						}
 					}
 				}
 			}
 		}
 
-		for _, tp := range types {
-			fmt.Println(tp.Name)
+		var maintype *ast.TypeSpec
+		for _, tp := range typeSpecs {
+			if tp.Name.Name == *structName {
+				maintype = tp
+			}
 		}
 
 		for _, fn := range funcs {
 			fmt.Println(fn.Name)
+
+			err = ast.Print(fset, fn)
+			if err != nil {
+				log.Error(err)
+				os.Exit(1)
+			}
 		}
+
+		fmt.Println(maintype)
+		_ = ast.Print(fset, maintype)
 	}
 }
 

@@ -98,7 +98,13 @@ func (t *Tester) MakeAdminContext() bool {
 	return true
 }
 
-func (t *Tester) Main(m *testing.M) {
+func (t *Tester) MainM(m *testing.M) {
+	t.Main(func() {
+		m.Run()
+	})
+}
+
+func (t *Tester) Main(doSomething func()) {
 	defer func() {
 		if err := recover(); err != nil {
 			tracer.PrintStack()
@@ -110,5 +116,5 @@ func (t *Tester) Main(m *testing.M) {
 	if !t.MakeAdminContext() {
 		return
 	}
-	m.Run()
+	doSomething()
 }

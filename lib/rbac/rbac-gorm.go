@@ -6,12 +6,13 @@ import (
 	"github.com/jinzhu/gorm"
 )
 
-func InitGorm(x *gorm.DB, path string) error {
+
+func InitGorm(x *gorm.DB) error {
 	a, err := gormadapter.NewAdapterByDB(x)
 	if err != nil {
 		return err
 	}
-	e, err := casbin.NewSyncedEnforcer(path, a)
+	e, err := casbin.NewSyncedEnforcer(rbacModel, a)
 	if err != nil {
 		return err
 	}

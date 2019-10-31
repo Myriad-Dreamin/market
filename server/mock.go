@@ -6,10 +6,12 @@ import (
 	"encoding/json"
 	"encoding/xml"
 	"fmt"
+	abstract_test "github.com/Myriad-Dreamin/market/lib/abstract-test"
 	"github.com/Myriad-Dreamin/market/lib/mock"
 	"github.com/Myriad-Dreamin/market/lib/tracer"
 	dblayer "github.com/Myriad-Dreamin/market/model/db-layer"
 	ginhelper "github.com/Myriad-Dreamin/market/service/gin-helper"
+	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/assert"
 	"io"
 	"log"
@@ -21,7 +23,7 @@ import (
 	"testing"
 )
 
-type ContextHelper interface {
+type ContextHelperInterface interface {
 	Helper()
 	Log(args ...interface{})
 	Fatal(args ...interface{})
@@ -31,36 +33,15 @@ type ContextHelper interface {
 	Errorf(format string, args ...interface{})
 }
 
-type helper struct {
-	*log.Logger
-}
-
-func (h helper) Helper() {
-}
-
-func (h helper) Log(args ...interface{}) {
-	h.Logger.Println(args...)
-}
-
-func (h helper) Error(args ...interface{}) {
-	h.Logger.Println(args...)
-}
-
-func (h helper) Logf(format string, args ...interface{}) {
-	h.Logger.Printf(format, args...)
-}
-
-func (h helper) Errorf(format string, args ...interface{}) {
-	h.Logger.Printf(format, args...)
-}
 
 type Mocker struct {
 	*Server
-	cancel        func()
-	header map[string]string
-	contextHelper ContextHelper
+	cancel             func()
+	header             map[string]string
+	routes             map[string]gin.RouteInfo
+	contextHelper      ContextHelperInterface
 	shouldPrintRequest bool
-	assertNoError bool
+	assertNoError      bool
 }
 
 type MockerContext struct {
@@ -109,6 +90,7 @@ func Mock() (srv *Mocker) {
 		}
 	}()
 
+	srv.RouterEngine.Use(mock.ContextRecorder())
 	srv.Router.Root.Build(srv.RouterEngine)
 	srv.Module.Debug(srv.Logger)
 
@@ -130,7 +112,15 @@ func Mock() (srv *Mocker) {
 	}
 
 	srv.cancel = cancel
-	srv.contextHelper = &helper{log.New(os.Stdout, "mocker", log.Ldate|log.Ltime|log.Llongfile|log.LstdFlags)}
+	srv.contextHelper = &abstract_test.ContextHelper{log.New(os.Stdout, "mocker", log.Ldate|log.Ltime|log.Llongfile|log.LstdFlags)}
+
+
+	routes := srv.RouterEngine.Routes()
+	srv.routes = make(map[string]gin.RouteInfo)
+	for _, route := range routes {
+		srv.routes[route.Path + "@" + route.Method] = route
+	}
+
 	return
 }
 
@@ -230,11 +220,6 @@ func newResponse() *Response {
 
 func (mocker *Mocker) mockServe(r *Request) (w *Response) {
 
-	if mocker.shouldPrintRequest {
-		fmt.Println("Method:", r.Method, "url:", r.URL, "http:",  r.Proto)
-		fmt.Println("Header:", r.Header)
-	}
-
 	w = newResponse()
 	w.r.Body = bytes.NewBuffer(nil)
 	mocker.RouterEngine.ServeHTTP(w.r, r)
@@ -243,6 +228,12 @@ func (mocker *Mocker) mockServe(r *Request) (w *Response) {
 		if !mocker.NoErr(w) {
 			mocker.contextHelper.Fatal("stopped by assertion")
 		}
+	}
+
+	if mocker.shouldPrintRequest {
+		fmt.Println("Method:", r.Method, "url:", r.URL, "http:",  r.Proto)
+		fmt.Println("Request Header:", r.Header)
+		fmt.Println("Response Header:", w.r.Header())
 	}
 
 	return

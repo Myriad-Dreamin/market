@@ -7,16 +7,11 @@ import (
 	"time"
 )
 
-var rbacPath = "./rbac.conf"
 var initalLifeTime = 10
 var tickDuration = time.Second
 
 var maxDescriptorCount int = 15
 var allocDescriptorCount int
-
-func SetRBACPath(path string) {
-	rbacPath = path
-}
 
 func SetInitalLifeTime(i int) {
 	initalLifeTime = i
@@ -63,10 +58,10 @@ func Accquire(path string) *casbin.SyncedEnforcer {
 	if maxDescriptorCount <= allocDescriptorCount {
 		fileMutex.Unlock()
 		// is it ok ?
-		return casbin.NewSyncedEnforcer(rbacPath, path)
+		return casbin.NewSyncedEnforcer(rbacModel, path)
 	} else {
 		allocDescriptorCount ++
-		e := newDescriptor(casbin.NewSyncedEnforcer(rbacPath, path))
+		e := newDescriptor(casbin.NewSyncedEnforcer(rbacModel, path))
 		cachedEnforcers[path] = e
 		fileMutex.Unlock()
 		// fmt.Println("alocation...", e)

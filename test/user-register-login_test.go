@@ -1,21 +1,14 @@
-package user
+package tests
 
 import (
 	"github.com/Myriad-Dreamin/market/model"
 	userservice "github.com/Myriad-Dreamin/market/service/user"
-	tester "github.com/Myriad-Dreamin/market/test"
 	"testing"
 )
 
-var srv = tester.StartTester()
-
-func TestMain(m *testing.M) {
-	srv.PrintRequest(true)
-	srv.Main(m)
-}
-
-func TestRegisterLogin(t *testing.T) {
+func testRegisterLogin(t *testing.T) {
 	srv := srv.Context(t).AssertNoError(true)
+	srv.PrintRequest(true)
 	var (
 		name  = "chan tan"
 		nick  = "tan chan"
@@ -49,6 +42,4 @@ func TestRegisterLogin(t *testing.T) {
 	}
 }
 
-func TestRegister2(t *testing.T) {
 
-}
