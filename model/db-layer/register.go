@@ -28,16 +28,18 @@ func Register(rdb *gorm.DB, logger types.Logger) error {
 		db = new(gorm.DB)
 	}
 	*db = *rdb
-	rawDB = db.DB()
+	*rawDB = *db.DB()
 
 	if err = rawDB.Ping(); err != nil {
 		return err
 	}
 
-	dormDB, err = dorm.FromRaw(rawDB, adapt(logger))
+	xdb, err := dorm.FromRaw(rawDB, adapt(logger))
 	if err != nil {
 		return err
 	}
+
+	*dormDB = *xdb
 
 	return migrates()
 }

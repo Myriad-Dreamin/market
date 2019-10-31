@@ -1,10 +1,8 @@
 package dblayer
 
 import (
-	"github.com/Myriad-Dreamin/dorm"
 	"github.com/Myriad-Dreamin/market/config"
 	"github.com/Myriad-Dreamin/market/crypto"
-	crud_dao "github.com/Myriad-Dreamin/market/model/db-layer/crud-dao"
 	"github.com/Myriad-Dreamin/market/types"
 	"github.com/jinzhu/gorm"
 	"time"
@@ -19,15 +17,9 @@ func UserFactory() interface{} {
 }
 
 var (
-	userModel            = new(dorm.Model)
-	userIDFunc           = crud_dao.ID(UserFactory, db)
-	userCreateFunc       = crud_dao.Create(db)
-	userDeleteFunc       = crud_dao.Delete(db)
-	userUpdateFunc       = crud_dao.Update(db)
-	userUpdateFieldsFunc = crud_dao.UpdateFields(userModel)
-	userQueryNameFunc    = crud_dao.Where1(UserFactory, "name = ?", db)
-	userQueryPhoneFunc   = crud_dao.Where1(UserFactory, "phone = ?", db)
-	userHasFunc          = crud_dao.Has(db, new(User))
+	userTraits = NewUserTraits(User{})
+	userQueryNameFunc    = userTraits.Where1("name = ?")
+	userQueryPhoneFunc   = userTraits.Where1("phone = ?")
 )
 
 type User struct {
@@ -50,18 +42,7 @@ func (User) TableName() string {
 }
 
 func (User) migrate() error {
-	err := db.AutoMigrate(&User{}).Error
-	if err != nil {
-		return err
-	}
-
-	//db.AddIndex()
-	model, err := dormDB.Model(&User{})
-	if err != nil {
-		return err
-	}
-	*userModel = *model
-	return err
+	return userTraits.Migrate()
 }
 
 func (d User) GetID() uint {
@@ -69,19 +50,19 @@ func (d User) GetID() uint {
 }
 
 func (d *User) Create() (int64, error) {
-	return userCreateFunc(d)
+	return userTraits.Create(d)
 }
 
 func (d *User) Update() (int64, error) {
-	return userUpdateFunc(d)
+	return userTraits.Update(d)
 }
 
 func (d *User) UpdateFields(fields []string) (int64, error) {
-	return userUpdateFieldsFunc(d, fields)
+	return userTraits.UpdateFields(d, fields)
 }
 
 func (d *User) Delete() (int64, error) {
-	return userDeleteFunc(d)
+	return userTraits.Delete(d)
 }
 
 func (d *User) Register() (int64, error) {
@@ -119,7 +100,7 @@ func GetUserDB(logger types.Logger, _ *config.ServerConfig) (*UserDB, error) {
 }
 
 func (userDB *UserDB) ID(id uint) (user *User, err error) {
-	return wrapToUser(userIDFunc(id))
+	return wrapToUser(userTraits.ID(id))
 }
 
 type UserQuery struct {
@@ -155,11 +136,11 @@ func (userDB *UserQuery) Query() (users []User, err error) {
 }
 
 func (userDB *UserDB) Has(id uint) (has bool, err error) {
-	return userHasFunc(id)
+	return userTraits.Has(id)
 }
 
 func (userDB *UserDB) Query(id uint) (user *User, err error) {
-	return wrapToUser(userIDFunc(id))
+	return wrapToUser(userTraits.ID(id))
 }
 
 func (userDB *UserDB) QueryName(id string) (user *User, err error) {

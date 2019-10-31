@@ -1,10 +1,7 @@
 package dblayer
 
 import (
-	"github.com/Myriad-Dreamin/dorm"
 	"github.com/Myriad-Dreamin/market/config"
-	crud_dao "github.com/Myriad-Dreamin/market/model/db-layer/crud-dao"
-	general_dao "github.com/Myriad-Dreamin/market/model/db-layer/general-dao"
 	"github.com/Myriad-Dreamin/market/types"
 	"github.com/jinzhu/gorm"
 	"time"
@@ -14,22 +11,8 @@ func wrapToGoods(goods interface{}, err error) (*Goods, error) {
 	return goods.(*Goods), err
 }
 
-func GoodsFactory() interface{} {
-	return new(Goods)
-}
-
-func GoodssFactory() interface{} {
-	return new([]Goods)
-}
-
 var (
-	goodsModel         =new(dorm.Model)
-	goodsIDFunc           = crud_dao.ID(GoodsFactory, db)
-	goodsCreateFunc       = crud_dao.Create(db)
-	goodsDeleteFunc       = crud_dao.Delete(db)
-	goodsUpdateFunc       = crud_dao.Update(db)
-	goodsUpdateFieldsFunc = crud_dao.UpdateFields(goodsModel)
-	goodsFilter = general_dao.GoodsFilterFunc(GoodssFactory, db)
+	goodsTraits = NewGoodsTraits(Goods{})
 )
 
 type Goods struct {
@@ -57,18 +40,7 @@ func (Goods) TableName() string {
 }
 
 func (Goods) migrate() error {
-	err := db.AutoMigrate(&Goods{}).Error
-	if err != nil {
-		return err
-	}
-
-	//db.AddIndex()
-	model, err := dormDB.Model(&Goods{})
-	if err != nil {
-		return err
-	}
-	*goodsModel = *model
-	return err
+	return goodsTraits.Migrate()
 }
 
 func (d Goods) GetID() uint {
@@ -76,19 +48,19 @@ func (d Goods) GetID() uint {
 }
 
 func (d *Goods) Create() (int64, error) {
-	return goodsCreateFunc(d)
+	return goodsTraits.Create(d)
 }
 
 func (d *Goods) Update() (int64, error) {
-	return goodsUpdateFunc(d)
+	return goodsTraits.Update(d)
 }
 
 func (d *Goods) UpdateFields(fields []string) (int64, error) {
-	return goodsUpdateFieldsFunc(d, fields)
+	return goodsTraits.UpdateFields(d, fields)
 }
 
 func (d *Goods) Delete() (int64, error) {
-	return goodsDeleteFunc(d)
+	return goodsTraits.Delete(d)
 }
 
 type GoodsDB struct{}
@@ -102,7 +74,7 @@ func GetGoodsDB(logger types.Logger, _ *config.ServerConfig) (*GoodsDB, error) {
 }
 
 func (goodsDB *GoodsDB) ID(id uint) (goods *Goods, err error) {
-	return wrapToGoods(goodsIDFunc(id))
+	return wrapToGoods(goodsTraits.ID(id))
 }
 
 type GoodsQuery struct {
@@ -110,7 +82,7 @@ type GoodsQuery struct {
 }
 
 func (goodsDB *GoodsDB) Filter(f *GoodsFilter) (goodss []Goods, err error) {
-	i, err := goodsFilter(f)
+	i, err := goodsTraits.GoodsFilter(f)
 	if err != nil {
 		return nil, err
 	}

@@ -4,7 +4,6 @@ go 1.12
 
 require (
 	github.com/BurntSushi/toml v0.3.1
-	github.com/DATA-DOG/go-sqlmock v1.3.3
 	github.com/DeanThompson/ginpprof v0.0.0-20190408063150-3be636683586
 	github.com/Myriad-Dreamin/core-oj v1.0.1
 	github.com/Myriad-Dreamin/dorm v0.0.0-20191029104746-dbf265ce2754
@@ -13,7 +12,6 @@ require (
 	github.com/casbin/casbin/v2 v2.0.1
 	github.com/casbin/gorm-adapter/v2 v2.0.3
 	github.com/casbin/xorm-adapter v0.0.0-20190806085643-0629743c2857
-	github.com/etcd-io/bbolt v1.3.3
 	github.com/facebookgo/ensure v0.0.0-20160127193407-b4ab57deab51 // indirect
 	github.com/facebookgo/stack v0.0.0-20160209184415-751773369052 // indirect
 	github.com/facebookgo/subset v0.0.0-20150612182917-8dac2c3c4870 // indirect
@@ -27,7 +25,6 @@ require (
 	github.com/jinzhu/gorm v1.9.11
 	github.com/mattn/go-sqlite3 v1.11.1-0.20191008083825-3f45aefa8dc8
 	github.com/pelletier/go-toml v1.5.0
-	github.com/prometheus/common v0.2.0
 	github.com/stretchr/testify v1.3.0
 	github.com/tecbot/gorocksdb v0.0.0-20190930194452-65a88f08537a
 	github.com/ugorji/go v1.1.7 // indirect

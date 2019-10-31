@@ -1,9 +1,7 @@
 package dblayer
 
 import (
-	"github.com/Myriad-Dreamin/dorm"
 	"github.com/Myriad-Dreamin/market/config"
-	crud_dao "github.com/Myriad-Dreamin/market/model/db-layer/crud-dao"
 	"github.com/Myriad-Dreamin/market/types"
 	"github.com/jinzhu/gorm"
 	"time"
@@ -18,12 +16,7 @@ func ObjectFactory() interface{} {
 }
 
 var (
-	objectModel         =new(dorm.Model)
-	objectIDFunc           = crud_dao.ID(ObjectFactory, db)
-	objectCreateFunc       = crud_dao.Create(db)
-	objectDeleteFunc       = crud_dao.Delete(db)
-	objectUpdateFunc       = crud_dao.Update(db)
-	objectUpdateFieldsFunc = crud_dao.UpdateFields(objectModel)
+	objectTraits = NewObjectTraits(Object{})
 )
 
 type Object struct {
@@ -38,19 +31,7 @@ func (Object) TableName() string {
 }
 
 func (Object) migrate() error {
-	err := db.AutoMigrate(&Object{}).Error
-	if err != nil {
-		return err
-	}
-
-	//db.AddIndex()
-	model, err := dormDB.Model(&Object{})
-	if err != nil {
-		return err
-	}
-	*objectModel = *model
-
-	return err
+	return objectTraits.Migrate()
 }
 
 func (d Object) GetID() uint {
@@ -58,19 +39,19 @@ func (d Object) GetID() uint {
 }
 
 func (d *Object) Create() (int64, error) {
-	return objectCreateFunc(d)
+	return objectTraits.Create(d)
 }
 
 func (d *Object) Update() (int64, error) {
-	return objectUpdateFunc(d)
+	return objectTraits.Update(d)
 }
 
 func (d *Object) UpdateFields(fields []string) (int64, error) {
-	return objectUpdateFieldsFunc(d, fields)
+	return objectTraits.UpdateFields(d, fields)
 }
 
 func (d *Object) Delete() (int64, error) {
-	return objectDeleteFunc(d)
+	return objectTraits.Delete(d)
 }
 
 type ObjectDB struct{}
@@ -84,7 +65,7 @@ func GetObjectDB(logger types.Logger, _ *config.ServerConfig) (*ObjectDB, error)
 }
 
 func (objectDB *ObjectDB) ID(id uint) (object *Object, err error) {
-	return wrapToObject(objectIDFunc(id))
+	return wrapToObject(objectTraits.ID(id))
 }
 
 type ObjectQuery struct {

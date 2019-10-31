@@ -1,9 +1,7 @@
 package dblayer
 
 import (
-	"github.com/Myriad-Dreamin/dorm"
 	"github.com/Myriad-Dreamin/market/config"
-	crud_dao "github.com/Myriad-Dreamin/market/model/db-layer/crud-dao"
 	"github.com/Myriad-Dreamin/market/types"
 	"github.com/jinzhu/gorm"
 	"time"
@@ -23,12 +21,7 @@ func StatFeeFactory() interface{} {
 }
 
 var (
-	statFeeModel         = new(dorm.Model)
-	statFeeIDFunc           = crud_dao.ID(StatFeeFactory, db)
-	statFeeCreateFunc       = crud_dao.Create(db)
-	statFeeDeleteFunc       = crud_dao.Delete(db)
-	statFeeUpdateFunc       = crud_dao.Update(db)
-	statFeeUpdateFieldsFunc = crud_dao.UpdateFields(statFeeModel)
+	statFeeTraits = NewStatFeeTraits(StatFee{})
 )
 
 type StatFee struct {
@@ -43,18 +36,7 @@ func (StatFee) TableName() string {
 }
 
 func (StatFee) migrate() error {
-	err := db.AutoMigrate(&StatFee{}).Error
-	if err != nil {
-		return err
-	}
-
-	//db.AddIndex()
-	model, err := dormDB.Model(&StatFee{})
-	if err != nil {
-		return err
-	}
-	*statFeeModel = *model
-	return err
+	return statFeeTraits.Migrate()
 }
 
 func (d StatFee) GetID() uint {
@@ -62,19 +44,19 @@ func (d StatFee) GetID() uint {
 }
 
 func (d *StatFee) Create() (int64, error) {
-	return statFeeCreateFunc(d)
+	return statFeeTraits.Create(d)
 }
 
 func (d *StatFee) Update() (int64, error) {
-	return statFeeUpdateFunc(d)
+	return statFeeTraits.Update(d)
 }
 
 func (d *StatFee) UpdateFields(fields []string) (int64, error) {
-	return statFeeUpdateFieldsFunc(d, fields)
+	return statFeeTraits.UpdateFields(d, fields)
 }
 
 func (d *StatFee) Delete() (int64, error) {
-	return statFeeDeleteFunc(d)
+	return statFeeTraits.Delete(d)
 }
 
 type StatFeeDB struct{}
@@ -88,7 +70,7 @@ func GetStatFeeDB(logger types.Logger, _ *config.ServerConfig) (*StatFeeDB, erro
 }
 
 func (statFeeDB *StatFeeDB) ID(id uint) (statFee *StatFee, err error) {
-	return wrapToStatFee(statFeeIDFunc(id))
+	return wrapToStatFee(statFeeTraits.ID(id))
 }
 
 type StatFeeQuery struct {

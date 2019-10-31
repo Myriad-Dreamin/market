@@ -3,8 +3,6 @@ package dblayer
 import (
 	"github.com/Myriad-Dreamin/dorm"
 	"github.com/Myriad-Dreamin/market/config"
-	crud_dao "github.com/Myriad-Dreamin/market/model/db-layer/crud-dao"
-	general_dao "github.com/Myriad-Dreamin/market/model/db-layer/general-dao"
 	"github.com/Myriad-Dreamin/market/types"
 	"github.com/jinzhu/gorm"
 	"time"
@@ -24,12 +22,7 @@ func NeedssFactory() interface{} {
 
 var (
 	needsModel         =new(dorm.Model)
-	needsIDFunc           = crud_dao.ID(NeedsFactory, db)
-	needsCreateFunc       = crud_dao.Create(db)
-	needsDeleteFunc       = crud_dao.Delete(db)
-	needsUpdateFunc       = crud_dao.Update(db)
-	needsUpdateFieldsFunc = crud_dao.UpdateFields(needsModel)
-	needsFilter = general_dao.GoodsFilterFunc(NeedssFactory, db)
+	needsTraits = NewNeedsTraits(Needs{})
 )
 
 type Needs struct {
@@ -58,18 +51,7 @@ func (Needs) TableName() string {
 }
 
 func (Needs) migrate() error {
-	err := db.AutoMigrate(&Needs{}).Error
-	if err != nil {
-		return err
-	}
-
-	//db.AddIndex()
-	model, err := dormDB.Model(&Needs{})
-	if err != nil {
-		return err
-	}
-	*needsModel = *model
-	return err
+	return needsTraits.Migrate()
 }
 
 func (d Needs) GetID() uint {
@@ -77,19 +59,19 @@ func (d Needs) GetID() uint {
 }
 
 func (d *Needs) Create() (int64, error) {
-	return needsCreateFunc(d)
+	return needsTraits.Create(d)
 }
 
 func (d *Needs) Update() (int64, error) {
-	return needsUpdateFunc(d)
+	return needsTraits.Update(d)
 }
 
 func (d *Needs) UpdateFields(fields []string) (int64, error) {
-	return needsUpdateFieldsFunc(d, fields)
+	return needsTraits.UpdateFields(d, fields)
 }
 
 func (d *Needs) Delete() (int64, error) {
-	return needsDeleteFunc(d)
+	return needsTraits.Delete(d)
 }
 
 type NeedsDB struct{}
@@ -103,7 +85,7 @@ func GetNeedsDB(logger types.Logger, _ *config.ServerConfig) (*NeedsDB, error) {
 }
 
 func (needsDB *NeedsDB) ID(id uint) (needs *Needs, err error) {
-	return wrapToNeeds(needsIDFunc(id))
+	return wrapToNeeds(needsTraits.ID(id))
 }
 
 type NeedsQuery struct {
@@ -111,7 +93,7 @@ type NeedsQuery struct {
 }
 
 func (needsDB *NeedsDB) Filter(f *GoodsFilter) (needss []Needs, err error) {
-	i, err := needsFilter(f)
+	i, err := needsTraits.GoodsFilter(f)
 	if err != nil {
 		return nil, err
 	}

@@ -1,15 +1,11 @@
 package crud_dao
 
 import (
+	"fmt"
 	"github.com/Myriad-Dreamin/dorm"
 )
 
-
-
-
-func UpdateFields(objectModel *dorm.Model) func(d dorm.ORMObject, fields []string) (int64, error) {
-	return func(d dorm.ORMObject, fields []string) (int64, error) {
-		return objectModel.Anchor(d).Select(fields...).UpdateFields()
-	}
+func (model CRUDModel) UpdateFields(d dorm.ORMObject, fields []string) (int64, error) {
+	fmt.Println(model.i.GetDormModel())
+	return model.i.GetDormModel().Anchor(d).Select(fields...).UpdateFields()
 }
-
