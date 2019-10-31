@@ -14,6 +14,7 @@ import (
 const (
 	defaultSourceValue = "__default__"
 )
+
 var (
 	source = flag.String("source", defaultSourceValue,"Input Go source package")
 	destination = flag.String("destination", defaultSourceValue,"Output test files")
