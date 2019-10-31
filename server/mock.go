@@ -14,6 +14,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/assert"
 	"io"
+	"io/ioutil"
 	"log"
 	"net/http"
 	"net/http/httptest"
@@ -33,15 +34,27 @@ type ContextHelperInterface interface {
 	Errorf(format string, args ...interface{})
 }
 
+type Records struct {
+	RequestHeader http.Header
+	RequestBody []byte
+	ResponseHeader http.Header
+	ResponseBody []byte
+}
+
+type Results struct {
+	gin.RouteInfo
+	Recs []Records
+}
 
 type Mocker struct {
 	*Server
 	cancel             func()
 	header             map[string]string
-	routes             map[string]gin.RouteInfo
+	routes             map[string]*Results
 	contextHelper      ContextHelperInterface
 	shouldPrintRequest bool
 	assertNoError      bool
+	collectResults bool
 }
 
 type MockerContext struct {
@@ -116,9 +129,12 @@ func Mock() (srv *Mocker) {
 
 
 	routes := srv.RouterEngine.Routes()
-	srv.routes = make(map[string]gin.RouteInfo)
+	srv.routes = make(map[string]*Results)
 	for _, route := range routes {
-		srv.routes[route.Path + "@" + route.Method] = route
+		srv.routes[route.Path + "@" + route.Method] = &Results{
+			RouteInfo: route,
+			Recs:      nil,
+		}
 	}
 
 	return
@@ -129,12 +145,11 @@ func (mocker *Mocker) PrintRequest(p bool) {
 }
 
 func (mocker *Mocker) Context(t *testing.T) *MockerContext {
+	m := new(Mocker)
+	*m = *mocker
+	m.contextHelper = t
 	return &MockerContext{
-		Mocker:        &Mocker{
-			Server:        mocker.Server,
-			cancel:        nil,
-			contextHelper: t,
-		},
+		Mocker:        m,
 		Assertions: assert.New(t),
 	}
 }
@@ -218,10 +233,31 @@ func newResponse() *Response {
 	return &Response{r: new(httptest.ResponseRecorder)}
 }
 
+type rc struct {
+	*bytes.Buffer
+}
+
+func (rc) Close() error {
+	return nil
+}
+
 func (mocker *Mocker) mockServe(r *Request) (w *Response) {
 
 	w = newResponse()
 	w.r.Body = bytes.NewBuffer(nil)
+	var b []byte
+	var err error
+	if mocker.collectResults {
+		if r.Body != nil {
+			b, err = ioutil.ReadAll(r.Body)
+			_ = r.Body.Close()
+			if err != nil {
+				mocker.contextHelper.Fatal("read failed", "error", err)
+			}
+			r.Body = rc{bytes.NewBuffer(b)}
+		}
+	}
+
 	mocker.RouterEngine.ServeHTTP(w.r, r)
 
 	if mocker.contextHelper != nil && mocker.assertNoError {
@@ -234,6 +270,30 @@ func (mocker *Mocker) mockServe(r *Request) (w *Response) {
 		fmt.Println("Method:", r.Method, "url:", r.URL, "http:",  r.Proto)
 		fmt.Println("Request Header:", r.Header)
 		fmt.Println("Response Header:", w.r.Header())
+	}
+
+	if mocker.collectResults {
+		c := make([]byte, w.r.Body.Len())
+		copy(c, w.r.Body.Bytes())
+		pattern := w.r.Header().Get("Gin-Context-Matched-Path-Method")
+		w.r.Header().Del("Gin-Context-Matched-Path-Method")
+		if results, ok := mocker.routes[pattern]; ok {
+			rec := Records{
+				RequestBody:    b,
+				ResponseBody:   c,
+			}
+			rec.RequestHeader = make(http.Header)
+			for k,v := range r.Header {
+				rec.RequestHeader[k] = v
+			}
+			rec.ResponseHeader = make(http.Header)
+			for k,v := range w.r.Header() {
+				rec.ResponseHeader[k] = v
+			}
+			results.Recs = append(results.Recs, rec)
+		} else {
+			mocker.contextHelper.Fatal("matched bad route", pattern)
+		}
 	}
 
 	return
@@ -342,6 +402,11 @@ func (mocker *Mocker) UseToken(token string) {
 
 func (mocker *MockerContext) AssertNoError(noErr bool) *MockerContext {
 	mocker.assertNoError = noErr
+	return mocker
+}
+
+func (mocker *Mocker) CollectResults(collectResults bool) *Mocker {
+	mocker.collectResults = collectResults
 	return mocker
 }
 

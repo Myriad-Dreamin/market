@@ -9,6 +9,7 @@ var srv = tester.StartTester()
 
 func TestMain(m *testing.M) {
 	srv.PrintRequest(true)
+	srv.CollectResults(true)
 	srv.MainM(m)
 }
 

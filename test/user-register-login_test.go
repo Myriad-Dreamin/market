@@ -8,7 +8,6 @@ import (
 
 func testRegisterLogin(t *testing.T) {
 	srv := srv.Context(t).AssertNoError(true)
-	srv.PrintRequest(true)
 	var (
 		name  = "chan tan"
 		nick  = "tan chan"
