@@ -1,6 +1,7 @@
 
 import fire
 import shutil
+import os
 
 
 def to_camel_case(snake_str) -> str:
@@ -8,44 +9,141 @@ def to_camel_case(snake_str) -> str:
     return components[0] + ''.join(x.title() for x in components[1:])
 
 
-qut_object_name = "'object'"
-object_name = 'object'
-camel = 'object'
-up_camel = 'Object'
+_qut_object_name = "'object'"
+_object_name = 'object'
+_camel = 'object'
+_up_camel = 'Object'
+_placeholder = 'oid'
 
 
-class Hello:
+class MinimumCli:
     def __init__(self):
         self.x = 1
         self.qut_object_name = None
         self.object_name = None
+        self.m_snake_name = None
         self.camel = None
         self.up_camel = None
+        self.placeholder = None
 
-    def create_template(self, object_name, placeholder):
+    def hello(self):
+        print('hello', self.x)
+
+    def create_template(self, object_name: str, placeholder):
         self.object_name = object_name
+        self.m_snake_name = self.object_name.replace('_', '-')
         self.qut_object_name = "'" + self.object_name + "'"
         self.camel = to_camel_case(object_name)
         self.up_camel = self.camel.title()
-        print("hello cli", self.object_name, self.camel, self.up_camel, placeholder)
+        self.placeholder = placeholder
 
-        object_file = object_name + '.go'
+        object_file = 'model/db-layer/' + self.m_snake_name + '.go'
+        object_entry_file = 'model/' + self.m_snake_name + '.go'
+        object_service_entry_file = 'service/' + self.m_snake_name + '.go'
+        object_sp_file = 'model/sp-layer/' + self.m_snake_name + '.go'
+        object_service_folder = 'service/' + self.m_snake_name + '/'
+        object_router_file = 'router/' + self.m_snake_name + '-router.go'
+        register_file = 'model/db-layer/register.go'
+        model_provider_file = 'model/sp-layer/provider.go'
+        service_provider_file = 'service/provider.go'
+        root_provider_file = 'router/provider.go'
+        server_init_db_file = 'server/db.go'
+        server_init_service_file = 'server/service.go'
 
-        self.template_to('./model/db-layer/object.go', object_file)
+        self.template_to('router/object-router.go', object_router_file)
+        self.template_to('model/db-layer/object.go', object_file)
+        self.template_to('model/object.go', object_entry_file)
+        self.template_to('model/sp-layer/object.go', object_sp_file)
+        self.templates_to('service/object/', object_service_folder)
+        self.template_to('service/object.go', object_service_entry_file)
+        self.replace(
+            register_file,
+            'for _, migrate := range []func() error {',
+            'for _, migrate := range []func() error {\n\t\t%s{}.migrate,' % self.up_camel,
+        )
+
+        self.replace(
+            model_provider_file,
+            'objectDB *ObjectDB',
+            'objectDB *ObjectDB\n\t\t%sDB *%sDB,' % (self.camel, self.up_camel),
+        )
+
+        self.replace(
+            model_provider_file,
+            'switch ss := database.(type) {',
+            'switch ss := database.(type) {\n\tcase *%sDB:\n\t\ts.%sDB = ss' % (self.up_camel, self.camel),
+        )
+
+        self.replace(
+            service_provider_file,
+            'type Provider struct {',
+            'type Provider struct {\n\t%sService *%sService' % (self.camel, self.up_camel),
+        )
+
+        self.replace(
+            service_provider_file,
+            'switch ss := service.(type) {',
+            'switch ss := service.(type) {\n\tcase *%sService:\n\t\ts.%sService = ss' % (self.up_camel, self.camel),
+        )
+
+        self.replace(
+            root_provider_file,
+            'objectRouter *ObjectRouter',
+            'objectRouter *ObjectRouter\n\t%sRouter *%sRouter' % (self.camel, self.up_camel),
+        )
+
+        self.replace(
+            root_provider_file,
+            'switch ss := router.(type) {',
+            'switch ss := router.(type) {\n\tcase *%sRouter:\n\t\ts.%sRouter = ss' % (self.up_camel, self.camel),
+        )
+
+        self.replace(
+            server_init_db_file,
+            'for _, dbResult := range []dbResult{',
+            'for _, dbResult := range []dbResult{\n'
+            '\t\t{"%sDB", traits.Decay(model.New%sDB(srv.Logger, srv.cfg))},' % (self.camel, self.up_camel),
+        )
+
+        self.replace(
+            server_init_service_file,
+            'for _, serviceResult := range []serviceResult{',
+            'for _, serviceResult := range []serviceResult{\n'
+            '\t\t{"%sService", traits.Decay(service.New%sService('
+            'srv.Logger, srv.DatabaseProvider, srv.cfg))},' % (self.camel, self.up_camel),
+        )
+
+    def templates_to(self, src_path, dst_path):
+        if not os.path.exists(dst_path):
+            os.makedirs(dst_path)
+        for file in os.listdir(src_path):
+            dst_file = os.path.join(dst_path, file)
+            file = os.path.join(src_path, file)
+            if os.path.isdir(file):
+                self.templates_to(file, dst_file)
+            if os.path.isfile(file):
+                self.template_to(file, dst_file)
+
+    def replace(self, file_name, old_str, new_str):
+        with open(file_name, 'r+') as f:
+            source = f.read()
+            f.seek(0)
+            f.truncate()
+            f.write(source.replace(old_str, new_str))
 
     def template_to(self, src, dst):
-        shutil.copyfile(src, dst)
-        with open(dst, 'r+') as obj_template:
+        # shutil.copyfile(src, dst)
+        with open(src, 'r+') as obj_template:
             source = obj_template.read()
-            source = source.replace(qut_object_name, self.qut_object_name)
-            source = source.replace(camel, self.camel)
-            source = source.replace(up_camel, self.up_camel)
-            # print(source)
-
-            obj_template.seek(0)
-            obj_template.write(source)
+            source = source.replace(_qut_object_name, self.qut_object_name)
+            source = source.replace(_camel, self.camel)
+            source = source.replace(_up_camel, self.up_camel)
+            source = source.replace(_placeholder, self.placeholder)
+            with open(dst, 'w+') as obj_dump:
+                obj_dump.truncate()
+                obj_dump.write(source)
 
 
 if __name__ == '__main__':
-    fire.Fire(Hello)
+    fire.Fire(MinimumCli)
 

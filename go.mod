@@ -25,6 +25,7 @@ require (
 	github.com/jinzhu/gorm v1.9.11
 	github.com/mattn/go-sqlite3 v1.11.1-0.20191008083825-3f45aefa8dc8
 	github.com/pelletier/go-toml v1.5.0
+	github.com/prometheus/common v0.2.0
 	github.com/stretchr/testify v1.3.0
 	github.com/tecbot/gorocksdb v0.0.0-20190930194452-65a88f08537a
 	github.com/ugorji/go v1.1.7 // indirect

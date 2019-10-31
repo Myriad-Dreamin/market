@@ -7,6 +7,8 @@ import (
 	"github.com/Myriad-Dreamin/market/types"
 )
 
+//go:generate go run github.com/Myriad-Dreamin/market/lib/code-gen/test-gen -source ./ -destination ../../test/
+
 type Service struct {
 	base_service.CRUDService
 	base_service.ListService

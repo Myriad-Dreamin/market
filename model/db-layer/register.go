@@ -9,8 +9,6 @@ import (
 
 func migrates() error {
 	for _, migrate := range []func() error {
-		// do not delete following line
-		//Object{}.migrate,
 		Needs{}.migrate,
 		Goods{}.migrate,
 		User{}.migrate,

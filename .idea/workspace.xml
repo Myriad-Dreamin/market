@@ -2,8 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d33caeea-6f6c-4429-8ab1-6d64520d9a9b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/lib/code-gen/test-gen/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/market.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/market.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cli.py" beforeDir="false" afterPath="$PROJECT_DIR$/cli.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/db-layer/register.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/db-layer/register.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/object/post.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/object/post.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/object/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/object/service.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,7 +31,7 @@
       </list>
     </option>
   </component>
-  <component name="GOROOT" path="D:\Go" />
+  <component name="GOROOT" path="$PROJECT_DIR$/../../../../../go" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -34,35 +41,33 @@
   <component name="ProjectId" id="1SYGwJhsvxgZQBLLm3LCF9EOuv4" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DefaultGoTemplateProperty" value="Go File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/model/db-layer" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="GoMoveDeclarationDialog.RECENT_KEY">
-      <recent name="$PROJECT_DIR$/lib/trace.go" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\project\go\src\github.com\Myriad-Dreamin\market\lib\template" />
-      <recent name="$PROJECT_DIR$/model/db-layer" />
-      <recent name="E:\project\go\src\github.com\Myriad-Dreamin\market\service\user" />
-      <recent name="E:\project\go\src\github.com\Myriad-Dreamin\market\service\goods" />
-      <recent name="E:\project\go\src\github.com\Myriad-Dreamin\market\service\needs" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/lib/traits" />
       <recent name="$PROJECT_DIR$/lib/hook" />
       <recent name="$PROJECT_DIR$/lib/module" />
       <recent name="$PROJECT_DIR$/lib" />
       <recent name="$PROJECT_DIR$/model/traits" />
+    </key>
+    <key name="GoMoveDeclarationDialog.RECENT_KEY">
+      <recent name="$PROJECT_DIR$/lib/trace.go" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/model/db-layer" />
+      <recent name="E:\project\go\src\github.com\Myriad-Dreamin\market\service\user" />
+      <recent name="E:\project\go\src\github.com\Myriad-Dreamin\market\service\goods" />
+      <recent name="E:\project\go\src\github.com\Myriad-Dreamin\market\service\needs" />
+      <recent name="E:\project\go\src\github.com\Myriad-Dreamin\market\model\db-layer" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -77,7 +82,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.cli">
+  <component name="RunManager" selected="Go Test.TestTraits_sliceFactory in github.com/Myriad-Dreamin/market/model/db-layer">
     <configuration name="TestInfo_objectFactory in github.com/Myriad-Dreamin/market/model/db-layer" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="market" />
       <working_directory value="$PROJECT_DIR$/model/db-layer" />
@@ -120,34 +125,23 @@
       <filePath value="$PROJECT_DIR$/" />
       <method v="2" />
     </configuration>
-    <configuration name="cli" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="register_test.go" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="market" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/cli.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
+      <working_directory value="$PROJECT_DIR$/test/user" />
+      <framework value="gotest" />
+      <kind value="FILE" />
+      <package value="github.com/Myriad-Dreamin/market" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/test/user/register_test.go" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.cli" />
         <item itemvalue="Go Test.TestTraits_sliceFactory in github.com/Myriad-Dreamin/market/model/db-layer" />
         <item itemvalue="Go Test.TestInfo_objectFactory in github.com/Myriad-Dreamin/market/model/db-layer" />
         <item itemvalue="Go Test.gobench github.com/Myriad-Dreamin/market/model/db-layer" />
         <item itemvalue="Go Test.go test user" />
+        <item itemvalue="Go Test.register_test.go" />
       </list>
     </recent_temporary>
   </component>
@@ -156,7 +150,7 @@
   </component>
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.conf" />
-    <option featureType="com.intellij.fileTypeFactory" implementationName="*.template" />
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.py" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -188,15 +182,15 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/market$register_test_go.out" NAME="register_test.go Coverage Results" MODIFIED="1572427931979" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/market$TestNotStruct_in_github_com_Myriad_Dreamin_market_mock.out" NAME="TestNotStruct in github.com/Myriad-Dreamin/market/mock Coverage Results" MODIFIED="1572426011871" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/market$TestProtoMessage_Serialize_in_github_com_Myriad_Dreamin_market_mock.out" NAME="TestProtoMessage_Serialize in github.com/Myriad-Dreamin/market/mock Coverage Results" MODIFIED="1572426707570" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/market$TestLoad_in_github_com_Myriad_Dreamin_market_config.out" NAME="TestLoad in github.com/Myriad-Dreamin/market/config Coverage Results" MODIFIED="1572416958546" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/market$go_test_github_com_Myriad_Dreamin_market_crypto.out" NAME="go test github.com/Myriad-Dreamin/market/crypto Coverage Results" MODIFIED="1572424283684" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/market$go_test_github_com_Myriad_Dreamin_market_config.out" NAME="go test github.com/Myriad-Dreamin/market/config Coverage Results" MODIFIED="1572417095442" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/market$TestJSON_in_github_com_Myriad_Dreamin_market_config.out" NAME="TestJSON in github.com/Myriad-Dreamin/market/config Coverage Results" MODIFIED="1572416295765" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/market$go_test_mock.out" NAME="go test mock Coverage Results" MODIFIED="1572427181686" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/market$go_test_user.out" NAME="go test user Coverage Results" MODIFIED="1572434171704" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/market$TestFilter_in_github_com_Myriad_Dreamin_market_model_db_layer_general_dao.out" NAME="TestFilter in github.com/Myriad-Dreamin/market/model/db-layer/general-dao Coverage Results" MODIFIED="1572278128524" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/market$TestProtoMessage_Serialize_in_github_com_Myriad_Dreamin_market_mock.out" NAME="TestProtoMessage_Serialize in github.com/Myriad-Dreamin/market/mock Coverage Results" MODIFIED="1572426707570" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/market$TestLoad_in_github_com_Myriad_Dreamin_market_config.out" NAME="TestLoad in github.com/Myriad-Dreamin/market/config Coverage Results" MODIFIED="1572416958546" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/market$TestNotStruct_in_github_com_Myriad_Dreamin_market_mock.out" NAME="TestNotStruct in github.com/Myriad-Dreamin/market/mock Coverage Results" MODIFIED="1572426011871" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/market$TestJSON_Serialize_in_github_com_Myriad_Dreamin_market_mock.out" NAME="TestJSON_Serialize in github.com/Myriad-Dreamin/market/mock Coverage Results" MODIFIED="1572427078572" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/market$TestFilter_in_github_com_Myriad_Dreamin_market_model_db_layer_general_dao.out" NAME="TestFilter in github.com/Myriad-Dreamin/market/model/db-layer/general-dao Coverage Results" MODIFIED="1572278128524" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
