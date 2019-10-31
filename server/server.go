@@ -6,10 +6,11 @@ import (
 	"github.com/DeanThompson/ginpprof"
 	"github.com/Myriad-Dreamin/gin-middleware/auth/jwt"
 	"github.com/Myriad-Dreamin/market/config"
+	"github.com/Myriad-Dreamin/market/lib/module"
+	"github.com/Myriad-Dreamin/market/lib/plugin"
 	"github.com/Myriad-Dreamin/market/lib/tracer"
 	"github.com/Myriad-Dreamin/market/model"
 	dblayer "github.com/Myriad-Dreamin/market/model/db-layer"
-	"github.com/Myriad-Dreamin/market/plugin"
 	"github.com/Myriad-Dreamin/market/router"
 	"github.com/Myriad-Dreamin/market/service"
 	"github.com/Myriad-Dreamin/market/types"
@@ -36,7 +37,7 @@ type Server struct {
 	routerAuthMW *router.Middleware
 	corsMW       gin.HandlerFunc
 
-	Module           types.Module
+	Module           module.Module
 	ServiceProvider  *service.Provider
 	DatabaseProvider *model.Provider
 	RouterProvider   *router.Provider
@@ -55,7 +56,7 @@ func (srv *Server) Terminate() {
 func newServer() *Server {
 	srv := new(Server)
 
-	srv.Module = make(types.Module)
+	srv.Module = make(module.Module)
 	srv.ServiceProvider = new(service.Provider)
 	srv.DatabaseProvider = model.NewProvider("/database")
 	srv.RouterProvider = router.NewProvider("/Router")

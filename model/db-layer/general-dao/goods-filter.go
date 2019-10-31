@@ -2,7 +2,7 @@ package general_dao
 
 import (
 	crud_dao "github.com/Myriad-Dreamin/market/model/db-layer/crud-dao"
-	"github.com/Myriad-Dreamin/market/model/traits"
+	"github.com/Myriad-Dreamin/market/model/modeltraits"
 	"github.com/jinzhu/gorm"
 	"time"
 )
@@ -67,10 +67,10 @@ func GoodsFilterOption(db *gorm.DB, f *GoodsFilter) *gorm.DB {
 }
 
 type GoodsModel struct {
-	i traits.ModelInterface
+	i modeltraits.ModelInterface
 }
 
-func NewGoodsModel(modelInterface traits.ModelInterface) GoodsModel {
+func NewGoodsModel(modelInterface modeltraits.ModelInterface) GoodsModel {
 	return GoodsModel{i: modelInterface}
 }
 

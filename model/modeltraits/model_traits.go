@@ -1,25 +1,25 @@
-package traits
+package modeltraits
 
 import (
-	"fmt"
 	"github.com/Myriad-Dreamin/dorm"
+	"github.com/Myriad-Dreamin/market/lib/traits"
 	"github.com/jinzhu/gorm"
 )
 
 type ModelTraits struct {
-	BaseTraits
+	traits.BaseTraits
 	DormModel *dorm.Model
 	DB *gorm.DB
 	DormDB *dorm.DB
 }
 
 func NewModelTraits(t dorm.ORMObject, db *gorm.DB, dormDB *dorm.DB) ModelTraits {
-	traits := ModelTraits{}
-	traits.BaseTraits = NewBaseTraits(t)
-	traits.DormModel = new(dorm.Model)
-	traits.DB = db
-	traits.DormDB = dormDB
-	return traits
+	tr := ModelTraits{}
+	tr.BaseTraits = traits.NewBaseTraits(t)
+	tr.DormModel = new(dorm.Model)
+	tr.DB = db
+	tr.DormDB = dormDB
+	return tr
 }
 
 func (traits ModelTraits) GetDormModel() *dorm.Model {
@@ -45,9 +45,7 @@ func (traits *ModelTraits) Migrate() error {
 	if err != nil {
 		return err
 	}
-	fmt.Println(traits.DormModel)
 	*traits.DormModel = *model
-	fmt.Println(traits.DormModel)
 	return nil
 }
 

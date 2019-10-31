@@ -2,23 +2,23 @@ package server
 
 import (
 	"fmt"
+	"github.com/Myriad-Dreamin/market/lib/rbac"
+	"github.com/Myriad-Dreamin/market/lib/traits"
 	"github.com/Myriad-Dreamin/market/model"
-	"github.com/Myriad-Dreamin/market/rbac"
-	"github.com/Myriad-Dreamin/market/types"
 )
 
 type dbResult struct {
 	dbName string
-	types.DecayResult
+	traits.DecayResult
 }
 
 func (srv *Server) registerDatabaseService() bool {
 
 	for _, dbResult := range []dbResult{
-		{"needsDB", types.Decay(model.NewNeedsDB(srv.Logger, srv.cfg))},
-		{"goodsDB", types.Decay(model.NewGoodsDB(srv.Logger, srv.cfg))},
-		{"userDB", types.Decay(model.NewUserDB(srv.Logger, srv.cfg))},
-		{"objectDB", types.Decay(model.NewObjectDB(srv.Logger, srv.cfg))},
+		{"needsDB", traits.Decay(model.NewNeedsDB(srv.Logger, srv.cfg))},
+		{"goodsDB", traits.Decay(model.NewGoodsDB(srv.Logger, srv.cfg))},
+		{"userDB", traits.Decay(model.NewUserDB(srv.Logger, srv.cfg))},
+		{"objectDB", traits.Decay(model.NewObjectDB(srv.Logger, srv.cfg))},
 	} {
 		if dbResult.Err != nil {
 			srv.Logger.Debug(fmt.Sprintf("init %T DB error", dbResult.First), "error", dbResult.Err)

@@ -2,20 +2,20 @@ package server
 
 import (
 	"fmt"
+	"github.com/Myriad-Dreamin/market/lib/traits"
 	"github.com/Myriad-Dreamin/market/service"
-	"github.com/Myriad-Dreamin/market/types"
 )
 type serviceResult struct {
 	serviceName string
-	types.DecayResult
+	traits.DecayResult
 }
 
 func (srv *Server) PrepareService() bool {
 	for _, serviceResult := range []serviceResult{
-		{"needsDB", types.Decay(service.NewNeedsService(srv.Logger, srv.DatabaseProvider, srv.cfg))},
-		{"goodsDB", types.Decay(service.NewGoodsService(srv.Logger, srv.DatabaseProvider, srv.cfg))},
-		{"userDB", types.Decay(service.NewUserService(srv.Logger, srv.DatabaseProvider, srv.jwtMW, srv.cfg))},
-		{"objectService", types.Decay(service.NewObjectService(srv.Logger, srv.DatabaseProvider, srv.cfg))},
+		{"needsDB", traits.Decay(service.NewNeedsService(srv.Logger, srv.DatabaseProvider, srv.cfg))},
+		{"goodsDB", traits.Decay(service.NewGoodsService(srv.Logger, srv.DatabaseProvider, srv.cfg))},
+		{"userDB", traits.Decay(service.NewUserService(srv.Logger, srv.DatabaseProvider, srv.jwtMW, srv.cfg))},
+		{"objectService", traits.Decay(service.NewObjectService(srv.Logger, srv.DatabaseProvider, srv.cfg))},
 	} {
 		// build Router failed when requesting service with database, report and return
 		if serviceResult.Err != nil {

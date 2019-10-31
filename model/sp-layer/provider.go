@@ -2,8 +2,8 @@ package splayer
 
 import (
 	"fmt"
+	"github.com/Myriad-Dreamin/market/lib/module"
 	dblayer "github.com/Myriad-Dreamin/market/model/db-layer"
-	"github.com/Myriad-Dreamin/market/types"
 	"path"
 )
 
@@ -11,7 +11,7 @@ var provider *Provider
 
 
 type Provider struct {
-	types.BaseModuler
+	module.BaseModuler
 	objectDB *ObjectDB
 	needsDB *NeedsDB
 	goodsDB *GoodsDB
@@ -22,7 +22,7 @@ type Provider struct {
 
 func NewProvider(namespace string) *Provider {
 	return &Provider{
-		BaseModuler: types.BaseModuler{
+		BaseModuler: module.BaseModuler{
 			Namespace: namespace,
 		},
 	}
@@ -47,7 +47,7 @@ func (s *Provider) Register(name string, database interface{}) {
 	case *dblayer.StatFeeDB:
 		s.statFeeDB = ss
 	default:
-		if mm, ok := ss.(types.Moduler); ok {
+		if mm, ok := ss.(module.Moduler); ok {
 			// todo:
 			_ = mm
 		}

@@ -1,13 +1,14 @@
-package traits
+package modeltraits
 
 import (
 	"fmt"
+	"github.com/Myriad-Dreamin/market/lib/traits"
 	"github.com/Myriad-Dreamin/market/model/db-layer"
 	"testing"
 )
 
 func BenchmarkBaseTraits_objectFactory(b *testing.B) {
-	var info = NewBaseTraits(dblayer.User{})
+	var info = traits.NewBaseTraits(dblayer.User{})
 	b.ResetTimer()
 	for i := 0; i < b.N; i ++ {
 		_ = info.ObjectFactory()
@@ -33,7 +34,7 @@ func BenchmarkBaseTraits_objectFactoryPureN(b *testing.B) {
 }
 
 func TestTraits_objectFactory(t *testing.T) {
-	var info = NewBaseTraits(dblayer.User{})
+	var info = traits.NewBaseTraits(dblayer.User{})
 	if a, ok := info.ObjectFactory().(*dblayer.User); ok {
 		fmt.Printf("%T %v\n", a, a)
 	} else {
@@ -42,7 +43,7 @@ func TestTraits_objectFactory(t *testing.T) {
 }
 
 func TestTraits_sliceFactory(t *testing.T) {
-	var info = NewBaseTraits(dblayer.User{})
+	var info = traits.NewBaseTraits(dblayer.User{})
 	if a, ok := info.SliceFactory().([]dblayer.User); ok {
 		fmt.Printf("%T %v\n", a, a)
 	} else {

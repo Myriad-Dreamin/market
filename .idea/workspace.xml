@@ -2,31 +2,48 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d33caeea-6f6c-4429-8ab1-6d64520d9a9b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/model/db-layer/decide.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/traits/base_traits.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/traits/info_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/traits/model_traits.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/traits/traits.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/db-layer/crud-dao/create.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/db-layer/crud-dao-traits/create.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/db-layer/crud-dao/delete.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/db-layer/crud-dao-traits/delete.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/db-layer/crud-dao/filter.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/db-layer/crud-dao-traits/filter.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/db-layer/crud-dao/has.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/db-layer/crud-dao-traits/has.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/db-layer/crud-dao/id.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/db-layer/crud-dao-traits/id.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/db-layer/crud-dao/page.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/db-layer/crud-dao-traits/page.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/db-layer/crud-dao/update-fields.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/db-layer/crud-dao-traits/update-fields.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/db-layer/crud-dao/update.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/db-layer/crud-dao-traits/update.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/db-layer/crud-dao/where.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/db-layer/crud-dao-traits/where.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crypto/password.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/crypto/password.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crypto/password_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/crypto/password_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mock/json.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/mock/json.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mock/json_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/mock/json_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mock/map-stream.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/mock/map-stream.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mock/protobuf.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/mock/protobuf.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mock/protobuf_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/mock/protobuf_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mock/serialize-protocol.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/mock/serialize-protocol.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mock/stream.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/mock/stream.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mock/xml.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/mock/xml.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mock/xml_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/mock/xml_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mock/yaml.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/mock/yaml.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/db-layer/crud-dao/id.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/db-layer/crud-dao/id.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/db-layer/crud-dao/update-fields.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/db-layer/crud-dao/update-fields.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/db-layer/decide.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/db-layer/decide.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/db-layer/general-dao/goods-filter.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/db-layer/general-dao/goods-filter.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/db-layer/goods.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/db-layer/goods.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/db-layer/instance.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/db-layer/instance.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/db-layer/needs.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/db-layer/needs.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/db-layer/object.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/db-layer/object.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/db-layer/register.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/db-layer/register.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/db-layer/stat-fee.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/db-layer/stat-fee.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/db-layer/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/db-layer/user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/sp-layer/provider.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/sp-layer/provider.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/traits/base_traits.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/traits/base_traits.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/traits/info_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/modeltraits/traits_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/traits/model_traits.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/modeltraits/model_traits.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/traits/traits.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/modeltraits/traits.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugin/plugin.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/plugin/plugin.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rbac/rbac-file.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/rbac/rbac-file.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rbac/rbac-file_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/rbac/rbac-file_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rbac/rbac-gorm.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/rbac/rbac-gorm.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rbac/rbac-xorm.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/rbac/rbac-xorm.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rbac/rbac.conf" beforeDir="false" afterPath="$PROJECT_DIR$/lib/rbac/rbac.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rbac/rbac.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/rbac/rbac.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rbac/regep_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/rbac/regep_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rbac/test.csv" beforeDir="false" afterPath="$PROJECT_DIR$/lib/rbac/test.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/router/provider.go" beforeDir="false" afterPath="$PROJECT_DIR$/router/provider.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/db.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/db.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/mock.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/mock.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/user/register.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/user/register.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/decay.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/traits/decay.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/hook.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/hook/hook.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/module.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/module/module.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/module_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/module/module_test.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -68,6 +85,13 @@
     <property name="settings.editor.selected.configurable" value="preferences.editor" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lib/traits" />
+      <recent name="$PROJECT_DIR$/lib/hook" />
+      <recent name="$PROJECT_DIR$/lib/module" />
+      <recent name="$PROJECT_DIR$/lib" />
+      <recent name="$PROJECT_DIR$/model/traits" />
+    </key>
     <key name="GoMoveDeclarationDialog.RECENT_KEY">
       <recent name="$PROJECT_DIR$/lib/trace.go" />
     </key>
@@ -77,12 +101,6 @@
       <recent name="E:\project\go\src\github.com\Myriad-Dreamin\market\service\goods" />
       <recent name="E:\project\go\src\github.com\Myriad-Dreamin\market\service\needs" />
       <recent name="E:\project\go\src\github.com\Myriad-Dreamin\market\model\db-layer" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/model/traits" />
-      <recent name="$PROJECT_DIR$/mock-protocol" />
-      <recent name="$PROJECT_DIR$/mock-protocol/stream.go" />
-      <recent name="E:\project\go\src\github.com\Myriad-Dreamin\market\model\sp-layer" />
     </key>
   </component>
   <component name="RunDashboard">

@@ -1,16 +1,16 @@
 package crud_dao
 
 import (
-	"github.com/Myriad-Dreamin/market/model/traits"
+	"github.com/Myriad-Dreamin/market/model/modeltraits"
 )
 
 type CRUDModel struct {
-	i traits.ModelInterface
+	i           modeltraits.ModelInterface
 	replacement interface{}
 }
 
 
-func NewCRUDModel(t traits.ModelInterface) CRUDModel {
+func NewCRUDModel(t modeltraits.ModelInterface) CRUDModel {
 	return CRUDModel{
 		i: t,
 		replacement: t.ObjectFactory(),

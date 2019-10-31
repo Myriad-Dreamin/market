@@ -3,6 +3,7 @@ package plugin
 import (
 	"context"
 	"github.com/Myriad-Dreamin/market/config"
+	"github.com/Myriad-Dreamin/market/lib/module"
 	"github.com/Myriad-Dreamin/market/model"
 	"github.com/Myriad-Dreamin/market/service"
 	"github.com/Myriad-Dreamin/market/types"
@@ -13,7 +14,7 @@ type ConfigLoader = types.ConfigLoader
 type ServiceProvider = service.Provider
 type DatabaseProvider = model.Provider
 type ServerConfig = config.ServerConfig
-type Module = types.Module
+type Module = module.Module
 
 type Plugin interface {
 	Configuration(logger Logger, loader ConfigLoader, cfg *ServerConfig) (plg Plugin)

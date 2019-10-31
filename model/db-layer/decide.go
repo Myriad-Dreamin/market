@@ -4,18 +4,18 @@ import (
 	"github.com/Myriad-Dreamin/dorm"
 	crud_dao "github.com/Myriad-Dreamin/market/model/db-layer/crud-dao"
 	general_dao "github.com/Myriad-Dreamin/market/model/db-layer/general-dao"
-	"github.com/Myriad-Dreamin/market/model/traits"
+	"github.com/Myriad-Dreamin/market/model/modeltraits"
 )
 
 type Traits struct {
-	traits.Interface
+	modeltraits.Interface
 	crud_dao.CRUDModel
 }
 type TraitsAcceptObject = dorm.ORMObject
 
 func NewTraits(t TraitsAcceptObject) Traits {
 	tt := Traits{}
-	tt.Interface = traits.NewTraits(t, db, dormDB)
+	tt.Interface = modeltraits.NewTraits(t, db, dormDB)
 	tt.CRUDModel = crud_dao.NewCRUDModel(tt)
 	return tt
 }

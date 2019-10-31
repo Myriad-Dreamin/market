@@ -1,8 +1,8 @@
 package userservice
 
 import (
+	"github.com/Myriad-Dreamin/market/lib/rbac"
 	"github.com/Myriad-Dreamin/market/model"
-	"github.com/Myriad-Dreamin/market/rbac"
 	ginhelper "github.com/Myriad-Dreamin/market/service/gin-helper"
 	"github.com/Myriad-Dreamin/market/types"
 	"github.com/gin-gonic/gin"

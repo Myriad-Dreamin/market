@@ -1,7 +1,8 @@
-package types
+package module
 
 import (
 	"fmt"
+	"github.com/Myriad-Dreamin/market/types"
 	"reflect"
 )
 
@@ -86,7 +87,7 @@ func (m Module) Install(moduler Moduler) (err error) {
 	return nil
 }
 
-func (m Module) Debug(logger Logger) {
+func (m Module) Debug(logger types.Logger) {
 	for k, v := range m {
 		logger.Debug("module installed", "path", k, "name", reflect.TypeOf(v))
 	}

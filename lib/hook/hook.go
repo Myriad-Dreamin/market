@@ -1,4 +1,4 @@
-package types
+package hook
 
 import (
 	"github.com/gin-gonic/gin"

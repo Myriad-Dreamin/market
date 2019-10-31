@@ -1,4 +1,4 @@
-package traits
+package modeltraits
 
 import (
 	"github.com/Myriad-Dreamin/dorm"

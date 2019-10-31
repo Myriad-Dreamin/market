@@ -2,12 +2,12 @@ package router
 
 import (
 	"fmt"
-	"github.com/Myriad-Dreamin/market/types"
+	"github.com/Myriad-Dreamin/market/lib/module"
 	"path"
 )
 
 type Provider struct {
-	types.BaseModuler
+	module.BaseModuler
 	rootRouter *RootRouter
 	objectRouter *ObjectRouter
 	userRouter *UserRouter
@@ -17,7 +17,7 @@ type Provider struct {
 
 func NewProvider(namespace string) *Provider {
 	return &Provider{
-		BaseModuler: types.BaseModuler{
+		BaseModuler: module.BaseModuler{
 			Namespace: namespace,
 		},
 	}
