@@ -4,56 +4,31 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
-	"encoding/xml"
-	"fmt"
+	"io"
+	"io/ioutil"
+	"log"
+	"net/http"
+	"net/url"
+	"strings"
+	"testing"
+
 	abstract_test "github.com/Myriad-Dreamin/market/lib/abstract-test"
 	"github.com/Myriad-Dreamin/market/lib/mock"
 	"github.com/Myriad-Dreamin/market/lib/tracer"
 	dblayer "github.com/Myriad-Dreamin/market/model/db-layer"
 	ginhelper "github.com/Myriad-Dreamin/market/service/gin-helper"
-	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/assert"
-	"io"
-	"io/ioutil"
-	"log"
-	"net/http"
-	"net/http/httptest"
-	"net/url"
-	"strings"
-	"testing"
 )
-
-type ContextHelperInterface interface {
-	Helper()
-	Log(args ...interface{})
-	Fatal(args ...interface{})
-	Error(args ...interface{})
-	Logf(format string, args ...interface{})
-	Fatalf(format string, args ...interface{})
-	Errorf(format string, args ...interface{})
-}
-
-type Records struct {
-	RequestHeader http.Header
-	RequestBody []byte
-	ResponseHeader http.Header
-	ResponseBody []byte
-}
-
-type Results struct {
-	gin.RouteInfo
-	Recs []Records
-}
 
 type Mocker struct {
 	*Server
 	cancel             func()
 	header             map[string]string
-	routes             map[string]*Results
-	contextHelper      ContextHelperInterface
+	routes             map[string]*mock.Results
+	contextHelper      abstract_test.ContextHelperInterface
 	shouldPrintRequest bool
 	assertNoError      bool
-	collectResults bool
+	collectResults     bool
 }
 
 type MockerContext struct {
@@ -126,11 +101,10 @@ func Mock(options ...Option) (srv *Mocker) {
 	srv.cancel = cancel
 	srv.contextHelper = &abstract_test.ContextHelper{Logger: log.New(srv.LoggerWriter, "mocker", log.Ldate|log.Ltime|log.Llongfile|log.LstdFlags)}
 
-
 	routes := srv.RouterEngine.Routes()
-	srv.routes = make(map[string]*Results)
+	srv.routes = make(map[string]*mock.Results)
 	for _, route := range routes {
-		srv.routes[route.Path + "@" + route.Method] = &Results{
+		srv.routes[route.Path+"@"+route.Method] = &mock.Results{
 			RouteInfo: route,
 			Recs:      nil,
 		}
@@ -143,12 +117,19 @@ func (mocker *Mocker) PrintRequest(p bool) {
 	mocker.shouldPrintRequest = p
 }
 
+func (mocker *Mocker) DumpResults() (res []mock.ResultsI) {
+	for _, v := range mocker.routes {
+		res = append(res, v)
+	}
+	return
+}
+
 func (mocker *Mocker) Context(t *testing.T) *MockerContext {
 	m := new(Mocker)
 	*m = *mocker
 	m.contextHelper = t
 	return &MockerContext{
-		Mocker:        m,
+		Mocker:     m,
 		Assertions: assert.New(t),
 	}
 }
@@ -162,75 +143,6 @@ func (mocker *Mocker) ReleaseMock() {
 
 type Request = http.Request
 
-type ResponseI interface {
-	Body() *bytes.Buffer
-	JSON(x interface{}) error
-	XML(x interface{}) error
-	Code() int
-	Flushed() bool
-	Flush()
-	Header() http.Header
-	Result() *http.Response
-}
-
-type Response struct {
-	r *httptest.ResponseRecorder
-}
-
-func (r *Response) Body() *bytes.Buffer {
-	return r.r.Body
-}
-
-func (r *Response) JSON(v interface{}) error {
-	return json.NewDecoder(r.r.Body).Decode(v)
-}
-
-func (r *Response) XML(v interface{}) error {
-	return xml.NewDecoder(r.r.Body).Decode(v)
-}
-
-func (r *Response) Code() int {
-	return r.r.Code
-}
-
-func (r *Response) Flushed() bool {
-	return r.r.Flushed
-}
-
-func (r *Response) Flush() {
-	r.r.Flush()
-	return
-}
-
-func (r *Response) Header() http.Header {
-	return r.r.Header()
-}
-
-func (r *Response) Result() *http.Response {
-	return r.r.Result()
-}
-
-func (r *Response) String() string {
-	body := r.Body()
-	var bs string
-	var bb []byte
-	if body != nil {
-		bs, bb = body.String(), body.Bytes()
-	}
-	return fmt.Sprintf(
-`Code: %v, Flushed: %v,
-Header: %v,
-Result: %v,
-Bodybytes: %v
-BodyString: %v
-`, r.Code(), r.Flushed(), r.Header(), r.Result(), bb, bs)
-}
-
-
-func newResponse() *Response {
-	return &Response{r: new(httptest.ResponseRecorder)}
-}
-
 type rc struct {
 	*bytes.Buffer
 }
@@ -239,10 +151,9 @@ func (rc) Close() error {
 	return nil
 }
 
-func (mocker *Mocker) mockServe(r *Request) (w *Response) {
+func (mocker *Mocker) mockServe(r *Request) (w *mock.Response) {
 
-	w = newResponse()
-	w.r.Body = bytes.NewBuffer(nil)
+	w = mock.NewResponse()
 	var b []byte
 	var err error
 	if mocker.collectResults {
@@ -256,7 +167,7 @@ func (mocker *Mocker) mockServe(r *Request) (w *Response) {
 		}
 	}
 
-	mocker.RouterEngine.ServeHTTP(w.r, r)
+	mocker.RouterEngine.ServeHTTP(w, r)
 
 	if mocker.contextHelper != nil && mocker.assertNoError {
 		if !mocker.NoErr(w) {
@@ -265,27 +176,27 @@ func (mocker *Mocker) mockServe(r *Request) (w *Response) {
 	}
 
 	if mocker.shouldPrintRequest {
-		mocker.println("Method:", r.Method, "url:", r.URL, "http:",  r.Proto)
-		mocker.println( "Request Header:", r.Header)
-		mocker.println( "Response Header:", w.r.Header())
+		mocker.println("Method:", r.Method, "url:", r.URL, "http:", r.Proto)
+		mocker.println("Request Header:", r.Header)
+		mocker.println("Response Header:", w.r.Header())
 	}
 
 	if mocker.collectResults {
-		c := make([]byte, w.r.Body.Len())
-		copy(c, w.r.Body.Bytes())
-		pattern := w.r.Header().Get("Gin-Context-Matched-Path-Method")
-		w.r.Header().Del("Gin-Context-Matched-Path-Method")
+		c := make([]byte, w.Body().Len())
+		copy(c, w.Body().Bytes())
+		pattern := w.Header().Get("Gin-Context-Matched-Path-Method")
+		w.Header().Del("Gin-Context-Matched-Path-Method")
 		if results, ok := mocker.routes[pattern]; ok {
-			rec := Records{
-				RequestBody:    b,
-				ResponseBody:   c,
+			rec := mock.Records{
+				RequestBody:  b,
+				ResponseBody: c,
 			}
 			rec.RequestHeader = make(http.Header)
-			for k,v := range r.Header {
+			for k, v := range r.Header {
 				rec.RequestHeader[k] = v
 			}
 			rec.ResponseHeader = make(http.Header)
-			for k,v := range w.r.Header() {
+			for k, v := range w.Header() {
 				rec.ResponseHeader[k] = v
 			}
 			results.Recs = append(results.Recs, rec)
@@ -306,10 +217,7 @@ func (mocker *Mocker) report(err error) {
 	}
 }
 
-
-
-
-func (mocker *Mocker) Method(method, path string, params ...interface{}) ResponseI {
+func (mocker *Mocker) Method(method, path string, params ...interface{}) mock.ResponseI {
 	var body io.Reader
 	var contentType string
 	if len(params) > 0 {
@@ -353,39 +261,39 @@ func (mocker *Mocker) Method(method, path string, params ...interface{}) Respons
 	return mocker.mockServe(r)
 }
 
-func (mocker *Mocker) Get(path string, params ...interface{}) ResponseI {
+func (mocker *Mocker) Get(path string, params ...interface{}) mock.ResponseI {
 	return mocker.Method(http.MethodGet, path, params...)
 }
 
-func (mocker *Mocker) Connect(path string, params ...interface{}) ResponseI {
+func (mocker *Mocker) Connect(path string, params ...interface{}) mock.ResponseI {
 	return mocker.Method(http.MethodConnect, path, params...)
 }
 
-func (mocker *Mocker) Delete(path string, params ...interface{}) ResponseI {
+func (mocker *Mocker) Delete(path string, params ...interface{}) mock.ResponseI {
 	return mocker.Method(http.MethodDelete, path, params...)
 }
 
-func (mocker *Mocker) Head(path string, params ...interface{}) ResponseI {
+func (mocker *Mocker) Head(path string, params ...interface{}) mock.ResponseI {
 	return mocker.Method(http.MethodHead, path, params...)
 }
 
-func (mocker *Mocker) Options(path string, params ...interface{}) ResponseI {
+func (mocker *Mocker) Options(path string, params ...interface{}) mock.ResponseI {
 	return mocker.Method(http.MethodOptions, path, params...)
 }
 
-func (mocker *Mocker) Patch(path string, params ...interface{}) ResponseI {
+func (mocker *Mocker) Patch(path string, params ...interface{}) mock.ResponseI {
 	return mocker.Method(http.MethodPatch, path, params...)
 }
 
-func (mocker *Mocker) Post(path string, params ...interface{}) ResponseI {
+func (mocker *Mocker) Post(path string, params ...interface{}) mock.ResponseI {
 	return mocker.Method(http.MethodPost, path, params...)
 }
 
-func (mocker *Mocker) Put(path string, params ...interface{}) ResponseI {
+func (mocker *Mocker) Put(path string, params ...interface{}) mock.ResponseI {
 	return mocker.Method(http.MethodPut, path, params...)
 }
 
-func (mocker *Mocker) Trace(path string, params ...interface{}) ResponseI {
+func (mocker *Mocker) Trace(path string, params ...interface{}) mock.ResponseI {
 	return mocker.Method(http.MethodTrace, path, params...)
 }
 
@@ -398,18 +306,17 @@ func (mocker *Mocker) UseToken(token string) {
 		mocker.jwtMW.JWTHeaderPrefixWithSplitChar + token
 }
 
-func (mocker *MockerContext) AssertNoError(noErr bool) *MockerContext {
-	mocker.assertNoError = noErr
-	return mocker
-}
-
 func (mocker *Mocker) CollectResults(collectResults bool) *Mocker {
 	mocker.collectResults = collectResults
 	return mocker
 }
 
+func (mocker *MockerContext) AssertNoError(noErr bool) *MockerContext {
+	mocker.assertNoError = noErr
+	return mocker
+}
 
-func (mocker *Mocker) NoErr(resp ResponseI) bool {
+func (mocker *Mocker) NoErr(resp mock.ResponseI) bool {
 	if mocker.contextHelper == nil {
 		panic("only used in test")
 	}

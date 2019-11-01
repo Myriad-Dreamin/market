@@ -53,7 +53,7 @@
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/model/db-layer" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/abstract-test" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
@@ -66,6 +66,9 @@
       <recent name="$PROJECT_DIR$/lib" />
     </key>
     <key name="GoMoveDeclarationDialog.RECENT_KEY">
+      <recent name="$PROJECT_DIR$/lib/mock" />
+      <recent name="$PROJECT_DIR$/lib/mock/response" />
+      <recent name="$PROJECT_DIR$/lib/abstract-test" />
       <recent name="$PROJECT_DIR$/lib/trace.go" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
@@ -88,16 +91,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Go Test.go test test">
-    <configuration name="go build github.com/Myriad-Dreamin/market/lib/code-gen/methods-gen" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
-      <module name="market" />
-      <working_directory value="$PROJECT_DIR$" />
-      <kind value="PACKAGE" />
-      <filePath value="$PROJECT_DIR$/lib/code-gen/methods-gen/main.go" />
-      <package value="github.com/Myriad-Dreamin/market/lib/code-gen/methods-gen" />
-      <directory value="$PROJECT_DIR$/" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Go Test.TestTraits_sliceFactory in github.com/Myriad-Dreamin/market/model/db-layer">
     <configuration name="TestInfo_objectFactory in github.com/Myriad-Dreamin/market/model/db-layer" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="market" />
       <working_directory value="$PROJECT_DIR$/model/db-layer" />
@@ -120,16 +114,6 @@
       <pattern value="^TestTraits_sliceFactory$" />
       <method v="2" />
     </configuration>
-    <configuration name="go test test" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
-      <module name="market" />
-      <working_directory value="$PROJECT_DIR$/test" />
-      <framework value="gotest" />
-      <kind value="DIRECTORY" />
-      <package value="github.com/Myriad-Dreamin/market" />
-      <directory value="$PROJECT_DIR$/test" />
-      <filePath value="$PROJECT_DIR$/" />
-      <method v="2" />
-    </configuration>
     <configuration name="go test user" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="market" />
       <working_directory value="$PROJECT_DIR$/test/user" />
@@ -140,13 +124,33 @@
       <filePath value="$PROJECT_DIR$/" />
       <method v="2" />
     </configuration>
+    <configuration name="gobench github.com/Myriad-Dreamin/market/model/db-layer" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="market" />
+      <working_directory value="$PROJECT_DIR$/model/db-layer" />
+      <framework value="gobench" />
+      <kind value="PACKAGE" />
+      <package value="github.com/Myriad-Dreamin/market/model/db-layer" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
+      <method v="2" />
+    </configuration>
+    <configuration name="register_test.go" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="market" />
+      <working_directory value="$PROJECT_DIR$/test/user" />
+      <framework value="gotest" />
+      <kind value="FILE" />
+      <package value="github.com/Myriad-Dreamin/market" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/test/user/register_test.go" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Go Test.go test test" />
-        <item itemvalue="Go Test.go test user" />
-        <item itemvalue="Go Build.go build github.com/Myriad-Dreamin/market/lib/code-gen/methods-gen" />
         <item itemvalue="Go Test.TestTraits_sliceFactory in github.com/Myriad-Dreamin/market/model/db-layer" />
         <item itemvalue="Go Test.TestInfo_objectFactory in github.com/Myriad-Dreamin/market/model/db-layer" />
+        <item itemvalue="Go Test.gobench github.com/Myriad-Dreamin/market/model/db-layer" />
+        <item itemvalue="Go Test.go test user" />
+        <item itemvalue="Go Test.register_test.go" />
       </list>
     </recent_temporary>
   </component>

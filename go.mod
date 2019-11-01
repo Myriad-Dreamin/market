@@ -33,6 +33,5 @@ require (
 	github.com/ugorji/go v1.1.7 // indirect
 	go.uber.org/zap v1.10.0
 	golang.org/x/crypto v0.0.0-20190605123033-f99c8df09eb5
-	golang.org/x/net v0.0.0-20190916140828-c8589233b77d // indirect
 	gopkg.in/yaml.v2 v2.2.4
 )

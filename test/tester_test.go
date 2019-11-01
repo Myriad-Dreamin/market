@@ -30,4 +30,5 @@ func TestMain(m *testing.M) {
 	srv.PrintRequest(true)
 	srv.CollectResults(true)
 	srv.MainM(m)
+	doc_gen.FromResults(srv.DumpResults())
 }
