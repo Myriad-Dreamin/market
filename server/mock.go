@@ -178,7 +178,7 @@ func (mocker *Mocker) mockServe(r *Request) (w *mock.Response) {
 	if mocker.shouldPrintRequest {
 		mocker.println("Method:", r.Method, "url:", r.URL, "http:", r.Proto)
 		mocker.println("Request Header:", r.Header)
-		mocker.println("Response Header:", w.r.Header())
+		mocker.println("Response Header:", w.Header())
 	}
 
 	if mocker.collectResults {

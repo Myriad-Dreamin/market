@@ -1,6 +1,7 @@
 package tests
 
 import (
+	doc_gen "github.com/Myriad-Dreamin/market/lib/generate/doc-gen"
 	"github.com/Myriad-Dreamin/market/server"
 	"github.com/Myriad-Dreamin/market/test/tester"
 	"log"

@@ -111,7 +111,6 @@ func (t *Tester) Main(doSomething func()) {
 			t.Logger.Error("panic", "error", err)
 		}
 		t.Release()
-		print("here")
 	}()
 	if !t.MakeAdminContext() {
 		return
