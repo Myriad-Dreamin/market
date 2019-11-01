@@ -2,7 +2,6 @@ package server
 
 import (
 	"context"
-	"fmt"
 	"github.com/DeanThompson/ginpprof"
 	"github.com/Myriad-Dreamin/gin-middleware/auth/jwt"
 	"github.com/Myriad-Dreamin/market/config"
@@ -17,13 +16,16 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/gomodule/redigo/redis"
 	"github.com/jinzhu/gorm"
+	"io"
+	"os"
 	"sync"
 	"syscall"
 )
 
 type Server struct {
-	cfg    *config.ServerConfig
-	Logger types.Logger
+	cfg          *config.ServerConfig
+	Logger       types.Logger
+	LoggerWriter io.Writer
 
 	DB           *gorm.DB
 	RedisPool    *redis.Pool
@@ -53,8 +55,35 @@ func (srv *Server) Terminate() {
 	syscall.Exit(0)
 }
 
-func newServer() *Server {
+type Option interface {
+	MinimumServerOption() bool
+}
+
+type OptionImpl struct {}
+
+func (OptionImpl) MinimumServerOption() bool { return false }
+
+type OptionRouterLoggerWriter struct {
+	OptionImpl
+	Writer io.Writer
+}
+
+
+func newServer(options []Option) *Server {
 	srv := new(Server)
+
+	for i := range options {
+		switch option := options[i].(type) {
+		case OptionRouterLoggerWriter:
+			srv.LoggerWriter = option.Writer
+		case *OptionRouterLoggerWriter:
+			srv.LoggerWriter = option.Writer
+		}
+	}
+
+	if srv.LoggerWriter == nil {
+		srv.LoggerWriter = os.Stdout
+	}
 
 	srv.Module = make(module.Module)
 	srv.ServiceProvider = new(service.Provider)
@@ -65,8 +94,8 @@ func newServer() *Server {
 	return srv
 }
 
-func New(cfgPath string) (srv *Server) {
-	srv = newServer()
+func New(cfgPath string, options ...Option) (srv *Server) {
+	srv = newServer(options)
 	if !(srv.InstantiateLogger() &&
 		srv.LoadConfig(cfgPath) &&
 		srv.PrepareDatabase()) {
@@ -91,10 +120,10 @@ func New(cfgPath string) (srv *Server) {
 	}
 
 	if err := srv.Module.Install(srv.RouterProvider); err != nil {
-		fmt.Println("install router provider error", err)
+		srv.println("install router provider error", err)
 	}
 	if err := srv.Module.Install(srv.DatabaseProvider); err != nil {
-		fmt.Println("install database provider error", err)
+		srv.println("install database provider error", err)
 	}
 	//
 	//if !PreparePlugin(cfg) {

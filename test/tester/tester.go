@@ -20,9 +20,9 @@ type TesterContext struct {
 	t *testing.T
 }
 
-func StartTester() (tester *Tester) {
+func StartTester(serverOptions []server.Option) (tester *Tester) {
 	tester = new(Tester)
-	tester.Mocker = server.Mock()
+	tester.Mocker = server.Mock(serverOptions...)
 	if tester.Mocker == nil {
 		panic(errors.New("req mocker error"))
 	}

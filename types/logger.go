@@ -1,5 +1,7 @@
 package types
 
-import "github.com/Myriad-Dreamin/core-oj/log"
+import (
+	"github.com/Myriad-Dreamin/market/lib/logger"
+)
 
-type Logger = log.TendermintLogger
+type Logger = logger.Logger

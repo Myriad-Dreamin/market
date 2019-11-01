@@ -19,7 +19,6 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"net/url"
-	"os"
 	"strings"
 	"testing"
 )
@@ -62,9 +61,9 @@ type MockerContext struct {
 	*assert.Assertions
 }
 
-func Mock() (srv *Mocker) {
+func Mock(options ...Option) (srv *Mocker) {
 	srv = new(Mocker)
-	srv.Server = newServer()
+	srv.Server = newServer(options)
 	srv.header = make(map[string]string)
 	if !(srv.InstantiateLogger() &&
 		srv.MockDatabase()) {
@@ -89,10 +88,10 @@ func Mock() (srv *Mocker) {
 	}
 
 	if err := srv.Module.Install(srv.RouterProvider); err != nil {
-		fmt.Println("install router provider error", err)
+		srv.println("install router provider error", err)
 	}
 	if err := srv.Module.Install(srv.DatabaseProvider); err != nil {
-		fmt.Println("install database provider error", err)
+		srv.println("install database provider error", err)
 	}
 
 	defer func() {
@@ -125,7 +124,7 @@ func Mock() (srv *Mocker) {
 	}
 
 	srv.cancel = cancel
-	srv.contextHelper = &abstract_test.ContextHelper{log.New(os.Stdout, "mocker", log.Ldate|log.Ltime|log.Llongfile|log.LstdFlags)}
+	srv.contextHelper = &abstract_test.ContextHelper{Logger: log.New(srv.LoggerWriter, "mocker", log.Ldate|log.Ltime|log.Llongfile|log.LstdFlags)}
 
 
 	routes := srv.RouterEngine.Routes()
@@ -212,7 +211,6 @@ func (r *Response) Result() *http.Response {
 }
 
 func (r *Response) String() string {
-	fmt.Println(r.Body())
 	body := r.Body()
 	var bs string
 	var bb []byte
@@ -267,9 +265,9 @@ func (mocker *Mocker) mockServe(r *Request) (w *Response) {
 	}
 
 	if mocker.shouldPrintRequest {
-		fmt.Println("Method:", r.Method, "url:", r.URL, "http:",  r.Proto)
-		fmt.Println("Request Header:", r.Header)
-		fmt.Println("Response Header:", w.r.Header())
+		mocker.println("Method:", r.Method, "url:", r.URL, "http:",  r.Proto)
+		mocker.println( "Request Header:", r.Header)
+		mocker.println( "Response Header:", w.r.Header())
 	}
 
 	if mocker.collectResults {

@@ -17,11 +17,13 @@ require (
 	github.com/facebookgo/subset v0.0.0-20150612182917-8dac2c3c4870 // indirect
 	github.com/gin-contrib/cors v1.3.0
 	github.com/gin-gonic/gin v1.4.1-0.20190628155452-f65018d7b1f1
+	github.com/go-kit/kit v0.9.0
 	github.com/go-sql-driver/mysql v1.4.1
 	github.com/go-xorm/xorm v0.7.6
 	github.com/gogo/protobuf v1.2.1
 	github.com/gomodule/redigo v2.0.0+incompatible
 	github.com/google/go-cmp v0.3.0 // indirect
+	github.com/gookit/color v1.1.10
 	github.com/jinzhu/gorm v1.9.11
 	github.com/mattn/go-sqlite3 v1.11.1-0.20191008083825-3f45aefa8dc8
 	github.com/pelletier/go-toml v1.5.0
@@ -29,6 +31,7 @@ require (
 	github.com/stretchr/testify v1.3.0
 	github.com/tecbot/gorocksdb v0.0.0-20190930194452-65a88f08537a
 	github.com/ugorji/go v1.1.7 // indirect
+	go.uber.org/zap v1.10.0
 	golang.org/x/crypto v0.0.0-20190605123033-f99c8df09eb5
 	golang.org/x/net v0.0.0-20190916140828-c8589233b77d // indirect
 	gopkg.in/yaml.v2 v2.2.4
