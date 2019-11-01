@@ -1,4 +1,4 @@
-package types
+package control
 
 import "github.com/gin-gonic/gin"
 
@@ -8,35 +8,6 @@ import "github.com/gin-gonic/gin"
 type Auth interface {
 	// /refresh-token GET
 	RefreshToken(c *gin.Context)
-}
-
-/* user
- * login POST 登陆
- * register POST 注册
- * put PUT 更新用户信息
- * change password PUT 修改用户密码
- * grant PUT 授予用户身份或权限
- * get GET 获取用户信息
- * delete DELETE 删除用户
- */
-type UserService interface {
-	// /:id POST
-	Login(c *gin.Context)
-	// / POST
-	Register(c *gin.Context)
-	// /:id PUT
-	Put(c *gin.Context)
-	// /:id/password PUT
-	ChangePassword(c *gin.Context)
-	//// /:id/grant PUT
-	//Grant(c *gin.Context)
-	// /:id GET
-	Get(c *gin.Context)
-	// /:id DELETE
-	Delete(c *gin.Context)
-
-	// user-list GET
-	List(c *gin.Context)
 }
 
 /* goods

@@ -2,9 +2,9 @@ package tests
 
 import (
 	doc_gen "github.com/Myriad-Dreamin/market/lib/generate/doc-gen"
+	"github.com/Myriad-Dreamin/market/lib/sugar"
 	"github.com/Myriad-Dreamin/market/server"
 	"github.com/Myriad-Dreamin/market/test/tester"
-	"log"
 	"os"
 	"testing"
 )
@@ -12,24 +12,23 @@ import (
 var srv *tester.Tester
 
 func TestMain(m *testing.M) {
-	logFile, err := os.OpenFile("test.log", os.O_CREATE | os.O_TRUNC | os.O_WRONLY, 0777)
-	if err != nil {
-		log.Fatal("open log file error, err:", err)
-	}
-	defer func() {
-		err := logFile.Close()
-		if err != nil {
-			log.Print("close log file error, err:", err)
+	sugar.WithFile(func(logFile *os.File) {
+		var options = []server.Option{
+			server.OptionRouterLoggerWriter{
+				Writer: logFile,
+			},
 		}
-	}()
-	var options = []server.Option{
-		server.OptionRouterLoggerWriter{
-			Writer: logFile,
-		},
-	}
-	srv = tester.StartTester(options)
-	srv.PrintRequest(true)
-	srv.CollectResults(true)
-	srv.MainM(m)
-	doc_gen.FromResults(srv.DumpResults())
+		srv = tester.StartTester(options)
+		srv.PrintRequest(true)
+		srv.CollectResults(true)
+		srv.MainM(m)
+		err := doc_gen.FromGinResults(&doc_gen.GinInfo{
+			Result: srv.DumpResults(),
+			Host: "127.0.0.1",
+			ApiDoc: "Minimum-Market",
+		})
+		if err != nil {
+			panic(err)
+		}
+	}, "test.log")
 }

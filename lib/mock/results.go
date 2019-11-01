@@ -9,12 +9,19 @@ import (
 type ResultsI interface {
 	GetMethod() string
 	GetPath() string
+	GetHandlerFunc() interface{}
 	GetRecords() []RecordsI
+}
+
+type GinResultI interface {
+	ResultsI
+	GetHandler() string
 }
 
 type RecordsI interface {
 	GetRequestHeader() http.Header
 	GetRequestBody() []byte
+	GetResponseCode() int
 	GetResponseHeader() http.Header
 	GetResponseBody() []byte
 }
@@ -22,6 +29,7 @@ type RecordsI interface {
 type Records struct {
 	RequestHeader  http.Header
 	RequestBody    []byte
+	ResponseCode int
 	ResponseHeader http.Header
 	ResponseBody   []byte
 }
@@ -32,6 +40,10 @@ func (r Records) GetRequestHeader() http.Header {
 
 func (r Records) GetRequestBody() []byte {
 	return r.RequestBody
+}
+
+func (r Records) GetResponseCode() int {
+	return r.ResponseCode
 }
 
 func (r Records) GetResponseHeader() http.Header {
@@ -53,6 +65,14 @@ func (r Results) GetMethod() string {
 
 func (r Results) GetPath() string {
 	return r.Path
+}
+
+func (r Results) GetHandlerFunc() interface{} {
+	return r.HandlerFunc
+}
+
+func (r Results) GetHandler() string {
+	return r.Handler
 }
 
 func (r Results) GetRecords() []RecordsI {

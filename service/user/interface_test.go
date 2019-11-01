@@ -1,6 +1,8 @@
 package userservice
 
-import "github.com/Myriad-Dreamin/market/types"
+import (
+	"github.com/Myriad-Dreamin/market/control"
+)
 
-var userService types.UserService = &Service{}
+var userService control.UserService = &Service{}
 

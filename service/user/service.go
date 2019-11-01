@@ -3,6 +3,7 @@ package userservice
 import (
 	"github.com/Myriad-Dreamin/gin-middleware/auth/jwt"
 	"github.com/Myriad-Dreamin/market/config"
+	"github.com/Myriad-Dreamin/market/control"
 	"github.com/Myriad-Dreamin/market/model"
 	base_service "github.com/Myriad-Dreamin/market/service/base-service"
 	"github.com/Myriad-Dreamin/market/types"
@@ -19,7 +20,7 @@ type Service struct {
 }
 
 
-func NewService(logger types.Logger, provider *model.Provider, middleware *jwt.Middleware, _ *config.ServerConfig) (a types.UserService, err error) {
+func NewService(logger types.Logger, provider *model.Provider, middleware *jwt.Middleware, _ *config.ServerConfig) (a control.UserService, err error) {
 	srv := new(Service)
 	srv.db = provider.UserDB()
 	srv.enforcer = provider.Enforcer()

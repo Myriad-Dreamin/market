@@ -7,7 +7,7 @@ import (
 	"github.com/Myriad-Dreamin/market/config"
 	"github.com/Myriad-Dreamin/market/lib/module"
 	"github.com/Myriad-Dreamin/market/lib/plugin"
-	"github.com/Myriad-Dreamin/market/lib/tracer"
+	"github.com/Myriad-Dreamin/market/lib/sugar"
 	"github.com/Myriad-Dreamin/market/model"
 	dblayer "github.com/Myriad-Dreamin/market/model/db-layer"
 	"github.com/Myriad-Dreamin/market/router"
@@ -104,7 +104,7 @@ func New(cfgPath string, options ...Option) (srv *Server) {
 	}
 	defer func() {
 		if err := recover(); err != nil {
-			tracer.PrintStack()
+			sugar.PrintStack()
 			srv.Logger.Error("panic error", "error", err)
 			srv.Terminate()
 		} else if srv == nil {
@@ -138,7 +138,7 @@ func New(cfgPath string, options ...Option) (srv *Server) {
 func (srv *Server) Inject(plugins ...plugin.Plugin) (injectSuccess bool) {
 	defer func() {
 		if err := recover(); err != nil {
-			tracer.PrintStack()
+			sugar.PrintStack()
 			srv.Logger.Error("panic error", "error", err)
 			srv.Terminate()
 		} else if injectSuccess == false {
@@ -163,7 +163,7 @@ func (srv *Server) Inject(plugins ...plugin.Plugin) (injectSuccess bool) {
 func (srv *Server) Serve(port string) {
 	defer func() {
 		if err := recover(); err != nil {
-			tracer.PrintStack()
+			sugar.PrintStack()
 			srv.Logger.Error("panic error", "error", err)
 			srv.Terminate()
 		}

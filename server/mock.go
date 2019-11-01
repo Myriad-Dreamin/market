@@ -14,7 +14,7 @@ import (
 
 	abstract_test "github.com/Myriad-Dreamin/market/lib/abstract-test"
 	"github.com/Myriad-Dreamin/market/lib/mock"
-	"github.com/Myriad-Dreamin/market/lib/tracer"
+	"github.com/Myriad-Dreamin/market/lib/sugar"
 	dblayer "github.com/Myriad-Dreamin/market/model/db-layer"
 	ginhelper "github.com/Myriad-Dreamin/market/service/gin-helper"
 	"github.com/stretchr/testify/assert"
@@ -36,6 +36,8 @@ type MockerContext struct {
 	*assert.Assertions
 }
 
+type Res = mock.GinResultI
+
 func Mock(options ...Option) (srv *Mocker) {
 	srv = new(Mocker)
 	srv.Server = newServer(options)
@@ -47,7 +49,7 @@ func Mock(options ...Option) (srv *Mocker) {
 	}
 	defer func() {
 		if err := recover(); err != nil {
-			tracer.PrintStack()
+			sugar.PrintStack()
 			srv.Logger.Error("panic error", "error", err)
 			srv.Terminate()
 		} else if srv == nil {
@@ -71,7 +73,7 @@ func Mock(options ...Option) (srv *Mocker) {
 
 	defer func() {
 		if err := recover(); err != nil {
-			tracer.PrintStack()
+			sugar.PrintStack()
 			srv.Logger.Error("panic error", "error", err)
 			srv.Terminate()
 		}
@@ -117,7 +119,7 @@ func (mocker *Mocker) PrintRequest(p bool) {
 	mocker.shouldPrintRequest = p
 }
 
-func (mocker *Mocker) DumpResults() (res []mock.ResultsI) {
+func (mocker *Mocker) DumpResults() (res []Res) {
 	for _, v := range mocker.routes {
 		res = append(res, v)
 	}
@@ -190,6 +192,7 @@ func (mocker *Mocker) mockServe(r *Request) (w *mock.Response) {
 			rec := mock.Records{
 				RequestBody:  b,
 				ResponseBody: c,
+				ResponseCode: w.Code(),
 			}
 			rec.RequestHeader = make(http.Header)
 			for k, v := range r.Header {

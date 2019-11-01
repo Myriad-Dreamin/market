@@ -3,7 +3,7 @@ package tester
 import (
 	"encoding/json"
 	"errors"
-	"github.com/Myriad-Dreamin/market/lib/tracer"
+	"github.com/Myriad-Dreamin/market/lib/sugar"
 	"github.com/Myriad-Dreamin/market/server"
 	userservice "github.com/Myriad-Dreamin/market/service/user"
 	"io"
@@ -107,7 +107,7 @@ func (t *Tester) MainM(m *testing.M) {
 func (t *Tester) Main(doSomething func()) {
 	defer func() {
 		if err := recover(); err != nil {
-			tracer.PrintStack()
+			sugar.PrintStack()
 			t.Logger.Error("panic", "error", err)
 		}
 		t.Release()
