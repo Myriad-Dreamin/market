@@ -2,8 +2,8 @@ package main
 
 import (
 	"flag"
-	"fmt"
 	"github.com/Myriad-Dreamin/market/docs"
+	"github.com/Myriad-Dreamin/market/lib/parser"
 	"github.com/Myriad-Dreamin/market/lib/sugar"
 	"os"
 	"path/filepath"
@@ -29,10 +29,15 @@ func init() {
 
 func main() {
 	currentPath, err := filepath.Abs("./")
-	fmt.Println(currentPath, err)
 	if err != nil {
 		panic(err)
 	}
+
+	TargetPackageName, err := parser.ParsePackageName(currentPath)
+	if err != nil {
+		panic(err)
+	}
+
 	TargetPackage, err := filepath.Rel(docs.RootPath, currentPath)
 	if err != nil {
 		panic(err)
@@ -43,7 +48,7 @@ func main() {
 		err = resultTemplate.Execute(outputFile, struct {
 			PackageName, Package, DocsPackage, CurrentPath string
 		}{
-			PackageName:filepath.Base(TargetPackage),
+			PackageName:TargetPackageName,
 			Package:TargetPackage,
 			DocsPackage:docs.DocsPackage,
 			CurrentPath:currentPath,
@@ -56,7 +61,7 @@ var resultTemplate = template.New("resultTemplate")
 
 func init() {
 	var err error
-	resultTemplate, err = resultTemplate.Parse(`// Code generated .* DO NOT EDIT
+	resultTemplate, err = resultTemplate.Parse(`// Code generated minimum-attach-file.go DO NOT EDIT
 package {{.PackageName}}
 
 import docs "{{.DocsPackage}}"

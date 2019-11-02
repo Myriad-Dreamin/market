@@ -2,23 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d33caeea-6f6c-4429-8ab1-6d64520d9a9b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/control/register-docs.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/files.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/files_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/register.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/generate/keep.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/generate/minimum-attach-file/main.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/keep.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/market.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/market.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/generate/doc-gen/register-docs.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/parser/extract-package-name.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/parser/extract-package-name_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/register-docs.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cli.py" beforeDir="false" afterPath="$PROJECT_DIR$/cli.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/control/interface.go" beforeDir="false" afterPath="$PROJECT_DIR$/control/interface.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/generate/doc-gen/extract-doc.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/generate/doc-gen/extract-doc.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/generate/doc-gen/extract-doc_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/generate/doc-gen/extract-doc_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/control/register-docs.go" beforeDir="false" afterPath="$PROJECT_DIR$/control/register-docs.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/generate/doc-gen/extract-doc.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/parser/extract-doc.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/generate/doc-gen/extract-doc_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/parser/extract-doc_test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/generate/doc-gen/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/generate/doc-gen/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/generate/doc-gen/main_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/generate/doc-gen/main_test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/generate/doc-gen/process-result.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/generate/doc-gen/process-result.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/generate/doc-gen/result.md" beforeDir="false" afterPath="$PROJECT_DIR$/lib/generate/doc-gen/result.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/generate/minimum-attach-file/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/generate/minimum-attach-file/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/goods/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/goods/service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/needs/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/needs/service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/object/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/object/service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/provider.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/provider.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/user/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/user/service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/result.md" beforeDir="false" afterPath="$PROJECT_DIR$/test/result.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/test.log" beforeDir="false" afterPath="$PROJECT_DIR$/test/test.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/tester_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/test/tester_test.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -86,6 +92,13 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lib/parser" />
+      <recent name="E:\project\go\src\github.com\Myriad-Dreamin\market\interface" />
+      <recent name="E:\project\go\src\github.com\Myriad-Dreamin\market\lib\logger\bufferpool" />
+      <recent name="$PROJECT_DIR$/lib/traits" />
+      <recent name="$PROJECT_DIR$/lib/hook" />
+    </key>
     <key name="GoMoveDeclarationDialog.RECENT_KEY">
       <recent name="$PROJECT_DIR$/lib/mock" />
       <recent name="$PROJECT_DIR$/lib/mock/response" />
@@ -98,13 +111,6 @@
       <recent name="E:\project\go\src\github.com\Myriad-Dreamin\market\service\goods" />
       <recent name="E:\project\go\src\github.com\Myriad-Dreamin\market\service\needs" />
       <recent name="E:\project\go\src\github.com\Myriad-Dreamin\market\model\db-layer" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\project\go\src\github.com\Myriad-Dreamin\market\interface" />
-      <recent name="E:\project\go\src\github.com\Myriad-Dreamin\market\lib\logger\bufferpool" />
-      <recent name="$PROJECT_DIR$/lib/traits" />
-      <recent name="$PROJECT_DIR$/lib/hook" />
-      <recent name="$PROJECT_DIR$/lib/module" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -119,7 +125,18 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Go Test.TestPackage in github.com/Myriad-Dreamin/market/docs">
+  <component name="RunManager" selected="Go Test.TestParsePackageName in github.com/Myriad-Dreamin/market/lib/parser">
+    <configuration name="TestFromGinResults in github.com/Myriad-Dreamin/market/lib/generate/doc-gen" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="market" />
+      <working_directory value="$PROJECT_DIR$/lib/generate/doc-gen" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="github.com/Myriad-Dreamin/market/lib/generate/doc-gen" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
+      <pattern value="^TestFromGinResults$" />
+      <method v="2" />
+    </configuration>
     <configuration name="TestFuncDescription in github.com/Myriad-Dreamin/market/lib/generate/doc-gen" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="market" />
       <working_directory value="$PROJECT_DIR$/lib/generate/doc-gen" />
@@ -142,25 +159,15 @@
       <pattern value="^TestInterfaceDescription$" />
       <method v="2" />
     </configuration>
-    <configuration name="TestPackage in github.com/Myriad-Dreamin/market/docs" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="TestParsePackageName in github.com/Myriad-Dreamin/market/lib/parser" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="market" />
-      <working_directory value="$PROJECT_DIR$/docs" />
+      <working_directory value="$PROJECT_DIR$/lib/parser" />
       <framework value="gotest" />
       <kind value="PACKAGE" />
-      <package value="github.com/Myriad-Dreamin/market/docs" />
+      <package value="github.com/Myriad-Dreamin/market/lib/parser" />
       <directory value="$PROJECT_DIR$/" />
       <filePath value="$PROJECT_DIR$/" />
-      <pattern value="^TestPackage$" />
-      <method v="2" />
-    </configuration>
-    <configuration name="go test doc-gen" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
-      <module name="market" />
-      <working_directory value="$PROJECT_DIR$/lib/generate/doc-gen" />
-      <framework value="gotest" />
-      <kind value="DIRECTORY" />
-      <package value="github.com/Myriad-Dreamin/market" />
-      <directory value="$PROJECT_DIR$/lib/generate/doc-gen" />
-      <filePath value="$PROJECT_DIR$/" />
+      <pattern value="^TestParsePackageName$" />
       <method v="2" />
     </configuration>
     <configuration name="go test test" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
@@ -175,10 +182,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Go Test.TestPackage in github.com/Myriad-Dreamin/market/docs" />
-        <item itemvalue="Go Test.TestInterfaceDescription in github.com/Myriad-Dreamin/market/lib/generate/doc-gen" />
-        <item itemvalue="Go Test.go test doc-gen" />
+        <item itemvalue="Go Test.TestParsePackageName in github.com/Myriad-Dreamin/market/lib/parser" />
         <item itemvalue="Go Test.go test test" />
+        <item itemvalue="Go Test.TestFromGinResults in github.com/Myriad-Dreamin/market/lib/generate/doc-gen" />
+        <item itemvalue="Go Test.TestInterfaceDescription in github.com/Myriad-Dreamin/market/lib/generate/doc-gen" />
         <item itemvalue="Go Test.TestFuncDescription in github.com/Myriad-Dreamin/market/lib/generate/doc-gen" />
       </list>
     </recent_temporary>

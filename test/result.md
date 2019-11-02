@@ -3,25 +3,48 @@ HOST: 127.0.0.1
 
 # Minimum-Market
 
-method description
+this is the market backend powered by minimum
 
-## control.UserService.Get-fm [/v1/user/:id]
 
-### Get
-// [GET]
+## router.NewRootRouter.func1 [/ping]
 
-Get User
+
+
+## base-service.(*CRUDService).Post-fm [/v1/goods]
+
+
+
+## base-service.(*ListService).List-fm [/v1/goods-list]
+
+
+
+## base-service.(*CRUDService).Put-fm [/v1/goods/:goid]
+
+
+
+## Login [/v1/login]
+
+
+
+### Login [POST]
+
+Login
 
 + Request
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzI2MjQzMTYsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjIwNzA2LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.burV0LOHCU4_-4EEi0B7RrOw7qht-ubjj6G3Xl1IHe0
-            Content-Type: text/plain
+            Content-Type: application/json
 
     + Body
 
-            
+            {
+                "id": 1,
+                "user_name": "",
+                "phone": "",
+                "password": "admin"
+            }
+
 
 + Response 200
 
@@ -33,25 +56,148 @@ Get User
 
             {
                 "code": 0,
-                "user": {
-                    "ID": 1,
-                    "created_at": "2019-11-01T23:05:16.0974441+08:00",
-                    "updated_at": "2019-11-01T23:05:16.0974441+08:00",
-                    "last_login": "2019-11-01T15:05:16Z",
-                    "NickName": "admin_context",
-                    "Name": "admin_context",
-                    "Password": "$2a$10$AB/rAFCLzjfVEYfmC7VleuJcdmerIbqy9tSEGSceeTLe0h0eIvDfe",
-                    "Phone": "1234567891011",
-                    "RegisterCity": "Qing Dao S.D."
-                }
+                "identity": null,
+                "phone": "1234567891011",
+                "id": 1,
+                "nick_name": "admin_context",
+                "name": "admin_context",
+                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzI2NzA5OTgsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjY3Mzg4LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.NVtYGeCI6hk5lSawil6AA8bnhV7S_EN7oZqGj5mpXZY",
+                "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzMyNzIxOTgsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjY3Mzg4LCJJc1JlZnJlc2hUb2tlbiI6dHJ1ZSwiUmVmcmVzaFRhcmdldCI6eyJleHAiOjE1NzI2NzA5OTgsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjY3Mzg4LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19LCJDdXN0b21GaWVsZCI6eyJVSUQiOjF9fQ.KjDNhW0R8Gm80IS20EvddVh_r6QPnHLPQ-lWQ8d8gnk"
             }
 
 
 
-## control.UserService.Register-fm [/v1/user]
++ Request
 
-### Register
-// [POST]
+    + Headers
+
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzI2NzA5OTgsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjY3Mzg4LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.NVtYGeCI6hk5lSawil6AA8bnhV7S_EN7oZqGj5mpXZY
+            Content-Type: application/json
+
+    + Body
+
+            {
+                "id": 2,
+                "user_name": "",
+                "phone": "",
+                "password": "11122222"
+            }
+
+
++ Response 200
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+                "code": 0,
+                "identity": null,
+                "phone": "10086111",
+                "id": 2,
+                "nick_name": "tan chan",
+                "name": "chan tan",
+                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzI2NzA5OTgsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjY3Mzg4LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6Mn19.ib_tW6mV9o3-hxZfpCxK-yJcyhVVDqRlTbZjvpfLTfg",
+                "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzMyNzIxOTgsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjY3Mzg4LCJJc1JlZnJlc2hUb2tlbiI6dHJ1ZSwiUmVmcmVzaFRhcmdldCI6eyJleHAiOjE1NzI2NzA5OTgsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjY3Mzg4LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6Mn19LCJDdXN0b21GaWVsZCI6eyJVSUQiOjJ9fQ.lZNRRbbdi-1SigBBh_-qx5J9WvQhPz0l_IDgoV-cRnw"
+            }
+
+
+
++ Request
+
+    + Headers
+
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzI2NzA5OTgsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjY3Mzg4LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.NVtYGeCI6hk5lSawil6AA8bnhV7S_EN7oZqGj5mpXZY
+            Content-Type: application/json
+
+    + Body
+
+            {
+                "id": 0,
+                "user_name": "chan tan",
+                "phone": "",
+                "password": "11122222"
+            }
+
+
++ Response 200
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+                "code": 0,
+                "identity": null,
+                "phone": "10086111",
+                "id": 2,
+                "nick_name": "tan chan",
+                "name": "chan tan",
+                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzI2NzA5OTgsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjY3Mzg4LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6Mn19.ib_tW6mV9o3-hxZfpCxK-yJcyhVVDqRlTbZjvpfLTfg",
+                "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzMyNzIxOTgsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjY3Mzg4LCJJc1JlZnJlc2hUb2tlbiI6dHJ1ZSwiUmVmcmVzaFRhcmdldCI6eyJleHAiOjE1NzI2NzA5OTgsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjY3Mzg4LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6Mn19LCJDdXN0b21GaWVsZCI6eyJVSUQiOjJ9fQ.lZNRRbbdi-1SigBBh_-qx5J9WvQhPz0l_IDgoV-cRnw"
+            }
+
+
+
++ Request
+
+    + Headers
+
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzI2NzA5OTgsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjY3Mzg4LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.NVtYGeCI6hk5lSawil6AA8bnhV7S_EN7oZqGj5mpXZY
+            Content-Type: application/json
+
+    + Body
+
+            {
+                "id": 0,
+                "user_name": "",
+                "phone": "10086111",
+                "password": "11122222"
+            }
+
+
++ Response 200
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+                "code": 0,
+                "identity": null,
+                "phone": "10086111",
+                "id": 2,
+                "nick_name": "tan chan",
+                "name": "chan tan",
+                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzI2NzA5OTgsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjY3Mzg4LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6Mn19.ib_tW6mV9o3-hxZfpCxK-yJcyhVVDqRlTbZjvpfLTfg",
+                "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzMyNzIxOTgsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjY3Mzg4LCJJc1JlZnJlc2hUb2tlbiI6dHJ1ZSwiUmVmcmVzaFRhcmdldCI6eyJleHAiOjE1NzI2NzA5OTgsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjY3Mzg4LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6Mn19LCJDdXN0b21GaWVsZCI6eyJVSUQiOjJ9fQ.lZNRRbbdi-1SigBBh_-qx5J9WvQhPz0l_IDgoV-cRnw"
+            }
+
+
+
+## base-service.(*CRUDService).Post-fm [/v1/needs]
+
+
+
+## base-service.(*ListService).List-fm [/v1/needs-list]
+
+
+
+## base-service.(*CRUDService).Delete-fm [/v1/needs/:nid]
+
+
+
+## Register [/v1/user]
+
+
+
+### Register [POST]
 
 Register
 
@@ -91,7 +237,7 @@ Register
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzI2MjQzMTYsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjIwNzA2LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.burV0LOHCU4_-4EEi0B7RrOw7qht-ubjj6G3Xl1IHe0
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzI2NzA5OTgsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjY3Mzg4LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.NVtYGeCI6hk5lSawil6AA8bnhV7S_EN7oZqGj5mpXZY
             Content-Type: application/json
 
     + Body
@@ -120,10 +266,11 @@ Register
 
 
 
-## control.UserService.List-fm [/v1/user-list]
+## List [/v1/user-list]
 
-### List
-// [GET]
+
+
+### List [GET]
 
 List User
 
@@ -131,7 +278,7 @@ List User
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzI2MjQzMTYsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjIwNzA2LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.burV0LOHCU4_-4EEi0B7RrOw7qht-ubjj6G3Xl1IHe0
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzI2NzA5OTgsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjY3Mzg4LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.NVtYGeCI6hk5lSawil6AA8bnhV7S_EN7oZqGj5mpXZY
             Content-Type: text/plain
 
     + Body
@@ -151,12 +298,12 @@ List User
                 "users": [
                     {
                         "ID": 1,
-                        "created_at": "2019-11-01T23:05:16.0974441+08:00",
-                        "updated_at": "2019-11-01T23:05:16.0974441+08:00",
-                        "last_login": "2019-11-01T15:05:16Z",
+                        "created_at": "2019-11-02T12:03:18.066890431+08:00",
+                        "updated_at": "2019-11-02T12:03:18.066890431+08:00",
+                        "last_login": "2019-11-02T04:03:18Z",
                         "NickName": "admin_context",
                         "Name": "admin_context",
-                        "Password": "$2a$10$AB/rAFCLzjfVEYfmC7VleuJcdmerIbqy9tSEGSceeTLe0h0eIvDfe",
+                        "Password": "$2a$10$6.70G2oJ8Yk.uDR4LgQVY.m3EDd38RfWGUnu7RfJQ.oq6y.TiTPnm",
                         "Phone": "1234567891011",
                         "RegisterCity": "Qing Dao S.D."
                     }
@@ -165,28 +312,24 @@ List User
 
 
 
-## control.UserService.Login-fm [/v1/login]
+## Delete [/v1/user/:id]
 
-### Login
-// [POST]
 
-Login
+
+### Get [GET]
+
+Get User
 
 + Request
 
     + Headers
 
-            Content-Type: application/json
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzI2NzA5OTgsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjY3Mzg4LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.NVtYGeCI6hk5lSawil6AA8bnhV7S_EN7oZqGj5mpXZY
+            Content-Type: text/plain
 
     + Body
 
-            {
-                "id": 1,
-                "user_name": "",
-                "phone": "",
-                "password": "admin"
-            }
-
+            
 
 + Response 200
 
@@ -198,127 +341,21 @@ Login
 
             {
                 "code": 0,
-                "identity": null,
-                "phone": "1234567891011",
-                "id": 1,
-                "nick_name": "admin_context",
-                "name": "admin_context",
-                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzI2MjQzMTYsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjIwNzA2LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.burV0LOHCU4_-4EEi0B7RrOw7qht-ubjj6G3Xl1IHe0",
-                "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzMyMjU1MTYsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjIwNzA2LCJJc1JlZnJlc2hUb2tlbiI6dHJ1ZSwiUmVmcmVzaFRhcmdldCI6eyJleHAiOjE1NzI2MjQzMTYsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjIwNzA2LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19LCJDdXN0b21GaWVsZCI6eyJVSUQiOjF9fQ.xIAZ6L-zmweiMC3eeFivE05IJr_cutXicnRXlHAFrsk"
+                "user": {
+                    "ID": 1,
+                    "created_at": "2019-11-02T12:03:18.066890431+08:00",
+                    "updated_at": "2019-11-02T12:03:18.066890431+08:00",
+                    "last_login": "2019-11-02T04:03:18Z",
+                    "NickName": "admin_context",
+                    "Name": "admin_context",
+                    "Password": "$2a$10$6.70G2oJ8Yk.uDR4LgQVY.m3EDd38RfWGUnu7RfJQ.oq6y.TiTPnm",
+                    "Phone": "1234567891011",
+                    "RegisterCity": "Qing Dao S.D."
+                }
             }
 
 
 
-+ Request
-
-    + Headers
-
-            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzI2MjQzMTYsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjIwNzA2LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.burV0LOHCU4_-4EEi0B7RrOw7qht-ubjj6G3Xl1IHe0
-            Content-Type: application/json
-
-    + Body
-
-            {
-                "id": 2,
-                "user_name": "",
-                "phone": "",
-                "password": "11122222"
-            }
-
-
-+ Response 200
-
-    + Headers
-
-            Content-Type: application/json; charset=utf-8
-
-    + Body
-
-            {
-                "code": 0,
-                "identity": null,
-                "phone": "10086111",
-                "id": 2,
-                "nick_name": "tan chan",
-                "name": "chan tan",
-                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzI2MjQzMTYsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjIwNzA2LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6Mn19.v7nDS0lgPvk_O8VMSO42j5C05RWJuFRkser07mPs3Qw",
-                "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzMyMjU1MTYsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjIwNzA2LCJJc1JlZnJlc2hUb2tlbiI6dHJ1ZSwiUmVmcmVzaFRhcmdldCI6eyJleHAiOjE1NzI2MjQzMTYsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjIwNzA2LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6Mn19LCJDdXN0b21GaWVsZCI6eyJVSUQiOjJ9fQ.V2Sef7UtPr74Pa45ZH6058vrPsT2kFNiXbaE9deiuRA"
-            }
-
-
-
-+ Request
-
-    + Headers
-
-            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzI2MjQzMTYsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjIwNzA2LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.burV0LOHCU4_-4EEi0B7RrOw7qht-ubjj6G3Xl1IHe0
-            Content-Type: application/json
-
-    + Body
-
-            {
-                "id": 0,
-                "user_name": "chan tan",
-                "phone": "",
-                "password": "11122222"
-            }
-
-
-+ Response 200
-
-    + Headers
-
-            Content-Type: application/json; charset=utf-8
-
-    + Body
-
-            {
-                "code": 0,
-                "identity": null,
-                "phone": "10086111",
-                "id": 2,
-                "nick_name": "tan chan",
-                "name": "chan tan",
-                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzI2MjQzMTYsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjIwNzA2LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6Mn19.v7nDS0lgPvk_O8VMSO42j5C05RWJuFRkser07mPs3Qw",
-                "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzMyMjU1MTYsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjIwNzA2LCJJc1JlZnJlc2hUb2tlbiI6dHJ1ZSwiUmVmcmVzaFRhcmdldCI6eyJleHAiOjE1NzI2MjQzMTYsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjIwNzA2LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6Mn19LCJDdXN0b21GaWVsZCI6eyJVSUQiOjJ9fQ.V2Sef7UtPr74Pa45ZH6058vrPsT2kFNiXbaE9deiuRA"
-            }
-
-
-
-+ Request
-
-    + Headers
-
-            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzI2MjQzMTYsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjIwNzA2LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.burV0LOHCU4_-4EEi0B7RrOw7qht-ubjj6G3Xl1IHe0
-            Content-Type: application/json
-
-    + Body
-
-            {
-                "id": 0,
-                "user_name": "",
-                "phone": "10086111",
-                "password": "11122222"
-            }
-
-
-+ Response 200
-
-    + Headers
-
-            Content-Type: application/json; charset=utf-8
-
-    + Body
-
-            {
-                "code": 0,
-                "identity": null,
-                "phone": "10086111",
-                "id": 2,
-                "nick_name": "tan chan",
-                "name": "chan tan",
-                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzI2MjQzMTYsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjIwNzA2LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6Mn19.v7nDS0lgPvk_O8VMSO42j5C05RWJuFRkser07mPs3Qw",
-                "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzMyMjU1MTYsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjIwNzA2LCJJc1JlZnJlc2hUb2tlbiI6dHJ1ZSwiUmVmcmVzaFRhcmdldCI6eyJleHAiOjE1NzI2MjQzMTYsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjIwNzA2LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6Mn19LCJDdXN0b21GaWVsZCI6eyJVSUQiOjJ9fQ.V2Sef7UtPr74Pa45ZH6058vrPsT2kFNiXbaE9deiuRA"
-            }
+## ChangePassword [/v1/user/:id/password]
 
 

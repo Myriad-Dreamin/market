@@ -22,7 +22,7 @@ func (srv *Server) PrepareService() bool {
 			srv.Logger.Debug(fmt.Sprintf("get %T service error", serviceResult.First), "error", serviceResult.Err)
 			return false
 		}
-		srv.ServiceProvider.Register(serviceResult.First)
+		srv.ServiceProvider.Register(serviceResult.serviceName, serviceResult.First)
 	}
 	return true
 }

@@ -1,4 +1,4 @@
-package doc_gen
+package parser
 
 import (
 	"fmt"
@@ -17,11 +17,36 @@ lines2
 func multilineFunction() {}
 
 
+// @docname Maximum Document
+// @category Accounts
+// @description 12345
+type RawService struct {
 
+}
+
+
+// @titLE Get AccountsA
+//          @Description get accounts
+//   @Success 200 {array} model.Account
+func (RawService) TestHandler(ctx *gin.Context) {
+
+}
+
+// b
+type subService interface {
+
+}
+
+// this is RawServiceI
 type RawServiceI interface {
+	// a
+	subService
 	// @titLE Get AccountsB
 	//          @Description get accounts
 	//   @Success 200 {array} model.Account
+	/* @b
+	 * @a
+	 */
 	TestHandler(ctx *gin.Context)
 }
 
@@ -36,7 +61,7 @@ var (
 )
 
 
-func testFuncDescription(t *testing.T) {
+func TestFuncDescription(t *testing.T) {
 	var testHandler0 = func() {
 		testHandler3 := func() {
 			testHandler4 := func() {
@@ -72,5 +97,7 @@ func testFuncDescription(t *testing.T) {
 
 
 func TestInterfaceDescription(t *testing.T) {
-	fmt.Println(InterfaceDescription(RawService{}))
+	fmt.Println(InterfaceDescription(&RawService{}))
+	var ri RawServiceI = RawService{}
+	fmt.Println(InterfaceDescription(&ri))
 }

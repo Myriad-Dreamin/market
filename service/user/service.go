@@ -1,3 +1,4 @@
+//go:generate minimum-attach-file
 package userservice
 
 import (

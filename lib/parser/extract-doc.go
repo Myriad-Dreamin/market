@@ -1,8 +1,9 @@
-package doc_gen
+package parser
 
 import (
+	"errors"
 	"fmt"
-	"github.com/gin-gonic/gin"
+	"github.com/Myriad-Dreamin/market/docs"
 	"go/ast"
 	"go/doc"
 	"path/filepath"
@@ -35,15 +36,11 @@ import (
 
 func GetPackage(fileName string) *ast.Package {
 	fset := token.NewFileSet()
-
 	parsedAst, err := parser.ParseFile(fset, fileName, nil, parser.ParseComments)
 	if err != nil {
 		log.Fatal(err)
 		return nil
 	}
-	//_ = ast.Print(fset, parsedAst)
-
-	//ast.Walk(&visitor{r: recvName, f:funcName}, parsedAst)
 
 	pkg := &ast.Package{
 		Name:  "Any",
@@ -53,9 +50,44 @@ func GetPackage(fileName string) *ast.Package {
 	return pkg
 }
 
+func GetPackageDir(fileDir string) *ast.Package {
+	fset := token.NewFileSet()
+	pkgs, err := parser.ParseDir(fset, fileDir, nil, parser.ParseComments)
+	if err != nil {
+		log.Fatal(err)
+		return nil
+	}
+	if len(pkgs) != 1 {
+		log.Fatal(errors.New("invalid package"))
+		return nil
+	}
+	var pkg *ast.Package
+	for _, p := range pkgs {
+		pkg = p
+	}
+	return pkg
+}
+
 func GetDoc(fileName string) *doc.Package {
 	importPath, _ := filepath.Abs("/")
 	return doc.New(GetPackage(fileName), importPath, doc.AllDecls)
+}
+
+func GetDocDir(pkgDir string) *doc.Package {
+	importPath, _ := filepath.Abs("/")
+	return doc.New(GetPackageDir(pkgDir), importPath, doc.AllDecls)
+}
+
+func makeDoc(list []*ast.Comment) string{
+	var d = make([]string, len(list))
+	for i := range list {
+		text := list[i].Text
+		d[i] = strings.TrimPrefix(text, "//")
+		if strings.HasPrefix(text, "/*") {
+			d[i] = strings.TrimSuffix(strings.TrimPrefix(text, "/*"), "*/")
+		}
+	}
+	return strings.Join(d, "\n")
 }
 
 // Get description of a func
@@ -105,17 +137,9 @@ func FuncDescription(f interface{}) string {
 						if m.Names[0].Name == funcName {
 
 							if m.Doc != nil {
-								var docs = make([]string, len(m.Doc.List))
-								for i := range m.Doc.List {
-									docs[i] = m.Doc.List[i].Text
-								}
-								return strings.Join(docs, "\n")
+								return makeDoc(m.Doc.List)
 							} else if m.Comment != nil {
-								var docs = make([]string, len(m.Comment.List))
-								for i := range m.Comment.List {
-									docs[i] = m.Comment.List[i].Text
-								}
-								return strings.Join(docs, "\n")
+								return makeDoc(m.Comment.List)
 							}
 							return ""
 						}
@@ -135,43 +159,34 @@ func FuncDescription(f interface{}) string {
 	return ""
 }
 
-// @category Accounts
-// @description 12345
-type RawService struct {
-
-}
-
-
-// @titLE Get AccountsA
-//          @Description get accounts
-//   @Success 200 {array} model.Account
-func (RawService) TestHandler(ctx *gin.Context) {
-
-}
-
 func InterfaceDescription(i interface{}) string {
 	t := reflect.TypeOf(i)
 	switch t.Kind() {
-	case reflect.Func:
-		return FuncDescription(i)
 	case reflect.Ptr:
-		return FuncDescription(reflect.ValueOf(i).Elem())
-	case reflect.Interface:
-		fmt.Println(t.NumMethod())
-		return ""
-	case reflect.Struct:
-		//v := reflect.ValueOf(i)
-		//if v.NumMethod() > 0 {
-		//
-		//	//myDoc := GetDoc(fileName)
-		//	fmt.Println(fileName)
-		//}
-
+		return TypeInterfaceDescription(t.Elem())
+	default:
+		panic("not pointer type")
+	}
+}
+func TypeInterfaceDescription(t reflect.Type) string {
+	//fmt.Println(t)
+	switch t.Kind() {
+	case reflect.Ptr:
+		return TypeInterfaceDescription(t.Elem())
+	case reflect.Interface, reflect.Struct:
+		typeName := t.Name()
+		path := docs.Get(t.PkgPath())
+		if len(path) == 0 {
+			panic(fmt.Errorf("not registered package: %v", t.PkgPath()))
+		}
+		myDoc := GetDocDir(path)
+		for _, obj := range myDoc.Types {
+			if obj.Name == typeName {
+				return obj.Doc
+			}
+		}
 		return ""
 	default:
-		fmt.Println(reflect.TypeOf(i).PkgPath())
-		//pkg, _ := importer.Default().Import("log")
-		fmt.Println(reflect.TypeOf(i))
 		return ""
 	}
 }

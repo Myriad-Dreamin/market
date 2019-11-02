@@ -2,6 +2,7 @@ package doc_gen
 
 import (
 	"fmt"
+	"github.com/Myriad-Dreamin/market/lib/parser"
 	"sort"
 	"strings"
 )
@@ -28,18 +29,21 @@ type processedResultInterface interface {
 
 type ControllerProvider interface {
 	GetControllers() []interface{}
+	GetProvider() interface{}
 }
 
 type GinInfo struct{
 	ControllerProvider ControllerProvider
 	Result []GinResult
 	Host string
-	ApiDoc string
+	DocName string
+	Description string
 }
 
 type mergedResultInterface interface {
 	GetPath() string
 	GetCategoryName() string
+	GetTitle() string
 	GetDescription() string
 	GetResults() []processedResultInterface
 }
@@ -63,14 +67,18 @@ func (m *mergedResult) GetDescription() string {
 	return m.Description
 }
 
+func (m *mergedResult) GetTitle() string {
+	return m.Description
+}
+
 func (m *mergedResult) GetResults() []processedResultInterface {
 	return m.Results
 }
 
 type ginProcessedInfo struct{
+	ProviderInfoInterface
 	Categories []mergedResultInterface
 	Host string
-	ApiDoc string
 }
 
 type parsedResult struct {
@@ -135,7 +143,7 @@ func processResultResult(resI interface{}) processedResultInterface {
 	case GinResult:
 		y := new(processedGinResult)
 		y.GinResult = res
-		y.parsedResult = parseDoc(FuncDescription(y.GetHandlerFunc()))
+		y.parsedResult = parseDoc(parser.FuncDescription(y.GetHandlerFunc()))
 		return y
 	default:
 		return nil
@@ -212,8 +220,43 @@ func (c ControllerInfo) GetDescription() string {
 	return c.Description
 }
 
+type providerInfo struct {
+	DocName string
+	Description string
+}
+
+type ProviderInfoInterface interface {
+	GetDocName() string
+	GetDescription() string
+}
+
+func (c providerInfo) GetDocName() string {
+	return c.DocName
+}
+
+func (c providerInfo) GetDescription() string {
+	return c.Description
+}
+
 func parseController(i interface{}) ControllerInfoInterface {
-	return nil
+	segs := strings.Split(parser.InterfaceDescription(i), "@")
+	var res = new(ControllerInfo)
+	for i := range segs {
+		kv := strings.SplitN(strings.TrimSpace(segs[i]), " ", 2)
+		if len(kv) == 1 {
+			continue
+		}
+		k, v := strings.ToLower(strings.TrimSpace(kv[0])), strings.TrimSpace(kv[1])
+		switch k {
+		case "description":
+			res.Description = v
+		case "category":
+			res.Category = v
+		case "path":
+			res.Path = v
+		}
+	}
+	return res
 }
 
 func parseControllers(provider ControllerProvider) (mp map[string]ControllerInfoInterface) {
@@ -229,12 +272,38 @@ func parseControllers(provider ControllerProvider) (mp map[string]ControllerInfo
 	return
 }
 
+func parseProvider(i interface{}) ProviderInfoInterface {
+	segs := strings.Split(parser.InterfaceDescription(i), "@")
+	var res = new(providerInfo)
+	for i := range segs {
+		kv := strings.SplitN(strings.TrimSpace(segs[i]), " ", 2)
+		if len(kv) == 1 {
+			continue
+		}
+		k, v := strings.ToLower(strings.TrimSpace(kv[0])), strings.TrimSpace(kv[1])
+		switch k {
+		case "description":
+			res.Description = v
+		case "docname":
+			res.DocName = v
+		}
+	}
+	return res
+}
+
 func processResult(resI interface{}) *ginProcessedInfo {
 	switch res := resI.(type) {
 	case *GinInfo:
 		var x = new(ginProcessedInfo)
 		x.Host = res.Host
-		x.ApiDoc = res.ApiDoc
+		if res.ControllerProvider != nil {
+			x.ProviderInfoInterface = parseProvider(res.ControllerProvider.GetProvider())
+		} else {
+			x.ProviderInfoInterface = providerInfo{
+				DocName:     res.DocName,
+				Description: res.Description,
+			}
+		}
 		x.Categories = processResultResults(
 			parseControllers(res.ControllerProvider), res.Result)
 		fmt.Println(x)

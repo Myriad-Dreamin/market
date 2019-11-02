@@ -85,9 +85,16 @@ func testHandler2(ctx *gin.Context) {
 
 }
 
-
+// @docname Maximum Document
+// @category Accounts
+// @Description controllerS
+// @path /v1/user
 type controllerS struct {
 
+}
+
+func (c controllerS) GetProvider() interface{} {
+	return &c
 }
 
 // @titLE Get AccountsA
@@ -102,6 +109,10 @@ func (controllerS) TestHandler(ctx *gin.Context) {
 //   @Success 200 {array} model.Account
 func (controllerS) testHandler2(ctx *gin.Context) {
 
+}
+
+func (c controllerS) GetControllers() []interface{} {
+	return []interface{}{&c}
 }
 
 // @category AccountsController
@@ -147,8 +158,6 @@ func TestFromGinResults(t *testing.T) {
 					}},
 				}},
 				Host: "127.0.0.1",
-				ApiDoc: "Minimum Document",
-
 			},
 		}, false},
 		{"test_base02", args{
@@ -185,12 +194,11 @@ func TestFromGinResults(t *testing.T) {
 					},
 				},
 				Host: "127.0.0.1",
-				ApiDoc: "Minimum Document",
-
 			},
 		}, false},
 		{"test_base03", args{
 			res: &GinInfo{
+				ControllerProvider: controllerS{},
 				Result:[]GinResult{mock.Results{
 					RouteInfo: gin.RouteInfo{
 						Method:      "PUT",
@@ -223,8 +231,6 @@ func TestFromGinResults(t *testing.T) {
 					},
 				},
 				Host: "127.0.0.1",
-				ApiDoc: "Minimum Document",
-
 			},
 		}, false},
 	}
@@ -236,6 +242,41 @@ func TestFromGinResults(t *testing.T) {
 		})
 	}
 }
+
+
+// @docname Maximum Document
+// @category Accounts
+// @description 12345
+type RawService struct {
+
+}
+
+
+// @titLE Get AccountsA
+//          @Description get accounts
+//   @Success 200 {array} model.Account
+func (RawService) TestHandler(ctx *gin.Context) {
+
+}
+
+// b
+type subService interface {
+
+}
+
+// this is RawServiceI
+type RawServiceI interface {
+	// a
+	subService
+	// @titLE Get AccountsB
+	//          @Description get accounts
+	//   @Success 200 {array} model.Account
+	/* @b
+	 * @a
+	 */
+	TestHandler(ctx *gin.Context)
+}
+
 
 func Test_processResultResult(t *testing.T) {
 	type args struct {

@@ -27,8 +27,8 @@ def cmds(cmd_str, cwd=None):
     return cmd(cmd_str, cwd)
 
 
-def pcmds(cmd_str, cwd=None):
-    print(cmds(cmd_str, cwd))
+def pcmds(cmd_str, cwd=None, encoding='utf-8'):
+    print(cmds(cmd_str, cwd).decode(encoding))
 
 
 class MinimumCli:
@@ -101,7 +101,10 @@ class MinimumCli:
         self.replace(
             service_provider_file,
             'switch ss := service.(type) {',
-            'switch ss := service.(type) {\n\tcase *%sService:\n\t\ts.%sService = ss' % (self.up_camel, self.camel),
+            'switch ss := service.(type) {'
+            '\n\tcase *%sService:'
+            '\n\t\ts.%sService = ss'
+            '\n\t\ts.subControllers = append(s.subControllers, JustProvide(&ss))' % (self.up_camel, self.camel),
         )
 
         self.replace(
@@ -158,6 +161,10 @@ class MinimumCli:
                 self.generate(file, match)
             if os.path.isfile(file) and match.match(file):
                 pcmds('go generate %s' % file)
+
+    def test(self):
+        self.fast_generate()
+        pcmds('go test -v', cwd='./test')
 
     def fast_generate(self, path='./', match=None):
         match = self._gen_match(match)

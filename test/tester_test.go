@@ -25,7 +25,7 @@ func TestMain(m *testing.M) {
 		err := doc_gen.FromGinResults(&doc_gen.GinInfo{
 			Result: srv.DumpResults(),
 			Host: "127.0.0.1",
-			ApiDoc: "Minimum-Market",
+			ControllerProvider: srv.ServiceProvider,
 		})
 		if err != nil {
 			panic(err)

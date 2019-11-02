@@ -1,4 +1,4 @@
-// Code generated .* DO NOT EDIT
+// Code generated minimum-attach-file.go DO NOT EDIT
 package control
 
 import docs "github.com/Myriad-Dreamin/market/docs"

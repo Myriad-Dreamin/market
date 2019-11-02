@@ -1,11 +1,14 @@
 FORMAT: 1A
 HOST: 127.0.0.1
 
-# Minimum Document
+# Maximum Document
 
-method description
+controllerS
 
-## Put Accounts [/v1/user]
+
+## Accounts [/v1/user]
+
+controllerS
 
 ### Put Accounts [PUT]
 
@@ -36,7 +39,7 @@ put accounts
             }
 
 
-### Get Accounts [GET]
+### Get AccountsA [GET]
 
 get accounts
 

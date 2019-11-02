@@ -168,11 +168,14 @@ func init() {
 	resultTemplate, err = resultTemplate.Parse(`FORMAT: 1A
 HOST: {{.Host}}
 
-# {{.ApiDoc}}
+# {{.GetDocName}}
 
-method description
+{{.GetDescription}}
+
 {{range $i, $cat := .Categories}}
 ## {{$cat.GetCategoryName}} [{{$cat.GetPath}}]
+
+{{$cat.GetDescription}}
 {{range $j, $v := $cat.GetResults}}{{$recs := $v.GetRecords}}{{if ne (len $recs) 0}}
 ### {{$v.GetTitle}} [{{$v.GetMethod}}]
 
