@@ -6,6 +6,8 @@ import (
 	"reflect"
 )
 
+type Comment string
+
 type Serializable interface {
 	Serialize() (io.Reader, error)
 	ContentType() string

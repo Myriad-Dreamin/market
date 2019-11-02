@@ -19,19 +19,29 @@ type GinResultI interface {
 }
 
 type RecordsI interface {
+	GetResponseCode() int
+	GetComment() string
 	GetRequestHeader() http.Header
 	GetRequestBody() []byte
-	GetResponseCode() int
 	GetResponseHeader() http.Header
 	GetResponseBody() []byte
 }
 
 type Records struct {
+	ResponseCode int
+	Comment string
 	RequestHeader  http.Header
 	RequestBody    []byte
-	ResponseCode int
 	ResponseHeader http.Header
 	ResponseBody   []byte
+}
+
+func (r Records) GetResponseCode() int {
+	return r.ResponseCode
+}
+
+func (r Records) GetComment() string {
+	return r.Comment
 }
 
 func (r Records) GetRequestHeader() http.Header {
@@ -40,10 +50,6 @@ func (r Records) GetRequestHeader() http.Header {
 
 func (r Records) GetRequestBody() []byte {
 	return r.RequestBody
-}
-
-func (r Records) GetResponseCode() int {
-	return r.ResponseCode
 }
 
 func (r Records) GetResponseHeader() http.Header {

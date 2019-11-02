@@ -2,10 +2,10 @@
  - using env:	export GIN_MODE=release
  - using code:	gin.SetMode(gin.ReleaseMode)
 
-[GIN-debug] PUT    /v1/user/:id              --> github.com/Myriad-Dreamin/market/control.UserService.Put-fm (5 handlers)
-[GIN-debug] DELETE /v1/user/:id              --> github.com/Myriad-Dreamin/market/control.UserService.Delete-fm (5 handlers)
 [GIN-debug] GET    /v1/user/:id              --> github.com/Myriad-Dreamin/market/control.UserService.Get-fm (5 handlers)
 [GIN-debug] POST   /v1/user/:id/password     --> github.com/Myriad-Dreamin/market/control.UserService.ChangePassword-fm (5 handlers)
+[GIN-debug] PUT    /v1/user/:id              --> github.com/Myriad-Dreamin/market/control.UserService.Put-fm (5 handlers)
+[GIN-debug] DELETE /v1/user/:id              --> github.com/Myriad-Dreamin/market/control.UserService.Delete-fm (5 handlers)
 [GIN-debug] GET    /v1/user-list             --> github.com/Myriad-Dreamin/market/control.UserService.List-fm (5 handlers)
 [GIN-debug] POST   /v1/user                  --> github.com/Myriad-Dreamin/market/control.UserService.Register-fm (5 handlers)
 [GIN-debug] POST   /v1/login                 --> github.com/Myriad-Dreamin/market/control.UserService.Login-fm (5 handlers)
@@ -14,43 +14,43 @@
 [GIN-debug] DELETE /v1/needs/:nid            --> github.com/Myriad-Dreamin/market/service/base-service.(*CRUDService).Delete-fm (5 handlers)
 [GIN-debug] GET    /v1/needs-list            --> github.com/Myriad-Dreamin/market/service/base-service.(*ListService).List-fm (5 handlers)
 [GIN-debug] POST   /v1/needs                 --> github.com/Myriad-Dreamin/market/service/base-service.(*CRUDService).Post-fm (5 handlers)
-[GIN-debug] DELETE /v1/goods/:goid           --> github.com/Myriad-Dreamin/market/service/base-service.(*CRUDService).Delete-fm (5 handlers)
 [GIN-debug] GET    /v1/goods/:goid           --> github.com/Myriad-Dreamin/market/service/base-service.(*CRUDService).Get-fm (5 handlers)
 [GIN-debug] PUT    /v1/goods/:goid           --> github.com/Myriad-Dreamin/market/service/base-service.(*CRUDService).Put-fm (5 handlers)
+[GIN-debug] DELETE /v1/goods/:goid           --> github.com/Myriad-Dreamin/market/service/base-service.(*CRUDService).Delete-fm (5 handlers)
 [GIN-debug] GET    /v1/goods-list            --> github.com/Myriad-Dreamin/market/service/base-service.(*ListService).List-fm (5 handlers)
 [GIN-debug] POST   /v1/goods                 --> github.com/Myriad-Dreamin/market/service/base-service.(*CRUDService).Post-fm (5 handlers)
 [GIN-debug] GET    /ping                     --> github.com/Myriad-Dreamin/market/router.NewRootRouter.func1 (5 handlers)
-[GIN] 2019/11/02 - 12:03:18 | 200 |   82.557842ms |                 | POST     /v1/user
+[GIN] 2019/11/02 - 12:48:34 | 200 |   81.043242ms |                 | POST     /v1/user
 Method: POST url: /v1/user http: HTTP/1.1
 Request Header: map[Content-Type:[application/json]]
 Response Header: map[Content-Type:[application/json; charset=utf-8] Gin-Context-Matched-Path-Method:[/v1/user@POST]]
-[GIN] 2019/11/02 - 12:03:18 | 200 |   79.058864ms |                 | POST     /v1/login
+[GIN] 2019/11/02 - 12:48:34 | 200 |   80.423617ms |                 | POST     /v1/login
 Method: POST url: /v1/login http: HTTP/1.1
 Request Header: map[Content-Type:[application/json]]
 Response Header: map[Content-Type:[application/json; charset=utf-8] Gin-Context-Matched-Path-Method:[/v1/login@POST]]
-[GIN] 2019/11/02 - 12:03:18 | 200 |   79.197583ms |                 | POST     /v1/user
+[GIN] 2019/11/02 - 12:48:34 | 200 |   79.067313ms |                 | POST     /v1/user
 Method: POST url: /v1/user http: HTTP/1.1
-Request Header: map[Authorization:[Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzI2NzA5OTgsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjY3Mzg4LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.NVtYGeCI6hk5lSawil6AA8bnhV7S_EN7oZqGj5mpXZY] Content-Type:[application/json]]
+Request Header: map[Authorization:[Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzI2NzM3MTQsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjcwMTA0LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.9YzAoUS1ut-1-hfwAcQ7OhkP5UhYtZ32yrIkQ-uwpNs] Content-Type:[application/json]]
 Response Header: map[Content-Type:[application/json; charset=utf-8] Gin-Context-Matched-Path-Method:[/v1/user@POST]]
-[GIN] 2019/11/02 - 12:03:18 | 200 |   78.847997ms |                 | POST     /v1/login
+[GIN] 2019/11/02 - 12:48:34 | 200 |   80.239759ms |                 | POST     /v1/login
 Method: POST url: /v1/login http: HTTP/1.1
-Request Header: map[Authorization:[Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzI2NzA5OTgsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjY3Mzg4LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.NVtYGeCI6hk5lSawil6AA8bnhV7S_EN7oZqGj5mpXZY] Content-Type:[application/json]]
+Request Header: map[Authorization:[Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzI2NzM3MTQsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjcwMTA0LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.9YzAoUS1ut-1-hfwAcQ7OhkP5UhYtZ32yrIkQ-uwpNs] Content-Type:[application/json]]
 Response Header: map[Content-Type:[application/json; charset=utf-8] Gin-Context-Matched-Path-Method:[/v1/login@POST]]
-[GIN] 2019/11/02 - 12:03:18 | 200 |   78.923784ms |                 | POST     /v1/login
+[GIN] 2019/11/02 - 12:48:34 | 200 |   79.073964ms |                 | POST     /v1/login
 Method: POST url: /v1/login http: HTTP/1.1
-Request Header: map[Authorization:[Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzI2NzA5OTgsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjY3Mzg4LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.NVtYGeCI6hk5lSawil6AA8bnhV7S_EN7oZqGj5mpXZY] Content-Type:[application/json]]
+Request Header: map[Authorization:[Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzI2NzM3MTQsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjcwMTA0LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.9YzAoUS1ut-1-hfwAcQ7OhkP5UhYtZ32yrIkQ-uwpNs] Content-Type:[application/json]]
 Response Header: map[Content-Type:[application/json; charset=utf-8] Gin-Context-Matched-Path-Method:[/v1/login@POST]]
-[GIN] 2019/11/02 - 12:03:18 | 200 |   79.410071ms |                 | POST     /v1/login
+[GIN] 2019/11/02 - 12:48:35 | 200 |   79.670876ms |                 | POST     /v1/login
 Method: POST url: /v1/login http: HTTP/1.1
-Request Header: map[Authorization:[Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzI2NzA5OTgsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjY3Mzg4LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.NVtYGeCI6hk5lSawil6AA8bnhV7S_EN7oZqGj5mpXZY] Content-Type:[application/json]]
+Request Header: map[Authorization:[Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzI2NzM3MTQsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjcwMTA0LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.9YzAoUS1ut-1-hfwAcQ7OhkP5UhYtZ32yrIkQ-uwpNs] Content-Type:[application/json]]
 Response Header: map[Content-Type:[application/json; charset=utf-8] Gin-Context-Matched-Path-Method:[/v1/login@POST]]
-[GIN] 2019/11/02 - 12:03:18 | 200 |     264.488µs |                 | GET      /v1/user/1
+[GIN] 2019/11/02 - 12:48:35 | 200 |     270.841µs |                 | GET      /v1/user/1
 Method: GET url: /v1/user/1 http: HTTP/1.1
-Request Header: map[Authorization:[Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzI2NzA5OTgsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjY3Mzg4LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.NVtYGeCI6hk5lSawil6AA8bnhV7S_EN7oZqGj5mpXZY] Content-Type:[]]
+Request Header: map[Authorization:[Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzI2NzM3MTQsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjcwMTA0LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.9YzAoUS1ut-1-hfwAcQ7OhkP5UhYtZ32yrIkQ-uwpNs] Content-Type:[]]
 Response Header: map[Content-Type:[application/json; charset=utf-8] Gin-Context-Matched-Path-Method:[/v1/user/:id@GET]]
-[GIN] 2019/11/02 - 12:03:18 | 200 |     174.555µs |                 | GET      /v1/user-list?page=1&page_size=1
+[GIN] 2019/11/02 - 12:48:35 | 200 |     199.183µs |                 | GET      /v1/user-list?page=1&page_size=1
 Method: GET url: /v1/user-list?page=1&page_size=1 http: HTTP/1.1
-Request Header: map[Authorization:[Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzI2NzA5OTgsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjY3Mzg4LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.NVtYGeCI6hk5lSawil6AA8bnhV7S_EN7oZqGj5mpXZY] Content-Type:[]]
+Request Header: map[Authorization:[Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzI2NzM3MTQsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjcwMTA0LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.9YzAoUS1ut-1-hfwAcQ7OhkP5UhYtZ32yrIkQ-uwpNs] Content-Type:[]]
 Response Header: map[Content-Type:[application/json; charset=utf-8] Gin-Context-Matched-Path-Method:[/v1/user-list@GET]]
 :43.783+0800	Debug	[38;5;230m module/module.go:92 [0m		{"level": "debug", "_msg": "module installed", "path": "/database/enforcer", "name": "*casbin.SyncedEnforcer"}
 2019-11-01T18:52:43.784+0800	Debug	[38;5;230m module/module.go:92 [0m		{"level": "debug", "_msg": "module installed", "path": "/database/needsDB", "name": "*splayer.NeedsDB"}
@@ -416,3 +416,107 @@ Response Header: map[Content-Type:[application/json; charset=utf-8] Gin-Context-
 2019-11-02T12:03:18.384+0800	[38;2;126;192;238mDebug[0m	[38;5;230m user/login.go:130 [0m		{"level": "debug", "_msg": "update last login failed", "error": "no such table: user", "affected": 0}
 2019-11-02T12:03:18.463+0800	[38;2;126;192;238mDebug[0m	[38;5;230m dorm@v0.0.0-20191029104746-dbf265ce2754/db.go:67 [0m		{"level": "debug", "_msg": "exec ", "statement": "update `user` set last_login = ? where id = ?", "args": ["2019-11-02T12:03:18.463631973+08:00",2]}
 2019-11-02T12:03:18.463+0800	[38;2;126;192;238mDebug[0m	[38;5;230m user/login.go:130 [0m		{"level": "debug", "_msg": "update last login failed", "error": "no such table: user", "affected": 0}
+2019-11-02T12:23:01.948+0800	[38;2;126;192;238mDebug[0m	[38;5;230m module/module.go:92 [0m		{"level": "debug", "_msg": "module installed", "path": "/database/enforcer", "name": "*casbin.SyncedEnforcer"}
+2019-11-02T12:23:01.980+0800	[38;2;126;192;238mDebug[0m	[38;5;230m module/module.go:92 [0m		{"level": "debug", "_msg": "module installed", "path": "/database/needsDB", "name": "*splayer.NeedsDB"}
+2019-11-02T12:23:01.980+0800	[38;2;126;192;238mDebug[0m	[38;5;230m module/module.go:92 [0m		{"level": "debug", "_msg": "module installed", "path": "/database/goodsDB", "name": "*splayer.GoodsDB"}
+2019-11-02T12:23:01.980+0800	[38;2;126;192;238mDebug[0m	[38;5;230m module/module.go:92 [0m		{"level": "debug", "_msg": "module installed", "path": "/database/userDB", "name": "*splayer.UserDB"}
+2019-11-02T12:23:01.980+0800	[38;2;126;192;238mDebug[0m	[38;5;230m module/module.go:92 [0m		{"level": "debug", "_msg": "module installed", "path": "/database/objectDB", "name": "*splayer.ObjectDB"}
+2019-11-02T12:23:02.152+0800	[38;2;126;192;238mDebug[0m	[38;5;230m dorm@v0.0.0-20191029104746-dbf265ce2754/db.go:67 [0m		{"level": "debug", "_msg": "exec ", "statement": "update `user` set last_login = ? where id = ?", "args": ["2019-11-02T12:23:02.152414314+08:00",1]}
+2019-11-02T12:23:02.152+0800	[38;2;126;192;238mDebug[0m	[38;5;230m user/login.go:130 [0m		{"level": "debug", "_msg": "update last login failed", "error": "no such table: user", "affected": 0}
+2019-11-02T12:23:02.323+0800	[38;2;126;192;238mDebug[0m	[38;5;230m dorm@v0.0.0-20191029104746-dbf265ce2754/db.go:67 [0m		{"level": "debug", "_msg": "exec ", "statement": "update `user` set last_login = ? where id = ?", "args": ["2019-11-02T12:23:02.323312002+08:00",2]}
+2019-11-02T12:23:02.323+0800	[38;2;126;192;238mDebug[0m	[38;5;230m user/login.go:130 [0m		{"level": "debug", "_msg": "update last login failed", "error": "no such table: user", "affected": 0}
+2019-11-02T12:23:02.475+0800	[38;2;126;192;238mDebug[0m	[38;5;230m dorm@v0.0.0-20191029104746-dbf265ce2754/db.go:67 [0m		{"level": "debug", "_msg": "exec ", "statement": "update `user` set last_login = ? where id = ?", "args": ["2019-11-02T12:23:02.475926756+08:00",2]}
+2019-11-02T12:23:02.476+0800	[38;2;126;192;238mDebug[0m	[38;5;230m user/login.go:130 [0m		{"level": "debug", "_msg": "update last login failed", "error": "no such table: user", "affected": 0}
+2019-11-02T12:23:02.558+0800	[38;2;126;192;238mDebug[0m	[38;5;230m dorm@v0.0.0-20191029104746-dbf265ce2754/db.go:67 [0m		{"level": "debug", "_msg": "exec ", "statement": "update `user` set last_login = ? where id = ?", "args": ["2019-11-02T12:23:02.558537734+08:00",2]}
+2019-11-02T12:23:02.558+0800	[38;2;126;192;238mDebug[0m	[38;5;230m user/login.go:130 [0m		{"level": "debug", "_msg": "update last login failed", "error": "no such table: user", "affected": 0}
+2019-11-02T12:26:31.249+0800	[38;2;126;192;238mDebug[0m	[38;5;230m module/module.go:92 [0m		{"level": "debug", "_msg": "module installed", "path": "/database/needsDB", "name": "*splayer.NeedsDB"}
+2019-11-02T12:26:31.281+0800	[38;2;126;192;238mDebug[0m	[38;5;230m module/module.go:92 [0m		{"level": "debug", "_msg": "module installed", "path": "/database/goodsDB", "name": "*splayer.GoodsDB"}
+2019-11-02T12:26:31.281+0800	[38;2;126;192;238mDebug[0m	[38;5;230m module/module.go:92 [0m		{"level": "debug", "_msg": "module installed", "path": "/database/userDB", "name": "*splayer.UserDB"}
+2019-11-02T12:26:31.281+0800	[38;2;126;192;238mDebug[0m	[38;5;230m module/module.go:92 [0m		{"level": "debug", "_msg": "module installed", "path": "/database/objectDB", "name": "*splayer.ObjectDB"}
+2019-11-02T12:26:31.281+0800	[38;2;126;192;238mDebug[0m	[38;5;230m module/module.go:92 [0m		{"level": "debug", "_msg": "module installed", "path": "/database/enforcer", "name": "*casbin.SyncedEnforcer"}
+2019-11-02T12:26:31.442+0800	[38;2;126;192;238mDebug[0m	[38;5;230m dorm@v0.0.0-20191029104746-dbf265ce2754/db.go:67 [0m		{"level": "debug", "_msg": "exec ", "statement": "update `user` set last_login = ? where id = ?", "args": ["2019-11-02T12:26:31.44291532+08:00",1]}
+2019-11-02T12:26:31.443+0800	[38;2;126;192;238mDebug[0m	[38;5;230m user/login.go:130 [0m		{"level": "debug", "_msg": "update last login failed", "error": "no such table: user", "affected": 0}
+2019-11-02T12:26:31.603+0800	[38;2;126;192;238mDebug[0m	[38;5;230m dorm@v0.0.0-20191029104746-dbf265ce2754/db.go:67 [0m		{"level": "debug", "_msg": "exec ", "statement": "update `user` set last_login = ? where id = ?", "args": ["2019-11-02T12:26:31.603550396+08:00",2]}
+2019-11-02T12:26:31.603+0800	[38;2;126;192;238mDebug[0m	[38;5;230m user/login.go:130 [0m		{"level": "debug", "_msg": "update last login failed", "error": "no such table: user", "affected": 0}
+2019-11-02T12:26:31.683+0800	[38;2;126;192;238mDebug[0m	[38;5;230m dorm@v0.0.0-20191029104746-dbf265ce2754/db.go:67 [0m		{"level": "debug", "_msg": "exec ", "statement": "update `user` set last_login = ? where id = ?", "args": ["2019-11-02T12:26:31.683624342+08:00",2]}
+2019-11-02T12:26:31.683+0800	[38;2;126;192;238mDebug[0m	[38;5;230m user/login.go:130 [0m		{"level": "debug", "_msg": "update last login failed", "error": "no such table: user", "affected": 0}
+2019-11-02T12:26:31.764+0800	[38;2;126;192;238mDebug[0m	[38;5;230m dorm@v0.0.0-20191029104746-dbf265ce2754/db.go:67 [0m		{"level": "debug", "_msg": "exec ", "statement": "update `user` set last_login = ? where id = ?", "args": ["2019-11-02T12:26:31.764128656+08:00",2]}
+2019-11-02T12:26:31.764+0800	[38;2;126;192;238mDebug[0m	[38;5;230m user/login.go:130 [0m		{"level": "debug", "_msg": "update last login failed", "error": "no such table: user", "affected": 0}
+2019-11-02T12:32:55.438+0800	[38;2;126;192;238mDebug[0m	[38;5;230m module/module.go:92 [0m		{"level": "debug", "_msg": "module installed", "path": "/database/goodsDB", "name": "*splayer.GoodsDB"}
+2019-11-02T12:32:55.438+0800	[38;2;126;192;238mDebug[0m	[38;5;230m module/module.go:92 [0m		{"level": "debug", "_msg": "module installed", "path": "/database/userDB", "name": "*splayer.UserDB"}
+2019-11-02T12:32:55.438+0800	[38;2;126;192;238mDebug[0m	[38;5;230m module/module.go:92 [0m		{"level": "debug", "_msg": "module installed", "path": "/database/objectDB", "name": "*splayer.ObjectDB"}
+2019-11-02T12:32:55.438+0800	[38;2;126;192;238mDebug[0m	[38;5;230m module/module.go:92 [0m		{"level": "debug", "_msg": "module installed", "path": "/database/enforcer", "name": "*casbin.SyncedEnforcer"}
+2019-11-02T12:32:55.438+0800	[38;2;126;192;238mDebug[0m	[38;5;230m module/module.go:92 [0m		{"level": "debug", "_msg": "module installed", "path": "/database/needsDB", "name": "*splayer.NeedsDB"}
+2019-11-02T12:32:55.599+0800	[38;2;126;192;238mDebug[0m	[38;5;230m dorm@v0.0.0-20191029104746-dbf265ce2754/db.go:67 [0m		{"level": "debug", "_msg": "exec ", "statement": "update `user` set last_login = ? where id = ?", "args": ["2019-11-02T12:32:55.599607625+08:00",1]}
+2019-11-02T12:32:55.599+0800	[38;2;126;192;238mDebug[0m	[38;5;230m user/login.go:130 [0m		{"level": "debug", "_msg": "update last login failed", "error": "no such table: user", "affected": 0}
+2019-11-02T12:32:55.758+0800	[38;2;126;192;238mDebug[0m	[38;5;230m dorm@v0.0.0-20191029104746-dbf265ce2754/db.go:67 [0m		{"level": "debug", "_msg": "exec ", "statement": "update `user` set last_login = ? where id = ?", "args": ["2019-11-02T12:32:55.758150404+08:00",2]}
+2019-11-02T12:32:55.758+0800	[38;2;126;192;238mDebug[0m	[38;5;230m user/login.go:130 [0m		{"level": "debug", "_msg": "update last login failed", "error": "no such table: user", "affected": 0}
+2019-11-02T12:32:55.839+0800	[38;2;126;192;238mDebug[0m	[38;5;230m dorm@v0.0.0-20191029104746-dbf265ce2754/db.go:67 [0m		{"level": "debug", "_msg": "exec ", "statement": "update `user` set last_login = ? where id = ?", "args": ["2019-11-02T12:32:55.839391431+08:00",2]}
+2019-11-02T12:32:55.839+0800	[38;2;126;192;238mDebug[0m	[38;5;230m user/login.go:130 [0m		{"level": "debug", "_msg": "update last login failed", "error": "no such table: user", "affected": 0}
+2019-11-02T12:32:55.919+0800	[38;2;126;192;238mDebug[0m	[38;5;230m dorm@v0.0.0-20191029104746-dbf265ce2754/db.go:67 [0m		{"level": "debug", "_msg": "exec ", "statement": "update `user` set last_login = ? where id = ?", "args": ["2019-11-02T12:32:55.919490939+08:00",2]}
+2019-11-02T12:32:55.919+0800	[38;2;126;192;238mDebug[0m	[38;5;230m user/login.go:130 [0m		{"level": "debug", "_msg": "update last login failed", "error": "no such table: user", "affected": 0}
+2019-11-02T12:33:14.092+0800	[38;2;126;192;238mDebug[0m	[38;5;230m module/module.go:92 [0m		{"level": "debug", "_msg": "module installed", "path": "/database/goodsDB", "name": "*splayer.GoodsDB"}
+2019-11-02T12:33:14.092+0800	[38;2;126;192;238mDebug[0m	[38;5;230m module/module.go:92 [0m		{"level": "debug", "_msg": "module installed", "path": "/database/userDB", "name": "*splayer.UserDB"}
+2019-11-02T12:33:14.092+0800	[38;2;126;192;238mDebug[0m	[38;5;230m module/module.go:92 [0m		{"level": "debug", "_msg": "module installed", "path": "/database/objectDB", "name": "*splayer.ObjectDB"}
+2019-11-02T12:33:14.092+0800	[38;2;126;192;238mDebug[0m	[38;5;230m module/module.go:92 [0m		{"level": "debug", "_msg": "module installed", "path": "/database/enforcer", "name": "*casbin.SyncedEnforcer"}
+2019-11-02T12:33:14.101+0800	[38;2;126;192;238mDebug[0m	[38;5;230m module/module.go:92 [0m		{"level": "debug", "_msg": "module installed", "path": "/database/needsDB", "name": "*splayer.NeedsDB"}
+2019-11-02T12:33:14.265+0800	[38;2;126;192;238mDebug[0m	[38;5;230m dorm@v0.0.0-20191029104746-dbf265ce2754/db.go:67 [0m		{"level": "debug", "_msg": "exec ", "statement": "update `user` set last_login = ? where id = ?", "args": ["2019-11-02T12:33:14.265371389+08:00",1]}
+2019-11-02T12:33:14.265+0800	[38;2;126;192;238mDebug[0m	[38;5;230m user/login.go:130 [0m		{"level": "debug", "_msg": "update last login failed", "error": "no such table: user", "affected": 0}
+2019-11-02T12:33:14.424+0800	[38;2;126;192;238mDebug[0m	[38;5;230m dorm@v0.0.0-20191029104746-dbf265ce2754/db.go:67 [0m		{"level": "debug", "_msg": "exec ", "statement": "update `user` set last_login = ? where id = ?", "args": ["2019-11-02T12:33:14.424750007+08:00",2]}
+2019-11-02T12:33:14.424+0800	[38;2;126;192;238mDebug[0m	[38;5;230m user/login.go:130 [0m		{"level": "debug", "_msg": "update last login failed", "error": "no such table: user", "affected": 0}
+2019-11-02T12:33:14.503+0800	[38;2;126;192;238mDebug[0m	[38;5;230m dorm@v0.0.0-20191029104746-dbf265ce2754/db.go:67 [0m		{"level": "debug", "_msg": "exec ", "statement": "update `user` set last_login = ? where id = ?", "args": ["2019-11-02T12:33:14.503604504+08:00",2]}
+2019-11-02T12:33:14.503+0800	[38;2;126;192;238mDebug[0m	[38;5;230m user/login.go:130 [0m		{"level": "debug", "_msg": "update last login failed", "error": "no such table: user", "affected": 0}
+2019-11-02T12:33:14.582+0800	[38;2;126;192;238mDebug[0m	[38;5;230m dorm@v0.0.0-20191029104746-dbf265ce2754/db.go:67 [0m		{"level": "debug", "_msg": "exec ", "statement": "update `user` set last_login = ? where id = ?", "args": ["2019-11-02T12:33:14.582601652+08:00",2]}
+2019-11-02T12:33:14.582+0800	[38;2;126;192;238mDebug[0m	[38;5;230m user/login.go:130 [0m		{"level": "debug", "_msg": "update last login failed", "error": "no such table: user", "affected": 0}
+2019-11-02T12:33:48.623+0800	[38;2;126;192;238mDebug[0m	[38;5;230m module/module.go:92 [0m		{"level": "debug", "_msg": "module installed", "path": "/database/enforcer", "name": "*casbin.SyncedEnforcer"}
+2019-11-02T12:33:48.722+0800	[38;2;126;192;238mDebug[0m	[38;5;230m module/module.go:92 [0m		{"level": "debug", "_msg": "module installed", "path": "/database/needsDB", "name": "*splayer.NeedsDB"}
+2019-11-02T12:33:48.722+0800	[38;2;126;192;238mDebug[0m	[38;5;230m module/module.go:92 [0m		{"level": "debug", "_msg": "module installed", "path": "/database/goodsDB", "name": "*splayer.GoodsDB"}
+2019-11-02T12:33:48.722+0800	[38;2;126;192;238mDebug[0m	[38;5;230m module/module.go:92 [0m		{"level": "debug", "_msg": "module installed", "path": "/database/userDB", "name": "*splayer.UserDB"}
+2019-11-02T12:33:48.723+0800	[38;2;126;192;238mDebug[0m	[38;5;230m module/module.go:92 [0m		{"level": "debug", "_msg": "module installed", "path": "/database/objectDB", "name": "*splayer.ObjectDB"}
+2019-11-02T12:33:48.888+0800	[38;2;126;192;238mDebug[0m	[38;5;230m dorm@v0.0.0-20191029104746-dbf265ce2754/db.go:67 [0m		{"level": "debug", "_msg": "exec ", "statement": "update `user` set last_login = ? where id = ?", "args": ["2019-11-02T12:33:48.888880426+08:00",1]}
+2019-11-02T12:33:48.889+0800	[38;2;126;192;238mDebug[0m	[38;5;230m user/login.go:130 [0m		{"level": "debug", "_msg": "update last login failed", "error": "no such table: user", "affected": 0}
+2019-11-02T12:33:49.048+0800	[38;2;126;192;238mDebug[0m	[38;5;230m dorm@v0.0.0-20191029104746-dbf265ce2754/db.go:67 [0m		{"level": "debug", "_msg": "exec ", "statement": "update `user` set last_login = ? where id = ?", "args": ["2019-11-02T12:33:49.048612466+08:00",2]}
+2019-11-02T12:33:49.048+0800	[38;2;126;192;238mDebug[0m	[38;5;230m user/login.go:130 [0m		{"level": "debug", "_msg": "update last login failed", "error": "no such table: user", "affected": 0}
+2019-11-02T12:33:49.128+0800	[38;2;126;192;238mDebug[0m	[38;5;230m dorm@v0.0.0-20191029104746-dbf265ce2754/db.go:67 [0m		{"level": "debug", "_msg": "exec ", "statement": "update `user` set last_login = ? where id = ?", "args": ["2019-11-02T12:33:49.128147635+08:00",2]}
+2019-11-02T12:33:49.128+0800	[38;2;126;192;238mDebug[0m	[38;5;230m user/login.go:130 [0m		{"level": "debug", "_msg": "update last login failed", "error": "no such table: user", "affected": 0}
+2019-11-02T12:33:49.207+0800	[38;2;126;192;238mDebug[0m	[38;5;230m dorm@v0.0.0-20191029104746-dbf265ce2754/db.go:67 [0m		{"level": "debug", "_msg": "exec ", "statement": "update `user` set last_login = ? where id = ?", "args": ["2019-11-02T12:33:49.207703697+08:00",2]}
+2019-11-02T12:33:49.207+0800	[38;2;126;192;238mDebug[0m	[38;5;230m user/login.go:130 [0m		{"level": "debug", "_msg": "update last login failed", "error": "no such table: user", "affected": 0}
+2019-11-02T12:38:09.317+0800	[38;2;126;192;238mDebug[0m	[38;5;230m module/module.go:92 [0m		{"level": "debug", "_msg": "module installed", "path": "/database/userDB", "name": "*splayer.UserDB"}
+2019-11-02T12:38:09.321+0800	[38;2;126;192;238mDebug[0m	[38;5;230m module/module.go:92 [0m		{"level": "debug", "_msg": "module installed", "path": "/database/objectDB", "name": "*splayer.ObjectDB"}
+2019-11-02T12:38:09.321+0800	[38;2;126;192;238mDebug[0m	[38;5;230m module/module.go:92 [0m		{"level": "debug", "_msg": "module installed", "path": "/database/enforcer", "name": "*casbin.SyncedEnforcer"}
+2019-11-02T12:38:09.321+0800	[38;2;126;192;238mDebug[0m	[38;5;230m module/module.go:92 [0m		{"level": "debug", "_msg": "module installed", "path": "/database/needsDB", "name": "*splayer.NeedsDB"}
+2019-11-02T12:38:09.321+0800	[38;2;126;192;238mDebug[0m	[38;5;230m module/module.go:92 [0m		{"level": "debug", "_msg": "module installed", "path": "/database/goodsDB", "name": "*splayer.GoodsDB"}
+2019-11-02T12:38:09.480+0800	[38;2;126;192;238mDebug[0m	[38;5;230m dorm@v0.0.0-20191029104746-dbf265ce2754/db.go:67 [0m		{"level": "debug", "_msg": "exec ", "statement": "update `user` set last_login = ? where id = ?", "args": ["2019-11-02T12:38:09.480606478+08:00",1]}
+2019-11-02T12:38:09.480+0800	[38;2;126;192;238mDebug[0m	[38;5;230m user/login.go:130 [0m		{"level": "debug", "_msg": "update last login failed", "error": "no such table: user", "affected": 0}
+2019-11-02T12:38:09.640+0800	[38;2;126;192;238mDebug[0m	[38;5;230m dorm@v0.0.0-20191029104746-dbf265ce2754/db.go:67 [0m		{"level": "debug", "_msg": "exec ", "statement": "update `user` set last_login = ? where id = ?", "args": ["2019-11-02T12:38:09.640431019+08:00",2]}
+2019-11-02T12:38:09.640+0800	[38;2;126;192;238mDebug[0m	[38;5;230m user/login.go:130 [0m		{"level": "debug", "_msg": "update last login failed", "error": "no such table: user", "affected": 0}
+2019-11-02T12:38:09.719+0800	[38;2;126;192;238mDebug[0m	[38;5;230m dorm@v0.0.0-20191029104746-dbf265ce2754/db.go:67 [0m		{"level": "debug", "_msg": "exec ", "statement": "update `user` set last_login = ? where id = ?", "args": ["2019-11-02T12:38:09.719762551+08:00",2]}
+2019-11-02T12:38:09.719+0800	[38;2;126;192;238mDebug[0m	[38;5;230m user/login.go:130 [0m		{"level": "debug", "_msg": "update last login failed", "error": "no such table: user", "affected": 0}
+2019-11-02T12:38:09.799+0800	[38;2;126;192;238mDebug[0m	[38;5;230m dorm@v0.0.0-20191029104746-dbf265ce2754/db.go:67 [0m		{"level": "debug", "_msg": "exec ", "statement": "update `user` set last_login = ? where id = ?", "args": ["2019-11-02T12:38:09.799519254+08:00",2]}
+2019-11-02T12:38:09.799+0800	[38;2;126;192;238mDebug[0m	[38;5;230m user/login.go:130 [0m		{"level": "debug", "_msg": "update last login failed", "error": "no such table: user", "affected": 0}
+2019-11-02T12:39:12.122+0800	[38;2;126;192;238mDebug[0m	[38;5;230m module/module.go:92 [0m		{"level": "debug", "_msg": "module installed", "path": "/database/goodsDB", "name": "*splayer.GoodsDB"}
+2019-11-02T12:39:12.122+0800	[38;2;126;192;238mDebug[0m	[38;5;230m module/module.go:92 [0m		{"level": "debug", "_msg": "module installed", "path": "/database/userDB", "name": "*splayer.UserDB"}
+2019-11-02T12:39:12.122+0800	[38;2;126;192;238mDebug[0m	[38;5;230m module/module.go:92 [0m		{"level": "debug", "_msg": "module installed", "path": "/database/objectDB", "name": "*splayer.ObjectDB"}
+2019-11-02T12:39:12.122+0800	[38;2;126;192;238mDebug[0m	[38;5;230m module/module.go:92 [0m		{"level": "debug", "_msg": "module installed", "path": "/database/enforcer", "name": "*casbin.SyncedEnforcer"}
+2019-11-02T12:39:12.122+0800	[38;2;126;192;238mDebug[0m	[38;5;230m module/module.go:92 [0m		{"level": "debug", "_msg": "module installed", "path": "/database/needsDB", "name": "*splayer.NeedsDB"}
+2019-11-02T12:39:12.284+0800	[38;2;126;192;238mDebug[0m	[38;5;230m dorm@v0.0.0-20191029104746-dbf265ce2754/db.go:67 [0m		{"level": "debug", "_msg": "exec ", "statement": "update `user` set last_login = ? where id = ?", "args": ["2019-11-02T12:39:12.284824673+08:00",1]}
+2019-11-02T12:39:12.284+0800	[38;2;126;192;238mDebug[0m	[38;5;230m user/login.go:130 [0m		{"level": "debug", "_msg": "update last login failed", "error": "no such table: user", "affected": 0}
+2019-11-02T12:39:12.447+0800	[38;2;126;192;238mDebug[0m	[38;5;230m dorm@v0.0.0-20191029104746-dbf265ce2754/db.go:67 [0m		{"level": "debug", "_msg": "exec ", "statement": "update `user` set last_login = ? where id = ?", "args": ["2019-11-02T12:39:12.447411179+08:00",2]}
+2019-11-02T12:39:12.447+0800	[38;2;126;192;238mDebug[0m	[38;5;230m user/login.go:130 [0m		{"level": "debug", "_msg": "update last login failed", "error": "no such table: user", "affected": 0}
+2019-11-02T12:39:12.527+0800	[38;2;126;192;238mDebug[0m	[38;5;230m dorm@v0.0.0-20191029104746-dbf265ce2754/db.go:67 [0m		{"level": "debug", "_msg": "exec ", "statement": "update `user` set last_login = ? where id = ?", "args": ["2019-11-02T12:39:12.52726492+08:00",2]}
+2019-11-02T12:39:12.527+0800	[38;2;126;192;238mDebug[0m	[38;5;230m user/login.go:130 [0m		{"level": "debug", "_msg": "update last login failed", "error": "no such table: user", "affected": 0}
+2019-11-02T12:39:12.607+0800	[38;2;126;192;238mDebug[0m	[38;5;230m dorm@v0.0.0-20191029104746-dbf265ce2754/db.go:67 [0m		{"level": "debug", "_msg": "exec ", "statement": "update `user` set last_login = ? where id = ?", "args": ["2019-11-02T12:39:12.607036169+08:00",2]}
+2019-11-02T12:39:12.607+0800	[38;2;126;192;238mDebug[0m	[38;5;230m user/login.go:130 [0m		{"level": "debug", "_msg": "update last login failed", "error": "no such table: user", "affected": 0}
+2019-11-02T12:48:34.584+0800	[38;2;126;192;238mDebug[0m	[38;5;230m module/module.go:92 [0m		{"level": "debug", "_msg": "module installed", "path": "/database/enforcer", "name": "*casbin.SyncedEnforcer"}
+2019-11-02T12:48:34.585+0800	[38;2;126;192;238mDebug[0m	[38;5;230m module/module.go:92 [0m		{"level": "debug", "_msg": "module installed", "path": "/database/needsDB", "name": "*splayer.NeedsDB"}
+2019-11-02T12:48:34.585+0800	[38;2;126;192;238mDebug[0m	[38;5;230m module/module.go:92 [0m		{"level": "debug", "_msg": "module installed", "path": "/database/goodsDB", "name": "*splayer.GoodsDB"}
+2019-11-02T12:48:34.585+0800	[38;2;126;192;238mDebug[0m	[38;5;230m module/module.go:92 [0m		{"level": "debug", "_msg": "module installed", "path": "/database/userDB", "name": "*splayer.UserDB"}
+2019-11-02T12:48:34.585+0800	[38;2;126;192;238mDebug[0m	[38;5;230m module/module.go:92 [0m		{"level": "debug", "_msg": "module installed", "path": "/database/objectDB", "name": "*splayer.ObjectDB"}
+2019-11-02T12:48:34.747+0800	[38;2;126;192;238mDebug[0m	[38;5;230m dorm@v0.0.0-20191029104746-dbf265ce2754/db.go:67 [0m		{"level": "debug", "_msg": "exec ", "statement": "update `user` set last_login = ? where id = ?", "args": ["2019-11-02T12:48:34.747113756+08:00",1]}
+2019-11-02T12:48:34.747+0800	[38;2;126;192;238mDebug[0m	[38;5;230m user/login.go:130 [0m		{"level": "debug", "_msg": "update last login failed", "error": "no such table: user", "affected": 0}
+2019-11-02T12:48:34.906+0800	[38;2;126;192;238mDebug[0m	[38;5;230m dorm@v0.0.0-20191029104746-dbf265ce2754/db.go:67 [0m		{"level": "debug", "_msg": "exec ", "statement": "update `user` set last_login = ? where id = ?", "args": ["2019-11-02T12:48:34.906758712+08:00",2]}
+2019-11-02T12:48:34.906+0800	[38;2;126;192;238mDebug[0m	[38;5;230m user/login.go:130 [0m		{"level": "debug", "_msg": "update last login failed", "error": "no such table: user", "affected": 0}
+2019-11-02T12:48:34.986+0800	[38;2;126;192;238mDebug[0m	[38;5;230m dorm@v0.0.0-20191029104746-dbf265ce2754/db.go:67 [0m		{"level": "debug", "_msg": "exec ", "statement": "update `user` set last_login = ? where id = ?", "args": ["2019-11-02T12:48:34.986003831+08:00",2]}
+2019-11-02T12:48:34.986+0800	[38;2;126;192;238mDebug[0m	[38;5;230m user/login.go:130 [0m		{"level": "debug", "_msg": "update last login failed", "error": "no such table: user", "affected": 0}
+2019-11-02T12:48:35.065+0800	[38;2;126;192;238mDebug[0m	[38;5;230m dorm@v0.0.0-20191029104746-dbf265ce2754/db.go:67 [0m		{"level": "debug", "_msg": "exec ", "statement": "update `user` set last_login = ? where id = ?", "args": ["2019-11-02T12:48:35.065676172+08:00",2]}
+2019-11-02T12:48:35.065+0800	[38;2;126;192;238mDebug[0m	[38;5;230m user/login.go:130 [0m		{"level": "debug", "_msg": "update last login failed", "error": "no such table: user", "affected": 0}

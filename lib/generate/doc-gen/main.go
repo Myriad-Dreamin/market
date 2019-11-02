@@ -169,17 +169,17 @@ func init() {
 HOST: {{.Host}}
 
 # {{.GetDocName}}
-
 {{.GetDescription}}
-
 {{range $i, $cat := .Categories}}
 ## {{$cat.GetCategoryName}} [{{$cat.GetPath}}]
-
 {{$cat.GetDescription}}
+
+{{range $j, $v := $cat.GetResults}} + {{$v.GetMethod}}: {{$v.GetDescription}}
+{{end}}
 {{range $j, $v := $cat.GetResults}}{{$recs := $v.GetRecords}}{{if ne (len $recs) 0}}
 ### {{$v.GetTitle}} [{{$v.GetMethod}}]
 {{range $k, $rec := $recs}}{{$reqType := contentType $rec.GetRequestHeader}}{{$resType := contentType $rec.GetResponseHeader}}
-+ Request
++ Request {{$rec.GetComment}}
 
     + Headers
 
@@ -198,7 +198,6 @@ HOST: {{.Host}}
     + Body
 
 {{prettifyBody $rec.GetResponseBody $resType 3}}
-
 {{end}}{{end}}{{end}}{{end}}`)
 	if err != nil {
 		panic(err)

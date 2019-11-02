@@ -5,6 +5,12 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/generate/doc-gen/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/generate/doc-gen/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/generate/doc-gen/process-result.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/generate/doc-gen/process-result.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/mock/results.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/mock/results.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/mock/serialize-protocol.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/mock/serialize-protocol.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/mock.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/mock.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/result.md" beforeDir="false" afterPath="$PROJECT_DIR$/test/result.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/test.log" beforeDir="false" afterPath="$PROJECT_DIR$/test/test.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/tester/tester.go" beforeDir="false" afterPath="$PROJECT_DIR$/test/tester/tester.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

@@ -153,11 +153,20 @@ func (rc) Close() error {
 	return nil
 }
 
-func (mocker *Mocker) mockServe(r *Request) (w *mock.Response) {
+func (mocker *Mocker) mockServe(r *Request, params ...interface{}) (w *mock.Response) {
 
 	w = mock.NewResponse()
 	var b []byte
 	var err error
+	var comment string
+
+	for i := range params {
+		switch p := params[i].(type) {
+		case mock.Comment:
+			comment = string(p)
+		}
+	}
+
 	if mocker.collectResults {
 		if r.Body != nil {
 			b, err = ioutil.ReadAll(r.Body)
@@ -193,6 +202,7 @@ func (mocker *Mocker) mockServe(r *Request) (w *mock.Response) {
 				RequestBody:  b,
 				ResponseBody: c,
 				ResponseCode: w.Code(),
+				Comment: comment,
 			}
 			rec.RequestHeader = make(http.Header)
 			for k, v := range r.Header {
@@ -223,8 +233,9 @@ func (mocker *Mocker) report(err error) {
 func (mocker *Mocker) Method(method, path string, params ...interface{}) mock.ResponseI {
 	var body io.Reader
 	var contentType string
-	if len(params) > 0 {
-		switch p := params[0].(type) {
+	var serveParams []interface{}
+	for i := range params {
+		switch p := params[i].(type) {
 		case string, []byte:
 			body = mock.NotStruct(p)
 		case mock.Serializable:
@@ -240,9 +251,11 @@ func (mocker *Mocker) Method(method, path string, params ...interface{}) mock.Re
 		case io.Reader:
 			body = p
 		case *http.Request:
-			return mocker.mockServe(p)
+			return mocker.mockServe(p, serveParams...)
 		case http.Request:
-			return mocker.mockServe(&p)
+			return mocker.mockServe(&p, serveParams...)
+		case mock.Comment:
+			serveParams = append(serveParams, p)
 		default:
 			buf := bytes.NewBuffer(nil)
 			body = buf
@@ -261,7 +274,7 @@ func (mocker *Mocker) Method(method, path string, params ...interface{}) mock.Re
 	for k, v := range mocker.header {
 		r.Header.Set(k, v)
 	}
-	return mocker.mockServe(r)
+	return mocker.mockServe(r, serveParams...)
 }
 
 func (mocker *Mocker) Get(path string, params ...interface{}) mock.ResponseI {

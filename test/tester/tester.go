@@ -3,6 +3,7 @@ package tester
 import (
 	"encoding/json"
 	"errors"
+	"github.com/Myriad-Dreamin/market/lib/mock"
 	"github.com/Myriad-Dreamin/market/lib/sugar"
 	"github.com/Myriad-Dreamin/market/server"
 	userservice "github.com/Myriad-Dreamin/market/service/user"
@@ -80,7 +81,7 @@ func (t *Tester) MakeAdminContext() bool {
 		userservice.LoginRequest{
 			ID:         r.ID,
 			Password:     "admin",
-		})
+		}, mock.Comment("admin login for test"))
 	if !t.NoErr(resp) {
 		return false
 	}
