@@ -69,6 +69,7 @@ func Test_prettifyBody(t *testing.T) {
 	}
 }
 
+// @category Accounts
 // @titLE Get Accounts
 //          @Description get accounts
 //   @Success 200 {array} model.Account
@@ -76,6 +77,47 @@ func testHandler(ctx *gin.Context) {
 
 }
 
+// @category Accounts
+// @titLE Put Accounts
+//          @Description put accounts
+//   @Success 200 {array} model.Account
+func testHandler2(ctx *gin.Context) {
+
+}
+
+
+type controllerS struct {
+
+}
+
+// @titLE Get AccountsA
+//          @Description get accounts
+//   @Success 200 {array} model.Account
+func (controllerS) TestHandler(ctx *gin.Context) {
+
+}
+
+// @titLE Get AccountsA
+//          @Description get accounts
+//   @Success 200 {array} model.Account
+func (controllerS) testHandler2(ctx *gin.Context) {
+
+}
+
+// @category AccountsController
+type controller interface {
+	// @category Accounts
+	// @titLE Get Accounts
+	//          @Description get accounts
+	//   @Success 200 {array} model.Account
+	TestHandler(ctx *gin.Context)
+
+	// @category Accounts
+	// @titLE Put Accounts
+	//          @Description put accounts
+	//   @Success 200 {array} model.Account
+	testHandler2(ctx *gin.Context)
+}
 
 func TestFromGinResults(t *testing.T) {
 	type args struct {
@@ -109,6 +151,82 @@ func TestFromGinResults(t *testing.T) {
 
 			},
 		}, false},
+		{"test_base02", args{
+			res: &GinInfo{
+				Result:[]GinResult{mock.Results{
+					RouteInfo: gin.RouteInfo{
+						Method:      "PUT",
+						Path:        "/v1/user",
+						Handler:     "ginhub.com/Myriad-Dreamin/x.y.z",
+						HandlerFunc: testHandler2,
+					},
+					Recs:      []Records{mock.Records{
+						RequestHeader:  http.Header{"Content-Type": []string{mock.ContentTypeJSON}},
+						RequestBody:    []byte(`{"1":1}`),
+						ResponseCode:   200,
+						ResponseHeader: http.Header{"Content-Type": []string{mock.ContentTypeJSON}},
+						ResponseBody:   []byte(`{"2":2}`),
+					}},
+				},
+					mock.Results{
+						RouteInfo: gin.RouteInfo{
+							Method:      "GET",
+							Path:        "/v1/user",
+							Handler:     "ginhub.com/Myriad-Dreamin/x.y.z",
+							HandlerFunc: testHandler,
+						},
+						Recs:      []Records{mock.Records{
+							RequestHeader:  http.Header{"Content-Type": []string{mock.ContentTypeJSON}},
+							RequestBody:    []byte(`{"1":1}`),
+							ResponseCode:   200,
+							ResponseHeader: http.Header{"Content-Type": []string{mock.ContentTypeJSON}},
+							ResponseBody:   []byte(`{"2":2}`),
+						}},
+					},
+				},
+				Host: "127.0.0.1",
+				ApiDoc: "Minimum Document",
+
+			},
+		}, false},
+		{"test_base03", args{
+			res: &GinInfo{
+				Result:[]GinResult{mock.Results{
+					RouteInfo: gin.RouteInfo{
+						Method:      "PUT",
+						Path:        "/v1/user",
+						Handler:     "ginhub.com/Myriad-Dreamin/x.y.z",
+						HandlerFunc: controllerS{}.testHandler2,
+					},
+					Recs:      []Records{mock.Records{
+						RequestHeader:  http.Header{"Content-Type": []string{mock.ContentTypeJSON}},
+						RequestBody:    []byte(`{"1":1}`),
+						ResponseCode:   200,
+						ResponseHeader: http.Header{"Content-Type": []string{mock.ContentTypeJSON}},
+						ResponseBody:   []byte(`{"2":2}`),
+					}},
+				},
+					mock.Results{
+						RouteInfo: gin.RouteInfo{
+							Method:      "GET",
+							Path:        "/v1/user",
+							Handler:     "ginhub.com/Myriad-Dreamin/x.y.z",
+							HandlerFunc: controllerS{}.TestHandler,
+						},
+						Recs:      []Records{mock.Records{
+							RequestHeader:  http.Header{"Content-Type": []string{mock.ContentTypeJSON}},
+							RequestBody:    []byte(`{"1":1}`),
+							ResponseCode:   200,
+							ResponseHeader: http.Header{"Content-Type": []string{mock.ContentTypeJSON}},
+							ResponseBody:   []byte(`{"2":2}`),
+						}},
+					},
+				},
+				Host: "127.0.0.1",
+				ApiDoc: "Minimum Document",
+
+			},
+		}, false},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -123,7 +241,7 @@ func Test_processResultResult(t *testing.T) {
 	type args struct {
 		resI interface{}
 	}
-	var ri rawServiceI = rawService{}
+	var ri RawServiceI = RawService{}
 	tests := []struct {
 		name string
 		args args
@@ -152,7 +270,7 @@ func Test_processResultResult(t *testing.T) {
 					Method:      "PUT",
 					Path:        "/v1/user",
 					Handler:     "ginhub.com/Myriad-Dreamin/x.y.z",
-					HandlerFunc: rawService{}.testHandler,
+					HandlerFunc: RawService{}.TestHandler,
 				},
 				Recs:      []Records{mock.Records{
 					RequestHeader:  http.Header{"Content-Type": []string{mock.ContentTypeJSON}},
@@ -169,7 +287,7 @@ func Test_processResultResult(t *testing.T) {
 					Method:      "PUT",
 					Path:        "/v1/user",
 					Handler:     "ginhub.com/Myriad-Dreamin/x.y.z",
-					HandlerFunc: ri.testHandler,
+					HandlerFunc: ri.TestHandler,
 				},
 				Recs:      []Records{mock.Records{
 					RequestHeader:  http.Header{"Content-Type": []string{mock.ContentTypeJSON}},

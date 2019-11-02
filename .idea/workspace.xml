@@ -2,30 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d33caeea-6f6c-4429-8ab1-6d64520d9a9b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/control/user.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/generate/doc-gen/extract-doc.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/generate/doc-gen/extract-doc_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/generate/doc-gen/main_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/generate/doc-gen/process-result.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/generate/doc-gen/result.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/sugar/with-file.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/sugar/with-file_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/result.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/control/register-docs.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/files.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/files_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/register.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/generate/keep.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/generate/minimum-attach-file/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/keep.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/market.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/market.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cli.py" beforeDir="false" afterPath="$PROJECT_DIR$/cli.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/control/interface.go" beforeDir="false" afterPath="$PROJECT_DIR$/control/interface.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/generate/doc-gen/extract-doc.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/generate/doc-gen/extract-doc.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/generate/doc-gen/extract-doc_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/generate/doc-gen/extract-doc_test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/generate/doc-gen/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/generate/doc-gen/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/mock/results.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/mock/results.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/tracer/tracer.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/sugar/tracer.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/mock.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/mock.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/user.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/user/interface_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/user/interface_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/user/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/user/service.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/test.log" beforeDir="false" afterPath="$PROJECT_DIR$/test/test.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/tester/tester.go" beforeDir="false" afterPath="$PROJECT_DIR$/test/tester/tester.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/tester_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/test/tester_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/types/interface.go" beforeDir="false" afterPath="$PROJECT_DIR$/control/interface.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/generate/doc-gen/main_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/generate/doc-gen/main_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/generate/doc-gen/process-result.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/generate/doc-gen/process-result.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/generate/doc-gen/result.md" beforeDir="false" afterPath="$PROJECT_DIR$/lib/generate/doc-gen/result.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -63,7 +56,7 @@
       </list>
     </option>
   </component>
-  <component name="GOROOT" path="D:\Go" />
+  <component name="GOROOT" path="$PROJECT_DIR$/../../../../../go" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -90,7 +83,7 @@
     <property name="node.js.selected.package.stylelint" value="" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="configurable.stylesheets.stylelint" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="GoMoveDeclarationDialog.RECENT_KEY">
@@ -126,18 +119,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Go Test.go test test">
-    <configuration name="TestFromGinResults in github.com/Myriad-Dreamin/market/lib/generate/doc-gen" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
-      <module name="market" />
-      <working_directory value="$PROJECT_DIR$/lib/generate/doc-gen" />
-      <framework value="gotest" />
-      <kind value="PACKAGE" />
-      <package value="github.com/Myriad-Dreamin/market/lib/generate/doc-gen" />
-      <directory value="$PROJECT_DIR$/" />
-      <filePath value="$PROJECT_DIR$/" />
-      <pattern value="^TestFromGinResults$" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Go Test.TestPackage in github.com/Myriad-Dreamin/market/docs">
     <configuration name="TestFuncDescription in github.com/Myriad-Dreamin/market/lib/generate/doc-gen" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="market" />
       <working_directory value="$PROJECT_DIR$/lib/generate/doc-gen" />
@@ -149,7 +131,7 @@
       <pattern value="^TestFuncDescription$" />
       <method v="2" />
     </configuration>
-    <configuration name="Test_processResultResult in github.com/Myriad-Dreamin/market/lib/generate/doc-gen" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="TestInterfaceDescription in github.com/Myriad-Dreamin/market/lib/generate/doc-gen" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="market" />
       <working_directory value="$PROJECT_DIR$/lib/generate/doc-gen" />
       <framework value="gotest" />
@@ -157,7 +139,18 @@
       <package value="github.com/Myriad-Dreamin/market/lib/generate/doc-gen" />
       <directory value="$PROJECT_DIR$/" />
       <filePath value="$PROJECT_DIR$/" />
-      <pattern value="^Test_processResultResult$" />
+      <pattern value="^TestInterfaceDescription$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestPackage in github.com/Myriad-Dreamin/market/docs" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="market" />
+      <working_directory value="$PROJECT_DIR$/docs" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="github.com/Myriad-Dreamin/market/docs" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
+      <pattern value="^TestPackage$" />
       <method v="2" />
     </configuration>
     <configuration name="go test doc-gen" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
@@ -182,11 +175,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Test.TestPackage in github.com/Myriad-Dreamin/market/docs" />
+        <item itemvalue="Go Test.TestInterfaceDescription in github.com/Myriad-Dreamin/market/lib/generate/doc-gen" />
+        <item itemvalue="Go Test.go test doc-gen" />
         <item itemvalue="Go Test.go test test" />
         <item itemvalue="Go Test.TestFuncDescription in github.com/Myriad-Dreamin/market/lib/generate/doc-gen" />
-        <item itemvalue="Go Test.Test_processResultResult in github.com/Myriad-Dreamin/market/lib/generate/doc-gen" />
-        <item itemvalue="Go Test.go test doc-gen" />
-        <item itemvalue="Go Test.TestFromGinResults in github.com/Myriad-Dreamin/market/lib/generate/doc-gen" />
       </list>
     </recent_temporary>
   </component>
@@ -230,16 +223,16 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/market$register_test_go.out" NAME="register_test.go Coverage Results" MODIFIED="1572427931979" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/market$TestNotStruct_in_github_com_Myriad_Dreamin_market_mock.out" NAME="TestNotStruct in github.com/Myriad-Dreamin/market/mock Coverage Results" MODIFIED="1572426011871" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/market$go_test_test.out" NAME="go test test Coverage Results" MODIFIED="1572620703790" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/market$TestProtoMessage_Serialize_in_github_com_Myriad_Dreamin_market_mock.out" NAME="TestProtoMessage_Serialize in github.com/Myriad-Dreamin/market/mock Coverage Results" MODIFIED="1572426707570" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/market$TestLoad_in_github_com_Myriad_Dreamin_market_config.out" NAME="TestLoad in github.com/Myriad-Dreamin/market/config Coverage Results" MODIFIED="1572416958546" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/market$go_test_github_com_Myriad_Dreamin_market_crypto.out" NAME="go test github.com/Myriad-Dreamin/market/crypto Coverage Results" MODIFIED="1572424283684" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/market$go_test_github_com_Myriad_Dreamin_market_config.out" NAME="go test github.com/Myriad-Dreamin/market/config Coverage Results" MODIFIED="1572417095442" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/market$TestJSON_in_github_com_Myriad_Dreamin_market_config.out" NAME="TestJSON in github.com/Myriad-Dreamin/market/config Coverage Results" MODIFIED="1572416295765" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/market$go_test_test.out" NAME="go test test Coverage Results" MODIFIED="1572620703790" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/market$go_test_mock.out" NAME="go test mock Coverage Results" MODIFIED="1572427181686" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/market$go_test_user.out" NAME="go test user Coverage Results" MODIFIED="1572434171704" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/market$TestFilter_in_github_com_Myriad_Dreamin_market_model_db_layer_general_dao.out" NAME="TestFilter in github.com/Myriad-Dreamin/market/model/db-layer/general-dao Coverage Results" MODIFIED="1572278128524" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/market$TestProtoMessage_Serialize_in_github_com_Myriad_Dreamin_market_mock.out" NAME="TestProtoMessage_Serialize in github.com/Myriad-Dreamin/market/mock Coverage Results" MODIFIED="1572426707570" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/market$TestLoad_in_github_com_Myriad_Dreamin_market_config.out" NAME="TestLoad in github.com/Myriad-Dreamin/market/config Coverage Results" MODIFIED="1572416958546" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/market$TestNotStruct_in_github_com_Myriad_Dreamin_market_mock.out" NAME="TestNotStruct in github.com/Myriad-Dreamin/market/mock Coverage Results" MODIFIED="1572426011871" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/market$TestJSON_Serialize_in_github_com_Myriad_Dreamin_market_mock.out" NAME="TestJSON_Serialize in github.com/Myriad-Dreamin/market/mock Coverage Results" MODIFIED="1572427078572" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/market$TestFilter_in_github_com_Myriad_Dreamin_market_model_db_layer_general_dao.out" NAME="TestFilter in github.com/Myriad-Dreamin/market/model/db-layer/general-dao Coverage Results" MODIFIED="1572278128524" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

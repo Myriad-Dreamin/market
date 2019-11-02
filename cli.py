@@ -2,6 +2,8 @@
 import fire
 import shutil
 import os
+import subprocess
+import re
 
 
 def to_camel_case(snake_str) -> str:
@@ -16,6 +18,19 @@ _up_camel = 'Object'
 _placeholder = 'oid'
 
 
+def cmd(cmd_str, cwd=None):
+    return subprocess.Popen(cmd_str, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, cwd=cwd).stdout.read()
+
+
+def cmds(cmd_str, cwd=None):
+    print(cmd_str)
+    return cmd(cmd_str, cwd)
+
+
+def pcmds(cmd_str, cwd=None):
+    print(cmds(cmd_str, cwd))
+
+
 class MinimumCli:
     def __init__(self):
         self.x = 1
@@ -28,6 +43,9 @@ class MinimumCli:
 
     def hello(self):
         print('hello', self.x)
+
+    def install(self):
+        pcmds('go install github.com/Myriad-Dreamin/market/lib/generate/minimum-attach-file')
 
     def create_template(self, object_name: str, placeholder):
         self.object_name = object_name
@@ -123,6 +141,37 @@ class MinimumCli:
                 self.templates_to(file, dst_file)
             if os.path.isfile(file):
                 self.template_to(file, dst_file)
+
+    @staticmethod
+    def _gen_match(match):
+        if match is None:
+            match = re.compile(r'^.*\.go$')
+        if isinstance(match, str):
+            match = re.compile(match)
+        return match
+
+    def generate(self, path='./', match=None):
+        match = self._gen_match(match)
+        for file in os.listdir(path):
+            file = os.path.join(path, file)
+            if os.path.isdir(file):
+                self.generate(file, match)
+            if os.path.isfile(file) and match.match(file):
+                pcmds('go generate %s' % file)
+
+    def fast_generate(self, path='./', match=None):
+        match = self._gen_match(match)
+        if isinstance(match, str):
+            match = re.compile(match)
+        for file in os.listdir(path):
+            file = os.path.join(path, file)
+            if os.path.isdir(file):
+                self.fast_generate(file, match)
+            if os.path.isfile(file) and match.match(file):
+                with open(file, 'r') as go_file:
+                    for line in go_file.readlines():
+                        if line.startswith('//go:generate '):
+                            pcmds(line[len('//go:generate '):], cwd=path)
 
     def replace(self, file_name, old_str, new_str):
         with open(file_name, 'r+') as f:

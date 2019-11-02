@@ -2,6 +2,7 @@ package doc_gen
 
 import (
 	"fmt"
+	"sort"
 	"strings"
 )
 
@@ -22,16 +23,52 @@ type processedResultInterface interface {
 	GinResult
 	GetDescription() string
 	GetTitle() string
+	GetCategory() string
+}
+
+type ControllerProvider interface {
+	GetControllers() []interface{}
 }
 
 type GinInfo struct{
+	ControllerProvider ControllerProvider
 	Result []GinResult
 	Host string
 	ApiDoc string
 }
 
+type mergedResultInterface interface {
+	GetPath() string
+	GetCategoryName() string
+	GetDescription() string
+	GetResults() []processedResultInterface
+}
+
+type mergedResult struct {
+	Path string
+	Cate string
+	Description string
+	Results []processedResultInterface
+}
+
+func (m *mergedResult) GetPath() string {
+	return m.Path
+}
+
+func (m *mergedResult) GetCategoryName() string {
+	return m.Cate
+}
+
+func (m *mergedResult) GetDescription() string {
+	return m.Description
+}
+
+func (m *mergedResult) GetResults() []processedResultInterface {
+	return m.Results
+}
+
 type ginProcessedInfo struct{
-	Result []processedResultInterface
+	Categories []mergedResultInterface
 	Host string
 	ApiDoc string
 }
@@ -39,11 +76,16 @@ type ginProcessedInfo struct{
 type parsedResult struct {
 	Description string
 	Title string
+	Category string
 	Success string
 }
 
 func (p parsedResult) GetDescription() string {
 	return p.Description
+}
+
+func (p parsedResult) GetCategory() string {
+	return p.Category
 }
 
 func (p parsedResult) GetTitle() string {
@@ -65,6 +107,8 @@ func parseDoc(doc string) *parsedResult {
 			res.Description = v
 		case "title":
 			res.Title = v
+		case "category":
+			res.Category = v
 		case "success":
 			res.Success = v
 		}
@@ -98,17 +142,91 @@ func processResultResult(resI interface{}) processedResultInterface {
 	}
 }
 
-func processResultResults(resI interface{}) []processedResultInterface {
+func processResultResults(controllerInfo map[string]ControllerInfoInterface, resI interface{}) []mergedResultInterface {
 	switch res := resI.(type) {
 	case []GinResult:
-		var x = make([]processedResultInterface, len(res))
+		var x = make(map[string]*mergedResult)
 		for r := range res {
-			x[r] = processResultResult(res[r])
+			rr := res[r]
+			pc := processResultResult(rr)
+			var mr = x[rr.GetPath()]
+			if mr == nil {
+				mr = new(mergedResult)
+				mr.Path = pc.GetPath()
+				if ci, ok := controllerInfo[mr.Path]; ok {
+					mr.Cate = ci.GetCategory()
+					mr.Description = ci.GetDescription()
+				}
+				if len(mr.Cate) == 0 {
+					mr.Cate = pc.GetTitle()
+				}
+			}
+			mr.Results = append(mr.Results, pc)
+
+			ct := pc.GetCategory()
+			if len(mr.Cate) == 0 && len(ct) != 0 {
+				mr.Cate = ct
+			}
+
+			x[rr.GetPath()] = mr
 		}
-		return x
+		var keys []string
+		var y = make([]mergedResultInterface, 0, len(x))
+		for k := range x {
+			keys = append(keys, k)
+		}
+		sort.Strings(keys)
+
+		for i := range keys {
+			y = append(y, x[keys[i]])
+		}
+		return y
 	default:
 		return nil
 	}
+}
+
+
+type ControllerInfoInterface interface {
+	GetCategory() string
+	GetPath() string
+	GetDescription() string
+}
+
+
+type ControllerInfo struct {
+	Category string
+	Path string
+	Description string
+}
+
+func (c ControllerInfo) GetCategory() string {
+	return c.Category
+}
+
+func (c ControllerInfo) GetPath() string {
+	return c.Path
+}
+
+func (c ControllerInfo) GetDescription() string {
+	return c.Description
+}
+
+func parseController(i interface{}) ControllerInfoInterface {
+	return nil
+}
+
+func parseControllers(provider ControllerProvider) (mp map[string]ControllerInfoInterface) {
+	mp = make(map[string]ControllerInfoInterface)
+	if provider == nil {
+		return
+	}
+	controllers := provider.GetControllers()
+	for i := range controllers {
+		ci := parseController(controllers[i])
+		mp[ci.GetPath()] = ci
+	}
+	return
 }
 
 func processResult(resI interface{}) *ginProcessedInfo {
@@ -117,7 +235,8 @@ func processResult(resI interface{}) *ginProcessedInfo {
 		var x = new(ginProcessedInfo)
 		x.Host = res.Host
 		x.ApiDoc = res.ApiDoc
-		x.Result = processResultResults(res.Result)
+		x.Categories = processResultResults(
+			parseControllers(res.ControllerProvider), res.Result)
 		fmt.Println(x)
 		return x
 	default:

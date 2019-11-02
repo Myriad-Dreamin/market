@@ -2,6 +2,9 @@ package control
 
 import "github.com/gin-gonic/gin"
 
+//go:generate minimum-attach-file
+
+
 /* auth
  * refresh token GET: 刷新登陆用token
  */

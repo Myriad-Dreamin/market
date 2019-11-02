@@ -171,13 +171,13 @@ HOST: {{.Host}}
 # {{.ApiDoc}}
 
 method description
-{{range $i, $v := .Result}}{{if ne (len $v.GetRecords) 0}}
-## {{title $v}} [{{$v.GetPath}}]
-{{$recs := $v.GetRecords}}
+{{range $i, $cat := .Categories}}
+## {{$cat.GetCategoryName}} [{{$cat.GetPath}}]
+{{range $j, $v := $cat.GetResults}}{{$recs := $v.GetRecords}}{{if ne (len $recs) 0}}
 ### {{$v.GetTitle}} [{{$v.GetMethod}}]
 
 {{$v.GetDescription}}
-{{range $j, $rec := $recs}}{{$reqType := contentType $rec.GetRequestHeader}}{{$resType := contentType $rec.GetResponseHeader}}
+{{range $k, $rec := $recs}}{{$reqType := contentType $rec.GetRequestHeader}}{{$resType := contentType $rec.GetResponseHeader}}
 + Request
 
     + Headers
@@ -198,7 +198,7 @@ method description
 
 {{prettifyBody $rec.GetResponseBody $resType 3}}
 
-{{end}}{{end}}{{end}}`)
+{{end}}{{end}}{{end}}{{end}}`)
 	if err != nil {
 		panic(err)
 	}

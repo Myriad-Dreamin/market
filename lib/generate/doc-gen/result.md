@@ -5,9 +5,38 @@ HOST: 127.0.0.1
 
 method description
 
-## x.y.z [/v1/user]
+## Put Accounts [/v1/user]
 
-### Get Accounts [PUT]
+### Put Accounts [PUT]
+
+put accounts
+
++ Request
+
+    + Headers
+
+            Content-Type: application/json
+
+    + Body
+
+            {
+                "1": 1
+            }
+
++ Response 200
+
+    + Headers
+
+            Content-Type: application/json
+
+    + Body
+
+            {
+                "2": 2
+            }
+
+
+### Get Accounts [GET]
 
 get accounts
 
