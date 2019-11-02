@@ -1,8 +1,8 @@
 package doc_gen
 
 import (
-	"fmt"
-	"github.com/Myriad-Dreamin/market/lib/parser"
+	"errors"
+	"github.com/Myriad-Dreamin/go-parse-package"
 	"sort"
 	"strings"
 )
@@ -138,25 +138,33 @@ func parseDoc(doc string) *parsedResult {
 	//}
 }
 
-func processResultResult(resI interface{}) processedResultInterface {
+func processResultResult(resI interface{}) (processedResultInterface, error) {
 	switch res := resI.(type) {
 	case GinResult:
-		y := new(processedGinResult)
-		y.GinResult = res
-		y.parsedResult = parseDoc(parser.FuncDescription(y.GetHandlerFunc()))
-		return y
+		desc, err := parser.FuncDescription(res.GetHandlerFunc())
+		if err != nil {
+			return nil, err
+		}
+
+		return &processedGinResult{
+			GinResult:res,
+			parsedResult:parseDoc(desc),
+		}, nil
 	default:
-		return nil
+		return nil, errors.New("bad result type")
 	}
 }
 
-func processResultResults(controllerInfo map[string]ControllerInfoInterface, resI interface{}) []mergedResultInterface {
+func processResultResults(controllerInfo map[string]ControllerInfoInterface, resI interface{}) ([]mergedResultInterface, error) {
 	switch res := resI.(type) {
 	case []GinResult:
 		var x = make(map[string]*mergedResult)
 		for r := range res {
 			rr := res[r]
-			pc := processResultResult(rr)
+			pc, err := processResultResult(rr)
+			if err != nil {
+				return nil, err
+			}
 			var mr = x[rr.GetPath()]
 			if mr == nil {
 				mr = new(mergedResult)
@@ -188,9 +196,9 @@ func processResultResults(controllerInfo map[string]ControllerInfoInterface, res
 		for i := range keys {
 			y = append(y, x[keys[i]])
 		}
-		return y
+		return y, nil
 	default:
-		return nil
+		return nil, errors.New("bad results type")
 	}
 }
 
@@ -238,8 +246,12 @@ func (c providerInfo) GetDescription() string {
 	return c.Description
 }
 
-func parseController(i interface{}) ControllerInfoInterface {
-	segs := strings.Split(parser.InterfaceDescription(i), "@")
+func parseController(i interface{}) (ControllerInfoInterface, error) {
+	desc, err := parser.InterfaceDescription(i)
+	if err != nil {
+		return nil, err
+	}
+	segs := strings.Split(desc, "@")
 	var res = new(ControllerInfo)
 	for i := range segs {
 		kv := strings.SplitN(strings.TrimSpace(segs[i]), " ", 2)
@@ -256,24 +268,33 @@ func parseController(i interface{}) ControllerInfoInterface {
 			res.Path = v
 		}
 	}
-	return res
+	return res, nil
 }
 
-func parseControllers(provider ControllerProvider) (mp map[string]ControllerInfoInterface) {
+func parseControllers(provider ControllerProvider) (mp map[string]ControllerInfoInterface, err error) {
 	mp = make(map[string]ControllerInfoInterface)
 	if provider == nil {
 		return
 	}
 	controllers := provider.GetControllers()
+	var ci ControllerInfoInterface
 	for i := range controllers {
-		ci := parseController(controllers[i])
+		ci, err = parseController(controllers[i])
+		if err != nil {
+			mp = nil
+			return
+		}
 		mp[ci.GetPath()] = ci
 	}
 	return
 }
 
-func parseProvider(i interface{}) ProviderInfoInterface {
-	segs := strings.Split(parser.InterfaceDescription(i), "@")
+func parseProvider(i interface{}) (ProviderInfoInterface, error) {
+	desc, err := parser.InterfaceDescription(i)
+	if err != nil {
+		return nil, err
+	}
+	segs := strings.Split(desc, "@")
 	var res = new(providerInfo)
 	for i := range segs {
 		kv := strings.SplitN(strings.TrimSpace(segs[i]), " ", 2)
@@ -288,27 +309,35 @@ func parseProvider(i interface{}) ProviderInfoInterface {
 			res.DocName = v
 		}
 	}
-	return res
+	return res, nil
 }
 
-func processResult(resI interface{}) *ginProcessedInfo {
+func processResult(resI interface{}) (*ginProcessedInfo, error) {
+	var err error
 	switch res := resI.(type) {
 	case *GinInfo:
 		var x = new(ginProcessedInfo)
 		x.Host = res.Host
 		if res.ControllerProvider != nil {
-			x.ProviderInfoInterface = parseProvider(res.ControllerProvider.GetProvider())
+			x.ProviderInfoInterface, err = parseProvider(res.ControllerProvider.GetProvider())
+			if err != nil {
+				return nil, err
+			}
 		} else {
 			x.ProviderInfoInterface = providerInfo{
 				DocName:     res.DocName,
 				Description: res.Description,
 			}
 		}
-		x.Categories = processResultResults(
-			parseControllers(res.ControllerProvider), res.Result)
-		fmt.Println(x)
-		return x
+		var mp map[string]ControllerInfoInterface
+		mp, err = parseControllers(res.ControllerProvider)
+		if err != nil {
+			return nil, err
+		}
+		x.Categories, err = processResultResults(
+			mp, res.Result)
+		return x, err
 	default:
-		return &ginProcessedInfo{}
+		return &ginProcessedInfo{}, errors.New("invalid result type")
 	}
 }

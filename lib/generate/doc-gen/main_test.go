@@ -345,9 +345,13 @@ func Test_processResultResult(t *testing.T) {
 			//if got := processResultResult(tt.args.resI); !reflect.DeepEqual(got, tt.want) {
 			//	t.Errorf("processResultResult() = %v, want %v", got, tt.want)
 			//}
-			fmt.Println(processResultResult(tt.args.resI))
-			fmt.Println(processResultResult(tt.args.resI).GetDescription())
-			fmt.Println(processResultResult(tt.args.resI).GetTitle())
+			res, err := processResultResult(tt.args.resI)
+			if err != nil {
+				t.Error(err)
+				return
+			}
+			fmt.Println(res.GetDescription())
+			fmt.Println(res.GetTitle())
 		})
 	}
 }

@@ -1,3 +1,4 @@
+//go:generate package-attach-to-path -generate_register_map
 package doc_gen
 
 import (
@@ -124,6 +125,12 @@ var resultTemplate = template.New("resultTemplate")
 
 
 func FromGinResults(res *GinInfo, options... interface{}) (err error) {
+	var parsedRes *ginProcessedInfo
+	parsedRes, err = processResult(res)
+	if err != nil {
+		return
+	}
+
 	var outputPath = "result.md"
 
 	for i := range options {
@@ -132,9 +139,8 @@ func FromGinResults(res *GinInfo, options... interface{}) (err error) {
 			outputPath = option
 		}
 	}
-
 	sugar.WithWriteFile(func(outputFile *os.File) {
-		err = resultTemplate.Execute(outputFile, processResult(res))
+		err = resultTemplate.Execute(outputFile, parsedRes)
 	}, outputPath)
 	return
 }

@@ -2,19 +2,18 @@ FORMAT: 1A
 HOST: 127.0.0.1
 
 # Maximum Document
-
 controllerS
-
 
 ## Accounts [/v1/user]
-
 controllerS
+
+ + PUT: put accounts
+ + GET: get accounts
+
 
 ### Put Accounts [PUT]
 
-put accounts
-
-+ Request
++ Request 
 
     + Headers
 
@@ -37,13 +36,10 @@ put accounts
             {
                 "2": 2
             }
-
 
 ### Get AccountsA [GET]
 
-get accounts
-
-+ Request
++ Request 
 
     + Headers
 
@@ -66,4 +62,3 @@ get accounts
             {
                 "2": 2
             }
-

@@ -1,4 +1,4 @@
-package docs
+package probe
 
 import (
 	"fmt"
@@ -6,5 +6,5 @@ import (
 )
 
 func TestPackage(t *testing.T) {
-	fmt.Println(RootPackage, DocsPackage)
+	fmt.Println(RootPackage, RootPath)
 }

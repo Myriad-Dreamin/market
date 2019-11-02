@@ -1,4 +1,4 @@
-//go:generate minimum-attach-file
+//go:generate package-attach-to-path -generate_register_map
 package service
 
 import (
