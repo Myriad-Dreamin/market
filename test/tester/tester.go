@@ -3,8 +3,8 @@ package tester
 import (
 	"encoding/json"
 	"errors"
-	"github.com/Myriad-Dreamin/market/lib/mock"
-	"github.com/Myriad-Dreamin/market/lib/sugar"
+	"github.com/Myriad-Dreamin/minimum-lib/mock"
+	"github.com/Myriad-Dreamin/minimum-lib/sugar"
 	"github.com/Myriad-Dreamin/market/server"
 	userservice "github.com/Myriad-Dreamin/market/service/user"
 	"io"

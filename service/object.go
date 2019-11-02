@@ -7,7 +7,7 @@ import (
 	"github.com/Myriad-Dreamin/market/types"
 )
 
-// go:generate go run github.com/Myriad-Dreamin/market/lib/code-gen/test-gen -source ./ -destination ../../test/
+// go:generate go run github.com/Myriad-Dreamin/minimum-lib/code-gen/test-gen -source ./ -destination ../../test/
 
 type ObjectService = objectservice.Service
 

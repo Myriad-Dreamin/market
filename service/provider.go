@@ -3,7 +3,7 @@ package service
 
 import (
 	"fmt"
-	"github.com/Myriad-Dreamin/market/lib/module"
+	"github.com/Myriad-Dreamin/minimum-lib/module"
 	"path"
 )
 

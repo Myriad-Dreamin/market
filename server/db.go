@@ -3,7 +3,7 @@ package server
 import (
 	"fmt"
 	"github.com/Myriad-Dreamin/functional-go"
-	"github.com/Myriad-Dreamin/market/lib/rbac"
+	"github.com/Myriad-Dreamin/minimum-lib/rbac"
 	"github.com/Myriad-Dreamin/market/model"
 )
 

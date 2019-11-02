@@ -45,7 +45,7 @@ class MinimumCli:
         print('hello', self.x)
 
     def install(self):
-        pcmds('go install github.com/Myriad-Dreamin/market/lib/generate/minimum-attach-file')
+        pcmds('go install github.com/Myriad-Dreamin/minimum-lib/generate/minimum-attach-file')
 
     def create_template(self, object_name: str, placeholder):
         self.object_name = object_name

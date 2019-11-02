@@ -3,10 +3,10 @@ package plugin
 import (
 	"context"
 	"github.com/Myriad-Dreamin/market/config"
-	"github.com/Myriad-Dreamin/market/lib/module"
 	"github.com/Myriad-Dreamin/market/model"
 	"github.com/Myriad-Dreamin/market/service"
 	"github.com/Myriad-Dreamin/market/types"
+	"github.com/Myriad-Dreamin/minimum-lib/module"
 )
 
 type Logger = types.Logger

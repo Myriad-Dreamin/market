@@ -3,127 +3,68 @@
   <component name="ChangeListManager">
     <list default="true" id="d33caeea-6f6c-4429-8ab1-6d64520d9a9b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/init-package-probe.go" beforeDir="false" afterPath="$PROJECT_DIR$/init-package-probe.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/abstract-test/interface.go.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/abstract-test/interface.go.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/crypto/password.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/crypto/password.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/crypto/password_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/crypto/password_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/generate/doc-gen/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/generate/doc-gen/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/generate/doc-gen/main_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/generate/doc-gen/main_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/generate/doc-gen/process-result.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/generate/doc-gen/process-result.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/generate/keep.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/generate/keep.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/generate/test-gen/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/generate/test-gen/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/hook/hook.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/hook/hook.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/keep.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/keep.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/logger/zaplogger.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/logger/zaplogger.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/mock/context-record.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/mock/context-record.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/mock/json.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/mock/json.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/mock/json_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/mock/json_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/mock/map-stream.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/mock/map-stream.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/mock/protobuf.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/mock/protobuf.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/mock/protobuf_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/mock/protobuf_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/mock/response.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/mock/response.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/mock/results.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/mock/results.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/mock/serialize-protocol.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/mock/serialize-protocol.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/mock/stream.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/mock/stream.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/mock/xml.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/mock/xml.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/mock/xml_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/mock/xml_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/mock/yaml.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/mock/yaml.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/module/module.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/module/module.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/module/module_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/module/module_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/plugin/plugin.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/plugin/plugin.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/rbac/rbac-file.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/rbac/rbac-file.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/rbac/rbac-file_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/rbac/rbac-file_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/rbac/rbac-gorm.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/rbac/rbac-gorm.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/rbac/rbac.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/rbac/rbac.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/rbac/regep_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/rbac/regep_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/sugar/tracer.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/sugar/tracer.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/sugar/with-file.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/sugar/with-file.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/sugar/with-file_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/sugar/with-file_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/db-layer/decide.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/db-layer/decide.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/db-layer/filter.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/db-layer/filter.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/db-layer/goods.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/db-layer/goods.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/db-layer/instance.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/db-layer/instance.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/db-layer/logger.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/db-layer/logger.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/db-layer/needs.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/db-layer/needs.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/db-layer/object.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/db-layer/object.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/db-layer/register.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/db-layer/register.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/db-layer/stat-fee.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/db-layer/stat-fee.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cli.py" beforeDir="false" afterPath="$PROJECT_DIR$/cli.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/abstract-test/context-helper.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/abstract-test/interface.go.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/crypto/password.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/crypto/password_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/generate/doc-gen/main.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/generate/doc-gen/main_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/generate/doc-gen/process-result.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/generate/doc-gen/register-instance-map.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/generate/doc-gen/result.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/generate/keep.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/generate/test-gen/main.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/hook/hook.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/logger/bufferpool/buffer.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/logger/bufferpool/pool.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/logger/logger.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/logger/zaplogger.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/mock/context-record.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/mock/json.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/mock/json_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/mock/map-stream.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/mock/protobuf.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/mock/protobuf_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/mock/response.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/mock/results.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/mock/serialize-protocol.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/mock/stream.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/mock/xml.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/mock/xml_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/mock/yaml.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/module/module.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/module/module_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/oss/oss.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/oss/rocksdb_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/plugin/plugin.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/rbac/rbac-file.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/rbac/rbac-file_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/rbac/rbac-gorm.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/rbac/rbac-model.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/rbac/rbac-xorm.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/rbac/rbac.conf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/rbac/rbac.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/rbac/regep_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/rbac/test.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/sugar/tracer.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/sugar/with-file.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/sugar/with-file_test.go" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/model/db-layer/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/db-layer/user.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/filter.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/filter.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/goods.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/goods.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/needs.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/needs.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/object.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/object.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/orm.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/orm.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/oss/oss.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/oss/oss.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/oss/rocksdb_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/oss/rocksdb_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/provider.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/provider.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/redis.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/redis.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/sp-layer/enforcer.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/sp-layer/enforcer.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/sp-layer/needs.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/sp-layer/needs.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/sp-layer/provider.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/sp-layer/provider.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/sp-layer/redis.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/sp-layer/redis.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/sp-layer/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/sp-layer/user.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/stat-fee.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/stat-fee.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/user.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/router/action.go" beforeDir="false" afterPath="$PROJECT_DIR$/router/action.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/router/goods-router.go" beforeDir="false" afterPath="$PROJECT_DIR$/router/goods-router.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/router/needs-router.go" beforeDir="false" afterPath="$PROJECT_DIR$/router/needs-router.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/router/nop-validator.go" beforeDir="false" afterPath="$PROJECT_DIR$/router/nop-validator.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/router/object-router.go" beforeDir="false" afterPath="$PROJECT_DIR$/router/object-router.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/router/provider.go" beforeDir="false" afterPath="$PROJECT_DIR$/router/provider.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/router/root-router.go" beforeDir="false" afterPath="$PROJECT_DIR$/router/root-router.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/router/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/router/router.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/router/user-router.go" beforeDir="false" afterPath="$PROJECT_DIR$/router/user-router.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/config.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/db.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/db.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/logger.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/logger.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/middleware.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/middleware.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/mock.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/mock.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/router.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/service.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/base-service/crud.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/base-service/crud.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/base-service/list.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/base-service/list.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/gin-helper/auth.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/gin-helper/auth.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/goods-service/filter-on.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/goods-service/filter-on.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/goods-service/list-filter.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/goods-service/list-filter.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/goods.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/goods.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/goods/delete.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/goods/delete.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/goods/get.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/goods/get.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/goods/gulp.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/goods/gulp.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/goods/list.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/goods/list.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/goods/post.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/goods/post.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/goods/register-docs.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/goods/register-docs.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/goods/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/goods/service.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/needs.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/needs.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/needs/get.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/needs/get.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/needs/list.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/needs/list.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/needs/post.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/needs/post.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/needs/register-docs.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/needs/register-docs.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/needs/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/needs/service.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/object/get.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/object/get.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/object/list.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/object/list.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/object/post.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/object/post.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/object/put.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/object/put.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/object/register-docs.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/object/register-docs.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/object/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/object/service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/object.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/object.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service/provider.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/provider.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/register-docs.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/register-docs.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/statistic/show.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/statistic/show.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/user/buy.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/user/buy.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/user/change-password.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/user/change-password.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/user/get.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/user/get.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/user/interface_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/user/interface_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/user/post.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/user/post.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/user/put.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/user/put.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/user/register-docs.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/user/register-docs.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service/user/register.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/user/register.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/user/sell.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/user/sell.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/user/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/user/service.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/tester/tester.go" beforeDir="false" afterPath="$PROJECT_DIR$/test/tester/tester.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/tester_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/test/tester_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/user-get-list_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/test/user-get-list_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/user-register-login_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/test/user-register-login_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/user_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/test/user_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/logger.go" beforeDir="false" afterPath="$PROJECT_DIR$/types/logger.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -180,7 +121,7 @@
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../functional-go" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../minimum-lib" />
     <property name="node.js.detected.package.stylelint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.stylelint" value="project" />

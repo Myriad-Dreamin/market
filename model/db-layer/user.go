@@ -2,7 +2,7 @@ package dblayer
 
 import (
 	"github.com/Myriad-Dreamin/market/config"
-	"github.com/Myriad-Dreamin/market/lib/crypto"
+	"github.com/Myriad-Dreamin/minimum-lib/crypto"
 	"github.com/Myriad-Dreamin/market/types"
 	"github.com/jinzhu/gorm"
 	"time"

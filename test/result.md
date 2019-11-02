@@ -26,8 +26,8 @@ this is the market backend powered by minimum
 
 
  + PUT: 
- + DELETE: 
  + GET: 
+ + DELETE: 
 
 
 ## Login [/v1/login]
@@ -69,8 +69,8 @@ this is the market backend powered by minimum
                 "id": 1,
                 "nick_name": "admin_context",
                 "name": "admin_context",
-                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzI2OTYwOTMsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjkyNDgzLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.wqv1a090JOZWsJuPWTs-6Dx2UA_02n2dyyBCe6AiJfc",
-                "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzMyOTcyOTMsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjkyNDgzLCJJc1JlZnJlc2hUb2tlbiI6dHJ1ZSwiUmVmcmVzaFRhcmdldCI6eyJleHAiOjE1NzI2OTYwOTMsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjkyNDgzLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19LCJDdXN0b21GaWVsZCI6eyJVSUQiOjF9fQ.Xa4oQ2ZqQabF6j8UXu-R6k6atpMlWk7TOONWVHtAOqk"
+                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzI2OTk1NzYsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjk1OTY2LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.-95d9mlaHzfnB7-4ZMU5WAyNW2B2FSj9lg8kcmik4jU",
+                "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzMzMDA3NzYsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjk1OTY2LCJJc1JlZnJlc2hUb2tlbiI6dHJ1ZSwiUmVmcmVzaFRhcmdldCI6eyJleHAiOjE1NzI2OTk1NzYsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjk1OTY2LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19LCJDdXN0b21GaWVsZCI6eyJVSUQiOjF9fQ.wXBVL1qN3UhxfbhRwq2vF4QOq-q9vjsOPP4vM56tNDQ"
             }
 
 
@@ -78,7 +78,7 @@ this is the market backend powered by minimum
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzI2OTYwOTMsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjkyNDgzLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.wqv1a090JOZWsJuPWTs-6Dx2UA_02n2dyyBCe6AiJfc
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzI2OTk1NzYsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjk1OTY2LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.-95d9mlaHzfnB7-4ZMU5WAyNW2B2FSj9lg8kcmik4jU
             Content-Type: application/json
 
     + Body
@@ -106,8 +106,8 @@ this is the market backend powered by minimum
                 "id": 2,
                 "nick_name": "tan chan",
                 "name": "chan tan",
-                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzI2OTYwOTMsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjkyNDgzLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6Mn19.OGqkIsq2-CygAJHL7DdTrcY1jXaveyxOMLvtO_mTMSU",
-                "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzMyOTcyOTMsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjkyNDgzLCJJc1JlZnJlc2hUb2tlbiI6dHJ1ZSwiUmVmcmVzaFRhcmdldCI6eyJleHAiOjE1NzI2OTYwOTMsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjkyNDgzLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6Mn19LCJDdXN0b21GaWVsZCI6eyJVSUQiOjJ9fQ.rXkLSsLUjSPuHo5UgNZo5O7vQDC3qRhLJsb305nA_4A"
+                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzI2OTk1NzYsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjk1OTY2LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6Mn19.X-AofYAufw6R-pyipQ3BtZjs-sGAj-OAOVot_B-1hfc",
+                "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzMzMDA3NzYsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjk1OTY2LCJJc1JlZnJlc2hUb2tlbiI6dHJ1ZSwiUmVmcmVzaFRhcmdldCI6eyJleHAiOjE1NzI2OTk1NzYsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjk1OTY2LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6Mn19LCJDdXN0b21GaWVsZCI6eyJVSUQiOjJ9fQ.p03TEs_t0_YJtFb7eKnstLrAOYdguwRdzmPmYqfIT4o"
             }
 
 
@@ -115,7 +115,7 @@ this is the market backend powered by minimum
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzI2OTYwOTMsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjkyNDgzLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.wqv1a090JOZWsJuPWTs-6Dx2UA_02n2dyyBCe6AiJfc
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzI2OTk1NzYsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjk1OTY2LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.-95d9mlaHzfnB7-4ZMU5WAyNW2B2FSj9lg8kcmik4jU
             Content-Type: application/json
 
     + Body
@@ -143,8 +143,8 @@ this is the market backend powered by minimum
                 "id": 2,
                 "nick_name": "tan chan",
                 "name": "chan tan",
-                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzI2OTYwOTMsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjkyNDgzLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6Mn19.OGqkIsq2-CygAJHL7DdTrcY1jXaveyxOMLvtO_mTMSU",
-                "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzMyOTcyOTMsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjkyNDgzLCJJc1JlZnJlc2hUb2tlbiI6dHJ1ZSwiUmVmcmVzaFRhcmdldCI6eyJleHAiOjE1NzI2OTYwOTMsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjkyNDgzLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6Mn19LCJDdXN0b21GaWVsZCI6eyJVSUQiOjJ9fQ.rXkLSsLUjSPuHo5UgNZo5O7vQDC3qRhLJsb305nA_4A"
+                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzI2OTk1NzYsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjk1OTY2LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6Mn19.X-AofYAufw6R-pyipQ3BtZjs-sGAj-OAOVot_B-1hfc",
+                "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzMzMDA3NzYsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjk1OTY2LCJJc1JlZnJlc2hUb2tlbiI6dHJ1ZSwiUmVmcmVzaFRhcmdldCI6eyJleHAiOjE1NzI2OTk1NzYsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjk1OTY2LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6Mn19LCJDdXN0b21GaWVsZCI6eyJVSUQiOjJ9fQ.p03TEs_t0_YJtFb7eKnstLrAOYdguwRdzmPmYqfIT4o"
             }
 
 
@@ -152,7 +152,7 @@ this is the market backend powered by minimum
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzI2OTYwOTMsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjkyNDgzLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.wqv1a090JOZWsJuPWTs-6Dx2UA_02n2dyyBCe6AiJfc
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzI2OTk1NzYsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjk1OTY2LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.-95d9mlaHzfnB7-4ZMU5WAyNW2B2FSj9lg8kcmik4jU
             Content-Type: application/json
 
     + Body
@@ -180,8 +180,8 @@ this is the market backend powered by minimum
                 "id": 2,
                 "nick_name": "tan chan",
                 "name": "chan tan",
-                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzI2OTYwOTMsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjkyNDgzLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6Mn19.OGqkIsq2-CygAJHL7DdTrcY1jXaveyxOMLvtO_mTMSU",
-                "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzMyOTcyOTMsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjkyNDgzLCJJc1JlZnJlc2hUb2tlbiI6dHJ1ZSwiUmVmcmVzaFRhcmdldCI6eyJleHAiOjE1NzI2OTYwOTMsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjkyNDgzLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6Mn19LCJDdXN0b21GaWVsZCI6eyJVSUQiOjJ9fQ.rXkLSsLUjSPuHo5UgNZo5O7vQDC3qRhLJsb305nA_4A"
+                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzI2OTk1NzYsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjk1OTY2LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6Mn19.X-AofYAufw6R-pyipQ3BtZjs-sGAj-OAOVot_B-1hfc",
+                "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzMzMDA3NzYsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjk1OTY2LCJJc1JlZnJlc2hUb2tlbiI6dHJ1ZSwiUmVmcmVzaFRhcmdldCI6eyJleHAiOjE1NzI2OTk1NzYsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjk1OTY2LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6Mn19LCJDdXN0b21GaWVsZCI6eyJVSUQiOjJ9fQ.p03TEs_t0_YJtFb7eKnstLrAOYdguwRdzmPmYqfIT4o"
             }
 
 
@@ -197,12 +197,12 @@ this is the market backend powered by minimum
  + GET: 
 
 
-## base-service.(*CRUDService).Put-fm [/v1/needs/:nid]
+## base-service.(*CRUDService).Delete-fm [/v1/needs/:nid]
 
 
- + PUT: 
- + GET: 
  + DELETE: 
+ + GET: 
+ + PUT: 
 
 
 ## Register [/v1/user]
@@ -248,7 +248,7 @@ this is the market backend powered by minimum
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzI2OTYwOTMsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjkyNDgzLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.wqv1a090JOZWsJuPWTs-6Dx2UA_02n2dyyBCe6AiJfc
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzI2OTk1NzYsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjk1OTY2LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.-95d9mlaHzfnB7-4ZMU5WAyNW2B2FSj9lg8kcmik4jU
             Content-Type: application/json
 
     + Body
@@ -288,7 +288,7 @@ this is the market backend powered by minimum
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzI2OTYwOTMsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjkyNDgzLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.wqv1a090JOZWsJuPWTs-6Dx2UA_02n2dyyBCe6AiJfc
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzI2OTk1NzYsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjk1OTY2LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.-95d9mlaHzfnB7-4ZMU5WAyNW2B2FSj9lg8kcmik4jU
             Content-Type: text/plain
 
     + Body
@@ -308,12 +308,12 @@ this is the market backend powered by minimum
                 "users": [
                     {
                         "ID": 1,
-                        "created_at": "2019-11-02T19:01:33.573928+08:00",
-                        "updated_at": "2019-11-02T19:01:33.573928+08:00",
-                        "last_login": "2019-11-02T11:01:33Z",
+                        "created_at": "2019-11-02T19:59:35.9575304+08:00",
+                        "updated_at": "2019-11-02T19:59:35.9575304+08:00",
+                        "last_login": "2019-11-02T11:59:35Z",
                         "NickName": "admin_context",
                         "Name": "admin_context",
-                        "Password": "$2a$10$OlcujHBnImMC4YKzaRvnvu.i3C4xOfVEwhI5q7Qtgsf8aqcITk6Xm",
+                        "Password": "$2a$10$Djush6SuiQutKFMXESarluVYbduKGdvhDkfxISiYA0b1L5JBCjyEC",
                         "Phone": "1234567891011",
                         "RegisterCity": "Qing Dao S.D."
                     }
@@ -321,11 +321,11 @@ this is the market backend powered by minimum
             }
 
 
-## Put [/v1/user/:id]
+## Get [/v1/user/:id]
 
 
- + PUT: Put User
  + GET: Get User
+ + PUT: Put User
  + DELETE: Delete User
 
 
@@ -335,7 +335,7 @@ this is the market backend powered by minimum
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzI2OTYwOTMsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjkyNDgzLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.wqv1a090JOZWsJuPWTs-6Dx2UA_02n2dyyBCe6AiJfc
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzI2OTk1NzYsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTcyNjk1OTY2LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.-95d9mlaHzfnB7-4ZMU5WAyNW2B2FSj9lg8kcmik4jU
             Content-Type: text/plain
 
     + Body
@@ -354,12 +354,12 @@ this is the market backend powered by minimum
                 "code": 0,
                 "user": {
                     "ID": 1,
-                    "created_at": "2019-11-02T19:01:33.573928+08:00",
-                    "updated_at": "2019-11-02T19:01:33.573928+08:00",
-                    "last_login": "2019-11-02T11:01:33Z",
+                    "created_at": "2019-11-02T19:59:35.9575304+08:00",
+                    "updated_at": "2019-11-02T19:59:35.9575304+08:00",
+                    "last_login": "2019-11-02T11:59:35Z",
                     "NickName": "admin_context",
                     "Name": "admin_context",
-                    "Password": "$2a$10$OlcujHBnImMC4YKzaRvnvu.i3C4xOfVEwhI5q7Qtgsf8aqcITk6Xm",
+                    "Password": "$2a$10$Djush6SuiQutKFMXESarluVYbduKGdvhDkfxISiYA0b1L5JBCjyEC",
                     "Phone": "1234567891011",
                     "RegisterCity": "Qing Dao S.D."
                 }

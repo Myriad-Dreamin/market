@@ -2,7 +2,7 @@ package server
 
 import (
 	"fmt"
-	"github.com/Myriad-Dreamin/market/lib/logger"
+	"github.com/Myriad-Dreamin/minimum-lib/logger"
 )
 
 func (srv *Server) InstantiateLogger() bool {
