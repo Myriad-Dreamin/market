@@ -4,6 +4,8 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
+	"github.com/Myriad-Dreamin/go-magic-package/instance"
+	parser "github.com/Myriad-Dreamin/go-parse-package"
 	"io"
 	"io/ioutil"
 	"log"
@@ -352,4 +354,8 @@ func (mocker *Mocker) NoErr(resp mock.ResponseI) bool {
 	}
 	return true
 	//if gjson
+}
+
+func init() {
+	parser.SetPackageMapper(instance.Get)
 }

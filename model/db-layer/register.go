@@ -22,10 +22,7 @@ func migrates() error {
 
 func Register(rdb *gorm.DB, logger types.Logger) error {
 	var err error
-	if db == nil {
-		db = new(gorm.DB)
-	}
-	*db = *rdb
+	*db = *rdb.Debug()
 	*rawDB = *db.DB()
 
 	if err = rawDB.Ping(); err != nil {

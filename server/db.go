@@ -2,23 +2,23 @@ package server
 
 import (
 	"fmt"
+	"github.com/Myriad-Dreamin/functional-go"
 	"github.com/Myriad-Dreamin/market/lib/rbac"
-	"github.com/Myriad-Dreamin/market/lib/traits"
 	"github.com/Myriad-Dreamin/market/model"
 )
 
 type dbResult struct {
 	dbName string
-	traits.DecayResult
+	functional.DecayResult
 }
 
 func (srv *Server) registerDatabaseService() bool {
 
 	for _, dbResult := range []dbResult{
-		{"needsDB", traits.Decay(model.NewNeedsDB(srv.Logger, srv.cfg))},
-		{"goodsDB", traits.Decay(model.NewGoodsDB(srv.Logger, srv.cfg))},
-		{"userDB", traits.Decay(model.NewUserDB(srv.Logger, srv.cfg))},
-		{"objectDB", traits.Decay(model.NewObjectDB(srv.Logger, srv.cfg))},
+		{"needsDB", functional.Decay(model.NewNeedsDB(srv.Logger, srv.cfg))},
+		{"goodsDB", functional.Decay(model.NewGoodsDB(srv.Logger, srv.cfg))},
+		{"userDB", functional.Decay(model.NewUserDB(srv.Logger, srv.cfg))},
+		{"objectDB", functional.Decay(model.NewObjectDB(srv.Logger, srv.cfg))},
 	} {
 		if dbResult.Err != nil {
 			srv.Logger.Debug(fmt.Sprintf("init %T DB error", dbResult.First), "error", dbResult.Err)
@@ -82,10 +82,8 @@ func (srv *Server) PrepareDatabase() bool {
 	}
 	srv.DatabaseProvider.Register("enforcer", rbac.GetEnforcer())
 
-
 	return srv.registerDatabaseService()
 }
-
 
 func (srv *Server) MockDatabase() bool {
 	var err error
@@ -110,4 +108,3 @@ func (srv *Server) MockDatabase() bool {
 
 	return srv.registerDatabaseService()
 }
-

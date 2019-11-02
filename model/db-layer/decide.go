@@ -1,22 +1,16 @@
 package dblayer
 
 import (
-	"github.com/Myriad-Dreamin/dorm"
-	crud_dao "github.com/Myriad-Dreamin/market/model/db-layer/crud-dao"
+	traits "github.com/Myriad-Dreamin/go-model-traits/example-traits"
 	general_dao "github.com/Myriad-Dreamin/market/model/db-layer/general-dao"
-	"github.com/Myriad-Dreamin/market/model/modeltraits"
 )
 
-type Traits struct {
-	modeltraits.Interface
-	crud_dao.CRUDModel
-}
-type TraitsAcceptObject = dorm.ORMObject
+type Traits = traits.ModelTraits
+type Interface = traits.Interface
+type TraitsAcceptObject = traits.ORMObject
 
 func NewTraits(t TraitsAcceptObject) Traits {
-	tt := Traits{}
-	tt.Interface = modeltraits.NewTraits(t, db, dormDB)
-	tt.CRUDModel = crud_dao.NewCRUDModel(tt)
+	tt := traits.NewModelTraits(t, db, dormDB)
 	return tt
 }
 

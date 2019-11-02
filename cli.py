@@ -175,7 +175,7 @@ class MinimumCli:
             if os.path.isdir(file):
                 self.fast_generate(file, match)
             if os.path.isfile(file) and match.match(file):
-                with open(file, 'r') as go_file:
+                with open(file, 'r', encoding='utf-8') as go_file:
                     for line in go_file.readlines():
                         if line.startswith('//go:generate '):
                             pcmds(line[len('//go:generate '):], cwd=path)

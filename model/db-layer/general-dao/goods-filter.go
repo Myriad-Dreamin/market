@@ -1,30 +1,31 @@
 package general_dao
 
 import (
-	crud_dao "github.com/Myriad-Dreamin/market/model/db-layer/crud-dao"
-	"github.com/Myriad-Dreamin/market/model/modeltraits"
+	modeltraits "github.com/Myriad-Dreamin/go-model-traits"
+	traits "github.com/Myriad-Dreamin/go-model-traits/example-traits"
+	gorm_crud_dao "github.com/Myriad-Dreamin/go-model-traits/gorm-crud-dao"
 	"github.com/jinzhu/gorm"
 	"time"
 )
 
 type GoodsFilter struct {
-	crud_dao.Filter
-	BySeller   uint      `json:"seller" form:"seller"`
-	ByBuyer    uint      `json:"buyer" form:"buyer"`
+	traits.Filter
+	BySeller   uint       `json:"seller" form:"seller"`
+	ByBuyer    uint       `json:"buyer" form:"buyer"`
 	HasType    uint8      `json:"type" form:"type"`
 	HasStatus  uint8      `json:"status" form:"status"`
-	WithName   string    `json:"name" form:"name"`
-	MinPriceL  *uint     `json:"min_price_l" form:"min_price_l"`
-	MinPriceR  *uint     `json:"min_price_r" form:"min_price_r"`
-	MaxPriceL  *uint     `json:"max_price_l" form:"max_price_l"`
-	MaxPriceR  *uint     `json:"max_price_r" form:"max_price_r"`
-	FixedTag   *bool     `json:"fixed" form:"fixed"`
+	WithName   string     `json:"name" form:"name"`
+	MinPriceL  *uint      `json:"min_price_l" form:"min_price_l"`
+	MinPriceR  *uint      `json:"min_price_r" form:"min_price_r"`
+	MaxPriceL  *uint      `json:"max_price_l" form:"max_price_l"`
+	MaxPriceR  *uint      `json:"max_price_r" form:"max_price_r"`
+	FixedTag   *bool      `json:"fixed" form:"fixed"`
 	EndBefore  *time.Time `json:"end_before" form:"end_before"`
 	BeginAfter *time.Time `json:"begin_after" form:"begin_after"`
 }
 
 func GoodsFilterOption(db *gorm.DB, f *GoodsFilter) *gorm.DB {
-	db = crud_dao.FilterOption(db, &f.Filter)
+	db = gorm_crud_dao.FilterOption(db, &f.Filter)
 	if f.BySeller != 0 {
 		db = db.Where("seller = ?", f.BySeller)
 	}
@@ -66,17 +67,21 @@ func GoodsFilterOption(db *gorm.DB, f *GoodsFilter) *gorm.DB {
 	return db
 }
 
-type GoodsModel struct {
-	i modeltraits.ModelInterface
+type GoodsModelOperatingModel interface {
+	modeltraits.BaseTraitsInterface
+	modeltraits.GORMTraitsInterface
 }
 
-func NewGoodsModel(modelInterface modeltraits.ModelInterface) GoodsModel {
+type GoodsModel struct {
+	i GoodsModelOperatingModel
+}
+
+func NewGoodsModel(modelInterface GoodsModelOperatingModel) GoodsModel {
 	return GoodsModel{i: modelInterface}
 }
 
 func (model GoodsModel) GoodsFilter(f *GoodsFilter) (goodss interface{}, err error) {
 	goodss = model.i.ObjectFactory()
-	err = GoodsFilterOption(model.i.GetDB(), f).Find(goodss).Error
+	err = GoodsFilterOption(model.i.GetGormDB(), f).Find(goodss).Error
 	return
 }
-

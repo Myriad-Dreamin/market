@@ -2,7 +2,7 @@ package control
 
 import "github.com/gin-gonic/gin"
 
-//go:generate minimum-attach-file
+//go:generate package-attach-to-path -generate_register_map
 
 
 /* auth

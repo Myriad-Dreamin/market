@@ -3,13 +3,13 @@ package general_dao
 import (
 	"encoding/json"
 	"fmt"
-	crud_dao "github.com/Myriad-Dreamin/market/model/db-layer/crud-dao"
+	traits "github.com/Myriad-Dreamin/go-model-traits/example-traits"
 	"testing"
 )
 
 func TestFilter(t *testing.T) {
 	var x = GoodsFilter{
-		Filter:     crud_dao.Filter{
+		Filter: traits.Filter{
 			Order:    "123123",
 			Page:     124124,
 			PageSize: 444,
@@ -34,5 +34,3 @@ func TestFilter(t *testing.T) {
 	err = json.Unmarshal(b, &x)
 	fmt.Println(x)
 }
-
-

@@ -1,3 +1,4 @@
+//go:generate package-attach-to-path -generate_init
 package main
 
 import (
