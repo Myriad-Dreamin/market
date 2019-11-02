@@ -3,68 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="d33caeea-6f6c-4429-8ab1-6d64520d9a9b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cli.py" beforeDir="false" afterPath="$PROJECT_DIR$/cli.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/abstract-test/context-helper.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/abstract-test/interface.go.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/crypto/password.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/crypto/password_test.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/generate/doc-gen/main.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/generate/doc-gen/main_test.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/generate/doc-gen/process-result.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/generate/doc-gen/register-instance-map.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/generate/doc-gen/result.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/generate/keep.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/generate/test-gen/main.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/hook/hook.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/logger/bufferpool/buffer.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/logger/bufferpool/pool.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/logger/logger.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/logger/zaplogger.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/mock/context-record.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/mock/json.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/mock/json_test.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/mock/map-stream.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/mock/protobuf.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/mock/protobuf_test.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/mock/response.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/mock/results.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/mock/serialize-protocol.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/mock/stream.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/mock/xml.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/mock/xml_test.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/mock/yaml.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/module/module.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/module/module_test.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/oss/oss.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/oss/rocksdb_test.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/plugin/plugin.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/rbac/rbac-file.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/rbac/rbac-file_test.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/rbac/rbac-gorm.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/rbac/rbac-model.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/rbac/rbac-xorm.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/rbac/rbac.conf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/rbac/rbac.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/rbac/regep_test.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/rbac/test.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/sugar/tracer.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/sugar/with-file.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/sugar/with-file_test.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/db-layer/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/db-layer/user.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/sp-layer/provider.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/sp-layer/provider.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/router/provider.go" beforeDir="false" afterPath="$PROJECT_DIR$/router/provider.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/db.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/db.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/logger.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/logger.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/mock.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/mock.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/object.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/object.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/provider.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/provider.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/user/register.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/user/register.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/tester/tester.go" beforeDir="false" afterPath="$PROJECT_DIR$/test/tester/tester.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/tester_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/test/tester_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/types/logger.go" beforeDir="false" afterPath="$PROJECT_DIR$/types/logger.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -121,7 +59,7 @@
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../minimum-lib" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/service/gin-helper" />
     <property name="node.js.detected.package.stylelint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.stylelint" value="project" />
@@ -146,11 +84,11 @@
       <recent name="$PROJECT_DIR$/lib/trace.go" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\project\go\src\github.com\Myriad-Dreamin\market\service\gin-helper" />
+      <recent name="E:\project\go\src\github.com\Myriad-Dreamin\market" />
       <recent name="$PROJECT_DIR$/model/db-layer" />
       <recent name="E:\project\go\src\github.com\Myriad-Dreamin\market\service\user" />
       <recent name="E:\project\go\src\github.com\Myriad-Dreamin\market\service\goods" />
-      <recent name="E:\project\go\src\github.com\Myriad-Dreamin\market\service\needs" />
-      <recent name="E:\project\go\src\github.com\Myriad-Dreamin\market\model\db-layer" />
     </key>
   </component>
   <component name="RunDashboard">
