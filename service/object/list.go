@@ -33,4 +33,3 @@ func (srv *Service) FilterOn(c *gin.Context) (interface{}, error) {
 	}
 	return ObjectsToListReply(objs), nil
 }
-

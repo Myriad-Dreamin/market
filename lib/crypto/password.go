@@ -33,8 +33,6 @@ func CheckPassword(x string, pswd []byte) (bool, error) {
 	return true, nil
 }
 
-
 func CheckPasswordString(x string, pswd string) (bool, error) {
 	return CheckPassword(x, []byte(pswd))
 }
-

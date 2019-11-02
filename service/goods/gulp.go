@@ -33,4 +33,3 @@ func (srv *Service) GetPutRequest() interface{} {
 func (srv *Service) FillPutFields(c *gin.Context, goods base_service.CRUDEntity, req interface{}) []string {
 	return srv.fillPutFields(c, goods.(*model.Goods), req.(*PutRequest))
 }
-

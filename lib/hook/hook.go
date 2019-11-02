@@ -8,7 +8,7 @@ type Hook struct {
 	funcs []GinHookFunc
 }
 
-type GinHookFunc func (c *gin.Context) bool
+type GinHookFunc func(c *gin.Context) bool
 
 func (hook *Hook) Use(hookFunc GinHookFunc) {
 	hook.funcs = append(hook.funcs, hookFunc)

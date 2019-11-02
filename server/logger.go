@@ -5,7 +5,7 @@ import (
 	"github.com/Myriad-Dreamin/market/lib/logger"
 )
 
-func (srv *Server)  InstantiateLogger() bool {
+func (srv *Server) InstantiateLogger() bool {
 	var err error
 	srv.Logger, err = logger.NewZapOptions()
 	if err != nil {
@@ -28,4 +28,3 @@ func (srv *Server) printf(format string, a ...interface{}) {
 		fmt.Println(err)
 	}
 }
-

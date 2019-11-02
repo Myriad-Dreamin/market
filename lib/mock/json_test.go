@@ -30,14 +30,14 @@ func TestJSON_Serialize(t *testing.T) {
 		want    []byte
 		wantErr error
 	}{
-		{name: "test_base_type_bytes", s: JSON{Content: 1}, want: []byte("1\n"), wantErr:nil},
-		{name: "test_base_type_bytes", s: JSON{Content: "1"}, want: []byte("\"1\"\n"), wantErr:nil},
-		{name: "test_base_type_bytes", s: JSON{Content: 1.0}, want: []byte("1\n"), wantErr:nil},
-		{name: "test_base_type_bytes", s: JSON{Content: true}, want: []byte("true\n"), wantErr:nil},
+		{name: "test_base_type_bytes", s: JSON{Content: 1}, want: []byte("1\n"), wantErr: nil},
+		{name: "test_base_type_bytes", s: JSON{Content: "1"}, want: []byte("\"1\"\n"), wantErr: nil},
+		{name: "test_base_type_bytes", s: JSON{Content: 1.0}, want: []byte("1\n"), wantErr: nil},
+		{name: "test_base_type_bytes", s: JSON{Content: true}, want: []byte("true\n"), wantErr: nil},
 		{name: "test_base_type_bytes", s: JSON{Content: struct {
 			S int `json:"s"`
-		}{S:1}}, want: []byte("{\"s\":1}\n"), wantErr:nil},
-		{name: "test_base_type_bytes", s: JSON{Content: 1}, want: []byte("1\n"), wantErr:nil},
+		}{S: 1}}, want: []byte("{\"s\":1}\n"), wantErr: nil},
+		{name: "test_base_type_bytes", s: JSON{Content: 1}, want: []byte("1\n"), wantErr: nil},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

@@ -9,15 +9,14 @@ import (
 
 var provider *Provider
 
-
 type Provider struct {
 	module.BaseModuler
-	objectDB *ObjectDB
-	needsDB *NeedsDB
-	goodsDB *GoodsDB
-	userDB *UserDB
+	objectDB  *ObjectDB
+	needsDB   *NeedsDB
+	goodsDB   *GoodsDB
+	userDB    *UserDB
 	statFeeDB *dblayer.StatFeeDB
-	enforcer *Enforcer
+	enforcer  *Enforcer
 }
 
 func NewProvider(namespace string) *Provider {
@@ -64,8 +63,7 @@ func SetProvider(p *Provider) (op *Provider) {
 if err := s.BaseModuler.Replace(path.Join(s.Namespace, name), router); err != nil {
 	panic(fmt.Errorf("unknown router %T", router))
 }
- */
-
+*/
 
 func (s *Provider) StatFeeDB() *dblayer.StatFeeDB {
 	return s.statFeeDB

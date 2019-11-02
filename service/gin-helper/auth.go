@@ -7,7 +7,6 @@ import (
 	"net/http"
 )
 
-
 func ResetPassword(c *gin.Context, obj *model.User, password string) bool {
 	_, err := obj.ResetPassword(password)
 	if err != nil {
@@ -35,7 +34,3 @@ func AuthenticatePassword(c *gin.Context, user *model.User, password string) boo
 	}
 	return true
 }
-
-
-
-

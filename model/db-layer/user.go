@@ -17,9 +17,9 @@ func UserFactory() interface{} {
 }
 
 var (
-	userTraits = NewUserTraits(User{})
-	userQueryNameFunc    = userTraits.Where1("name = ?")
-	userQueryPhoneFunc   = userTraits.Where1("phone = ?")
+	userTraits         = NewUserTraits(User{})
+	userQueryNameFunc  = userTraits.Where1("name = ?")
+	userQueryPhoneFunc = userTraits.Where1("phone = ?")
 )
 
 type User struct {
@@ -28,10 +28,10 @@ type User struct {
 	UpdatedAt time.Time `dorm:"updated_at" gorm:"column:updated_at;default:CURRENT_TIMESTAMP;not null;" json:"updated_at"`
 	LastLogin time.Time `dorm:"last_login" gorm:"column:last_login;default:CURRENT_TIMESTAMP;not null;" json:"last_login"`
 
-	NickName     string `dorm:"nick_name" gorm:"column:nick_name;unique;not_null"`
-	Name         string `dorm:"name" gorm:"column:name;unique;not_null"`
-	Password     string `dorm:"password" gorm:"column:password;not_null"`
-	Phone        string `dorm:"phone" gorm:"column:phone;unique;not_null"`
+	NickName string `dorm:"nick_name" gorm:"column:nick_name;unique;not_null"`
+	Name     string `dorm:"name" gorm:"column:name;unique;not_null"`
+	Password string `dorm:"password" gorm:"column:password;not_null"`
+	Phone    string `dorm:"phone" gorm:"column:phone;unique;not_null"`
 	//Rank         string `dorm:"rank" gorm:"column:rank;unique;not_null"`
 	RegisterCity string `dorm:"register_city" gorm:"column:register_city;not_null"`
 }

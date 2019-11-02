@@ -5,7 +5,6 @@ import (
 	"os"
 )
 
-
 func closes(files ...*os.File) {
 	for i := range files {
 		err := files[i].Close()
@@ -19,7 +18,7 @@ func Files(bindFiles ...*os.File) []*os.File {
 	return bindFiles
 }
 
-func WithFiles(f func(), bindFiles []*os.File, filePaths... string) {
+func WithFiles(f func(), bindFiles []*os.File, filePaths ...string) {
 	var files []*os.File
 
 	for i := range filePaths {

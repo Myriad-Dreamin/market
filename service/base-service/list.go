@@ -12,16 +12,15 @@ type ListableObjectToolLite interface {
 
 type ListService struct {
 	tool ListableObjectToolLite
-	k string
+	k    string
 }
 
 func NewListService(tool ListableObjectToolLite, k string) ListService {
 	return ListService{
 		tool: tool,
-		k:   k,
+		k:    k,
 	}
 }
-
 
 func (srv *ListService) List(c *gin.Context) {
 	result, err := srv.tool.FilterOn(c)
@@ -32,4 +31,3 @@ func (srv *ListService) List(c *gin.Context) {
 	c.JSON(http.StatusOK, result)
 	return
 }
-

@@ -6,7 +6,6 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-
 type RootRouter struct {
 	Root       *Router
 	Router     *Router
@@ -15,11 +14,10 @@ type RootRouter struct {
 
 	Ping *LeafRouter
 	//ObjectRouter *ObjectRouter
-	UserRouter *UserRouter
+	UserRouter  *UserRouter
 	GoodsRouter *GoodsRouter
 	NeedsRouter *NeedsRouter
 }
-
 
 // @title Ping
 // @description result

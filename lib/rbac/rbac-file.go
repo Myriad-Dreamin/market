@@ -28,15 +28,15 @@ func SetMaxDescriptorCount(c int) {
 var fileMutex sync.Mutex
 
 type EnforceDescriptor struct {
-	lifetime int
+	lifetime  int
 	reference int
 	*casbin.SyncedEnforcer
 }
 
 func newDescriptor(e *casbin.SyncedEnforcer) *EnforceDescriptor {
 	return &EnforceDescriptor{
-		lifetime: initalLifeTime,
-		reference: 1,
+		lifetime:       initalLifeTime,
+		reference:      1,
 		SyncedEnforcer: e,
 	}
 }
@@ -50,7 +50,7 @@ func Accquire(path string) *casbin.SyncedEnforcer {
 		if e.lifetime > initalLifeTime {
 			e.lifetime = initalLifeTime
 		}
-		e.reference ++
+		e.reference++
 		fileMutex.Unlock()
 		return e.SyncedEnforcer
 	}
@@ -60,7 +60,7 @@ func Accquire(path string) *casbin.SyncedEnforcer {
 		// is it ok ?
 		return casbin.NewSyncedEnforcer(rbacModel, path)
 	} else {
-		allocDescriptorCount ++
+		allocDescriptorCount++
 		e := newDescriptor(casbin.NewSyncedEnforcer(rbacModel, path))
 		cachedEnforcers[path] = e
 		fileMutex.Unlock()
@@ -99,10 +99,3 @@ func Release(path string) {
 	}
 	fileMutex.Unlock()
 }
-
-
-
-
-
-
-

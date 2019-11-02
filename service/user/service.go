@@ -14,12 +14,11 @@ import (
 type Service struct {
 	base_service.CRUDService
 	base_service.ListService
-	db     *model.UserDB
-	enforcer *casbin.SyncedEnforcer
-	logger types.Logger
+	db         *model.UserDB
+	enforcer   *casbin.SyncedEnforcer
+	logger     types.Logger
 	middleware *jwt.Middleware
 }
-
 
 func NewService(logger types.Logger, provider *model.Provider, middleware *jwt.Middleware, _ *config.ServerConfig) (a control.UserService, err error) {
 	srv := new(Service)

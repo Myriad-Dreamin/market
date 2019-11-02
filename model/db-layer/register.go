@@ -8,7 +8,7 @@ import (
 )
 
 func migrates() error {
-	for _, migrate := range []func() error {
+	for _, migrate := range []func() error{
 		Needs{}.migrate,
 		Goods{}.migrate,
 		User{}.migrate,
@@ -44,5 +44,3 @@ func Configuration(cfg *config.Configuration) {
 	rawDB.SetMaxIdleConns(100)
 	rawDB.SetMaxOpenConns(100)
 }
-
-

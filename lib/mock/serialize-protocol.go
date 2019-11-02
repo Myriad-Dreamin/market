@@ -13,7 +13,6 @@ type Serializable interface {
 	ContentType() string
 }
 
-
 func NotStruct(content interface{}) io.Reader {
 	var buf = new(bytes.Buffer)
 	switch ss := content.(type) {
@@ -39,4 +38,3 @@ func NotStruct(content interface{}) io.Reader {
 	}
 	return buf
 }
-

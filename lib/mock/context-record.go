@@ -7,8 +7,6 @@ import (
 func ContextRecorder() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		c.Next()
-		c.Header("Gin-Context-Matched-Path-Method", c.FullPath() + "@" + c.Request.Method)
+		c.Header("Gin-Context-Matched-Path-Method", c.FullPath()+"@"+c.Request.Method)
 	}
 }
-
-

@@ -5,6 +5,3 @@ import (
 )
 
 type GoodsFilter = dblayer.GoodsFilter
-
-
-

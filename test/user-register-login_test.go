@@ -35,10 +35,8 @@ func testRegisterLogin(t *testing.T) {
 		Phone:    phone,
 		Password: pswd,
 	})
-	_, err := (&model.User{ID:id}).Delete()
-	if ! srv.NoError(err, "delete error") {
+	_, err := (&model.User{ID: id}).Delete()
+	if !srv.NoError(err, "delete error") {
 		return
 	}
 }
-
-

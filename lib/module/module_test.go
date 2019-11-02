@@ -41,7 +41,6 @@ func (m subModule) AfterInstall(mm Module) error {
 	return nil
 }
 
-
 func TestModule_Install(t *testing.T) {
 	var m = make(Module)
 	var mm = &myModule{b: new(int)}
@@ -60,4 +59,3 @@ func TestModule_Install(t *testing.T) {
 
 	fmt.Println(m.Require("mymodule.a"), *m.Require("mymodule.b").(*int))
 }
-

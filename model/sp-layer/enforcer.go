@@ -7,4 +7,3 @@ type Enforcer = casbin.SyncedEnforcer
 func (s *Provider) Enforcer() *Enforcer {
 	return s.enforcer
 }
-

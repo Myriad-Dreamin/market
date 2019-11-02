@@ -40,15 +40,15 @@ func TestAccquireRelease(t *testing.T) {
 }
 
 func BenchmarkAccquire(b *testing.B) {
-	for i := 0;i<b.N;i++ {
+	for i := 0; i < b.N; i++ {
 		_ = Accquire("./test.csv")
 	}
 }
 
 func BenchmarkAccquireReleaseMultiThread(b *testing.B) {
-	for i := 0;i<b.N;i++ {
+	for i := 0; i < b.N; i++ {
 		var wg sync.WaitGroup
-		for j := 0; j < 1000; j ++ {
+		for j := 0; j < 1000; j++ {
 			wg.Add(1)
 			go func() {
 				e := Accquire("./test.csv")
@@ -69,9 +69,8 @@ func BenchmarkAccquireReleaseMultiThread(b *testing.B) {
 	}
 }
 
-
 func BenchmarkAccquireRelease(b *testing.B) {
-	for i := 0;i<b.N;i++ {
+	for i := 0; i < b.N; i++ {
 		e := Accquire("./test.csv")
 
 		e.AddPolicy("data2_admin", "data2", "write")

@@ -22,12 +22,12 @@ func NeedsToPostReply(obj *model.Needs) *PostReply {
 }
 
 type PostRequest struct {
-	EndAt time.Time `json:"end_at" form:"end_at" binding:"required"`
-	Type        uint16  `json:"g_type" form:"g_type" binding:"required"`
-	Name        string `json:"name" form:"name" binding:"required"`
-	MinPrice    uint64 `json:"min_price" form:"min_price" binding:"required"`
-	MaxPrice    uint64 `json:"max_price" form:"max_price" binding:"required"`
-	Description string `json:"description" form:"description"`
+	EndAt       time.Time `json:"end_at" form:"end_at" binding:"required"`
+	Type        uint16    `json:"g_type" form:"g_type" binding:"required"`
+	Name        string    `json:"name" form:"name" binding:"required"`
+	MinPrice    uint64    `json:"min_price" form:"min_price" binding:"required"`
+	MaxPrice    uint64    `json:"max_price" form:"max_price" binding:"required"`
+	Description string    `json:"description" form:"description"`
 }
 
 func (srv *Service) SerializePost(c *gin.Context) base_service.CRUDEntity {

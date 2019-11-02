@@ -22,7 +22,6 @@ func (s ProtoMessage) Serialize() (io.Reader, error) {
 	}
 }
 
-
 func (s ProtoMessage) ContentType() string {
 	return ContentTypeProtocolBufBinary
 }

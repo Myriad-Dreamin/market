@@ -5,7 +5,6 @@ import (
 	"net/http"
 )
 
-
 type ResultsI interface {
 	GetMethod() string
 	GetPath() string
@@ -28,8 +27,8 @@ type RecordsI interface {
 }
 
 type Records struct {
-	ResponseCode int
-	Comment string
+	ResponseCode   int
+	Comment        string
 	RequestHeader  http.Header
 	RequestBody    []byte
 	ResponseHeader http.Header

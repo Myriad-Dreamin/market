@@ -33,7 +33,7 @@ func StartTester(serverOptions []server.Option) (tester *Tester) {
 func (t *Tester) Context(tt *testing.T) (s *TesterContext) {
 	return &TesterContext{
 		MockerContext: t.Mocker.Context(tt),
-		t: tt,
+		t:             tt,
 	}
 }
 
@@ -43,7 +43,7 @@ func (t *TesterContext) AssertNoError(noErr bool) *TesterContext {
 }
 
 type ErrorObject struct {
-	Code int `json:"code"`
+	Code  int    `json:"code"`
 	Error string `json:"error"`
 }
 
@@ -53,7 +53,6 @@ func (t *TesterContext) DecodeJSON(body io.Reader, req interface{}) interface{} 
 	}
 	return req
 }
-
 
 func (t *Tester) Release() {
 	t.Mocker.ReleaseMock()
@@ -79,8 +78,8 @@ func (t *Tester) MakeAdminContext() bool {
 	}
 	resp = t.Post("/v1/login",
 		userservice.LoginRequest{
-			ID:         r.ID,
-			Password:     "admin",
+			ID:       r.ID,
+			Password: "admin",
 		}, mock.Comment("admin login for test"))
 	if !t.NoErr(resp) {
 		return false

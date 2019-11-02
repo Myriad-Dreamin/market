@@ -6,14 +6,13 @@ import (
 )
 
 type GetReply struct {
-	Code   int           `json:"code"`
+	Code  int          `json:"code"`
 	Goods *model.Goods `json:"goods"`
 }
 
 func GoodsToGetReply(obj *model.Goods) *GetReply {
 	return &GetReply{
-		Code:   types.CodeOK,
+		Code:  types.CodeOK,
 		Goods: obj,
 	}
 }
-

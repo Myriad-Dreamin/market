@@ -32,12 +32,12 @@ type ControllerProvider interface {
 	GetProvider() interface{}
 }
 
-type GinInfo struct{
+type GinInfo struct {
 	ControllerProvider ControllerProvider
-	Result []GinResult
-	Host string
-	DocName string
-	Description string
+	Result             []GinResult
+	Host               string
+	DocName            string
+	Description        string
 }
 
 type mergedResultInterface interface {
@@ -49,10 +49,10 @@ type mergedResultInterface interface {
 }
 
 type mergedResult struct {
-	Path string
-	Cate string
+	Path        string
+	Cate        string
 	Description string
-	Results []processedResultInterface
+	Results     []processedResultInterface
 }
 
 func (m *mergedResult) GetPath() string {
@@ -75,17 +75,17 @@ func (m *mergedResult) GetResults() []processedResultInterface {
 	return m.Results
 }
 
-type ginProcessedInfo struct{
+type ginProcessedInfo struct {
 	ProviderInfoInterface
 	Categories []mergedResultInterface
-	Host string
+	Host       string
 }
 
 type parsedResult struct {
 	Description string
-	Title string
-	Category string
-	Success string
+	Title       string
+	Category    string
+	Success     string
 }
 
 func (p parsedResult) GetDescription() string {
@@ -99,7 +99,6 @@ func (p parsedResult) GetCategory() string {
 func (p parsedResult) GetTitle() string {
 	return p.Title
 }
-
 
 func parseDoc(doc string) *parsedResult {
 	segs := strings.Split(doc, "@")
@@ -147,8 +146,8 @@ func processResultResult(resI interface{}) (processedResultInterface, error) {
 		}
 
 		return &processedGinResult{
-			GinResult:res,
-			parsedResult:parseDoc(desc),
+			GinResult:    res,
+			parsedResult: parseDoc(desc),
 		}, nil
 	default:
 		return nil, errors.New("bad result type")
@@ -202,17 +201,15 @@ func processResultResults(controllerInfo map[string]ControllerInfoInterface, res
 	}
 }
 
-
 type ControllerInfoInterface interface {
 	GetCategory() string
 	GetPath() string
 	GetDescription() string
 }
 
-
 type ControllerInfo struct {
-	Category string
-	Path string
+	Category    string
+	Path        string
 	Description string
 }
 
@@ -229,7 +226,7 @@ func (c ControllerInfo) GetDescription() string {
 }
 
 type providerInfo struct {
-	DocName string
+	DocName     string
 	Description string
 }
 

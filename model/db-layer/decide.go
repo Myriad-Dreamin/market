@@ -20,9 +20,9 @@ type GoodsTraits struct {
 }
 
 var (
-	_ = "TraitsDefinitionHook"
-	NewObjectTraits = NewTraits
-	NewUserTraits = NewTraits
+	_                = "TraitsDefinitionHook"
+	NewObjectTraits  = NewTraits
+	NewUserTraits    = NewTraits
 	NewStatFeeTraits = NewTraits
 )
 

@@ -12,6 +12,7 @@ import (
 	"io"
 	"strings"
 )
+
 type splitingIO struct {
 	IO   io.Writer
 	next *splitingIO
@@ -224,7 +225,6 @@ func NewZapColorfulDevelopmentSugarLogger(options ...zap.Option) (Logger, error)
 	return &zapLogger{kitzaplog.NewZapSugarLogger(logger, zapcore.DebugLevel)}, nil
 }
 
-
 func NewZapOptions(options ...zap.Option) (Logger, error) {
 	logger, err := zap.Config{
 		Level:       zap.NewAtomicLevelAt(zapcore.DebugLevel),
@@ -253,4 +253,3 @@ func NewZapOptions(options ...zap.Option) (Logger, error) {
 	}
 	return &zapLogger{kitzaplog.NewZapSugarLogger(logger, zapcore.DebugLevel)}, nil
 }
-

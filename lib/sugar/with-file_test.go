@@ -11,7 +11,7 @@ func TestWithFile(t *testing.T) {
 		if f.Name() != "test.log" {
 			t.Error(errors.New("open failed"))
 		}
-	},"test.log")
+	}, "test.log")
 	_ = os.Remove("test.log")
 }
 

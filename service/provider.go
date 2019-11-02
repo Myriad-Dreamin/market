@@ -7,8 +7,7 @@ import (
 	"path"
 )
 
-
-type SubController interface{
+type SubController interface {
 	GetControllers() []interface{}
 }
 
@@ -20,8 +19,8 @@ func (s subController) GetControllers() []interface{} {
 	return s.controllers
 }
 
-func JustProvide(controllers... interface{}) SubController {
-	return subController{controllers:controllers}
+func JustProvide(controllers ...interface{}) SubController {
+	return subController{controllers: controllers}
 }
 
 // @DocName Minimum-Market
@@ -30,9 +29,9 @@ type Provider struct {
 	module.BaseModuler
 
 	objectService *ObjectService
-	needsService *NeedsService
-	goodsService *GoodsService
-	userService UserService
+	needsService  *NeedsService
+	goodsService  *GoodsService
+	userService   UserService
 
 	subControllers []SubController
 }
@@ -71,7 +70,6 @@ func (s *Provider) Register(name string, service interface{}) {
 	}
 }
 
-
 // for documents
 func (s *Provider) GetControllers() []interface{} {
 	var controllers []interface{}
@@ -80,7 +78,6 @@ func (s *Provider) GetControllers() []interface{} {
 	}
 	return controllers
 }
-
 
 func (s *Provider) GetProvider() interface{} {
 	return s

@@ -6,9 +6,6 @@ import (
 	"github.com/jinzhu/gorm"
 )
 
-
-
-
 var db = new(gorm.DB)
 var rawDB = new(sql.DB)
 var dormDB = new(dorm.DB)

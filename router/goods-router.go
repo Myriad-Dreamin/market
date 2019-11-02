@@ -6,8 +6,8 @@ import (
 
 type GoodsRouter struct {
 	*Router
-	Auth       *Middleware
-	IDRouter   *GoodsIDRouter
+	Auth     *Middleware
+	IDRouter *GoodsIDRouter
 
 	Post    *LeafRouter
 	GetList *LeafRouter
@@ -25,8 +25,8 @@ type GoodsIDRouter struct {
 func BuildGoodsRouter(parent *RootRouter, serviceProvider *service.Provider) (router *GoodsRouter) {
 	goodsService := serviceProvider.GoodsService()
 	router = &GoodsRouter{
-		Router:     parent.Router.Extend("goods"),
-		Auth:       parent.Auth.Copy(),
+		Router: parent.Router.Extend("goods"),
+		Auth:   parent.Auth.Copy(),
 	}
 	router.GetList = router.GET("goods-list", goodsService.List)
 	router.Post = router.POST("/goods", goodsService.Post)

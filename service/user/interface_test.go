@@ -5,4 +5,3 @@ import (
 )
 
 var userService control.UserService = &Service{}
-

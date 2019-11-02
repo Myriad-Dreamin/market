@@ -23,8 +23,8 @@ func TestMain(m *testing.M) {
 		srv.CollectResults(true)
 		srv.MainM(m)
 		err := doc_gen.FromGinResults(&doc_gen.GinInfo{
-			Result: srv.DumpResults(),
-			Host: "127.0.0.1",
+			Result:             srv.DumpResults(),
+			Host:               "127.0.0.1",
 			ControllerProvider: srv.ServiceProvider,
 		})
 		if err != nil {

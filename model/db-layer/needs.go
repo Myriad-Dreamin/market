@@ -21,7 +21,7 @@ func NeedssFactory() interface{} {
 }
 
 var (
-	needsModel         =new(dorm.Model)
+	needsModel  = new(dorm.Model)
 	needsTraits = NewNeedsTraits(Needs{})
 )
 
@@ -29,19 +29,19 @@ type Needs struct {
 	ID        uint      `dorm:"id" gorm:"column:id;primary_key;not_null"`
 	CreatedAt time.Time `dorm:"created_at" gorm:"column:created_at;default:CURRENT_TIMESTAMP;not null" json:"created_at"`
 	UpdatedAt time.Time `dorm:"updated_at" gorm:"column:updated_at;default:CURRENT_TIMESTAMP;not null" json:"updated_at"`
-	EndAt time.Time `dorm:"end_at" gorm:"column:end_at;default:CURRENT_TIMESTAMP;not null;"`
+	EndAt     time.Time `dorm:"end_at" gorm:"column:end_at;default:CURRENT_TIMESTAMP;not null;"`
 
-	Buyer uint `dorm:"buyer" gorm:"column:buyer;not_null"`
-	Seller uint `dorm:"seller" gorm:"column:seller;not_null"`
-	Type uint16 `dorm:"g_type" gorm:"column:g_type;not_null"`
-	Name string `dorm:"name" gorm:"column:name;not_null"`
-	MinPrice uint64 `dorm:"min_price" gorm:"column:min_price;not_null"`
-	MaxPrice uint64 `dorm:"min_price" gorm:"column:max_price;not_null"`
+	Buyer       uint          `dorm:"buyer" gorm:"column:buyer;not_null"`
+	Seller      uint          `dorm:"seller" gorm:"column:seller;not_null"`
+	Type        uint16        `dorm:"g_type" gorm:"column:g_type;not_null"`
+	Name        string        `dorm:"name" gorm:"column:name;not_null"`
+	MinPrice    uint64        `dorm:"min_price" gorm:"column:min_price;not_null"`
+	MaxPrice    uint64        `dorm:"min_price" gorm:"column:max_price;not_null"`
 	EndDuration time.Duration `dorm:"ddd" gorm:"column:ddd;not_null"`
-	Description string `dorm:"description" gorm:"column:description;not_null"`
-	Status uint8 `dorm:"status" gorm:"column:status;not_null"`
+	Description string        `dorm:"description" gorm:"column:description;not_null"`
+	Status      uint8         `dorm:"status" gorm:"column:status;not_null"`
 
-	BuyerFee uint64 `dorm:"buyer_fee" gorm:"column:buyer_fee;not_null"`
+	BuyerFee  uint64 `dorm:"buyer_fee" gorm:"column:buyer_fee;not_null"`
 	SellerFee uint64 `dorm:"seller_fee" gorm:"column:seller_fee;not_null"`
 }
 

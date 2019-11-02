@@ -79,4 +79,3 @@ func NewResponse() *Response {
 	resp.ResponseRecorder.Body = bytes.NewBuffer(nil)
 	return resp
 }
-

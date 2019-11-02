@@ -6,7 +6,6 @@ import (
 	"io"
 )
 
-
 type XML Stream
 
 type X = XML

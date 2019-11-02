@@ -5,6 +5,7 @@ import (
 	"github.com/Myriad-Dreamin/functional-go"
 	"github.com/Myriad-Dreamin/market/service"
 )
+
 type serviceResult struct {
 	serviceName string
 	functional.DecayResult
@@ -26,5 +27,3 @@ func (srv *Server) PrepareService() bool {
 	}
 	return true
 }
-
-

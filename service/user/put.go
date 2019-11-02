@@ -16,4 +16,3 @@ func (srv *Service) fillPutFields(_ *gin.Context, user *model.User, req *PutRequ
 	}
 	return fields
 }
-

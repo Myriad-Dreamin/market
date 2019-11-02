@@ -9,9 +9,9 @@ type UserRouter struct {
 	Auth     *Middleware
 	IDRouter *UserIDRouter
 
-	Login          *LeafRouter
+	Login    *LeafRouter
 	Register *LeafRouter
-	GetList *LeafRouter
+	GetList  *LeafRouter
 }
 
 type UserIDRouter struct {

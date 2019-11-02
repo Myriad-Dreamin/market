@@ -7,7 +7,7 @@ import (
 )
 
 type Resource struct {
-	Name string
+	Name  string
 	Value interface{}
 }
 

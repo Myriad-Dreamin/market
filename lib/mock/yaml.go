@@ -21,4 +21,3 @@ func (s YAML) Serialize() (io.Reader, error) {
 func (s YAML) ContentType() string {
 	return ContentTypeYAML
 }
-

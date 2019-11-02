@@ -22,7 +22,7 @@ type Engine interface {
 }
 
 type RocksDBEngine struct {
-	DB *gorocksdb.DB
+	DB   *gorocksdb.DB
 	wOpt *gorocksdb.WriteOptions
 	rOpt *gorocksdb.ReadOptions
 }
@@ -67,10 +67,3 @@ func RegisterEngine(e Engine) error {
 	engine = e
 	return nil
 }
-
-
-
-
-
-
-

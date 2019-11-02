@@ -204,7 +204,7 @@ func (mocker *Mocker) mockServe(r *Request, params ...interface{}) (w *mock.Resp
 				RequestBody:  b,
 				ResponseBody: c,
 				ResponseCode: w.Code(),
-				Comment: comment,
+				Comment:      comment,
 			}
 			rec.RequestHeader = make(http.Header)
 			for k, v := range r.Header {

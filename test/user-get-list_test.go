@@ -14,4 +14,3 @@ func testList(t *testing.T) {
 	reply := srv.DecodeJSON(resp.Body(), new(userservice.ListReply)).(*userservice.ListReply)
 	fmt.Println(reply)
 }
-

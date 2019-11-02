@@ -15,7 +15,6 @@ type Service struct {
 	logger types.Logger
 }
 
-
 func NewService(logger types.Logger, provider *model.Provider, _ *config.ServerConfig) (a *Service, err error) {
 	a = new(Service)
 	a.db = provider.ObjectDB()

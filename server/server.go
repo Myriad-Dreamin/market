@@ -59,7 +59,7 @@ type Option interface {
 	MinimumServerOption() bool
 }
 
-type OptionImpl struct {}
+type OptionImpl struct{}
 
 func (OptionImpl) MinimumServerOption() bool { return false }
 
@@ -67,7 +67,6 @@ type OptionRouterLoggerWriter struct {
 	OptionImpl
 	Writer io.Writer
 }
-
 
 func newServer(options []Option) *Server {
 	srv := new(Server)
@@ -203,4 +202,3 @@ func (srv *Server) ServeWithPProf(port string) {
 	ginpprof.Wrap(srv.RouterEngine)
 	srv.Serve(port)
 }
-

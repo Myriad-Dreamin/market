@@ -64,7 +64,6 @@ func (srv *Service) Register(c *gin.Context) {
 	*/
 	user.Password = req.Password
 
-
 	user.NickName = req.NickName
 	user.Phone = req.Phone
 	user.RegisterCity = req.RegisterCity

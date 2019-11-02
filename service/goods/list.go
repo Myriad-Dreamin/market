@@ -7,7 +7,7 @@ import (
 )
 
 type ListReply struct {
-	Code    int            `json:"code"`
+	Code   int           `json:"code"`
 	Goodss []model.Goods `json:"goodss"`
 }
 
@@ -43,5 +43,3 @@ func (srv *Service) FilterOn(c *gin.Context) (interface{}, error) {
 	}
 	return GoodssToListReply(result.([]model.Goods)), nil
 }
-
-

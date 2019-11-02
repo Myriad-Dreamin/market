@@ -10,15 +10,14 @@ import (
 	"os"
 )
 
-
 const (
 	defaultSourceValue = "__default__"
 )
 
 var (
-	source = flag.String("source", defaultSourceValue,"Input Go source package")
-	destination = flag.String("destination", defaultSourceValue,"Output test files")
-	structName = flag.String("struct", "Service", "for generate specified struct's test")
+	source      = flag.String("source", defaultSourceValue, "Input Go source package")
+	destination = flag.String("destination", defaultSourceValue, "Output test files")
+	structName  = flag.String("struct", "Service", "for generate specified struct's test")
 )
 
 func init() {
@@ -40,7 +39,7 @@ func main() {
 		log.Error(err)
 		os.Exit(1)
 	}
-	for packageName ,packageSet := range res {
+	for packageName, packageSet := range res {
 		fmt.Println(packageName)
 		fmt.Println(packageSet.Scope, packageSet.Imports)
 		var funcs []*ast.FuncDecl
@@ -51,8 +50,7 @@ func main() {
 				if fn, isFn := d.(*ast.FuncDecl); isFn {
 					funcs = append(funcs, fn)
 				}
-				if tyGenDecl, isGendecl := d.(*ast.GenDecl);
-					isGendecl && tyGenDecl.Tok == token.TYPE {
+				if tyGenDecl, isGendecl := d.(*ast.GenDecl); isGendecl && tyGenDecl.Tok == token.TYPE {
 					for idt := range tyGenDecl.Specs {
 						if typeSpec, ok := tyGenDecl.Specs[idt].(*ast.TypeSpec); ok {
 							typeSpecs = append(typeSpecs, typeSpec)
@@ -83,5 +81,3 @@ func main() {
 		_ = ast.Print(fset, maintype)
 	}
 }
-
-

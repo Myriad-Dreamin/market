@@ -10,4 +10,3 @@ func PrintStack() {
 	n := runtime.Stack(buf[:], false)
 	fmt.Printf("==> %s\n", string(buf[:n]))
 }
-

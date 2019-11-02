@@ -3,9 +3,9 @@ package mock
 import "io"
 
 const (
-	ContentTypeJSON = "application/json"
-	ContentTypeYAML = "application/x-yaml"
-	ContentTypeXML = "application/xml"
+	ContentTypeJSON              = "application/json"
+	ContentTypeYAML              = "application/x-yaml"
+	ContentTypeXML               = "application/xml"
 	ContentTypeProtocolBufBinary = "application/grpc-web+proto"
 )
 

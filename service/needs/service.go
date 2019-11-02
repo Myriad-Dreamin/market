@@ -13,11 +13,10 @@ import (
 type Service struct {
 	base_service.CRUDService
 	base_service.ListService
-	db     *model.NeedsDB
-	logger types.Logger
+	db         *model.NeedsDB
+	logger     types.Logger
 	filterFunc func(c *gin.Context) interface{}
 }
-
 
 func NewService(logger types.Logger, provider *model.Provider, _ *config.ServerConfig) (a *Service, err error) {
 	a = new(Service)

@@ -17,7 +17,6 @@ import (
 
 const ContentTypeKey = "Content-Type"
 
-
 /*
 type ResultsI interface {
 	GetMethod() string
@@ -27,6 +26,7 @@ type ResultsI interface {
 */
 type Results = mock.ResultsI
 type GinResult = mock.GinResultI
+
 /*
 type RecordsI interface {
 	GetRequestHeader() http.Header
@@ -58,10 +58,11 @@ func (h handler) linebreak() {
 }
 
 const indentStyle = "    "
+
 var selector, doter, indentS = []byte(": "), []byte(", "), indentStyle
 
 func makeIndent(indent int) []byte {
-	var indenter = make([]byte, indent * len(indentStyle))
+	var indenter = make([]byte, indent*len(indentStyle))
 	for i := 0; i < indent; i++ {
 		copy(indenter[i*len(indentStyle):], indentStyle)
 	}
@@ -120,11 +121,9 @@ func prettifyBody(content []byte, contentType string, indent int) string {
 	}
 }
 
-
 var resultTemplate = template.New("resultTemplate")
 
-
-func FromGinResults(res *GinInfo, options... interface{}) (err error) {
+func FromGinResults(res *GinInfo, options ...interface{}) (err error) {
 	var parsedRes *ginProcessedInfo
 	parsedRes, err = processResult(res)
 	if err != nil {
@@ -147,7 +146,7 @@ func FromGinResults(res *GinInfo, options... interface{}) (err error) {
 
 func title(result GinResult) string {
 	tp := strings.Split(result.GetHandler(), "/")
-	return tp[len(tp) - 1]
+	return tp[len(tp)-1]
 }
 
 func subtitle(index int, result GinResult) string {
@@ -163,12 +162,12 @@ func contentType(h http.Header) string {
 }
 
 func init() {
-	resultTemplate = resultTemplate.Funcs(map[string]interface{} {
-		"title": title,
-		"subtitle": subtitle,
+	resultTemplate = resultTemplate.Funcs(map[string]interface{}{
+		"title":          title,
+		"subtitle":       subtitle,
 		"prettifyHeader": prettifyHeader,
-		"prettifyBody": prettifyBody,
-		"contentType": contentType,
+		"prettifyBody":   prettifyBody,
+		"contentType":    contentType,
 	})
 	var err error
 	resultTemplate, err = resultTemplate.Parse(`FORMAT: 1A

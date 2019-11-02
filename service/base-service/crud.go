@@ -6,8 +6,6 @@ import (
 	"net/http"
 )
 
-
-
 type CRUDEntity interface {
 	Create() (int64, error)
 	UpdateFields(fields []string) (int64, error)
@@ -30,14 +28,12 @@ type CRUDService struct {
 	k    string
 }
 
-
 func NewCRUDService(tool CRUDObjectToolLite, k string) CRUDService {
 	return CRUDService{
 		Tool: tool,
 		k:    k,
 	}
 }
-
 
 func (srv *CRUDService) Delete(c *gin.Context) {
 	id, ok := ginhelper.ParseUint(c, srv.k)
@@ -57,7 +53,6 @@ func (srv *CRUDService) Delete(c *gin.Context) {
 	}
 }
 
-
 func (srv *CRUDService) Get(c *gin.Context) {
 	id, ok := ginhelper.ParseUint(c, srv.k)
 	if !ok {
@@ -71,9 +66,8 @@ func (srv *CRUDService) Get(c *gin.Context) {
 	c.JSON(http.StatusOK, srv.Tool.ResponseGet(obj))
 }
 
-
 func (srv *CRUDService) Put(c *gin.Context) {
-	var req =  srv.Tool.GetPutRequest()
+	var req = srv.Tool.GetPutRequest()
 	id, ok := ginhelper.ParseUintAndBind(c, srv.k, req)
 	if !ok {
 		return
@@ -103,6 +97,3 @@ func (srv *CRUDService) Post(c *gin.Context) {
 		c.JSON(http.StatusOK, srv.Tool.ResponsePost(obj))
 	}
 }
-
-
-
