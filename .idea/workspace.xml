@@ -2,29 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d33caeea-6f6c-4429-8ab1-6d64520d9a9b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/generate/doc-gen/register-docs.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/parser/extract-package-name.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/parser/extract-package-name_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/register-docs.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cli.py" beforeDir="false" afterPath="$PROJECT_DIR$/cli.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/control/register-docs.go" beforeDir="false" afterPath="$PROJECT_DIR$/control/register-docs.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/generate/doc-gen/extract-doc.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/parser/extract-doc.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/generate/doc-gen/extract-doc_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/parser/extract-doc_test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/generate/doc-gen/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/generate/doc-gen/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/generate/doc-gen/main_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/generate/doc-gen/main_test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/generate/doc-gen/process-result.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/generate/doc-gen/process-result.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/generate/doc-gen/result.md" beforeDir="false" afterPath="$PROJECT_DIR$/lib/generate/doc-gen/result.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/generate/minimum-attach-file/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/lib/generate/minimum-attach-file/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/service.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/goods/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/goods/service.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/needs/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/needs/service.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/object/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/object/service.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/provider.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/provider.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/user/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/user/service.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/result.md" beforeDir="false" afterPath="$PROJECT_DIR$/test/result.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/test.log" beforeDir="false" afterPath="$PROJECT_DIR$/test/test.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/tester_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/test/tester_test.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

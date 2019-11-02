@@ -178,8 +178,6 @@ HOST: {{.Host}}
 {{$cat.GetDescription}}
 {{range $j, $v := $cat.GetResults}}{{$recs := $v.GetRecords}}{{if ne (len $recs) 0}}
 ### {{$v.GetTitle}} [{{$v.GetMethod}}]
-
-{{$v.GetDescription}}
 {{range $k, $rec := $recs}}{{$reqType := contentType $rec.GetRequestHeader}}{{$resType := contentType $rec.GetResponseHeader}}
 + Request
 

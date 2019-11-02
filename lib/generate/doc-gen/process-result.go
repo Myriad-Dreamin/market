@@ -170,6 +170,7 @@ func processResultResults(controllerInfo map[string]ControllerInfoInterface, res
 				}
 			}
 			mr.Results = append(mr.Results, pc)
+			mr.Description += fmt.Sprintf("\n%v: %v", pc.GetMethod(), pc.GetDescription())
 
 			ct := pc.GetCategory()
 			if len(mr.Cate) == 0 && len(ct) != 0 {
