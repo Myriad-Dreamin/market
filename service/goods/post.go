@@ -31,7 +31,7 @@ type PostRequest struct {
 	Type        uint16    `json:"g_type" form:"g_type" binding:"required"`
 	Name        string    `json:"name" form:"name" binding:"required"`
 	MinPrice    uint64    `json:"min_price" form:"min_price" binding:"required"`
-	IsFixed     bool      `json:"is_fixed" form:"is_fixed" binding:"required"`
+	IsFixed     bool      `json:"is_fixed" form:"is_fixed" binding:"exists"`
 	Description string    `json:"description" form:"description"`
 }
 

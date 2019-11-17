@@ -5,8 +5,7 @@ import (
 )
 
 func TestUser(t *testing.T) {
-	_ =
-		t.Run("TestRegisterLogin", testRegisterLogin) &&
-			t.Run("TestGet", testGet) &&
-			t.Run("TestList", testList)
+	_ = t.Run("TestRegisterLogin", testRegisterLogin) &&
+		t.Run("TestGet", testGet) &&
+		t.Run("TestList", testList)
 }

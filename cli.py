@@ -45,7 +45,7 @@ class MinimumCli:
         print('hello', self.x)
 
     def install(self):
-        pcmds('go install github.com/Myriad-Dreamin/minimum-lib/generate/minimum-attach-file')
+        pcmds('go install github.com/Myriad-Dreamin/go-magic-package/package-attach-to-path')
 
     def create_template(self, object_name: str, placeholder):
         self.object_name = object_name
@@ -104,7 +104,7 @@ class MinimumCli:
             'switch ss := service.(type) {'
             '\n\tcase *%sService:'
             '\n\t\ts.%sService = ss'
-            '\n\t\ts.subControllers = append(s.subControllers, JustProvide(&ss))' % (self.up_camel, self.camel),
+            '\n\t\ts.subControllers = append(s.subControllers, JustProvide(&ssp))' % (self.up_camel, self.camel),
         )
 
         self.replace(

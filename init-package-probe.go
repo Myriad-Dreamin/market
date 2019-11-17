@@ -2,5 +2,6 @@
 package main
 
 import (
-	_ "github.com/Myriad-Dreamin/market/package-probe"
+	_ "../../work/gosrc/src/github.com/Myriad-Dreamin/market/package-probe"
 )
+
