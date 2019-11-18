@@ -34,7 +34,7 @@ func CheckInsertError(c *gin.Context, err error) bool {
 
 func MissID(c *gin.Context) {
 	c.AbortWithStatusJSON(http.StatusOK, &ErrorSerializer{
-		Code:  types.CodeBindError,
+		Code:  types.CodeInvalidParameters,
 		Error: "id missing in the path",
 	})
 }
@@ -50,7 +50,7 @@ func ParseUint(c *gin.Context, key string) (uint, bool) {
 	id, err := strconv.Atoi(c.Param(key))
 	if err != nil {
 		c.AbortWithStatusJSON(http.StatusOK, &ErrorSerializer{
-			Code:  types.CodeBindError,
+			Code:  types.CodeInvalidParameters,
 			Error: err.Error(),
 		})
 		return 0, false
@@ -68,7 +68,7 @@ func ParseUint(c *gin.Context, key string) (uint, bool) {
 func BindRequest(c *gin.Context, req interface{}) bool {
 	if err := c.ShouldBind(req); err != nil {
 		c.AbortWithStatusJSON(http.StatusOK, &ErrorSerializer{
-			Code:  types.CodeBindError,
+			Code:  types.CodeInvalidParameters,
 			Error: err.Error(),
 		})
 		return false
@@ -80,7 +80,7 @@ func ParseUintAndBind(c *gin.Context, key string, req interface{}) (uint, bool) 
 	id, err := strconv.Atoi(c.Param(key))
 	if err != nil {
 		c.AbortWithStatusJSON(http.StatusOK, &ErrorSerializer{
-			Code:  types.CodeBindError,
+			Code:  types.CodeInvalidParameters,
 			Error: err.Error(),
 		})
 		return 0, false
@@ -94,7 +94,7 @@ func ParseUintAndBind(c *gin.Context, key string, req interface{}) (uint, bool) 
 	}
 	if err := c.ShouldBind(req); err != nil {
 		c.AbortWithStatusJSON(http.StatusOK, &ErrorSerializer{
-			Code:  types.CodeBindError,
+			Code:  types.CodeInvalidParameters,
 			Error: err.Error(),
 		})
 		return 0, false
@@ -106,7 +106,7 @@ func RosolvePageVariable(c *gin.Context) (int, int, bool) {
 	spage, ok := c.GetQuery("page")
 	if !ok {
 		c.AbortWithStatusJSON(http.StatusOK, &ErrorSerializer{
-			Code:  types.CodeBindError,
+			Code:  types.CodeInvalidParameters,
 			Error: "missing page number",
 		})
 		return 0, 0, false
@@ -122,7 +122,7 @@ func RosolvePageVariable(c *gin.Context) (int, int, bool) {
 	spageSize, ok := c.GetQuery("page_size")
 	if !ok {
 		c.AbortWithStatusJSON(http.StatusOK, &ErrorSerializer{
-			Code:  types.CodeBindError,
+			Code:  types.CodeInvalidParameters,
 			Error: "missing page size",
 		})
 		return 0, 0, false

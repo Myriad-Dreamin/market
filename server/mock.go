@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"github.com/Myriad-Dreamin/go-magic-package/instance"
 	parser "github.com/Myriad-Dreamin/go-parse-package"
+	"github.com/Myriad-Dreamin/market/config"
 	"io"
 	"io/ioutil"
 	"log"
@@ -44,6 +45,7 @@ func Mock(options ...Option) (srv *Mocker) {
 	srv = new(Mocker)
 	srv.Server = newServer(options)
 	srv.header = make(map[string]string)
+	srv.Cfg = new(config.ServerConfig)
 	if !(srv.InstantiateLogger() &&
 		srv.MockDatabase()) {
 		srv = nil
@@ -353,6 +355,28 @@ func (mocker *Mocker) NoErr(resp mock.ResponseI) bool {
 		mocker.contextHelper.Errorf("Code, Error (%v, %v)", obj.Code, obj.Error)
 	}
 	return true
+	//if gjson
+}
+
+type Error struct {
+	RespCode int
+	Code     int    `json:"code"`
+	Error    string `json:"error"`
+}
+
+func (mocker *Mocker) FetchError(resp mock.ResponseI) Error {
+	if mocker.contextHelper == nil {
+		panic("only used in test")
+	}
+	mocker.contextHelper.Helper()
+	var obj Error
+	body := resp.Body()
+	if err := json.Unmarshal(body.Bytes(), &obj); err != nil {
+		mocker.contextHelper.Error(err)
+		return obj
+	}
+	obj.RespCode = resp.Code()
+	return obj
 	//if gjson
 }
 

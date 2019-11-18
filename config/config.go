@@ -43,12 +43,17 @@ type Label struct {
 	Value string `json:"value" yaml:"value" toml:"value" xml:"value"`
 }
 
+type BaseParametersConfig struct {
+	GoodsMinimumEndDuration time.Duration `json:"goods-minimum-end-duration" yaml:"goods-minimum-end-duration" toml:"goods-minimum-end-duration" xml:"goods-minimum-end-duration"`
+}
+
 type ServerConfig struct {
 	LoadType       string         `json:"-" yaml:"-" toml:"-" xml:"-"`
 	Name           xml.Name       `json:"-" yaml:"-" toml:"-" xml:"server-config"`
 	Labels         []Label        `json:"label" yaml:"label" toml:"label" xml:"label"`
-	DatabaseConfig *DatabaseConfig `json:"database" yaml:"database" toml:"database" xml:"database"`
-	RedisConfig    *RedisConfig    `json:"redis" yaml:"redis" toml:"redis" xml:"redis"`
+	DatabaseConfig DatabaseConfig `json:"database" yaml:"database" toml:"database" xml:"database"`
+	BaseParametersConfig BaseParametersConfig `json:"base-cfg" yaml:"base-cfg" toml:"base-cfg" xml:"base-cfg"`
+	RedisConfig    RedisConfig    `json:"redis" yaml:"redis" toml:"redis" xml:"redis"`
 }
 
 func Load(config *ServerConfig, configPath string) error {

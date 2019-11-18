@@ -4,5 +4,5 @@ package control
 import instance "github.com/Myriad-Dreamin/go-magic-package/instance"
 
 func init() {
-	instance.Register("../../work/gosrc/src/github.com/Myriad-Dreamin/market/control", `/home/kamiyoru/work/gosrc/src/github.com/Myriad-Dreamin/market/control`)
+	instance.Register("github.com/Myriad-Dreamin/market/control", `E:\project\go\src\github.com\Myriad-Dreamin\market\control`)
 }

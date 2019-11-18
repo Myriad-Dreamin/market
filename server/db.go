@@ -15,10 +15,10 @@ type dbResult struct {
 func (srv *Server) registerDatabaseService() bool {
 
 	for _, dbResult := range []dbResult{
-		{"needsDB", functional.Decay(model.NewNeedsDB(srv.Logger, srv.cfg))},
-		{"goodsDB", functional.Decay(model.NewGoodsDB(srv.Logger, srv.cfg))},
-		{"userDB", functional.Decay(model.NewUserDB(srv.Logger, srv.cfg))},
-		{"objectDB", functional.Decay(model.NewObjectDB(srv.Logger, srv.cfg))},
+		{"needsDB", functional.Decay(model.NewNeedsDB(srv.Logger, srv.Cfg))},
+		{"goodsDB", functional.Decay(model.NewGoodsDB(srv.Logger, srv.Cfg))},
+		{"userDB", functional.Decay(model.NewUserDB(srv.Logger, srv.Cfg))},
+		{"objectDB", functional.Decay(model.NewObjectDB(srv.Logger, srv.Cfg))},
 	} {
 		if dbResult.Err != nil {
 			srv.Logger.Debug(fmt.Sprintf("init %T DB error", dbResult.First), "error", dbResult.Err)
@@ -31,7 +31,7 @@ func (srv *Server) registerDatabaseService() bool {
 
 func (srv *Server) PrepareDatabase() bool {
 	var err error
-	cfg := srv.cfg
+	cfg := srv.Cfg
 	srv.DB, err = model.OpenORM(cfg)
 	if err != nil {
 		srv.Logger.Error("open database error", "error", err)
@@ -87,7 +87,7 @@ func (srv *Server) PrepareDatabase() bool {
 
 func (srv *Server) MockDatabase() bool {
 	var err error
-	srv.DB, err = model.MockORM(srv.cfg)
+	srv.DB, err = model.MockORM(srv.Cfg)
 	if err != nil {
 		srv.Logger.Error("open database error", "error", err)
 		return false

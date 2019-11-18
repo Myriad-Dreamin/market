@@ -15,13 +15,15 @@ type Service struct {
 	base_service.ListService
 	db         *model.GoodsDB
 	logger     types.Logger
+	cfg *config.ServerConfig
 	filterFunc func(c *gin.Context) interface{}
 }
 
-func NewService(logger types.Logger, provider *model.Provider, _ *config.ServerConfig) (a *Service, err error) {
+func NewService(logger types.Logger, provider *model.Provider, cfg *config.ServerConfig) (a *Service, err error) {
 	a = new(Service)
 	a.db = provider.GoodsDB()
 	a.logger = logger
+	a.cfg = cfg
 	a.CRUDService = base_service.NewCRUDService(a, "goid")
 	a.ListService = base_service.NewListService(a, "goid")
 	a.filterFunc = goods_service.ListFilter(a.db)

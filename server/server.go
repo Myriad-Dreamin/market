@@ -23,7 +23,7 @@ import (
 )
 
 type Server struct {
-	cfg          *config.ServerConfig
+	Cfg          *config.ServerConfig
 	Logger       types.Logger
 	LoggerWriter io.Writer
 
@@ -146,7 +146,7 @@ func (srv *Server) Inject(plugins ...plugin.Plugin) (injectSuccess bool) {
 	}()
 
 	for _, plg := range plugins {
-		plg = plg.Configuration(srv.Logger, srv.FetchConfig, srv.cfg)
+		plg = plg.Configuration(srv.Logger, srv.FetchConfig, srv.Cfg)
 		if plg == nil {
 			return false
 		}

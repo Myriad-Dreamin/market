@@ -6,6 +6,7 @@ import (
 	ginhelper "github.com/Myriad-Dreamin/market/service/gin-helper"
 	"github.com/Myriad-Dreamin/market/types"
 	"github.com/gin-gonic/gin"
+	"net/http"
 	"time"
 )
 
@@ -38,6 +39,14 @@ type PostRequest struct {
 func (srv *Service) SerializePost(c *gin.Context) base_service.CRUDEntity {
 	var req PostRequest
 	if !ginhelper.BindRequest(c, &req) {
+		return nil
+	}
+
+	if req.EndAt.Sub(time.Now()) < srv.cfg.BaseParametersConfig.GoodsMinimumEndDuration {
+		c.AbortWithStatusJSON(http.StatusOK, &ginhelper.ErrorSerializer{
+			Code:  types.CodeInvalidParameters,
+			Error: "could not set end time before a duration shorter than minimum end duration",
+		})
 		return nil
 	}
 

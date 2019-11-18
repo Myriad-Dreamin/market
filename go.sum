@@ -32,7 +32,6 @@ github.com/Myriad-Dreamin/market v0.0.0-20191102045134-4a108d71ca6f/go.mod h1:bF
 github.com/Myriad-Dreamin/market v0.0.0-20191102111938-1dc512f1c327/go.mod h1:NeOrH0iKZtKW77YmWiMxtkQmVk8O7WzLOpOM+fKjSWM=
 github.com/Myriad-Dreamin/minimum-lib v0.0.0-20191102115830-cff59e521d3b h1:e7QXAOBnqyw5oubrnSmX5O4k5aa5VZfpk2EVvLcd/e4=
 github.com/Myriad-Dreamin/minimum-lib v0.0.0-20191102115830-cff59e521d3b/go.mod h1:40LzcaYjInElEojao50ff2Bzwp6ZzasZwmebCVJfC3Q=
-github.com/Myriad-Dreamin/minimum-lib v0.0.0-20191109053555-ffc58e6d4591 h1:gs7QPFCE33+VEaU/vRHUHsxfmeYGyU6QRnnZqlQVzRs=
 github.com/PuerkitoBio/purell v1.1.0/go.mod h1:c11w/QuzBsJSee3cPx9rAFu61PvFxuPbtSwDGJws/X0=
 github.com/PuerkitoBio/purell v1.1.1/go.mod h1:c11w/QuzBsJSee3cPx9rAFu61PvFxuPbtSwDGJws/X0=
 github.com/PuerkitoBio/urlesc v0.0.0-20170810143723-de5bf2ad4578/go.mod h1:uGdkoq3SwY9Y+13GIhn11/XLaGBb4BfwItxLd5jeuXE=

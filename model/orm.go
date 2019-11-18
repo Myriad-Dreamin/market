@@ -56,7 +56,7 @@ func parseConfig(cfg *config.DatabaseConfig) (string, string, error) {
 }
 
 func OpenORM(cfg *config.ServerConfig) (*gorm.DB, error) {
-	dialect, args, err := parseConfig(cfg.DatabaseConfig)
+	dialect, args, err := parseConfig(&cfg.DatabaseConfig)
 	if err != nil {
 		return nil, err
 	}
