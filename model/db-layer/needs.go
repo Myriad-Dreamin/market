@@ -93,11 +93,7 @@ type NeedsQuery struct {
 }
 
 func (needsDB *NeedsDB) Filter(f *GoodsFilter) (needss []Needs, err error) {
-	i, err := needsTraits.GoodsFilter(f)
-	if err != nil {
-		return nil, err
-	}
-	needss = *i.(*[]Needs)
+	err = needsTraits.GoodsFilter(f, &needss)
 	return
 }
 

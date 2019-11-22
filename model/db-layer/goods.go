@@ -82,11 +82,7 @@ type GoodsQuery struct {
 }
 
 func (goodsDB *GoodsDB) Filter(f *GoodsFilter) (goodss []Goods, err error) {
-	i, err := goodsTraits.GoodsFilter(f)
-	if err != nil {
-		return nil, err
-	}
-	goodss = *i.(*[]Goods)
+	err = goodsTraits.GoodsFilter(f, &goodss)
 	return
 }
 

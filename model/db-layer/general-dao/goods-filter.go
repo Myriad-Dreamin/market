@@ -8,6 +8,7 @@ import (
 	"time"
 )
 
+
 type GoodsFilter struct {
 	traits.Filter
 	BySeller   uint       `json:"seller" form:"seller"`
@@ -26,6 +27,7 @@ type GoodsFilter struct {
 
 func GoodsFilterOption(db *gorm.DB, f *GoodsFilter) *gorm.DB {
 	db = gorm_crud_dao.FilterOption(db, &f.Filter)
+
 	if f.BySeller != 0 {
 		db = db.Where("seller = ?", f.BySeller)
 	}
@@ -48,6 +50,7 @@ func GoodsFilterOption(db *gorm.DB, f *GoodsFilter) *gorm.DB {
 	} else if f.MinPriceR != nil {
 		db = db.Where("min_price < ?", *f.MinPriceR)
 	}
+
 	if f.MaxPriceL != nil && f.MaxPriceR != nil {
 		db = db.Where("max_price between ? and ?", *f.MaxPriceL, *f.MaxPriceR)
 	} else if f.MaxPriceL != nil {
@@ -80,8 +83,7 @@ func NewGoodsModel(modelInterface GoodsModelOperatingModel) GoodsModel {
 	return GoodsModel{i: modelInterface}
 }
 
-func (model GoodsModel) GoodsFilter(f *GoodsFilter) (goodss interface{}, err error) {
-	goodss = model.i.ObjectFactory()
+func (model GoodsModel) GoodsFilter(f *GoodsFilter, goodss interface{}) (err error) {
 	err = GoodsFilterOption(model.i.GetGormDB(), f).Find(goodss).Error
 	return
 }

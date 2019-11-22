@@ -8,8 +8,6 @@ import (
 	"net/http"
 )
 
-// 3.9 3.10 3.15 3.16
-// 4.9
 
 type FilterDB interface {
 	FilterI(f *model.GoodsFilter) (interface{}, error)

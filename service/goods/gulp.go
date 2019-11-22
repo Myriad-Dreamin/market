@@ -11,7 +11,7 @@ func (srv *Service) CreateEntity(id uint) base_service.CRUDEntity {
 }
 
 func (srv *Service) GetEntity(id uint) (base_service.CRUDEntity, error) {
-	return srv.db.ID(id)
+	return srv.goodsDB.ID(id)
 }
 
 func (srv *Service) ResponsePost(obj base_service.CRUDEntity) interface{} {

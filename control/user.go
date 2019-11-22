@@ -42,4 +42,5 @@ type UserService interface {
 	// @Title List
 	// @Description List User
 	List(c *gin.Context)
+
 }

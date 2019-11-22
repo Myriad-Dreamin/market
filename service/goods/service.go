@@ -13,20 +13,22 @@ import (
 type Service struct {
 	base_service.CRUDService
 	base_service.ListService
-	db         *model.GoodsDB
+	goodsDB    *model.GoodsDB
+	userDB *model.UserDB
 	logger     types.Logger
-	cfg *config.ServerConfig
+	cfg        *config.ServerConfig
 	filterFunc func(c *gin.Context) interface{}
 }
 
 func NewService(logger types.Logger, provider *model.Provider, cfg *config.ServerConfig) (a *Service, err error) {
 	a = new(Service)
-	a.db = provider.GoodsDB()
+	a.goodsDB = provider.GoodsDB()
+	a.userDB = provider.UserDB()
 	a.logger = logger
 	a.cfg = cfg
 	a.CRUDService = base_service.NewCRUDService(a, "goid")
 	a.ListService = base_service.NewListService(a, "goid")
-	a.filterFunc = goods_service.ListFilter(a.db)
+	a.filterFunc = goods_service.ListFilter(a.goodsDB)
 	return
 }
 
