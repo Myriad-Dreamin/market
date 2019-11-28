@@ -5,78 +5,79 @@
 [GIN-debug] PUT    /v1/goods/:goid           --> github.com/Myriad-Dreamin/market/service/base-service.(*CRUDService).Put-fm (6 handlers)
 [GIN-debug] DELETE /v1/goods/:goid           --> github.com/Myriad-Dreamin/market/service/base-service.(*CRUDService).Delete-fm (6 handlers)
 [GIN-debug] POST   /v1/goods                 --> github.com/Myriad-Dreamin/market/service/base-service.(*CRUDService).Post-fm (6 handlers)
+[GIN-debug] PUT    /v1/user/:id              --> github.com/Myriad-Dreamin/market/control.UserService.Put-fm (5 handlers)
 [GIN-debug] DELETE /v1/user/:id              --> github.com/Myriad-Dreamin/market/control.UserService.Delete-fm (5 handlers)
 [GIN-debug] GET    /v1/user/:id              --> github.com/Myriad-Dreamin/market/control.UserService.Get-fm (5 handlers)
 [GIN-debug] POST   /v1/user/:id/password     --> github.com/Myriad-Dreamin/market/control.UserService.ChangePassword-fm (5 handlers)
-[GIN-debug] PUT    /v1/user/:id              --> github.com/Myriad-Dreamin/market/control.UserService.Put-fm (5 handlers)
 [GIN-debug] GET    /v1/user-list             --> github.com/Myriad-Dreamin/market/control.UserService.List-fm (5 handlers)
 [GIN-debug] POST   /v1/user                  --> github.com/Myriad-Dreamin/market/control.UserService.Register-fm (5 handlers)
 [GIN-debug] POST   /v1/login                 --> github.com/Myriad-Dreamin/market/control.UserService.Login-fm (5 handlers)
+[GIN-debug] DELETE /v1/needs/:nid            --> github.com/Myriad-Dreamin/market/service/base-service.(*CRUDService).Delete-fm (5 handlers)
 [GIN-debug] GET    /v1/needs/:nid            --> github.com/Myriad-Dreamin/market/service/base-service.(*CRUDService).Get-fm (5 handlers)
 [GIN-debug] PUT    /v1/needs/:nid            --> github.com/Myriad-Dreamin/market/service/base-service.(*CRUDService).Put-fm (5 handlers)
-[GIN-debug] DELETE /v1/needs/:nid            --> github.com/Myriad-Dreamin/market/service/base-service.(*CRUDService).Delete-fm (5 handlers)
 [GIN-debug] GET    /v1/needs-list            --> github.com/Myriad-Dreamin/market/service/base-service.(*ListService).List-fm (5 handlers)
 [GIN-debug] POST   /v1/needs                 --> github.com/Myriad-Dreamin/market/service/base-service.(*CRUDService).Post-fm (5 handlers)
 [GIN-debug] GET    /v1/goods/:goid           --> github.com/Myriad-Dreamin/market/service/base-service.(*CRUDService).Get-fm (5 handlers)
 [GIN-debug] GET    /v1/goods-list            --> github.com/Myriad-Dreamin/market/service/base-service.(*ListService).List-fm (5 handlers)
 [GIN-debug] GET    /ping                     --> github.com/Myriad-Dreamin/market/router.PingFunc (5 handlers)
-[GIN] 2019/11/18 - 16:33:27 | 200 |     66.9951ms |                 | POST     /v1/user
+[GIN] 2019/11/18 - 17:37:13 | 200 |     66.0037ms |                 | POST     /v1/user
 Method: POST url: /v1/user http: HTTP/1.1
 Request Header: map[Content-Type:[application/json]]
 Response Header: map[Content-Type:[application/json; charset=utf-8] Gin-Context-Matched-Path-Method:[/v1/user@POST]]
-[GIN] 2019/11/18 - 16:33:27 | 200 |     64.0342ms |                 | POST     /v1/login
+[GIN] 2019/11/18 - 17:37:13 | 200 |     63.9951ms |                 | POST     /v1/login
 Method: POST url: /v1/login http: HTTP/1.1
 Request Header: map[Content-Type:[application/json]]
 Response Header: map[Content-Type:[application/json; charset=utf-8] Gin-Context-Matched-Path-Method:[/v1/login@POST]]
-[GIN] 2019/11/18 - 16:33:27 | 200 |            0s |                 | POST     /v1/goods
+[GIN] 2019/11/18 - 17:37:13 | 200 |            0s |                 | POST     /v1/goods
 Method: POST url: /v1/goods http: HTTP/1.1
-Request Header: map[Authorization:[Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzQwNjk2MDcsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc0MDY1OTk3LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.dA-otmEaP7eHpVQRkJ9GmwSjOZPdHC-H56Psf3nQGok] Content-Type:[application/json]]
+Request Header: map[Authorization:[Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzQwNzM0MzMsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc0MDY5ODIzLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.BlHL99pzkr2r4jfXdU4j92TbHtmItarb1xuONh5JBts] Content-Type:[application/json]]
 Response Header: map[Content-Type:[application/json; charset=utf-8] Gin-Context-Matched-Path-Method:[/v1/goods@POST]]
-[GIN] 2019/11/18 - 16:33:27 | 200 |            0s |                 | POST     /v1/goods
+[GIN] 2019/11/18 - 17:37:13 | 200 |            0s |                 | POST     /v1/goods
 Method: POST url: /v1/goods http: HTTP/1.1
-Request Header: map[Authorization:[Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzQwNjk2MDcsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc0MDY1OTk3LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.dA-otmEaP7eHpVQRkJ9GmwSjOZPdHC-H56Psf3nQGok] Content-Type:[application/json]]
+Request Header: map[Authorization:[Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzQwNzM0MzMsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc0MDY5ODIzLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.BlHL99pzkr2r4jfXdU4j92TbHtmItarb1xuONh5JBts] Content-Type:[application/json]]
 Response Header: map[Content-Type:[application/json; charset=utf-8] Gin-Context-Matched-Path-Method:[/v1/goods@POST]]
-[GIN] 2019/11/18 - 16:33:27 | 200 |            0s |                 | POST     /v1/goods
+[GIN] 2019/11/18 - 17:37:13 | 200 |            0s |                 | POST     /v1/goods
 Method: POST url: /v1/goods http: HTTP/1.1
-Request Header: map[Authorization:[Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzQwNjk2MDcsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc0MDY1OTk3LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.dA-otmEaP7eHpVQRkJ9GmwSjOZPdHC-H56Psf3nQGok] Content-Type:[application/json]]
+Request Header: map[Authorization:[Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzQwNzM0MzMsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc0MDY5ODIzLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.BlHL99pzkr2r4jfXdU4j92TbHtmItarb1xuONh5JBts] Content-Type:[application/json]]
 Response Header: map[Content-Type:[application/json; charset=utf-8] Gin-Context-Matched-Path-Method:[/v1/goods@POST]]
-[GIN] 2019/11/18 - 16:33:27 | 200 |      1.0023ms |                 | POST     /v1/goods
+[GIN] 2019/11/18 - 17:37:13 | 200 |            0s |                 | POST     /v1/goods
 Method: POST url: /v1/goods http: HTTP/1.1
-Request Header: map[Authorization:[Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzQwNjk2MDcsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc0MDY1OTk3LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.dA-otmEaP7eHpVQRkJ9GmwSjOZPdHC-H56Psf3nQGok] Content-Type:[application/json]]
+Request Header: map[Authorization:[Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzQwNzM0MzMsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc0MDY5ODIzLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.BlHL99pzkr2r4jfXdU4j92TbHtmItarb1xuONh5JBts] Content-Type:[application/json]]
 Response Header: map[Content-Type:[application/json; charset=utf-8] Gin-Context-Matched-Path-Method:[/v1/goods@POST]]
-[GIN] 2019/11/18 - 16:33:27 | 200 |            0s |                 | POST     /v1/goods
+[GIN] 2019/11/18 - 17:37:13 | 200 |            0s |                 | POST     /v1/goods
 Method: POST url: /v1/goods http: HTTP/1.1
-Request Header: map[Authorization:[Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzQwNjk2MDcsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc0MDY1OTk3LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.dA-otmEaP7eHpVQRkJ9GmwSjOZPdHC-H56Psf3nQGok] Content-Type:[application/json]]
+Request Header: map[Authorization:[Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzQwNzM0MzMsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc0MDY5ODIzLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.BlHL99pzkr2r4jfXdU4j92TbHtmItarb1xuONh5JBts] Content-Type:[application/json]]
 Response Header: map[Content-Type:[application/json; charset=utf-8] Gin-Context-Matched-Path-Method:[/v1/goods@POST]]
-[GIN] 2019/11/18 - 16:33:27 | 200 |            0s |                 | POST     /v1/goods
+[GIN] 2019/11/18 - 17:37:13 | 200 |            0s |                 | POST     /v1/goods
 Method: POST url: /v1/goods http: HTTP/1.1
-Request Header: map[Authorization:[Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzQwNjk2MDcsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc0MDY1OTk3LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.dA-otmEaP7eHpVQRkJ9GmwSjOZPdHC-H56Psf3nQGok] Content-Type:[application/json]]
+Request Header: map[Authorization:[Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzQwNzM0MzMsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc0MDY5ODIzLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.BlHL99pzkr2r4jfXdU4j92TbHtmItarb1xuONh5JBts] Content-Type:[application/json]]
 Response Header: map[Content-Type:[application/json; charset=utf-8] Gin-Context-Matched-Path-Method:[/v1/goods@POST]]
-[GIN] 2019/11/18 - 16:33:27 | 200 |     64.0026ms |                 | POST     /v1/user
+[GIN] 2019/11/18 - 17:37:13 | 200 |     64.9935ms |                 | POST     /v1/user
 Method: POST url: /v1/user http: HTTP/1.1
-Request Header: map[Authorization:[Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzQwNjk2MDcsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc0MDY1OTk3LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.dA-otmEaP7eHpVQRkJ9GmwSjOZPdHC-H56Psf3nQGok] Content-Type:[application/json]]
+Request Header: map[Authorization:[Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzQwNzM0MzMsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc0MDY5ODIzLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.BlHL99pzkr2r4jfXdU4j92TbHtmItarb1xuONh5JBts] Content-Type:[application/json]]
 Response Header: map[Content-Type:[application/json; charset=utf-8] Gin-Context-Matched-Path-Method:[/v1/user@POST]]
-[GIN] 2019/11/18 - 16:33:27 | 200 |      63.994ms |                 | POST     /v1/login
+[GIN] 2019/11/18 - 17:37:13 | 200 |     64.0007ms |                 | POST     /v1/login
 Method: POST url: /v1/login http: HTTP/1.1
-Request Header: map[Authorization:[Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzQwNjk2MDcsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc0MDY1OTk3LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.dA-otmEaP7eHpVQRkJ9GmwSjOZPdHC-H56Psf3nQGok] Content-Type:[application/json]]
+Request Header: map[Authorization:[Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzQwNzM0MzMsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc0MDY5ODIzLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.BlHL99pzkr2r4jfXdU4j92TbHtmItarb1xuONh5JBts] Content-Type:[application/json]]
 Response Header: map[Content-Type:[application/json; charset=utf-8] Gin-Context-Matched-Path-Method:[/v1/login@POST]]
-[GIN] 2019/11/18 - 16:33:27 | 200 |     65.0045ms |                 | POST     /v1/login
+[GIN] 2019/11/18 - 17:37:13 | 200 |     63.9964ms |                 | POST     /v1/login
 Method: POST url: /v1/login http: HTTP/1.1
-Request Header: map[Authorization:[Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzQwNjk2MDcsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc0MDY1OTk3LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.dA-otmEaP7eHpVQRkJ9GmwSjOZPdHC-H56Psf3nQGok] Content-Type:[application/json]]
+Request Header: map[Authorization:[Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzQwNzM0MzMsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc0MDY5ODIzLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.BlHL99pzkr2r4jfXdU4j92TbHtmItarb1xuONh5JBts] Content-Type:[application/json]]
 Response Header: map[Content-Type:[application/json; charset=utf-8] Gin-Context-Matched-Path-Method:[/v1/login@POST]]
-[GIN] 2019/11/18 - 16:33:27 | 200 |     64.0014ms |                 | POST     /v1/login
+[GIN] 2019/11/18 - 17:37:13 | 200 |     63.0001ms |                 | POST     /v1/login
 Method: POST url: /v1/login http: HTTP/1.1
-Request Header: map[Authorization:[Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzQwNjk2MDcsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc0MDY1OTk3LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.dA-otmEaP7eHpVQRkJ9GmwSjOZPdHC-H56Psf3nQGok] Content-Type:[application/json]]
+Request Header: map[Authorization:[Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzQwNzM0MzMsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc0MDY5ODIzLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.BlHL99pzkr2r4jfXdU4j92TbHtmItarb1xuONh5JBts] Content-Type:[application/json]]
 Response Header: map[Content-Type:[application/json; charset=utf-8] Gin-Context-Matched-Path-Method:[/v1/login@POST]]
-[GIN] 2019/11/18 - 16:33:27 | 200 |            0s |                 | GET      /v1/user/1
+[GIN] 2019/11/18 - 17:37:13 | 200 |            0s |                 | GET      /v1/user/1
 Method: GET url: /v1/user/1 http: HTTP/1.1
-Request Header: map[Authorization:[Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzQwNjk2MDcsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc0MDY1OTk3LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.dA-otmEaP7eHpVQRkJ9GmwSjOZPdHC-H56Psf3nQGok] Content-Type:[]]
+Request Header: map[Authorization:[Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzQwNzM0MzMsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc0MDY5ODIzLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.BlHL99pzkr2r4jfXdU4j92TbHtmItarb1xuONh5JBts] Content-Type:[]]
 Response Header: map[Content-Type:[application/json; charset=utf-8] Gin-Context-Matched-Path-Method:[/v1/user/:id@GET]]
-[GIN] 2019/11/18 - 16:33:27 | 200 |      1.0004ms |                 | GET      /v1/user-list?page=1&page_size=1
+[GIN] 2019/11/18 - 17:37:13 | 200 |            0s |                 | GET      /v1/user-list?page=1&page_size=1
 Method: GET url: /v1/user-list?page=1&page_size=1 http: HTTP/1.1
-Request Header: map[Authorization:[Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzQwNjk2MDcsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc0MDY1OTk3LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.dA-otmEaP7eHpVQRkJ9GmwSjOZPdHC-H56Psf3nQGok] Content-Type:[]]
+Request Header: map[Authorization:[Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzQwNzM0MzMsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc0MDY5ODIzLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.BlHL99pzkr2r4jfXdU4j92TbHtmItarb1xuONh5JBts] Content-Type:[]]
 Response Header: map[Content-Type:[application/json; charset=utf-8] Gin-Context-Matched-Path-Method:[/v1/user-list@GET]]
-+0800	Debug	[38;5;230m module/module.go:92 [0m		{"level": "debug", "_msg": "module installed", "path": "/database/userDB", "name": "*splayer.UserDB"}
+
+0800	Debug	[38;5;230m module/module.go:92 [0m		{"level": "debug", "_msg": "module installed", "path": "/database/userDB", "name": "*splayer.UserDB"}
 2019-11-18T16:33:27.318+0800	Debug	[38;5;230m module/module.go:92 [0m		{"level": "debug", "_msg": "module installed", "path": "/database/objectDB", "name": "*splayer.ObjectDB"}
 2019-11-18T16:33:27.449+0800	Debug	[38;5;230m dorm@v0.0.0-20191029104746-dbf265ce2754/db.go:67 [0m		{"level": "debug", "_msg": "exec ", "statement": "update `user` set last_login = ? where id = ?", "args": ["2019-11-18T16:33:27.4499516+08:00",1]}
 2019-11-18T16:33:27.449+0800	Debug	[38;5;230m user/login.go:130 [0m		{"level": "debug", "_msg": "update last login failed", "error": "no such table: user", "affected": 0}
@@ -86,3 +87,16 @@ Response Header: map[Content-Type:[application/json; charset=utf-8] Gin-Context-
 2019-11-18T16:33:27.644+0800	Debug	[38;5;230m user/login.go:130 [0m		{"level": "debug", "_msg": "update last login failed", "error": "no such table: user", "affected": 0}
 2019-11-18T16:33:27.708+0800	Debug	[38;5;230m dorm@v0.0.0-20191029104746-dbf265ce2754/db.go:67 [0m		{"level": "debug", "_msg": "exec ", "statement": "update `user` set last_login = ? where id = ?", "args": ["2019-11-18T16:33:27.7089218+08:00",2]}
 2019-11-18T16:33:27.708+0800	Debug	[38;5;230m user/login.go:130 [0m		{"level": "debug", "_msg": "update last login failed", "error": "no such table: user", "affected": 0}
+2019-11-18T16:35:27.687+0800	Debug	[38;5;230m module/module.go:92 [0m		{"level": "debug", "_msg": "module installed", "path": "/database/enforcer", "name": "*casbin.SyncedEnforcer"}
+2019-11-18T16:35:27.701+0800	Debug	[38;5;230m module/module.go:92 [0m		{"level": "debug", "_msg": "module installed", "path": "/database/needsDB", "name": "*splayer.NeedsDB"}
+2019-11-18T16:35:27.701+0800	Debug	[38;5;230m module/module.go:92 [0m		{"level": "debug", "_msg": "module installed", "path": "/database/goodsDB", "name": "*splayer.GoodsDB"}
+2019-11-18T16:35:27.701+0800	Debug	[38;5;230m module/module.go:92 [0m		{"level": "debug", "_msg": "module installed", "path": "/database/userDB", "name": "*splayer.UserDB"}
+2019-11-18T16:35:27.701+0800	Debug	[38;5;230m module/module.go:92 [0m		{"level": "debug", "_msg": "module installed", "path": "/database/objectDB", "name": "*splayer.ObjectDB"}
+2019-11-18T16:35:27.831+0800	Debug	[38;5;230m dorm@v0.0.0-20191029104746-dbf265ce2754/db.go:67 [0m		{"level": "debug", "_msg": "exec ", "statement": "update `user` set last_login = ? where id = ?", "args": ["2019-11-18T16:35:27.831258+08:00",1]}
+2019-11-18T16:35:27.831+0800	Debug	[38;5;230m user/login.go:130 [0m		{"level": "debug", "_msg": "update last login failed", "error": "no such table: user", "affected": 0}
+2019-11-18T16:35:27.961+0800	Debug	[38;5;230m dorm@v0.0.0-20191029104746-dbf265ce2754/db.go:67 [0m		{"level": "debug", "_msg": "exec ", "statement": "update `user` set last_login = ? where id = ?", "args": ["2019-11-18T16:35:27.9612259+08:00",2]}
+2019-11-18T16:35:27.961+0800	Debug	[38;5;230m user/login.go:130 [0m		{"level": "debug", "_msg": "update last login failed", "error": "no such table: user", "affected": 0}
+2019-11-18T16:35:28.025+0800	Debug	[38;5;230m dorm@v0.0.0-20191029104746-dbf265ce2754/db.go:67 [0m		{"level": "debug", "_msg": "exec ", "statement": "update `user` set last_login = ? where id = ?", "args": ["2019-11-18T16:35:28.0252261+08:00",2]}
+2019-11-18T16:35:28.025+0800	Debug	[38;5;230m user/login.go:130 [0m		{"level": "debug", "_msg": "update last login failed", "error": "no such table: user", "affected": 0}
+2019-11-18T16:35:28.089+0800	Debug	[38;5;230m dorm@v0.0.0-20191029104746-dbf265ce2754/db.go:67 [0m		{"level": "debug", "_msg": "exec ", "statement": "update `user` set last_login = ? where id = ?", "args": ["2019-11-18T16:35:28.0892258+08:00",2]}
+2019-11-18T16:35:28.089+0800	Debug	[38;5;230m user/login.go:130 [0m		{"level": "debug", "_msg": "update last login failed", "error": "no such table: user", "affected": 0}

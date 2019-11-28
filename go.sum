@@ -14,6 +14,7 @@ github.com/Myriad-Dreamin/core-oj v1.0.1 h1:9qyJ9+XFX1dPBF/a3sP1596q4wyL+ycRZa7F
 github.com/Myriad-Dreamin/core-oj v1.0.1/go.mod h1:Bzykxe9H/YQkIXpqDy1Pk6sWduxwJ503opA/rH8nEQ4=
 github.com/Myriad-Dreamin/dorm v0.0.0-20191029104746-dbf265ce2754 h1:hWqjmlHu6ktTd3DSEZz9IWWBj/prFSA9PWeCqHNFGWk=
 github.com/Myriad-Dreamin/dorm v0.0.0-20191029104746-dbf265ce2754/go.mod h1:seclVAhgZxO4QmqSRwX2PyCJaQ1wAgVn1q5VJkXdMrk=
+github.com/Myriad-Dreamin/dorm v0.0.0-20191118100709-c1953e07d802/go.mod h1:seclVAhgZxO4QmqSRwX2PyCJaQ1wAgVn1q5VJkXdMrk=
 github.com/Myriad-Dreamin/functional-go v0.0.0-20191102095642-532e6dc9bfd5 h1:+QOY4zEADbgTOJK7ir1mtfKiUXSeO8nxHevCAoekbug=
 github.com/Myriad-Dreamin/functional-go v0.0.0-20191102095642-532e6dc9bfd5/go.mod h1:sEA0raCE2EI7YqF5PFR3V25Px0Ck6qPNReaUTegSmJ4=
 github.com/Myriad-Dreamin/gin-middleware v0.0.0-20191001110659-e6949e7c287e h1:SiTngy6SDwkInN5KCqJ9YE+zXMLcwRf4lNKesU8dVFs=
@@ -32,6 +33,11 @@ github.com/Myriad-Dreamin/market v0.0.0-20191102045134-4a108d71ca6f/go.mod h1:bF
 github.com/Myriad-Dreamin/market v0.0.0-20191102111938-1dc512f1c327/go.mod h1:NeOrH0iKZtKW77YmWiMxtkQmVk8O7WzLOpOM+fKjSWM=
 github.com/Myriad-Dreamin/minimum-lib v0.0.0-20191102115830-cff59e521d3b h1:e7QXAOBnqyw5oubrnSmX5O4k5aa5VZfpk2EVvLcd/e4=
 github.com/Myriad-Dreamin/minimum-lib v0.0.0-20191102115830-cff59e521d3b/go.mod h1:40LzcaYjInElEojao50ff2Bzwp6ZzasZwmebCVJfC3Q=
+github.com/Myriad-Dreamin/minimum-lib v0.0.0-20191109053555-ffc58e6d4591 h1:gs7QPFCE33+VEaU/vRHUHsxfmeYGyU6QRnnZqlQVzRs=
+github.com/Myriad-Dreamin/minimum-lib v0.0.0-20191109053555-ffc58e6d4591/go.mod h1:40LzcaYjInElEojao50ff2Bzwp6ZzasZwmebCVJfC3Q=
+github.com/Myriad-Dreamin/minimum-lib v0.0.0-20191118090519-8cf6c24cd81e/go.mod h1:40LzcaYjInElEojao50ff2Bzwp6ZzasZwmebCVJfC3Q=
+github.com/Myriad-Dreamin/minimum-lib v0.0.0-20191118091634-2bc5ed4be065 h1:rNZEAa2etoGUSGnmdrM1QFhgkrWNfELeJb16nrb7nj4=
+github.com/Myriad-Dreamin/minimum-lib v0.0.0-20191118091634-2bc5ed4be065/go.mod h1:36hE5fjQyweYldwI5Vi6GUh+2pDFmrOP31NkceYAwFE=
 github.com/PuerkitoBio/purell v1.1.0/go.mod h1:c11w/QuzBsJSee3cPx9rAFu61PvFxuPbtSwDGJws/X0=
 github.com/PuerkitoBio/purell v1.1.1/go.mod h1:c11w/QuzBsJSee3cPx9rAFu61PvFxuPbtSwDGJws/X0=
 github.com/PuerkitoBio/urlesc v0.0.0-20170810143723-de5bf2ad4578/go.mod h1:uGdkoq3SwY9Y+13GIhn11/XLaGBb4BfwItxLd5jeuXE=

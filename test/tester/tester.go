@@ -3,10 +3,11 @@ package tester
 import (
 	"encoding/json"
 	"errors"
-	"github.com/Myriad-Dreamin/minimum-lib/mock"
-	"github.com/Myriad-Dreamin/minimum-lib/sugar"
+	"fmt"
 	"github.com/Myriad-Dreamin/market/server"
 	userservice "github.com/Myriad-Dreamin/market/service/user"
+	"github.com/Myriad-Dreamin/minimum-lib/mock"
+	"github.com/Myriad-Dreamin/minimum-lib/sugar"
 	"io"
 	"log"
 	"testing"
@@ -14,15 +15,42 @@ import (
 
 type Tester struct {
 	*server.Mocker
+
+	ContextVars map[string]interface{}
 }
 
 type TesterContext struct {
 	*server.MockerContext
 	t *testing.T
+	sugar.HandlerErrorLogger
+}
+
+func (t Tester) Set(k string, v interface{}) interface{} {
+	res, _ := t.ContextVars[k]
+	t.ContextVars[k] = v
+	return res
+}
+
+func (t Tester) Get(k string) interface{} {
+	return t.ContextVars[k]
+}
+
+func (t Tester) ShouldGet(k string) (v interface{}, ok bool) {
+	v, ok = t.ContextVars[k]
+	return
+}
+
+func (t Tester) MustGet(k string) interface{} {
+	v, ok := t.ContextVars[k]
+	if !ok {
+		panic(fmt.Errorf("could not get %v from context", k))
+	}
+	return v
 }
 
 func StartTester(serverOptions []server.Option) (tester *Tester) {
 	tester = new(Tester)
+	tester.ContextVars = make(map[string]interface{})
 	tester.Mocker = server.Mock(serverOptions...)
 	if tester.Mocker == nil {
 		panic(errors.New("req mocker error"))
@@ -32,8 +60,9 @@ func StartTester(serverOptions []server.Option) (tester *Tester) {
 
 func (t *Tester) Context(tt *testing.T) (s *TesterContext) {
 	return &TesterContext{
-		MockerContext: t.Mocker.Context(tt),
-		t:             tt,
+		MockerContext:      t.Mocker.Context(tt),
+		t:                  tt,
+		HandlerErrorLogger: sugar.NewHandlerErrorLogger(tt),
 	}
 }
 

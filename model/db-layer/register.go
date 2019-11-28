@@ -28,7 +28,6 @@ func Register(rdb *gorm.DB, logger types.Logger) error {
 	if err = rawDB.Ping(); err != nil {
 		return err
 	}
-
 	xdb, err := dorm.FromRaw(rawDB, adapt(logger))
 	if err != nil {
 		return err
