@@ -14,6 +14,7 @@ github.com/Myriad-Dreamin/core-oj v1.0.1 h1:9qyJ9+XFX1dPBF/a3sP1596q4wyL+ycRZa7F
 github.com/Myriad-Dreamin/core-oj v1.0.1/go.mod h1:Bzykxe9H/YQkIXpqDy1Pk6sWduxwJ503opA/rH8nEQ4=
 github.com/Myriad-Dreamin/dorm v0.0.0-20191029104746-dbf265ce2754 h1:hWqjmlHu6ktTd3DSEZz9IWWBj/prFSA9PWeCqHNFGWk=
 github.com/Myriad-Dreamin/dorm v0.0.0-20191029104746-dbf265ce2754/go.mod h1:seclVAhgZxO4QmqSRwX2PyCJaQ1wAgVn1q5VJkXdMrk=
+github.com/Myriad-Dreamin/dorm v0.0.0-20191118100709-c1953e07d802 h1:k1MbTTzabI30CJlfRaaiBk4ugforq2xNHvy7FcFJDO8=
 github.com/Myriad-Dreamin/dorm v0.0.0-20191118100709-c1953e07d802/go.mod h1:seclVAhgZxO4QmqSRwX2PyCJaQ1wAgVn1q5VJkXdMrk=
 github.com/Myriad-Dreamin/functional-go v0.0.0-20191102095642-532e6dc9bfd5 h1:+QOY4zEADbgTOJK7ir1mtfKiUXSeO8nxHevCAoekbug=
 github.com/Myriad-Dreamin/functional-go v0.0.0-20191102095642-532e6dc9bfd5/go.mod h1:sEA0raCE2EI7YqF5PFR3V25Px0Ck6qPNReaUTegSmJ4=
