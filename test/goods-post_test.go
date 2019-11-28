@@ -26,10 +26,22 @@ func testGoodsPost(t *testing.T) {
 		IsFixed:     is_fixed,
 		Description: "",
 	})
-
-	var rpl goodsservice.PostReply
-	ctx.HandlerError0(resp.JSON(&rpl))
-	srv.Set(goodsEsIdK, rpl.Goods.ID)
+	_ = srv.Post("/v1/goods", goodsservice.PostRequest{
+		EndAt:       end_at,
+		Type:        tp,
+		Name:        "es00000",
+		MinPrice:    min_price,
+		IsFixed:     is_fixed,
+		Description: "",
+	})
+	_ = srv.Post("/v1/goods", goodsservice.PostRequest{
+		EndAt:       end_at,
+		Type:        tp,
+		Name:        "es00001",
+		MinPrice:    min_price,
+		IsFixed:     is_fixed,
+		Description: "",
+	})
 }
 
 func testGoodsPostWithError(t *testing.T) {
