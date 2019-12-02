@@ -50,6 +50,7 @@ func (srv *CRUDService) Delete(c *gin.Context) {
 
 	if ginhelper.DeleteObj(c, obj) {
 		c.JSON(http.StatusOK, &ginhelper.ResponseOK)
+	} else {
 	}
 }
 

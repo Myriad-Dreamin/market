@@ -4,5 +4,5 @@ package userservice
 import instance "github.com/Myriad-Dreamin/go-magic-package/instance"
 
 func init() {
-	instance.Register("../../work/gosrc/src/github.com/Myriad-Dreamin/market/service/user", `/home/kamiyoru/work/gosrc/src/github.com/Myriad-Dreamin/market/service/user`)
+	instance.Register("github.com/Myriad-Dreamin/market/service/user", `E:\project\go\src\github.com\Myriad-Dreamin\market\service\user`)
 }

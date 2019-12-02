@@ -6,5 +6,5 @@ import (
 )
 
 func (srv *Service) deleteHook(c *gin.Context, object *model.User) (canDelete bool) {
-	return false
+	return true
 }

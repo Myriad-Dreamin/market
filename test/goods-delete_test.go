@@ -1,7 +1,18 @@
 package tests
 
-import "testing"
+import (
+	"fmt"
+	"github.com/Myriad-Dreamin/market/test/tester"
+	"reflect"
+	"strconv"
+)
 
-func testGoodsDelete(t *testing.T) {
+var intT = 1
+var intType = reflect.TypeOf(intT)
 
+func testGoodsDelete(t *tester.TesterContext) {
+	id := reflect.ValueOf(srv.Get(goodsEsDeleteIdK)).Convert(intType).Interface().(int)
+
+	resp := t.Delete("/v1/goods/" + strconv.Itoa(id))
+	fmt.Println(resp)
 }

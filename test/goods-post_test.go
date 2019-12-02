@@ -3,22 +3,30 @@ package tests
 import (
 	goodsservice "github.com/Myriad-Dreamin/market/service/goods"
 	"github.com/Myriad-Dreamin/market/types"
+	"strconv"
 	"testing"
 	"time"
 )
 
-const goodsEsIdK = "goods/es/id"
+
+func RangeInt(l,r int) []int {
+	var x = make([]int, r-l)
+	for i := l; i < r; i++ {
+		x[i-l] = i
+	}
+	return x
+}
 
 func testGoodsPost(t *testing.T) {
 	ctx := srv.Context(t).AssertNoError(true)
 	var (
 		end_at  = time.Now().Add(time.Hour * 24)
 		tp = types.GoodsTypeElectronic
-		name = "es"
+		name = "es000"
 		min_price uint64 = 100
 		is_fixed = false
 	)
-	resp := ctx.Post("/v1/goods", goodsservice.PostRequest{
+	_ = ctx.Post("/v1/goods", goodsservice.PostRequest{
 		EndAt:       end_at,
 		Type:        tp,
 		Name:        name,
@@ -26,22 +34,24 @@ func testGoodsPost(t *testing.T) {
 		IsFixed:     is_fixed,
 		Description: "",
 	})
-	_ = srv.Post("/v1/goods", goodsservice.PostRequest{
-		EndAt:       end_at,
-		Type:        tp,
-		Name:        "es00000",
-		MinPrice:    min_price,
-		IsFixed:     is_fixed,
-		Description: "",
-	})
-	_ = srv.Post("/v1/goods", goodsservice.PostRequest{
-		EndAt:       end_at,
-		Type:        tp,
-		Name:        "es00001",
-		MinPrice:    min_price,
-		IsFixed:     is_fixed,
-		Description: "",
-	})
+	for i := range RangeInt(0, 10) {
+		resp := ctx.Post("/v1/goods", goodsservice.PostRequest{
+			EndAt:       end_at,
+			Type:        tp,
+			Name:        name + strconv.Itoa(i),
+			MinPrice:    min_price,
+			IsFixed:     is_fixed,
+			Description: "",
+		})
+		var x goodsservice.PostReply
+		ctx.HandlerError0(resp.JSON(&x))
+		if i == 1 {
+			srv.Set(goodsEsDeleteIdK, x.Goods.ID)
+		} else if i == 2 {
+			srv.Set(goodsEsIdK, x.Goods.ID)
+		}
+	}
+
 }
 
 func testGoodsPostWithError(t *testing.T) {
