@@ -1,8 +1,13 @@
+//go:generate stringer -type=GoodsStatus
 package types
 
+
+type GoodsStatus uint8
+
 const (
-	GoodsStatusUnknown uint8 = iota
+	GoodsStatusUnknown GoodsStatus = iota
 	GoodsStatusUnFinished
+	GoodsStatusPending
 	GoodsStatusFinished
 )
 

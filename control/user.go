@@ -43,4 +43,12 @@ type UserService interface {
 	// @Description List User
 	List(c *gin.Context)
 
+	// @Title Buy
+	// @Description Buy Goods
+	Buy(c *gin.Context)
+
+	// @Title Sell
+	// @Description Sell Needs
+	Sell(c *gin.Context)
+
 }

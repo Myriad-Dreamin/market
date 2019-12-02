@@ -1,10 +1,10 @@
 package userservice
 
 import (
-	"github.com/Myriad-Dreamin/minimum-lib/rbac"
 	"github.com/Myriad-Dreamin/market/model"
 	ginhelper "github.com/Myriad-Dreamin/market/service/gin-helper"
 	"github.com/Myriad-Dreamin/market/types"
+	"github.com/Myriad-Dreamin/minimum-lib/rbac"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"strconv"
@@ -77,13 +77,13 @@ func (srv *Service) Register(c *gin.Context) {
 		if ginhelper.CheckInsertError(c, err) {
 			return
 		}
-		c.AbortWithStatusJSON(http.StatusInternalServerError, &ginhelper.ErrorSerializer{
+		c.AbortWithStatusJSON(http.StatusInternalServerError, &types.ErrorSerializer{
 			Code:  types.CodeInsertError,
 			Error: err.Error(),
 		})
 		return
 	} else if aff == 0 {
-		c.JSON(http.StatusOK, &ginhelper.ErrorSerializer{
+		c.JSON(http.StatusOK, &types.ErrorSerializer{
 			Code:  types.CodeInsertError,
 			Error: "existed",
 		})

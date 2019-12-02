@@ -30,7 +30,7 @@ func (srv *Service) FilterOn(c *gin.Context) (interface{}, error) {
 		return nil, nil
 	}
 
-	objs, err := srv.db.QueryChain().Page(page, pageSize).Query()
+	objs, err := srv.userDB.QueryChain().Page(page, pageSize).Query()
 	if err != nil {
 		return nil, err
 	}

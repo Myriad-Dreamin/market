@@ -6,6 +6,7 @@ import (
 	"github.com/Myriad-Dreamin/market/config"
 	"github.com/Myriad-Dreamin/market/control"
 	"github.com/Myriad-Dreamin/market/model"
+	"github.com/Myriad-Dreamin/market/model/sp-layer"
 	base_service "github.com/Myriad-Dreamin/market/service/base-service"
 	"github.com/Myriad-Dreamin/market/types"
 	"github.com/casbin/casbin/v2"
@@ -14,7 +15,9 @@ import (
 type Service struct {
 	base_service.CRUDService
 	base_service.ListService
-	db         *model.UserDB
+	userDB     *model.UserDB
+	goodsDB    *model.GoodsDB
+	needsDB    *splayer.NeedsDB
 	enforcer   *casbin.SyncedEnforcer
 	logger     types.Logger
 	middleware *jwt.Middleware
@@ -22,7 +25,9 @@ type Service struct {
 
 func NewService(logger types.Logger, provider *model.Provider, middleware *jwt.Middleware, _ *config.ServerConfig) (a control.UserService, err error) {
 	srv := new(Service)
-	srv.db = provider.UserDB()
+	srv.userDB = provider.UserDB()
+	srv.goodsDB = provider.GoodsDB()
+	srv.needsDB = provider.NeedsDB()
 	srv.enforcer = provider.Enforcer()
 	srv.logger = logger
 	srv.middleware = middleware

@@ -39,7 +39,7 @@ func (srv *Service) SerializePost(c *gin.Context) base_service.CRUDEntity {
 	}
 
 	if req.EndAt.Sub(time.Now()) < srv.cfg.BaseParametersConfig.GoodsMinimumEndDuration {
-		c.AbortWithStatusJSON(http.StatusOK, &ginhelper.ErrorSerializer{
+		c.AbortWithStatusJSON(http.StatusOK, &types.ErrorSerializer{
 			Code:  types.CodeInvalidParameters,
 			Error: "could not set end time before a duration shorter than minimum end duration",
 		})

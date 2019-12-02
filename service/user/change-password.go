@@ -18,7 +18,7 @@ func (srv *Service) ChangePassword(c *gin.Context) {
 		return
 	}
 
-	user, err := srv.db.Query(id)
+	user, err := srv.userDB.Query(id)
 	if ginhelper.MaybeSelectError(c, user, err) {
 		return
 	}

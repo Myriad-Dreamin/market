@@ -14,10 +14,11 @@ type Service struct {
 	base_service.CRUDService
 	base_service.ListService
 	goodsDB    *model.GoodsDB
-	userDB *model.UserDB
+	userDB     *model.UserDB
 	logger     types.Logger
 	cfg        *config.ServerConfig
 	filterFunc func(c *gin.Context) interface{}
+	key        string
 }
 
 func NewService(logger types.Logger, provider *model.Provider, cfg *config.ServerConfig) (a *Service, err error) {
@@ -26,8 +27,9 @@ func NewService(logger types.Logger, provider *model.Provider, cfg *config.Serve
 	a.userDB = provider.UserDB()
 	a.logger = logger
 	a.cfg = cfg
-	a.CRUDService = base_service.NewCRUDService(a, "goid")
-	a.ListService = base_service.NewListService(a, "goid")
+	a.key = "goid"
+	a.CRUDService = base_service.NewCRUDService(a, a.key)
+	a.ListService = base_service.NewListService(a, a.key)
 	a.filterFunc = goods_service.ListFilter(a.goodsDB)
 	return
 }

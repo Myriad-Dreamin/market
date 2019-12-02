@@ -7,6 +7,7 @@ import (
 	"github.com/Myriad-Dreamin/go-magic-package/instance"
 	parser "github.com/Myriad-Dreamin/go-parse-package"
 	"github.com/Myriad-Dreamin/market/config"
+	"github.com/Myriad-Dreamin/market/types"
 	"io"
 	"io/ioutil"
 	"log"
@@ -16,7 +17,6 @@ import (
 	"testing"
 
 	dblayer "github.com/Myriad-Dreamin/market/model/db-layer"
-	ginhelper "github.com/Myriad-Dreamin/market/service/gin-helper"
 	abstract_test "github.com/Myriad-Dreamin/minimum-lib/abstract-test"
 	"github.com/Myriad-Dreamin/minimum-lib/mock"
 	"github.com/Myriad-Dreamin/minimum-lib/sugar"
@@ -346,7 +346,7 @@ func (mocker *Mocker) NoErr(resp mock.ResponseI) bool {
 		return false
 	}
 	body := resp.Body()
-	var obj ginhelper.ErrorSerializer
+	var obj types.ErrorSerializer
 	if err := json.Unmarshal(body.Bytes(), &obj); err != nil {
 		mocker.contextHelper.Error(err)
 		return false

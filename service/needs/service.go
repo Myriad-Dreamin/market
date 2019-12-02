@@ -16,16 +16,20 @@ type Service struct {
 	needsDB *model.NeedsDB
 	userDB *model.UserDB
 	logger     types.Logger
+	cfg *config.ServerConfig
 	filterFunc func(c *gin.Context) interface{}
+	key string
 }
 
-func NewService(logger types.Logger, provider *model.Provider, _ *config.ServerConfig) (a *Service, err error) {
+func NewService(logger types.Logger, provider *model.Provider, cfg *config.ServerConfig) (a *Service, err error) {
 	a = new(Service)
 	a.needsDB = provider.NeedsDB()
 	a.userDB = provider.UserDB()
 	a.logger = logger
-	a.CRUDService = base_service.NewCRUDService(a, "nid")
-	a.ListService = base_service.NewListService(a, "nid")
+	a.cfg = cfg
+	a.key = "nid"
+	a.CRUDService = base_service.NewCRUDService(a, a.key)
+	a.ListService = base_service.NewListService(a, a.key)
 	a.filterFunc = goods_service.ListFilter(a.needsDB)
 	return
 }
