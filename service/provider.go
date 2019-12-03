@@ -26,6 +26,7 @@ func JustProvide(controllers ...interface{}) SubController {
 // @DocName Minimum-Market
 // @Description this is the market backend powered by minimum
 type Provider struct {
+	statisticService *StatisticService
 	module.BaseModuler
 
 	objectService *ObjectService
@@ -53,6 +54,9 @@ func (s *Provider) Register(name string, service interface{}) {
 	}
 
 	switch ss := service.(type) {
+	case *StatisticService:
+		s.statisticService = ss
+		s.subControllers = append(s.subControllers, JustProvide(&ss))
 	case *NeedsService:
 		s.needsService = ss
 		s.subControllers = append(s.subControllers, JustProvide(&ss))

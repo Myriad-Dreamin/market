@@ -16,6 +16,7 @@ type RootRouter struct {
 	//ObjectRouter *ObjectRouter
 	UserRouter  *UserRouter
 	GoodsRouter *GoodsRouter
+	StatisticRouter *StatisticRouter
 	NeedsRouter *NeedsRouter
 }
 
@@ -45,5 +46,6 @@ func NewRootRouter(serviceProvider *service.Provider, jwtMW *jwt.Middleware, rou
 	r.UserRouter = BuildUserRouter(r, serviceProvider)
 	r.NeedsRouter = BuildNeedsRouter(r, serviceProvider)
 	r.GoodsRouter = BuildGoodsRouter(r, serviceProvider)
+	r.StatisticRouter = BuildStatisticRouter(r, serviceProvider)
 	return
 }
