@@ -6,6 +6,7 @@ import (
 
 type ObjectRouter struct {
 	*Router
+	AuthRouter *Router
 	Auth     *Middleware
 	IDRouter *ObjectIDRouter
 
@@ -15,6 +16,7 @@ type ObjectRouter struct {
 
 type ObjectIDRouter struct {
 	*Router
+	AuthRouter *Router
 	Auth *Middleware
 
 	Get    *LeafRouter
@@ -26,6 +28,7 @@ func BuildObjectRouter(parent *RootRouter, serviceProvider *service.Provider) (r
 	objectService := serviceProvider.ObjectService()
 	router = &ObjectRouter{
 		Router: parent.Router.Extend("object"),
+		AuthRouter: parent.AuthRouter.Extend("object"),
 		Auth:   parent.Auth.Copy(),
 	}
 	router.GetList = router.GET("object-list", objectService.List)
@@ -43,6 +46,7 @@ func (*ObjectIDRouter) subBuild(parent *ObjectRouter, serviceProvider *service.P
 
 	router = &ObjectIDRouter{
 		Router: parent.Group("/object/:oid"),
+		AuthRouter: parent.AuthRouter.Group("/object/:oid"),
 		Auth:   parent.Auth.MustGroup("object", "oid"),
 	}
 

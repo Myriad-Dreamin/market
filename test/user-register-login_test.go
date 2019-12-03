@@ -6,7 +6,7 @@ import (
 	"testing"
 )
 
-func testRegisterLogin(t *testing.T) {
+func testUserRegisterLogin(t *testing.T) {
 	srv := srv.Context(t).AssertNoError(true)
 	var (
 		name  = "chan tan"
