@@ -8,6 +8,9 @@ import (
 )
 
 func wrapToObject(object interface{}, err error) (*Object, error) {
+	if object == nil {
+		return nil, err
+	}
 	return object.(*Object), err
 }
 

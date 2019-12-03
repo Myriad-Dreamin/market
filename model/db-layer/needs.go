@@ -11,6 +11,9 @@ import (
 )
 
 func wrapToNeeds(needs interface{}, err error) (*Needs, error) {
+	if needs == nil {
+		return nil, err
+	}
 	return needs.(*Needs), err
 }
 

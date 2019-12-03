@@ -10,6 +10,9 @@ import (
 )
 
 func wrapToGoods(goods interface{}, err error) (*Goods, error) {
+	if goods == nil {
+		return nil, err
+	}
 	return goods.(*Goods), err
 }
 

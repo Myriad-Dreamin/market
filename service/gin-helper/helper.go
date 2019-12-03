@@ -162,9 +162,9 @@ func MaybeCountError(c *gin.Context, err error) bool {
 
 type applyContext gin.Context
 
-func (ctx applyContext) applyError(code errorc.Code, errs string) bool {
+func (ctx *applyContext) applyError(code errorc.Code, errs string) bool {
 	if code != types.CodeOK {
-		((gin.Context)(ctx)).AbortWithStatusJSON(http.StatusOK, types.ErrorSerializer{
+		((*gin.Context)(ctx)).AbortWithStatusJSON(http.StatusOK, types.ErrorSerializer{
 			Code:  code,
 			Error: errs,
 		})

@@ -9,6 +9,9 @@ import (
 
 
 func wrapToStatFee(statFee interface{}, err error) (*StatFee, error) {
+	if statFee == nil {
+		return nil, err
+	}
 	return statFee.(*StatFee), err
 }
 

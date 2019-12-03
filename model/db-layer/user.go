@@ -9,6 +9,9 @@ import (
 )
 
 func wrapToUser(user interface{}, err error) (*User, error) {
+	if user == nil {
+		return nil, err
+	}
 	return user.(*User), err
 }
 

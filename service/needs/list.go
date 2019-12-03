@@ -15,27 +15,26 @@ type NeedsUserReply struct {
 }
 
 type NeedsReply struct {
-	ID          uint            `json:"id" form:"id"`
-	CreatedAt   time.Time       `json:"created_at" form:"created_at"`
-	UpdatedAt   time.Time       `json:"updated_at" form:"updated_at"`
-	EndAt       time.Time       `json:"end_at" form:"end_at"`
-	Seller      *NeedsUserReply `json:"seller" form:"seller"`
-	Buyer       *NeedsUserReply `json:"buyer" form:"buyer"`
-	EndDuration time.Duration   `json:"ddd" form:"ddd"`
-	Type        uint16          `json:"g_type" form:"g_type"`
-	Name        string          `json:"name" form:"name"`
-	MinPrice    uint64          `json:"min_price" form:"min_price"`
-	MaxPrice    uint64          `json:"min_price" form:"min_price"`
-	IsFixed     bool            `json:"is_fixed" form:"is_fixed"`
-	Description string          `json:"description" form:"description"`
-	Status      uint8           `json:"status" form:"status"`
+	ID          uint              `json:"id" form:"id"`
+	CreatedAt   time.Time         `json:"created_at" form:"created_at"`
+	UpdatedAt   time.Time         `json:"updated_at" form:"updated_at"`
+	EndAt       time.Time         `json:"end_at" form:"end_at"`
+	Seller      *NeedsUserReply   `json:"seller" form:"seller"`
+	Buyer       *NeedsUserReply   `json:"buyer" form:"buyer"`
+	EndDuration time.Duration     `json:"ddd" form:"ddd"`
+	Type        uint16            `json:"g_type" form:"g_type"`
+	Name        string            `json:"name" form:"name"`
+	MinPrice    uint64            `json:"min_price" form:"min_price"`
+	MaxPrice    uint64            `json:"min_price" form:"min_price"`
+	IsFixed     bool              `json:"is_fixed" form:"is_fixed"`
+	Description string            `json:"description" form:"description"`
+	Status      types.GoodsStatus `json:"status" form:"status"`
 }
 
 type ListReply struct {
 	Code   int          `json:"code"`
 	Needss []NeedsReply `json:"needss"`
 }
-
 
 func (srv *Service) NeedssToListReply(c *gin.Context, obj []model.Needs) (reply *ListReply) {
 	reply = new(ListReply)

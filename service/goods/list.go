@@ -15,25 +15,24 @@ type GoodsUserReply struct {
 }
 
 type GoodsReply struct {
-	ID          uint        `json:"id" form:"id"`
-	CreatedAt   time.Time   `json:"created_at" form:"created_at"`
-	UpdatedAt   time.Time   `json:"updated_at" form:"updated_at"`
-	EndAt       time.Time   `json:"end_at" form:"end_at"`
-	Seller      *GoodsUserReply `json:"seller" form:"seller"`
-	Buyer       *GoodsUserReply `json:"buyer" form:"buyer"`
-	Type        uint16      `json:"g_type" form:"g_type"`
-	Name        string      `json:"name" form:"name"`
-	MinPrice    uint64      `json:"min_price" form:"min_price"`
-	IsFixed     bool        `json:"is_fixed" form:"is_fixed"`
-	Description string      `json:"description" form:"description"`
-	Status      uint8       `json:"status" form:"status"`
+	ID          uint              `json:"id" form:"id"`
+	CreatedAt   time.Time         `json:"created_at" form:"created_at"`
+	UpdatedAt   time.Time         `json:"updated_at" form:"updated_at"`
+	EndAt       time.Time         `json:"end_at" form:"end_at"`
+	Seller      *GoodsUserReply   `json:"seller" form:"seller"`
+	Buyer       *GoodsUserReply   `json:"buyer" form:"buyer"`
+	Type        uint16            `json:"g_type" form:"g_type"`
+	Name        string            `json:"name" form:"name"`
+	MinPrice    uint64            `json:"min_price" form:"min_price"`
+	IsFixed     bool              `json:"is_fixed" form:"is_fixed"`
+	Description string            `json:"description" form:"description"`
+	Status      types.GoodsStatus `json:"status" form:"status"`
 }
 
 type ListReply struct {
 	Code   int          `json:"code"`
 	Goodss []GoodsReply `json:"goodss"`
 }
-
 
 func (srv *Service) GoodssToListReply(c *gin.Context, obj []model.Goods) (reply *ListReply) {
 	reply = new(ListReply)
