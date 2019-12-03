@@ -1,4 +1,4 @@
-package router
+package mgin
 
 import (
 	"errors"
@@ -184,7 +184,7 @@ func (mw *Middleware) useValidate(validate ValidateFunc) gin.HandlerFunc {
 }
 
 type Requirement struct {
-	Object string
+	Entity string
 	Action string
 }
 
@@ -195,7 +195,7 @@ func (r Requirement) RetrieveFunc(placeholder string) RetrieveFunc {
 		if id := c.Param(placeholder); len(id) == 0 {
 			return ""
 		}
-		return r.Object + ":" + placeholder
+		return r.Entity + ":" + placeholder
 	}
 }
 
@@ -216,8 +216,8 @@ func (mw *Middleware) AdminOnlyValidate() ValidateFunc {
 
 func (mw *Middleware) BuildValidate(reqs ...Requirement) ValidateFunc {
 	for _, req := range mw.reqs.PlusX(reqs) {
-		if mw, ok := mw.objectMiddleware[req.Object]; !ok {
-			panic(fmt.Errorf("missing requirement object, want %s, but not registered in the middleware", req.Object))
+		if mw, ok := mw.objectMiddleware[req.Entity]; !ok {
+			panic(fmt.Errorf("missing requirement object, want %s, but not registered in the middleware", req.Entity))
 		} else {
 			mw.Absorb(req.Action)
 		}

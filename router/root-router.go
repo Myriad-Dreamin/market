@@ -2,17 +2,18 @@ package router
 
 import (
 	"github.com/Myriad-Dreamin/gin-middleware/auth/jwt"
+	"github.com/Myriad-Dreamin/market/lib/router"
 	"github.com/Myriad-Dreamin/market/service"
 	"github.com/gin-gonic/gin"
 )
 
 type RootRouter struct {
-	Root       *Router
-	Router     *Router
-	AuthRouter *Router
-	Auth       *Middleware
+	Root       *mgin.Router
+	Router     *mgin.Router
+	AuthRouter *mgin.Router
+	Auth       *mgin.Middleware
 
-	Ping *LeafRouter
+	Ping *mgin.LeafRouter
 	//ObjectRouter *ObjectRouter
 	UserRouter  *UserRouter
 	GoodsRouter *GoodsRouter
@@ -28,8 +29,8 @@ func PingFunc(c *gin.Context) {
 	})
 }
 
-func NewRootRouter(serviceProvider *service.Provider, jwtMW *jwt.Middleware, routerAuthMW *Middleware) (r *RootRouter) {
-	rr := NewRouterGroup()
+func NewRootRouter(serviceProvider *service.Provider, jwtMW *jwt.Middleware, routerAuthMW *mgin.Middleware) (r *RootRouter) {
+	rr := mgin.NewRouterGroup()
 	apiRouterV1 := rr.Group("/v1")
 	authRouterV1 := apiRouterV1.Group("", jwtMW.Build())
 
@@ -47,5 +48,8 @@ func NewRootRouter(serviceProvider *service.Provider, jwtMW *jwt.Middleware, rou
 	r.NeedsRouter = BuildNeedsRouter(r, serviceProvider)
 	r.GoodsRouter = BuildGoodsRouter(r, serviceProvider)
 	r.StatisticRouter = BuildStatisticRouter(r, serviceProvider)
+
+
+	ApplyAuth(r)
 	return
 }

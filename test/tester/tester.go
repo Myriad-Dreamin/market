@@ -7,9 +7,11 @@ import (
 	"github.com/Myriad-Dreamin/market/server"
 	userservice "github.com/Myriad-Dreamin/market/service/user"
 	"github.com/Myriad-Dreamin/minimum-lib/mock"
+	"github.com/Myriad-Dreamin/minimum-lib/rbac"
 	"github.com/Myriad-Dreamin/minimum-lib/sugar"
 	"io"
 	"log"
+	"strconv"
 	"testing"
 )
 
@@ -123,6 +125,12 @@ func (tester *Tester) MakeAdminContext() bool {
 
 	//fmt.Println(r2)
 	//r2.RefreshToken
+	_, err = rbac.AddGroupingPolicy("user:"+strconv.Itoa(int(r2.ID)), "admin")
+	if err != nil {
+		tester.Logger.Debug("update group error", "error", err)
+	}
+	fmt.Println("QAQQQ", rbac.GetPolicy())
+	fmt.Println("QAQQQ", rbac.GetGroupingPolicy())
 	tester.UseToken(r2.Token)
 	return true
 }

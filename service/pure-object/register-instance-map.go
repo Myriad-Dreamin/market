@@ -4,5 +4,5 @@ package objectservice
 import instance "github.com/Myriad-Dreamin/go-magic-package/instance"
 
 func init() {
-	instance.Register("github.com/Myriad-Dreamin/market/service/object", `E:\project\go\src\github.com\Myriad-Dreamin\market\service\object`)
+	instance.Register("github.com/Myriad-Dreamin/market/service/pure-object", `E:\project\go\src\github.com\Myriad-Dreamin\market\service\pure-object`)
 }

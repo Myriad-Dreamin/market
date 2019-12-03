@@ -1,27 +1,28 @@
 package router
 
 import (
+	"github.com/Myriad-Dreamin/market/lib/router"
 	"github.com/Myriad-Dreamin/market/service"
 )
 
 type ObjectRouter struct {
-	*Router
-	AuthRouter *Router
-	Auth     *Middleware
+	*mgin.Router
+	AuthRouter *mgin.Router
+	Auth     *mgin.Middleware
 	IDRouter *ObjectIDRouter
 
-	Post    *LeafRouter
-	GetList *LeafRouter
+	Post    *mgin.LeafRouter
+	GetList *mgin.LeafRouter
 }
 
 type ObjectIDRouter struct {
-	*Router
-	AuthRouter *Router
-	Auth *Middleware
+	*mgin.Router
+	AuthRouter *mgin.Router
+	Auth *mgin.Middleware
 
-	Get    *LeafRouter
-	Put    *LeafRouter
-	Delete *LeafRouter
+	Get    *mgin.LeafRouter
+	Put    *mgin.LeafRouter
+	Delete *mgin.LeafRouter
 }
 
 func BuildObjectRouter(parent *RootRouter, serviceProvider *service.Provider) (router *ObjectRouter) {
@@ -32,7 +33,7 @@ func BuildObjectRouter(parent *RootRouter, serviceProvider *service.Provider) (r
 		Auth:   parent.Auth.Copy(),
 	}
 	router.GetList = router.GET("object-list", objectService.List)
-	router.Post = router.POST("/object", objectService.Post)
+	router.Post = router.AuthRouter.POST("/object", objectService.Post)
 
 	router.IDRouter = router.IDRouter.subBuild(router, serviceProvider)
 
@@ -51,8 +52,8 @@ func (*ObjectIDRouter) subBuild(parent *ObjectRouter, serviceProvider *service.P
 	}
 
 	router.Get = router.GET("", objectService.Get)
-	router.Put = router.PUT("", objectService.Put)
-	router.Delete = router.DELETE("", objectService.Delete)
+	router.Put = router.AuthRouter.PUT("", objectService.Put)
+	router.Delete = router.AuthRouter.DELETE("", objectService.Delete)
 	return
 }
 

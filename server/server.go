@@ -6,6 +6,7 @@ import (
 	"github.com/Myriad-Dreamin/gin-middleware/auth/jwt"
 	"github.com/Myriad-Dreamin/market/config"
 	"github.com/Myriad-Dreamin/market/lib/plugin"
+	router2 "github.com/Myriad-Dreamin/market/lib/router"
 	"github.com/Myriad-Dreamin/market/model"
 	dblayer "github.com/Myriad-Dreamin/market/model/db-layer"
 	"github.com/Myriad-Dreamin/market/router"
@@ -36,7 +37,7 @@ type Server struct {
 
 	jwtMW *jwt.Middleware
 	//var authMW *privileger.MiddleWare
-	routerAuthMW *router.Middleware
+	routerAuthMW *router2.Middleware
 	corsMW       gin.HandlerFunc
 
 	Module           module.Module

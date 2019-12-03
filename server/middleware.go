@@ -2,7 +2,7 @@ package server
 
 import (
 	"github.com/Myriad-Dreamin/gin-middleware/auth/jwt"
-	"github.com/Myriad-Dreamin/market/router"
+	router2 "github.com/Myriad-Dreamin/market/lib/router"
 	ginhelper "github.com/Myriad-Dreamin/market/service/gin-helper"
 	"github.com/Myriad-Dreamin/market/types"
 	"github.com/gin-contrib/cors"
@@ -23,8 +23,8 @@ func (srv *Server) PrepareMiddleware() bool {
 	srv.jwtMW.ExpireSecond = 3600
 	srv.jwtMW.RefreshSecond = 3600 * 24 * 7
 
-	srv.routerAuthMW = router.NewMiddleware(srv.DatabaseProvider.Enforcer(),
-		"user:", "id", ginhelper.MissID, ginhelper.AuthFailed)
+	srv.routerAuthMW = router2.NewMiddleware(srv.DatabaseProvider.Enforcer(),
+		"user:", "uid", ginhelper.MissID, ginhelper.AuthFailed)
 
 	srv.corsMW = cors.New(cors.Config{
 		//AllowAllOrigins: true,

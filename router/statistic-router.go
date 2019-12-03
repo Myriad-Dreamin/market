@@ -1,13 +1,14 @@
 package router
 
 import (
+	"github.com/Myriad-Dreamin/market/lib/router"
 	"github.com/Myriad-Dreamin/market/service"
 )
 
 type StatisticRouter struct {
-	*Router
-	AuthRouter *Router
-	Auth     *Middleware
+	*mgin.Router
+	AuthRouter *mgin.Router
+	Auth     *mgin.Middleware
 }
 
 func BuildStatisticRouter(parent *RootRouter, serviceProvider *service.Provider) (router *StatisticRouter) {

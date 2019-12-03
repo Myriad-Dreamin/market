@@ -1,27 +1,28 @@
 package router
 
 import (
+	"github.com/Myriad-Dreamin/market/lib/router"
 	"github.com/Myriad-Dreamin/market/service"
 )
 
 type NeedsRouter struct {
-	*Router
-	AuthRouter *Router
-	Auth     *Middleware
+	*mgin.Router
+	AuthRouter *mgin.Router
+	Auth     *mgin.Middleware
 	IDRouter *NeedsIDRouter
 
-	Post    *LeafRouter
-	GetList *LeafRouter
+	Post    *mgin.LeafRouter
+	GetList *mgin.LeafRouter
 }
 
 type NeedsIDRouter struct {
-	*Router
-	AuthRouter *Router
-	Auth *Middleware
+	*mgin.Router
+	AuthRouter *mgin.Router
+	Auth *mgin.Middleware
 
-	Get    *LeafRouter
-	Put    *LeafRouter
-	Delete *LeafRouter
+	Get    *mgin.LeafRouter
+	Put    *mgin.LeafRouter
+	Delete *mgin.LeafRouter
 }
 
 func BuildNeedsRouter(parent *RootRouter, serviceProvider *service.Provider) (router *NeedsRouter) {
@@ -51,8 +52,8 @@ func (*NeedsIDRouter) subBuild(parent *NeedsRouter, serviceProvider *service.Pro
 	}
 
 	router.Get = router.GET("", needsService.Get)
-	router.Put = router.PUT("", needsService.Put)
-	router.Delete = router.DELETE("", needsService.Delete)
+	router.Put = router.AuthRouter.PUT("", needsService.Put)
+	router.Delete = router.AuthRouter.DELETE("", needsService.Delete)
 	return
 }
 
