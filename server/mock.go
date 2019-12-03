@@ -186,6 +186,7 @@ func (mocker *Mocker) mockServe(r *Request, params ...interface{}) (w *mock.Resp
 
 	if mocker.contextHelper != nil && mocker.assertNoError {
 		if !mocker.NoErr(w) {
+
 			mocker.contextHelper.Fatal("stopped by assertion")
 		}
 	}

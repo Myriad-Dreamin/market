@@ -4,13 +4,10 @@ package objectservice
 import (
 	"github.com/Myriad-Dreamin/market/config"
 	"github.com/Myriad-Dreamin/market/model"
-	base_service "github.com/Myriad-Dreamin/market/service/base-service"
 	"github.com/Myriad-Dreamin/market/types"
 )
 
 type Service struct {
-	base_service.CRUDService
-	base_service.ListService
 	cfg *config.ServerConfig
 	logger types.Logger
 }
