@@ -105,6 +105,7 @@ func (goodsDB *GoodsQuery) Page(page, pageSize int) *GoodsQuery {
 	goodsDB.db = goodsDB.db.Limit(pageSize).Offset((page - 1) * pageSize)
 	return goodsDB
 }
+
 func (goodsDB *GoodsQuery) BeforeID(id uint) *GoodsQuery {
 	goodsDB.db = goodsDB.db.Where("id <= ?", id)
 	return goodsDB
