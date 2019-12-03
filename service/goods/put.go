@@ -2,7 +2,6 @@ package goodsservice
 
 import (
 	"github.com/Myriad-Dreamin/market/model"
-	ginhelper "github.com/Myriad-Dreamin/market/service/gin-helper"
 	"github.com/Myriad-Dreamin/market/types"
 	"github.com/gin-gonic/gin"
 	"net/http"
@@ -20,7 +19,7 @@ type PutRequest struct {
 
 func (srv *Service) fillPutFields(c *gin.Context, goods *model.Goods, req *PutRequest) (fields []string) {
 	if goods.EndAt.Sub(time.Now()) <= time.Minute {
-		c.AbortWithStatusJSON(http.StatusOK, ginhelper.ErrorSerializer{
+		c.AbortWithStatusJSON(http.StatusOK, types.ErrorSerializer{
 			Code:  types.CodeGoodsLifeTimeout,
 			Error: "goods life time is consumed",
 		})
@@ -28,14 +27,14 @@ func (srv *Service) fillPutFields(c *gin.Context, goods *model.Goods, req *PutRe
 	}
 
 	if goods.Status == types.GoodsStatusUnknown {
-		c.AbortWithStatusJSON(http.StatusOK, ginhelper.ErrorSerializer{
+		c.AbortWithStatusJSON(http.StatusOK, types.ErrorSerializer{
 			Code:  types.CodeGoodsStatusUnknown,
 			Error: "unknown status of goods",
 		})
 		return
 	}
 	if goods.Status == types.GoodsStatusFinished {
-		c.AbortWithStatusJSON(http.StatusOK, ginhelper.ErrorSerializer{
+		c.AbortWithStatusJSON(http.StatusOK, types.ErrorSerializer{
 			Code:  types.CodeGoodsStatusFinished,
 			Error: "goods is sold",
 		})
@@ -46,7 +45,7 @@ func (srv *Service) fillPutFields(c *gin.Context, goods *model.Goods, req *PutRe
 		fields = append(fields, "end_at")
 		goods.EndAt = req.EndAt
 	} else if !req.EndAt.IsZero() {
-		c.AbortWithStatusJSON(http.StatusOK, ginhelper.ErrorSerializer{
+		c.AbortWithStatusJSON(http.StatusOK, types.ErrorSerializer{
 			Code:  types.CodeInvalidParameters,
 			Error: "req.EndAt.Sub(time.Now()) must greater than or equal to time.Minute",
 		})
@@ -55,7 +54,7 @@ func (srv *Service) fillPutFields(c *gin.Context, goods *model.Goods, req *PutRe
 
 	if req.IsFixed != nil {
 		if goods.IsFixed && !*req.IsFixed {
-			c.AbortWithStatusJSON(http.StatusOK, ginhelper.ErrorSerializer{
+			c.AbortWithStatusJSON(http.StatusOK, types.ErrorSerializer{
 				Code:  types.CodeInvalidParameters,
 				Error: "cant set fixed goods to be not fixed",
 			})
@@ -69,7 +68,7 @@ func (srv *Service) fillPutFields(c *gin.Context, goods *model.Goods, req *PutRe
 
 	if req.MinPrice != nil {
 		if !goods.IsFixed {
-			c.AbortWithStatusJSON(http.StatusOK, ginhelper.ErrorSerializer{
+			c.AbortWithStatusJSON(http.StatusOK, types.ErrorSerializer{
 				Code:  types.CodeInvalidParameters,
 				Error: "not fixed price should not be update",
 			})

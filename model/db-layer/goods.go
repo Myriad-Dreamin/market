@@ -1,7 +1,9 @@
 package dblayer
 
 import (
+	"fmt"
 	"github.com/Myriad-Dreamin/market/config"
+	"github.com/Myriad-Dreamin/market/lib/errorc"
 	"github.com/Myriad-Dreamin/market/types"
 	"github.com/jinzhu/gorm"
 	"time"
@@ -28,7 +30,7 @@ type Goods struct {
 	MinPrice    uint64 `dorm:"min_price" gorm:"column:min_price;not_null"`
 	IsFixed     bool   `dorm:"is_fixed" gorm:"column:is_fixed;not_null"`
 	Description string `dorm:"description" gorm:"column:description;not_null"`
-	Status      uint8  `dorm:"status" gorm:"column:status;not_null"`
+	Status      types.GoodsStatus  `dorm:"status" gorm:"column:status;not_null"`
 
 	BuyerFee  uint64 `dorm:"buyer_fee" gorm:"column:buyer_fee;not_null"`
 	SellerFee uint64 `dorm:"seller_fee" gorm:"column:seller_fee;not_null"`
@@ -116,4 +118,53 @@ func (goodsDB *GoodsQuery) Preload() *GoodsQuery {
 func (goodsDB *GoodsQuery) Query() (goodss []Goods, err error) {
 	err = goodsDB.db.Find(&goodss).Error
 	return
+}
+
+var goodsStatusField = []string{"status", "buyer"}
+
+func (goodsDB *GoodsDB) Buy(id, uid uint) (int, string) {
+	tx := db.Begin()
+	if tx.Error != nil {
+		return types.CodeBeginTransactionError, tx.Error.Error()
+	}
+	goods, err := goodsDB.ID(id)
+	if code, errs := errorc.MaybeSelectError(goods, err); code != types.CodeOK {
+		tx.Rollback()
+		if tx.Error != nil {
+			fmt.Println("rollback error", tx.Error)
+		}
+		return code, errs
+	}
+	if goods.Status != types.GoodsStatusUnFinished {
+		tx.Rollback()
+		if tx.Error != nil {
+			fmt.Println("rollback error", tx.Error)
+		}
+		return types.CodeGoodsStatusNotBeUnfinished, goods.Status.String()
+	}
+	if goods.EndAt.Before(time.Now()) {
+		tx.Rollback()
+		if tx.Error != nil {
+			fmt.Println("rollback error", tx.Error)
+		}
+		return types.CodeGoodsLifeTimeout, "expired time"
+	}
+	goods.Status = types.GoodsStatusPending
+	goods.Buyer = uid
+	if code, errs := errorc.UpdateFields(goods, goodsStatusField); code != types.CodeOK {
+		tx.Rollback()
+		if tx.Error != nil {
+			fmt.Println("rollback error", tx.Error)
+		}
+		return code, errs
+	}
+
+
+
+	tx.RollbackUnlessCommitted()
+	if tx.Error != nil {
+		return types.CodeCommitTransactionError, tx.Error.Error()
+	} else {
+		return types.CodeOK, ""
+	}
 }

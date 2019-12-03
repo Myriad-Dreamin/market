@@ -26,7 +26,7 @@ func ListFilter(db FilterDB) func(c *gin.Context) interface{} {
 		}
 		result, err := db.FilterI(&f)
 		if err != nil {
-			c.AbortWithStatusJSON(http.StatusOK, ginhelper.ErrorSerializer{
+			c.AbortWithStatusJSON(http.StatusOK, types.ErrorSerializer{
 				Code:  types.CodeSelectError,
 				Error: err.Error(),
 			})

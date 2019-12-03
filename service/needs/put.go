@@ -2,7 +2,6 @@ package needsservice
 
 import (
 	"github.com/Myriad-Dreamin/market/model"
-	ginhelper "github.com/Myriad-Dreamin/market/service/gin-helper"
 	"github.com/Myriad-Dreamin/market/types"
 	"github.com/gin-gonic/gin"
 	"net/http"
@@ -20,7 +19,7 @@ type PutRequest struct {
 
 func (srv *Service) fillPutFields(c *gin.Context, needs *model.Needs, req *PutRequest) (fields []string) {
 	if needs.EndAt.Sub(time.Now()) <= time.Minute {
-		c.AbortWithStatusJSON(http.StatusOK, ginhelper.ErrorSerializer{
+		c.AbortWithStatusJSON(http.StatusOK, types.ErrorSerializer{
 			Code:  types.CodeGoodsLifeTimeout,
 			Error: "needs life time is consumed",
 		})
@@ -28,14 +27,14 @@ func (srv *Service) fillPutFields(c *gin.Context, needs *model.Needs, req *PutRe
 	}
 
 	if needs.Status == types.GoodsStatusUnknown {
-		c.AbortWithStatusJSON(http.StatusOK, ginhelper.ErrorSerializer{
+		c.AbortWithStatusJSON(http.StatusOK, types.ErrorSerializer{
 			Code:  types.CodeGoodsStatusUnknown,
 			Error: "unknown status of needs",
 		})
 		return
 	}
 	if needs.Status == types.GoodsStatusFinished {
-		c.AbortWithStatusJSON(http.StatusOK, ginhelper.ErrorSerializer{
+		c.AbortWithStatusJSON(http.StatusOK, types.ErrorSerializer{
 			Code:  types.CodeGoodsStatusFinished,
 			Error: "needs is sold",
 		})
@@ -46,7 +45,7 @@ func (srv *Service) fillPutFields(c *gin.Context, needs *model.Needs, req *PutRe
 		fields = append(fields, "end_at")
 		needs.EndAt = req.EndAt
 	} else if !req.EndAt.IsZero() {
-		c.AbortWithStatusJSON(http.StatusOK, ginhelper.ErrorSerializer{
+		c.AbortWithStatusJSON(http.StatusOK, types.ErrorSerializer{
 			Code:  types.CodeInvalidParameters,
 			Error: "req.EndAt.Sub(time.Now()) must greater than or equal to time.Minute",
 		})
@@ -55,7 +54,7 @@ func (srv *Service) fillPutFields(c *gin.Context, needs *model.Needs, req *PutRe
 
 	if req.MinPrice != nil {
 		if req.MaxPrice != nil && *req.MaxPrice < *req.MinPrice {
-			c.AbortWithStatusJSON(http.StatusOK, ginhelper.ErrorSerializer{
+			c.AbortWithStatusJSON(http.StatusOK, types.ErrorSerializer{
 				Code:  types.CodeInvalidParameters,
 				Error: "max price should not be less than min price",
 			})
@@ -66,7 +65,7 @@ func (srv *Service) fillPutFields(c *gin.Context, needs *model.Needs, req *PutRe
 	}
 	if req.MaxPrice != nil {
 		if *req.MaxPrice < needs.MinPrice {
-			c.AbortWithStatusJSON(http.StatusOK, ginhelper.ErrorSerializer{
+			c.AbortWithStatusJSON(http.StatusOK, types.ErrorSerializer{
 				Code:  types.CodeInvalidParameters,
 				Error: "max price should not be less than min price",
 			})

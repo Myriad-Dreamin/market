@@ -90,13 +90,13 @@ func (srv *Service) Login(c *gin.Context) {
 	var user *model.User
 	var err error
 	if req.ID != 0 {
-		user, err = srv.db.Query(req.ID)
+		user, err = srv.userDB.Query(req.ID)
 	} else if len(req.Name) != 0 {
-		user, err = srv.db.QueryName(req.Name)
+		user, err = srv.userDB.QueryName(req.Name)
 	} else if len(req.Phone) != 0 {
-		user, err = srv.db.QueryPhone(req.Phone)
+		user, err = srv.userDB.QueryPhone(req.Phone)
 	} else {
-		c.JSON(http.StatusOK, &ginhelper.Response{
+		c.JSON(http.StatusOK, &types.Response{
 			Code: types.CodeUserIDMissing,
 		})
 		return
@@ -110,7 +110,7 @@ func (srv *Service) Login(c *gin.Context) {
 	}
 
 	if token, refreshToken, err := srv.middleware.GenerateTokenWithRefreshToken(&types.CustomFields{UID: int64(user.ID)}); err != nil {
-		c.AbortWithStatusJSON(http.StatusInternalServerError, &ginhelper.ErrorSerializer{
+		c.AbortWithStatusJSON(http.StatusInternalServerError, &types.ErrorSerializer{
 			Code:  types.CodeAuthGenerateTokenError,
 			Error: err.Error(),
 		})

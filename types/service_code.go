@@ -33,6 +33,12 @@ const (
 	// CodeDeleteError occurs when delete object from database
 	CodeDeleteError
 
+	// CodeDeleteError occurs when begin a transaction
+	CodeBeginTransactionError
+
+	// CodeDeleteError occurs when commit a transaction
+	CodeCommitTransactionError
+
 )
 
 const (
@@ -63,6 +69,7 @@ const (
 	CodeGoodsStatusUnknown int = iota + 12000
 	CodeGoodsStatusFinished
 	CodeGoodsLifeTimeout
+	CodeGoodsStatusNotBeUnfinished
 )
 
 
