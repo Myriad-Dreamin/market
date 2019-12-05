@@ -20,10 +20,13 @@ type Service struct {
 	needsDB    *splayer.NeedsDB
 	enforcer   *casbin.SyncedEnforcer
 	logger     types.Logger
+	cfg        *config.ServerConfig
 	middleware *jwt.Middleware
 }
 
-func NewService(logger types.Logger, provider *model.Provider, middleware *jwt.Middleware, _ *config.ServerConfig) (a control.UserService, err error) {
+func NewService(logger types.Logger, provider *model.Provider,
+	middleware *jwt.Middleware, cfg *config.ServerConfig)
+	(a control.UserService, err error) {
 	srv := new(Service)
 	srv.userDB = provider.UserDB()
 	srv.goodsDB = provider.GoodsDB()
@@ -31,6 +34,7 @@ func NewService(logger types.Logger, provider *model.Provider, middleware *jwt.M
 	srv.enforcer = provider.Enforcer()
 	srv.logger = logger
 	srv.middleware = middleware
+	srv.cfg = cfg
 	srv.CRUDService = base_service.NewCRUDService(srv, "id")
 	srv.ListService = base_service.NewListService(srv, "id")
 	a = srv
