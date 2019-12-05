@@ -129,8 +129,8 @@ func (tester *Tester) MakeAdminContext() bool {
 	if err != nil {
 		tester.Logger.Debug("update group error", "error", err)
 	}
-	fmt.Println("QAQQQ", rbac.GetPolicy())
-	fmt.Println("QAQQQ", rbac.GetGroupingPolicy())
+	//fmt.Println("QAQQQ", rbac.GetPolicy())
+	//fmt.Println("QAQQQ", rbac.GetGroupingPolicy())
 	tester.UseToken(r2.Token)
 	return true
 }

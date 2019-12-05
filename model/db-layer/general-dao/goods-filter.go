@@ -27,7 +27,6 @@ type GoodsFilter struct {
 
 func GoodsFilterOption(db *gorm.DB, f *GoodsFilter) *gorm.DB {
 	db = gorm_crud_dao.FilterOption(db, &f.Filter)
-
 	if f.BySeller != 0 {
 		db = db.Where("seller = ?", f.BySeller)
 	}

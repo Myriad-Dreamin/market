@@ -22,13 +22,13 @@ this is the market backend powered by minimum
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzUzNzYzNDEsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1MzcyNzMxLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.8_HNj_3zKThHW-rJpkrXV1MkyGUpTRfnsD_PfXXufsM
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzU1MjA3NzUsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1NTE3MTY1LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.FzPo12U42tLi5e3UcLpn7ic4frYuhX6m8AvS4n9l28c
             Content-Type: application/json
 
     + Body
 
             {
-                "end_at": "2019-12-04T19:32:21.4957878+08:00",
+                "end_at": "2019-12-06T11:39:35.1700366+08:00",
                 "g_type": 1,
                 "name": "es000",
                 "min_price": 100,
@@ -49,9 +49,9 @@ this is the market backend powered by minimum
                 "code": 0,
                 "goods": {
                     "ID": 1,
-                    "CreatedAt": "2019-12-03T19:32:21.4957878+08:00",
-                    "UpdatedAt": "2019-12-03T19:32:21.4957878+08:00",
-                    "EndAt": "2019-12-04T19:32:21.4957878+08:00",
+                    "CreatedAt": "2019-12-05T11:39:35.1700366+08:00",
+                    "UpdatedAt": "2019-12-05T11:39:35.1700366+08:00",
+                    "EndAt": "2019-12-06T11:39:35.1700366+08:00",
                     "Seller": 1,
                     "Buyer": 0,
                     "Type": 1,
@@ -70,13 +70,13 @@ this is the market backend powered by minimum
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzUzNzYzNDEsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1MzcyNzMxLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.8_HNj_3zKThHW-rJpkrXV1MkyGUpTRfnsD_PfXXufsM
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzU1MjA3NzUsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1NTE3MTY1LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.FzPo12U42tLi5e3UcLpn7ic4frYuhX6m8AvS4n9l28c
             Content-Type: application/json
 
     + Body
 
             {
-                "end_at": "2019-12-04T19:32:21.4957878+08:00",
+                "end_at": "2019-12-06T11:39:35.1700366+08:00",
                 "g_type": 1,
                 "name": "es0000",
                 "min_price": 100,
@@ -97,9 +97,9 @@ this is the market backend powered by minimum
                 "code": 0,
                 "goods": {
                     "ID": 2,
-                    "CreatedAt": "2019-12-03T19:32:21.4957878+08:00",
-                    "UpdatedAt": "2019-12-03T19:32:21.4957878+08:00",
-                    "EndAt": "2019-12-04T19:32:21.4957878+08:00",
+                    "CreatedAt": "2019-12-05T11:39:35.1700366+08:00",
+                    "UpdatedAt": "2019-12-05T11:39:35.1700366+08:00",
+                    "EndAt": "2019-12-06T11:39:35.1700366+08:00",
                     "Seller": 1,
                     "Buyer": 0,
                     "Type": 1,
@@ -118,13 +118,13 @@ this is the market backend powered by minimum
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzUzNzYzNDEsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1MzcyNzMxLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.8_HNj_3zKThHW-rJpkrXV1MkyGUpTRfnsD_PfXXufsM
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzU1MjA3NzUsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1NTE3MTY1LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.FzPo12U42tLi5e3UcLpn7ic4frYuhX6m8AvS4n9l28c
             Content-Type: application/json
 
     + Body
 
             {
-                "end_at": "2019-12-04T19:32:21.4957878+08:00",
+                "end_at": "2019-12-06T11:39:35.1700366+08:00",
                 "g_type": 1,
                 "name": "es0001",
                 "min_price": 100,
@@ -145,9 +145,9 @@ this is the market backend powered by minimum
                 "code": 0,
                 "goods": {
                     "ID": 3,
-                    "CreatedAt": "2019-12-03T19:32:21.4957878+08:00",
-                    "UpdatedAt": "2019-12-03T19:32:21.4957878+08:00",
-                    "EndAt": "2019-12-04T19:32:21.4957878+08:00",
+                    "CreatedAt": "2019-12-05T11:39:35.1710074+08:00",
+                    "UpdatedAt": "2019-12-05T11:39:35.1710074+08:00",
+                    "EndAt": "2019-12-06T11:39:35.1700366+08:00",
                     "Seller": 1,
                     "Buyer": 0,
                     "Type": 1,
@@ -166,13 +166,13 @@ this is the market backend powered by minimum
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzUzNzYzNDEsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1MzcyNzMxLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.8_HNj_3zKThHW-rJpkrXV1MkyGUpTRfnsD_PfXXufsM
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzU1MjA3NzUsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1NTE3MTY1LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.FzPo12U42tLi5e3UcLpn7ic4frYuhX6m8AvS4n9l28c
             Content-Type: application/json
 
     + Body
 
             {
-                "end_at": "2019-12-04T19:32:21.4957878+08:00",
+                "end_at": "2019-12-06T11:39:35.1700366+08:00",
                 "g_type": 1,
                 "name": "es0002",
                 "min_price": 100,
@@ -193,9 +193,9 @@ this is the market backend powered by minimum
                 "code": 0,
                 "goods": {
                     "ID": 4,
-                    "CreatedAt": "2019-12-03T19:32:21.4967909+08:00",
-                    "UpdatedAt": "2019-12-03T19:32:21.4967909+08:00",
-                    "EndAt": "2019-12-04T19:32:21.4957878+08:00",
+                    "CreatedAt": "2019-12-05T11:39:35.1710074+08:00",
+                    "UpdatedAt": "2019-12-05T11:39:35.1710074+08:00",
+                    "EndAt": "2019-12-06T11:39:35.1700366+08:00",
                     "Seller": 1,
                     "Buyer": 0,
                     "Type": 1,
@@ -214,13 +214,13 @@ this is the market backend powered by minimum
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzUzNzYzNDEsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1MzcyNzMxLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.8_HNj_3zKThHW-rJpkrXV1MkyGUpTRfnsD_PfXXufsM
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzU1MjA3NzUsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1NTE3MTY1LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.FzPo12U42tLi5e3UcLpn7ic4frYuhX6m8AvS4n9l28c
             Content-Type: application/json
 
     + Body
 
             {
-                "end_at": "2019-12-04T19:32:21.4957878+08:00",
+                "end_at": "2019-12-06T11:39:35.1700366+08:00",
                 "g_type": 1,
                 "name": "es0003",
                 "min_price": 100,
@@ -241,9 +241,9 @@ this is the market backend powered by minimum
                 "code": 0,
                 "goods": {
                     "ID": 5,
-                    "CreatedAt": "2019-12-03T19:32:21.4967909+08:00",
-                    "UpdatedAt": "2019-12-03T19:32:21.4967909+08:00",
-                    "EndAt": "2019-12-04T19:32:21.4957878+08:00",
+                    "CreatedAt": "2019-12-05T11:39:35.1710074+08:00",
+                    "UpdatedAt": "2019-12-05T11:39:35.1710074+08:00",
+                    "EndAt": "2019-12-06T11:39:35.1700366+08:00",
                     "Seller": 1,
                     "Buyer": 0,
                     "Type": 1,
@@ -262,13 +262,13 @@ this is the market backend powered by minimum
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzUzNzYzNDEsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1MzcyNzMxLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.8_HNj_3zKThHW-rJpkrXV1MkyGUpTRfnsD_PfXXufsM
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzU1MjA3NzUsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1NTE3MTY1LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.FzPo12U42tLi5e3UcLpn7ic4frYuhX6m8AvS4n9l28c
             Content-Type: application/json
 
     + Body
 
             {
-                "end_at": "2019-12-04T19:32:21.4957878+08:00",
+                "end_at": "2019-12-06T11:39:35.1700366+08:00",
                 "g_type": 1,
                 "name": "es0004",
                 "min_price": 100,
@@ -289,9 +289,9 @@ this is the market backend powered by minimum
                 "code": 0,
                 "goods": {
                     "ID": 6,
-                    "CreatedAt": "2019-12-03T19:32:21.4967909+08:00",
-                    "UpdatedAt": "2019-12-03T19:32:21.4967909+08:00",
-                    "EndAt": "2019-12-04T19:32:21.4957878+08:00",
+                    "CreatedAt": "2019-12-05T11:39:35.1710074+08:00",
+                    "UpdatedAt": "2019-12-05T11:39:35.1710074+08:00",
+                    "EndAt": "2019-12-06T11:39:35.1700366+08:00",
                     "Seller": 1,
                     "Buyer": 0,
                     "Type": 1,
@@ -310,13 +310,13 @@ this is the market backend powered by minimum
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzUzNzYzNDEsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1MzcyNzMxLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.8_HNj_3zKThHW-rJpkrXV1MkyGUpTRfnsD_PfXXufsM
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzU1MjA3NzUsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1NTE3MTY1LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.FzPo12U42tLi5e3UcLpn7ic4frYuhX6m8AvS4n9l28c
             Content-Type: application/json
 
     + Body
 
             {
-                "end_at": "2019-12-04T19:32:21.4957878+08:00",
+                "end_at": "2019-12-06T11:39:35.1700366+08:00",
                 "g_type": 1,
                 "name": "es0005",
                 "min_price": 100,
@@ -337,9 +337,9 @@ this is the market backend powered by minimum
                 "code": 0,
                 "goods": {
                     "ID": 7,
-                    "CreatedAt": "2019-12-03T19:32:21.4967909+08:00",
-                    "UpdatedAt": "2019-12-03T19:32:21.4967909+08:00",
-                    "EndAt": "2019-12-04T19:32:21.4957878+08:00",
+                    "CreatedAt": "2019-12-05T11:39:35.1710074+08:00",
+                    "UpdatedAt": "2019-12-05T11:39:35.1710074+08:00",
+                    "EndAt": "2019-12-06T11:39:35.1700366+08:00",
                     "Seller": 1,
                     "Buyer": 0,
                     "Type": 1,
@@ -358,13 +358,13 @@ this is the market backend powered by minimum
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzUzNzYzNDEsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1MzcyNzMxLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.8_HNj_3zKThHW-rJpkrXV1MkyGUpTRfnsD_PfXXufsM
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzU1MjA3NzUsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1NTE3MTY1LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.FzPo12U42tLi5e3UcLpn7ic4frYuhX6m8AvS4n9l28c
             Content-Type: application/json
 
     + Body
 
             {
-                "end_at": "2019-12-04T19:32:21.4957878+08:00",
+                "end_at": "2019-12-06T11:39:35.1700366+08:00",
                 "g_type": 1,
                 "name": "es0006",
                 "min_price": 100,
@@ -385,9 +385,9 @@ this is the market backend powered by minimum
                 "code": 0,
                 "goods": {
                     "ID": 8,
-                    "CreatedAt": "2019-12-03T19:32:21.4967909+08:00",
-                    "UpdatedAt": "2019-12-03T19:32:21.4967909+08:00",
-                    "EndAt": "2019-12-04T19:32:21.4957878+08:00",
+                    "CreatedAt": "2019-12-05T11:39:35.172006+08:00",
+                    "UpdatedAt": "2019-12-05T11:39:35.172006+08:00",
+                    "EndAt": "2019-12-06T11:39:35.1700366+08:00",
                     "Seller": 1,
                     "Buyer": 0,
                     "Type": 1,
@@ -406,13 +406,13 @@ this is the market backend powered by minimum
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzUzNzYzNDEsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1MzcyNzMxLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.8_HNj_3zKThHW-rJpkrXV1MkyGUpTRfnsD_PfXXufsM
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzU1MjA3NzUsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1NTE3MTY1LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.FzPo12U42tLi5e3UcLpn7ic4frYuhX6m8AvS4n9l28c
             Content-Type: application/json
 
     + Body
 
             {
-                "end_at": "2019-12-04T19:32:21.4957878+08:00",
+                "end_at": "2019-12-06T11:39:35.1700366+08:00",
                 "g_type": 1,
                 "name": "es0007",
                 "min_price": 100,
@@ -433,9 +433,9 @@ this is the market backend powered by minimum
                 "code": 0,
                 "goods": {
                     "ID": 9,
-                    "CreatedAt": "2019-12-03T19:32:21.4977897+08:00",
-                    "UpdatedAt": "2019-12-03T19:32:21.4977897+08:00",
-                    "EndAt": "2019-12-04T19:32:21.4957878+08:00",
+                    "CreatedAt": "2019-12-05T11:39:35.172006+08:00",
+                    "UpdatedAt": "2019-12-05T11:39:35.172006+08:00",
+                    "EndAt": "2019-12-06T11:39:35.1700366+08:00",
                     "Seller": 1,
                     "Buyer": 0,
                     "Type": 1,
@@ -454,13 +454,13 @@ this is the market backend powered by minimum
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzUzNzYzNDEsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1MzcyNzMxLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.8_HNj_3zKThHW-rJpkrXV1MkyGUpTRfnsD_PfXXufsM
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzU1MjA3NzUsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1NTE3MTY1LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.FzPo12U42tLi5e3UcLpn7ic4frYuhX6m8AvS4n9l28c
             Content-Type: application/json
 
     + Body
 
             {
-                "end_at": "2019-12-04T19:32:21.4957878+08:00",
+                "end_at": "2019-12-06T11:39:35.1700366+08:00",
                 "g_type": 1,
                 "name": "es0008",
                 "min_price": 100,
@@ -481,9 +481,9 @@ this is the market backend powered by minimum
                 "code": 0,
                 "goods": {
                     "ID": 10,
-                    "CreatedAt": "2019-12-03T19:32:21.4977897+08:00",
-                    "UpdatedAt": "2019-12-03T19:32:21.4977897+08:00",
-                    "EndAt": "2019-12-04T19:32:21.4957878+08:00",
+                    "CreatedAt": "2019-12-05T11:39:35.172006+08:00",
+                    "UpdatedAt": "2019-12-05T11:39:35.172006+08:00",
+                    "EndAt": "2019-12-06T11:39:35.1700366+08:00",
                     "Seller": 1,
                     "Buyer": 0,
                     "Type": 1,
@@ -502,13 +502,13 @@ this is the market backend powered by minimum
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzUzNzYzNDEsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1MzcyNzMxLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.8_HNj_3zKThHW-rJpkrXV1MkyGUpTRfnsD_PfXXufsM
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzU1MjA3NzUsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1NTE3MTY1LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.FzPo12U42tLi5e3UcLpn7ic4frYuhX6m8AvS4n9l28c
             Content-Type: application/json
 
     + Body
 
             {
-                "end_at": "2019-12-04T19:32:21.4957878+08:00",
+                "end_at": "2019-12-06T11:39:35.1700366+08:00",
                 "g_type": 1,
                 "name": "es0009",
                 "min_price": 100,
@@ -529,9 +529,9 @@ this is the market backend powered by minimum
                 "code": 0,
                 "goods": {
                     "ID": 11,
-                    "CreatedAt": "2019-12-03T19:32:21.4977897+08:00",
-                    "UpdatedAt": "2019-12-03T19:32:21.4977897+08:00",
-                    "EndAt": "2019-12-04T19:32:21.4957878+08:00",
+                    "CreatedAt": "2019-12-05T11:39:35.172006+08:00",
+                    "UpdatedAt": "2019-12-05T11:39:35.172006+08:00",
+                    "EndAt": "2019-12-06T11:39:35.1700366+08:00",
                     "Seller": 1,
                     "Buyer": 0,
                     "Type": 1,
@@ -550,13 +550,13 @@ this is the market backend powered by minimum
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzUzNzYzNDEsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1MzcyNzMxLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.8_HNj_3zKThHW-rJpkrXV1MkyGUpTRfnsD_PfXXufsM
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzU1MjA3NzUsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1NTE3MTY1LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.FzPo12U42tLi5e3UcLpn7ic4frYuhX6m8AvS4n9l28c
             Content-Type: application/json
 
     + Body
 
             {
-                "end_at": "2019-12-04T19:32:21.4977897+08:00",
+                "end_at": "2019-12-06T11:39:35.172006+08:00",
                 "g_type": 0,
                 "name": "es0",
                 "min_price": 100,
@@ -583,13 +583,13 @@ this is the market backend powered by minimum
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzUzNzYzNDEsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1MzcyNzMxLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.8_HNj_3zKThHW-rJpkrXV1MkyGUpTRfnsD_PfXXufsM
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzU1MjA3NzUsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1NTE3MTY1LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.FzPo12U42tLi5e3UcLpn7ic4frYuhX6m8AvS4n9l28c
             Content-Type: application/json
 
     + Body
 
             {
-                "end_at": "2019-12-04T19:32:21.4977897+08:00",
+                "end_at": "2019-12-06T11:39:35.172006+08:00",
                 "g_type": 1,
                 "name": "",
                 "min_price": 100,
@@ -616,13 +616,13 @@ this is the market backend powered by minimum
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzUzNzYzNDEsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1MzcyNzMxLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.8_HNj_3zKThHW-rJpkrXV1MkyGUpTRfnsD_PfXXufsM
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzU1MjA3NzUsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1NTE3MTY1LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.FzPo12U42tLi5e3UcLpn7ic4frYuhX6m8AvS4n9l28c
             Content-Type: application/json
 
     + Body
 
             {
-                "end_at": "2019-12-04T19:32:21.4977897+08:00",
+                "end_at": "2019-12-06T11:39:35.172006+08:00",
                 "g_type": 1,
                 "name": "",
                 "min_price": 100,
@@ -649,13 +649,13 @@ this is the market backend powered by minimum
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzUzNzYzNDEsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1MzcyNzMxLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.8_HNj_3zKThHW-rJpkrXV1MkyGUpTRfnsD_PfXXufsM
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzU1MjA3NzUsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1NTE3MTY1LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.FzPo12U42tLi5e3UcLpn7ic4frYuhX6m8AvS4n9l28c
             Content-Type: application/json
 
     + Body
 
             {
-                "end_at": "2019-12-04T19:32:21.4977897+08:00",
+                "end_at": "2019-12-06T11:39:35.172006+08:00",
                 "g_type": 1,
                 "is_fixed": false,
                 "min_price": -1,
@@ -681,13 +681,13 @@ this is the market backend powered by minimum
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzUzNzYzNDEsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1MzcyNzMxLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.8_HNj_3zKThHW-rJpkrXV1MkyGUpTRfnsD_PfXXufsM
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzU1MjA3NzUsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1NTE3MTY1LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.FzPo12U42tLi5e3UcLpn7ic4frYuhX6m8AvS4n9l28c
             Content-Type: application/json
 
     + Body
 
             {
-                "end_at": "2019-12-03T19:32:21.4988154+08:00",
+                "end_at": "2019-12-05T11:39:35.1730084+08:00",
                 "g_type": 1,
                 "name": "es0",
                 "min_price": 100,
@@ -722,7 +722,7 @@ this is the market backend powered by minimum
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzUzNzYzNDEsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1MzcyNzMxLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.8_HNj_3zKThHW-rJpkrXV1MkyGUpTRfnsD_PfXXufsM
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzU1MjA3NzUsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1NTE3MTY1LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.FzPo12U42tLi5e3UcLpn7ic4frYuhX6m8AvS4n9l28c
             Content-Type: text/plain
 
     + Body
@@ -742,9 +742,9 @@ this is the market backend powered by minimum
                 "goodss": [
                     {
                         "id": 1,
-                        "created_at": "2019-12-03T19:32:21.4957878+08:00",
-                        "updated_at": "2019-12-03T19:32:21.4957878+08:00",
-                        "end_at": "2019-12-04T19:32:21.4957878+08:00",
+                        "created_at": "2019-12-05T11:39:35.1700366+08:00",
+                        "updated_at": "2019-12-05T11:39:35.1700366+08:00",
+                        "end_at": "2019-12-06T11:39:35.1700366+08:00",
                         "seller": {
                             "id": 1,
                             "nick_name": "admin_context",
@@ -760,9 +760,9 @@ this is the market backend powered by minimum
                     },
                     {
                         "id": 2,
-                        "created_at": "2019-12-03T19:32:21.4957878+08:00",
-                        "updated_at": "2019-12-03T19:32:21.4957878+08:00",
-                        "end_at": "2019-12-04T19:32:21.4957878+08:00",
+                        "created_at": "2019-12-05T11:39:35.1700366+08:00",
+                        "updated_at": "2019-12-05T11:39:35.1700366+08:00",
+                        "end_at": "2019-12-06T11:39:35.1700366+08:00",
                         "seller": {
                             "id": 1,
                             "nick_name": "admin_context",
@@ -784,7 +784,7 @@ this is the market backend powered by minimum
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzUzNzYzNDEsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1MzcyNzMxLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.8_HNj_3zKThHW-rJpkrXV1MkyGUpTRfnsD_PfXXufsM
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzU1MjA3NzUsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1NTE3MTY1LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.FzPo12U42tLi5e3UcLpn7ic4frYuhX6m8AvS4n9l28c
             Content-Type: text/plain
 
     + Body
@@ -804,9 +804,9 @@ this is the market backend powered by minimum
                 "goodss": [
                     {
                         "id": 3,
-                        "created_at": "2019-12-03T19:32:21.4957878+08:00",
-                        "updated_at": "2019-12-03T19:32:21.4957878+08:00",
-                        "end_at": "2019-12-04T19:32:21.4957878+08:00",
+                        "created_at": "2019-12-05T11:39:35.1710074+08:00",
+                        "updated_at": "2019-12-05T11:39:35.1710074+08:00",
+                        "end_at": "2019-12-06T11:39:35.1700366+08:00",
                         "seller": {
                             "id": 1,
                             "nick_name": "admin_context",
@@ -822,9 +822,9 @@ this is the market backend powered by minimum
                     },
                     {
                         "id": 4,
-                        "created_at": "2019-12-03T19:32:21.4967909+08:00",
-                        "updated_at": "2019-12-03T19:32:21.4967909+08:00",
-                        "end_at": "2019-12-04T19:32:21.4957878+08:00",
+                        "created_at": "2019-12-05T11:39:35.1710074+08:00",
+                        "updated_at": "2019-12-05T11:39:35.1710074+08:00",
+                        "end_at": "2019-12-06T11:39:35.1700366+08:00",
                         "seller": {
                             "id": 1,
                             "nick_name": "admin_context",
@@ -842,21 +842,11 @@ this is the market backend powered by minimum
             }
 
 
-## base-service.(*CRUDService).Delete-fm [/v1/goods/:goid]
-
-
- + DELETE: 
- + GET: 
- + PUT: 
-
-
-### base-service.(*CRUDService).Delete-fm [DELETE]
-
 + Request 
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzUzNzYzNDEsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1MzcyNzMxLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.8_HNj_3zKThHW-rJpkrXV1MkyGUpTRfnsD_PfXXufsM
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzU1MjA3NzUsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1NTE3MTY1LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.FzPo12U42tLi5e3UcLpn7ic4frYuhX6m8AvS4n9l28c
             Content-Type: text/plain
 
     + Body
@@ -872,8 +862,61 @@ this is the market backend powered by minimum
     + Body
 
             {
-                "code": 0
+                "code": 0,
+                "goodss": [
+                    {
+                        "id": 3,
+                        "created_at": "2019-12-05T11:39:35.1710074+08:00",
+                        "updated_at": "2019-12-05T11:39:35.1710074+08:00",
+                        "end_at": "2019-12-06T11:39:35.1700366+08:00",
+                        "seller": {
+                            "id": 1,
+                            "nick_name": "admin_context",
+                            "register_city": "Qing Dao S.D."
+                        },
+                        "buyer": null,
+                        "g_type": 1,
+                        "name": "es0001",
+                        "min_price": 100,
+                        "is_fixed": false,
+                        "description": "",
+                        "status": 1
+                    }
+                ]
             }
+
+
++ Request 
+
+    + Headers
+
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzU1MjA3NzUsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1NTE3MTY1LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.FzPo12U42tLi5e3UcLpn7ic4frYuhX6m8AvS4n9l28c
+            Content-Type: text/plain
+
+    + Body
+
+            
+
++ Response 200
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+                "code": 0,
+                "goodss": null
+            }
+
+
+## base-service.(*CRUDService).Get-fm [/v1/goods/:goid]
+
+
+ + GET: 
+ + PUT: 
+ + DELETE: 
 
 
 ### base-service.(*CRUDService).Get-fm [GET]
@@ -882,7 +925,7 @@ this is the market backend powered by minimum
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzUzNzYzNDEsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1MzcyNzMxLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.8_HNj_3zKThHW-rJpkrXV1MkyGUpTRfnsD_PfXXufsM
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzU1MjA3NzUsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1NTE3MTY1LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.FzPo12U42tLi5e3UcLpn7ic4frYuhX6m8AvS4n9l28c
             Content-Type: text/plain
 
     + Body
@@ -901,9 +944,9 @@ this is the market backend powered by minimum
                 "code": 0,
                 "goods": {
                     "ID": 1,
-                    "CreatedAt": "2019-12-03T19:32:21.4957878+08:00",
-                    "UpdatedAt": "2019-12-03T19:32:21.4957878+08:00",
-                    "EndAt": "2019-12-04T19:32:21.4957878+08:00",
+                    "CreatedAt": "2019-12-05T11:39:35.1700366+08:00",
+                    "UpdatedAt": "2019-12-05T11:39:35.1700366+08:00",
+                    "EndAt": "2019-12-06T11:39:35.1700366+08:00",
                     "Seller": 1,
                     "Buyer": 0,
                     "Type": 1,
@@ -922,7 +965,7 @@ this is the market backend powered by minimum
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzUzNzYzNDEsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1MzcyNzMxLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.8_HNj_3zKThHW-rJpkrXV1MkyGUpTRfnsD_PfXXufsM
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzU1MjA3NzUsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1NTE3MTY1LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.FzPo12U42tLi5e3UcLpn7ic4frYuhX6m8AvS4n9l28c
             Content-Type: text/plain
 
     + Body
@@ -940,6 +983,32 @@ this is the market backend powered by minimum
             {
                 "code": 102,
                 "error": "not found"
+            }
+
+
+### base-service.(*CRUDService).Delete-fm [DELETE]
+
++ Request 
+
+    + Headers
+
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzU1MjA3NzUsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1NTE3MTY1LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.FzPo12U42tLi5e3UcLpn7ic4frYuhX6m8AvS4n9l28c
+            Content-Type: text/plain
+
+    + Body
+
+            
+
++ Response 200
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+                "code": 0
             }
 
 
@@ -982,8 +1051,8 @@ this is the market backend powered by minimum
                 "id": 1,
                 "nick_name": "admin_context",
                 "name": "admin_context",
-                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzUzNzYzNDEsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1MzcyNzMxLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.8_HNj_3zKThHW-rJpkrXV1MkyGUpTRfnsD_PfXXufsM",
-                "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzU5Nzc1NDEsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1MzcyNzMxLCJJc1JlZnJlc2hUb2tlbiI6dHJ1ZSwiUmVmcmVzaFRhcmdldCI6eyJleHAiOjE1NzUzNzYzNDEsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1MzcyNzMxLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19LCJDdXN0b21GaWVsZCI6eyJVSUQiOjF9fQ.zoBHR8X5YMEikqlDd_YJGm5jKwsQzSv8mue3SbMXjXI"
+                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzU1MjA3NzUsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1NTE3MTY1LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.FzPo12U42tLi5e3UcLpn7ic4frYuhX6m8AvS4n9l28c",
+                "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzYxMjE5NzUsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1NTE3MTY1LCJJc1JlZnJlc2hUb2tlbiI6dHJ1ZSwiUmVmcmVzaFRhcmdldCI6eyJleHAiOjE1NzU1MjA3NzUsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1NTE3MTY1LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19LCJDdXN0b21GaWVsZCI6eyJVSUQiOjF9fQ.K-Q8xepq06ESNBmoEIHiMvRA4lOu1GOxmJBMAVDNNcI"
             }
 
 
@@ -991,7 +1060,7 @@ this is the market backend powered by minimum
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzUzNzYzNDEsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1MzcyNzMxLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.8_HNj_3zKThHW-rJpkrXV1MkyGUpTRfnsD_PfXXufsM
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzU1MjA3NzUsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1NTE3MTY1LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.FzPo12U42tLi5e3UcLpn7ic4frYuhX6m8AvS4n9l28c
             Content-Type: application/json
 
     + Body
@@ -1019,8 +1088,8 @@ this is the market backend powered by minimum
                 "id": 2,
                 "nick_name": "tan chan",
                 "name": "chan tan",
-                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzUzNzYzNDEsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1MzcyNzMxLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6Mn19.xSZQLNmBPBCXdTsL_aLTR6Eu4V47q-uFGuszwzP_YQw",
-                "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzU5Nzc1NDEsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1MzcyNzMxLCJJc1JlZnJlc2hUb2tlbiI6dHJ1ZSwiUmVmcmVzaFRhcmdldCI6eyJleHAiOjE1NzUzNzYzNDEsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1MzcyNzMxLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6Mn19LCJDdXN0b21GaWVsZCI6eyJVSUQiOjJ9fQ.rJNdCniPCYlC9aaBZJmexSZjiGHRdx3T7QFj8RsQiTY"
+                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzU1MjA3NzUsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1NTE3MTY1LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6Mn19.AxHTJg6uq0tvTZNqVUyrleGHmoZkceHnbjMjysyeJQs",
+                "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzYxMjE5NzUsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1NTE3MTY1LCJJc1JlZnJlc2hUb2tlbiI6dHJ1ZSwiUmVmcmVzaFRhcmdldCI6eyJleHAiOjE1NzU1MjA3NzUsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1NTE3MTY1LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6Mn19LCJDdXN0b21GaWVsZCI6eyJVSUQiOjJ9fQ.zRoeDNbLSp8b7YX0JH0bWG22bY8p87vqxrUY2XmdhRY"
             }
 
 
@@ -1028,7 +1097,7 @@ this is the market backend powered by minimum
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzUzNzYzNDEsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1MzcyNzMxLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.8_HNj_3zKThHW-rJpkrXV1MkyGUpTRfnsD_PfXXufsM
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzU1MjA3NzUsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1NTE3MTY1LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.FzPo12U42tLi5e3UcLpn7ic4frYuhX6m8AvS4n9l28c
             Content-Type: application/json
 
     + Body
@@ -1056,8 +1125,8 @@ this is the market backend powered by minimum
                 "id": 2,
                 "nick_name": "tan chan",
                 "name": "chan tan",
-                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzUzNzYzNDEsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1MzcyNzMxLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6Mn19.xSZQLNmBPBCXdTsL_aLTR6Eu4V47q-uFGuszwzP_YQw",
-                "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzU5Nzc1NDEsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1MzcyNzMxLCJJc1JlZnJlc2hUb2tlbiI6dHJ1ZSwiUmVmcmVzaFRhcmdldCI6eyJleHAiOjE1NzUzNzYzNDEsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1MzcyNzMxLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6Mn19LCJDdXN0b21GaWVsZCI6eyJVSUQiOjJ9fQ.rJNdCniPCYlC9aaBZJmexSZjiGHRdx3T7QFj8RsQiTY"
+                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzU1MjA3NzUsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1NTE3MTY1LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6Mn19.AxHTJg6uq0tvTZNqVUyrleGHmoZkceHnbjMjysyeJQs",
+                "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzYxMjE5NzUsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1NTE3MTY1LCJJc1JlZnJlc2hUb2tlbiI6dHJ1ZSwiUmVmcmVzaFRhcmdldCI6eyJleHAiOjE1NzU1MjA3NzUsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1NTE3MTY1LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6Mn19LCJDdXN0b21GaWVsZCI6eyJVSUQiOjJ9fQ.zRoeDNbLSp8b7YX0JH0bWG22bY8p87vqxrUY2XmdhRY"
             }
 
 
@@ -1065,7 +1134,7 @@ this is the market backend powered by minimum
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzUzNzYzNDEsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1MzcyNzMxLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.8_HNj_3zKThHW-rJpkrXV1MkyGUpTRfnsD_PfXXufsM
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzU1MjA3NzUsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1NTE3MTY1LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.FzPo12U42tLi5e3UcLpn7ic4frYuhX6m8AvS4n9l28c
             Content-Type: application/json
 
     + Body
@@ -1093,8 +1162,8 @@ this is the market backend powered by minimum
                 "id": 2,
                 "nick_name": "tan chan",
                 "name": "chan tan",
-                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzUzNzYzNDEsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1MzcyNzMxLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6Mn19.xSZQLNmBPBCXdTsL_aLTR6Eu4V47q-uFGuszwzP_YQw",
-                "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzU5Nzc1NDEsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1MzcyNzMxLCJJc1JlZnJlc2hUb2tlbiI6dHJ1ZSwiUmVmcmVzaFRhcmdldCI6eyJleHAiOjE1NzUzNzYzNDEsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1MzcyNzMxLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6Mn19LCJDdXN0b21GaWVsZCI6eyJVSUQiOjJ9fQ.rJNdCniPCYlC9aaBZJmexSZjiGHRdx3T7QFj8RsQiTY"
+                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzU1MjA3NzUsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1NTE3MTY1LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6Mn19.AxHTJg6uq0tvTZNqVUyrleGHmoZkceHnbjMjysyeJQs",
+                "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzYxMjE5NzUsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1NTE3MTY1LCJJc1JlZnJlc2hUb2tlbiI6dHJ1ZSwiUmVmcmVzaFRhcmdldCI6eyJleHAiOjE1NzU1MjA3NzUsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1NTE3MTY1LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6Mn19LCJDdXN0b21GaWVsZCI6eyJVSUQiOjJ9fQ.zRoeDNbLSp8b7YX0JH0bWG22bY8p87vqxrUY2XmdhRY"
             }
 
 
@@ -1110,13 +1179,13 @@ this is the market backend powered by minimum
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzUzNzYzNDEsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1MzcyNzMxLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.8_HNj_3zKThHW-rJpkrXV1MkyGUpTRfnsD_PfXXufsM
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzU1MjA3NzUsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1NTE3MTY1LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.FzPo12U42tLi5e3UcLpn7ic4frYuhX6m8AvS4n9l28c
             Content-Type: application/json
 
     + Body
 
             {
-                "end_at": "2019-12-04T19:32:21.5007945+08:00",
+                "end_at": "2019-12-06T11:39:35.1750084+08:00",
                 "g_type": 1,
                 "name": "es000",
                 "min_price": 100,
@@ -1137,9 +1206,9 @@ this is the market backend powered by minimum
                 "code": 0,
                 "needs": {
                     "ID": 1,
-                    "created_at": "2019-12-03T19:32:21.5007945+08:00",
-                    "updated_at": "2019-12-03T19:32:21.5007945+08:00",
-                    "EndAt": "2019-12-04T19:32:21.5007945+08:00",
+                    "created_at": "2019-12-05T11:39:35.176009+08:00",
+                    "updated_at": "2019-12-05T11:39:35.176009+08:00",
+                    "EndAt": "2019-12-06T11:39:35.1750084+08:00",
                     "Buyer": 1,
                     "Seller": 0,
                     "Type": 1,
@@ -1159,13 +1228,13 @@ this is the market backend powered by minimum
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzUzNzYzNDEsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1MzcyNzMxLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.8_HNj_3zKThHW-rJpkrXV1MkyGUpTRfnsD_PfXXufsM
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzU1MjA3NzUsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1NTE3MTY1LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.FzPo12U42tLi5e3UcLpn7ic4frYuhX6m8AvS4n9l28c
             Content-Type: application/json
 
     + Body
 
             {
-                "end_at": "2019-12-04T19:32:21.5007945+08:00",
+                "end_at": "2019-12-06T11:39:35.1750084+08:00",
                 "g_type": 1,
                 "name": "es0000",
                 "min_price": 100,
@@ -1186,9 +1255,9 @@ this is the market backend powered by minimum
                 "code": 0,
                 "needs": {
                     "ID": 2,
-                    "created_at": "2019-12-03T19:32:21.5007945+08:00",
-                    "updated_at": "2019-12-03T19:32:21.5007945+08:00",
-                    "EndAt": "2019-12-04T19:32:21.5007945+08:00",
+                    "created_at": "2019-12-05T11:39:35.176009+08:00",
+                    "updated_at": "2019-12-05T11:39:35.176009+08:00",
+                    "EndAt": "2019-12-06T11:39:35.1750084+08:00",
                     "Buyer": 1,
                     "Seller": 0,
                     "Type": 1,
@@ -1208,13 +1277,13 @@ this is the market backend powered by minimum
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzUzNzYzNDEsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1MzcyNzMxLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.8_HNj_3zKThHW-rJpkrXV1MkyGUpTRfnsD_PfXXufsM
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzU1MjA3NzUsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1NTE3MTY1LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.FzPo12U42tLi5e3UcLpn7ic4frYuhX6m8AvS4n9l28c
             Content-Type: application/json
 
     + Body
 
             {
-                "end_at": "2019-12-04T19:32:21.5007945+08:00",
+                "end_at": "2019-12-06T11:39:35.1750084+08:00",
                 "g_type": 1,
                 "name": "es0001",
                 "min_price": 100,
@@ -1235,9 +1304,9 @@ this is the market backend powered by minimum
                 "code": 0,
                 "needs": {
                     "ID": 3,
-                    "created_at": "2019-12-03T19:32:21.501789+08:00",
-                    "updated_at": "2019-12-03T19:32:21.501789+08:00",
-                    "EndAt": "2019-12-04T19:32:21.5007945+08:00",
+                    "created_at": "2019-12-05T11:39:35.176009+08:00",
+                    "updated_at": "2019-12-05T11:39:35.176009+08:00",
+                    "EndAt": "2019-12-06T11:39:35.1750084+08:00",
                     "Buyer": 1,
                     "Seller": 0,
                     "Type": 1,
@@ -1257,13 +1326,13 @@ this is the market backend powered by minimum
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzUzNzYzNDEsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1MzcyNzMxLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.8_HNj_3zKThHW-rJpkrXV1MkyGUpTRfnsD_PfXXufsM
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzU1MjA3NzUsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1NTE3MTY1LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.FzPo12U42tLi5e3UcLpn7ic4frYuhX6m8AvS4n9l28c
             Content-Type: application/json
 
     + Body
 
             {
-                "end_at": "2019-12-04T19:32:21.5007945+08:00",
+                "end_at": "2019-12-06T11:39:35.1750084+08:00",
                 "g_type": 1,
                 "name": "es0002",
                 "min_price": 100,
@@ -1284,9 +1353,9 @@ this is the market backend powered by minimum
                 "code": 0,
                 "needs": {
                     "ID": 4,
-                    "created_at": "2019-12-03T19:32:21.501789+08:00",
-                    "updated_at": "2019-12-03T19:32:21.501789+08:00",
-                    "EndAt": "2019-12-04T19:32:21.5007945+08:00",
+                    "created_at": "2019-12-05T11:39:35.1770085+08:00",
+                    "updated_at": "2019-12-05T11:39:35.1770085+08:00",
+                    "EndAt": "2019-12-06T11:39:35.1750084+08:00",
                     "Buyer": 1,
                     "Seller": 0,
                     "Type": 1,
@@ -1306,13 +1375,13 @@ this is the market backend powered by minimum
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzUzNzYzNDEsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1MzcyNzMxLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.8_HNj_3zKThHW-rJpkrXV1MkyGUpTRfnsD_PfXXufsM
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzU1MjA3NzUsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1NTE3MTY1LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.FzPo12U42tLi5e3UcLpn7ic4frYuhX6m8AvS4n9l28c
             Content-Type: application/json
 
     + Body
 
             {
-                "end_at": "2019-12-04T19:32:21.5007945+08:00",
+                "end_at": "2019-12-06T11:39:35.1750084+08:00",
                 "g_type": 1,
                 "name": "es0003",
                 "min_price": 100,
@@ -1333,9 +1402,9 @@ this is the market backend powered by minimum
                 "code": 0,
                 "needs": {
                     "ID": 5,
-                    "created_at": "2019-12-03T19:32:21.501789+08:00",
-                    "updated_at": "2019-12-03T19:32:21.501789+08:00",
-                    "EndAt": "2019-12-04T19:32:21.5007945+08:00",
+                    "created_at": "2019-12-05T11:39:35.1770085+08:00",
+                    "updated_at": "2019-12-05T11:39:35.1770085+08:00",
+                    "EndAt": "2019-12-06T11:39:35.1750084+08:00",
                     "Buyer": 1,
                     "Seller": 0,
                     "Type": 1,
@@ -1355,13 +1424,13 @@ this is the market backend powered by minimum
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzUzNzYzNDEsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1MzcyNzMxLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.8_HNj_3zKThHW-rJpkrXV1MkyGUpTRfnsD_PfXXufsM
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzU1MjA3NzUsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1NTE3MTY1LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.FzPo12U42tLi5e3UcLpn7ic4frYuhX6m8AvS4n9l28c
             Content-Type: application/json
 
     + Body
 
             {
-                "end_at": "2019-12-04T19:32:21.5007945+08:00",
+                "end_at": "2019-12-06T11:39:35.1750084+08:00",
                 "g_type": 1,
                 "name": "es0004",
                 "min_price": 100,
@@ -1382,9 +1451,9 @@ this is the market backend powered by minimum
                 "code": 0,
                 "needs": {
                     "ID": 6,
-                    "created_at": "2019-12-03T19:32:21.5027894+08:00",
-                    "updated_at": "2019-12-03T19:32:21.5027894+08:00",
-                    "EndAt": "2019-12-04T19:32:21.5007945+08:00",
+                    "created_at": "2019-12-05T11:39:35.1780066+08:00",
+                    "updated_at": "2019-12-05T11:39:35.1780066+08:00",
+                    "EndAt": "2019-12-06T11:39:35.1750084+08:00",
                     "Buyer": 1,
                     "Seller": 0,
                     "Type": 1,
@@ -1404,13 +1473,13 @@ this is the market backend powered by minimum
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzUzNzYzNDEsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1MzcyNzMxLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.8_HNj_3zKThHW-rJpkrXV1MkyGUpTRfnsD_PfXXufsM
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzU1MjA3NzUsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1NTE3MTY1LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.FzPo12U42tLi5e3UcLpn7ic4frYuhX6m8AvS4n9l28c
             Content-Type: application/json
 
     + Body
 
             {
-                "end_at": "2019-12-04T19:32:21.5007945+08:00",
+                "end_at": "2019-12-06T11:39:35.1750084+08:00",
                 "g_type": 1,
                 "name": "es0005",
                 "min_price": 100,
@@ -1431,9 +1500,9 @@ this is the market backend powered by minimum
                 "code": 0,
                 "needs": {
                     "ID": 7,
-                    "created_at": "2019-12-03T19:32:21.5037899+08:00",
-                    "updated_at": "2019-12-03T19:32:21.5037899+08:00",
-                    "EndAt": "2019-12-04T19:32:21.5007945+08:00",
+                    "created_at": "2019-12-05T11:39:35.1780066+08:00",
+                    "updated_at": "2019-12-05T11:39:35.1780066+08:00",
+                    "EndAt": "2019-12-06T11:39:35.1750084+08:00",
                     "Buyer": 1,
                     "Seller": 0,
                     "Type": 1,
@@ -1453,13 +1522,13 @@ this is the market backend powered by minimum
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzUzNzYzNDEsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1MzcyNzMxLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.8_HNj_3zKThHW-rJpkrXV1MkyGUpTRfnsD_PfXXufsM
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzU1MjA3NzUsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1NTE3MTY1LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.FzPo12U42tLi5e3UcLpn7ic4frYuhX6m8AvS4n9l28c
             Content-Type: application/json
 
     + Body
 
             {
-                "end_at": "2019-12-04T19:32:21.5007945+08:00",
+                "end_at": "2019-12-06T11:39:35.1750084+08:00",
                 "g_type": 1,
                 "name": "es0006",
                 "min_price": 100,
@@ -1480,9 +1549,9 @@ this is the market backend powered by minimum
                 "code": 0,
                 "needs": {
                     "ID": 8,
-                    "created_at": "2019-12-03T19:32:21.5037899+08:00",
-                    "updated_at": "2019-12-03T19:32:21.5037899+08:00",
-                    "EndAt": "2019-12-04T19:32:21.5007945+08:00",
+                    "created_at": "2019-12-05T11:39:35.1780066+08:00",
+                    "updated_at": "2019-12-05T11:39:35.1780066+08:00",
+                    "EndAt": "2019-12-06T11:39:35.1750084+08:00",
                     "Buyer": 1,
                     "Seller": 0,
                     "Type": 1,
@@ -1502,13 +1571,13 @@ this is the market backend powered by minimum
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzUzNzYzNDEsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1MzcyNzMxLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.8_HNj_3zKThHW-rJpkrXV1MkyGUpTRfnsD_PfXXufsM
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzU1MjA3NzUsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1NTE3MTY1LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.FzPo12U42tLi5e3UcLpn7ic4frYuhX6m8AvS4n9l28c
             Content-Type: application/json
 
     + Body
 
             {
-                "end_at": "2019-12-04T19:32:21.5007945+08:00",
+                "end_at": "2019-12-06T11:39:35.1750084+08:00",
                 "g_type": 1,
                 "name": "es0007",
                 "min_price": 100,
@@ -1529,9 +1598,9 @@ this is the market backend powered by minimum
                 "code": 0,
                 "needs": {
                     "ID": 9,
-                    "created_at": "2019-12-03T19:32:21.5037899+08:00",
-                    "updated_at": "2019-12-03T19:32:21.5037899+08:00",
-                    "EndAt": "2019-12-04T19:32:21.5007945+08:00",
+                    "created_at": "2019-12-05T11:39:35.1780066+08:00",
+                    "updated_at": "2019-12-05T11:39:35.1780066+08:00",
+                    "EndAt": "2019-12-06T11:39:35.1750084+08:00",
                     "Buyer": 1,
                     "Seller": 0,
                     "Type": 1,
@@ -1551,13 +1620,13 @@ this is the market backend powered by minimum
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzUzNzYzNDEsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1MzcyNzMxLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.8_HNj_3zKThHW-rJpkrXV1MkyGUpTRfnsD_PfXXufsM
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzU1MjA3NzUsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1NTE3MTY1LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.FzPo12U42tLi5e3UcLpn7ic4frYuhX6m8AvS4n9l28c
             Content-Type: application/json
 
     + Body
 
             {
-                "end_at": "2019-12-04T19:32:21.5007945+08:00",
+                "end_at": "2019-12-06T11:39:35.1750084+08:00",
                 "g_type": 1,
                 "name": "es0008",
                 "min_price": 100,
@@ -1578,9 +1647,9 @@ this is the market backend powered by minimum
                 "code": 0,
                 "needs": {
                     "ID": 10,
-                    "created_at": "2019-12-03T19:32:21.5047901+08:00",
-                    "updated_at": "2019-12-03T19:32:21.5047901+08:00",
-                    "EndAt": "2019-12-04T19:32:21.5007945+08:00",
+                    "created_at": "2019-12-05T11:39:35.1780066+08:00",
+                    "updated_at": "2019-12-05T11:39:35.1780066+08:00",
+                    "EndAt": "2019-12-06T11:39:35.1750084+08:00",
                     "Buyer": 1,
                     "Seller": 0,
                     "Type": 1,
@@ -1600,13 +1669,13 @@ this is the market backend powered by minimum
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzUzNzYzNDEsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1MzcyNzMxLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.8_HNj_3zKThHW-rJpkrXV1MkyGUpTRfnsD_PfXXufsM
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzU1MjA3NzUsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1NTE3MTY1LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.FzPo12U42tLi5e3UcLpn7ic4frYuhX6m8AvS4n9l28c
             Content-Type: application/json
 
     + Body
 
             {
-                "end_at": "2019-12-04T19:32:21.5007945+08:00",
+                "end_at": "2019-12-06T11:39:35.1750084+08:00",
                 "g_type": 1,
                 "name": "es0009",
                 "min_price": 100,
@@ -1627,9 +1696,9 @@ this is the market backend powered by minimum
                 "code": 0,
                 "needs": {
                     "ID": 11,
-                    "created_at": "2019-12-03T19:32:21.5047901+08:00",
-                    "updated_at": "2019-12-03T19:32:21.5047901+08:00",
-                    "EndAt": "2019-12-04T19:32:21.5007945+08:00",
+                    "created_at": "2019-12-05T11:39:35.1780066+08:00",
+                    "updated_at": "2019-12-05T11:39:35.1780066+08:00",
+                    "EndAt": "2019-12-06T11:39:35.1750084+08:00",
                     "Buyer": 1,
                     "Seller": 0,
                     "Type": 1,
@@ -1657,7 +1726,7 @@ this is the market backend powered by minimum
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzUzNzYzNDEsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1MzcyNzMxLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.8_HNj_3zKThHW-rJpkrXV1MkyGUpTRfnsD_PfXXufsM
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzU1MjA3NzUsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1NTE3MTY1LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.FzPo12U42tLi5e3UcLpn7ic4frYuhX6m8AvS4n9l28c
             Content-Type: text/plain
 
     + Body
@@ -1677,9 +1746,9 @@ this is the market backend powered by minimum
                 "needss": [
                     {
                         "id": 1,
-                        "created_at": "2019-12-03T19:32:21.5007945+08:00",
-                        "updated_at": "2019-12-03T19:32:21.5007945+08:00",
-                        "end_at": "2019-12-04T19:32:21.5007945+08:00",
+                        "created_at": "2019-12-05T11:39:35.176009+08:00",
+                        "updated_at": "2019-12-05T11:39:35.176009+08:00",
+                        "end_at": "2019-12-06T11:39:35.1750084+08:00",
                         "seller": null,
                         "buyer": {
                             "id": 1,
@@ -1695,9 +1764,9 @@ this is the market backend powered by minimum
                     },
                     {
                         "id": 2,
-                        "created_at": "2019-12-03T19:32:21.5007945+08:00",
-                        "updated_at": "2019-12-03T19:32:21.5007945+08:00",
-                        "end_at": "2019-12-04T19:32:21.5007945+08:00",
+                        "created_at": "2019-12-05T11:39:35.176009+08:00",
+                        "updated_at": "2019-12-05T11:39:35.176009+08:00",
+                        "end_at": "2019-12-06T11:39:35.1750084+08:00",
                         "seller": null,
                         "buyer": {
                             "id": 1,
@@ -1719,7 +1788,7 @@ this is the market backend powered by minimum
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzUzNzYzNDEsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1MzcyNzMxLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.8_HNj_3zKThHW-rJpkrXV1MkyGUpTRfnsD_PfXXufsM
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzU1MjA3NzUsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1NTE3MTY1LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.FzPo12U42tLi5e3UcLpn7ic4frYuhX6m8AvS4n9l28c
             Content-Type: text/plain
 
     + Body
@@ -1739,9 +1808,9 @@ this is the market backend powered by minimum
                 "needss": [
                     {
                         "id": 3,
-                        "created_at": "2019-12-03T19:32:21.501789+08:00",
-                        "updated_at": "2019-12-03T19:32:21.501789+08:00",
-                        "end_at": "2019-12-04T19:32:21.5007945+08:00",
+                        "created_at": "2019-12-05T11:39:35.176009+08:00",
+                        "updated_at": "2019-12-05T11:39:35.176009+08:00",
+                        "end_at": "2019-12-06T11:39:35.1750084+08:00",
                         "seller": null,
                         "buyer": {
                             "id": 1,
@@ -1757,9 +1826,9 @@ this is the market backend powered by minimum
                     },
                     {
                         "id": 4,
-                        "created_at": "2019-12-03T19:32:21.501789+08:00",
-                        "updated_at": "2019-12-03T19:32:21.501789+08:00",
-                        "end_at": "2019-12-04T19:32:21.5007945+08:00",
+                        "created_at": "2019-12-05T11:39:35.1770085+08:00",
+                        "updated_at": "2019-12-05T11:39:35.1770085+08:00",
+                        "end_at": "2019-12-06T11:39:35.1750084+08:00",
                         "seller": null,
                         "buyer": {
                             "id": 1,
@@ -1777,11 +1846,11 @@ this is the market backend powered by minimum
             }
 
 
-## base-service.(*CRUDService).Get-fm [/v1/needs/:nid]
+## base-service.(*CRUDService).Put-fm [/v1/needs/:nid]
 
 
- + GET: 
  + PUT: 
+ + GET: 
  + DELETE: 
 
 
@@ -1791,7 +1860,7 @@ this is the market backend powered by minimum
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzUzNzYzNDEsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1MzcyNzMxLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.8_HNj_3zKThHW-rJpkrXV1MkyGUpTRfnsD_PfXXufsM
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzU1MjA3NzUsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1NTE3MTY1LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.FzPo12U42tLi5e3UcLpn7ic4frYuhX6m8AvS4n9l28c
             Content-Type: text/plain
 
     + Body
@@ -1810,9 +1879,9 @@ this is the market backend powered by minimum
                 "code": 0,
                 "needs": {
                     "ID": 1,
-                    "created_at": "2019-12-03T19:32:21.5007945+08:00",
-                    "updated_at": "2019-12-03T19:32:21.5007945+08:00",
-                    "EndAt": "2019-12-04T19:32:21.5007945+08:00",
+                    "created_at": "2019-12-05T11:39:35.176009+08:00",
+                    "updated_at": "2019-12-05T11:39:35.176009+08:00",
+                    "EndAt": "2019-12-06T11:39:35.1750084+08:00",
                     "Buyer": 1,
                     "Seller": 0,
                     "Type": 1,
@@ -1832,7 +1901,7 @@ this is the market backend powered by minimum
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzUzNzYzNDEsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1MzcyNzMxLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.8_HNj_3zKThHW-rJpkrXV1MkyGUpTRfnsD_PfXXufsM
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzU1MjA3NzUsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1NTE3MTY1LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.FzPo12U42tLi5e3UcLpn7ic4frYuhX6m8AvS4n9l28c
             Content-Type: text/plain
 
     + Body
@@ -1859,7 +1928,7 @@ this is the market backend powered by minimum
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzUzNzYzNDEsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1MzcyNzMxLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.8_HNj_3zKThHW-rJpkrXV1MkyGUpTRfnsD_PfXXufsM
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzU1MjA3NzUsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1NTE3MTY1LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.FzPo12U42tLi5e3UcLpn7ic4frYuhX6m8AvS4n9l28c
             Content-Type: text/plain
 
     + Body
@@ -1922,7 +1991,7 @@ this is the market backend powered by minimum
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzUzNzYzNDEsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1MzcyNzMxLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.8_HNj_3zKThHW-rJpkrXV1MkyGUpTRfnsD_PfXXufsM
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzU1MjA3NzUsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1NTE3MTY1LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.FzPo12U42tLi5e3UcLpn7ic4frYuhX6m8AvS4n9l28c
             Content-Type: application/json
 
     + Body
@@ -1962,7 +2031,7 @@ this is the market backend powered by minimum
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzUzNzYzNDEsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1MzcyNzMxLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.8_HNj_3zKThHW-rJpkrXV1MkyGUpTRfnsD_PfXXufsM
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzU1MjA3NzUsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1NTE3MTY1LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.FzPo12U42tLi5e3UcLpn7ic4frYuhX6m8AvS4n9l28c
             Content-Type: text/plain
 
     + Body
@@ -1982,12 +2051,12 @@ this is the market backend powered by minimum
                 "users": [
                     {
                         "ID": 1,
-                        "created_at": "2019-12-03T19:32:21.4288213+08:00",
-                        "updated_at": "2019-12-03T19:32:21.4288213+08:00",
-                        "last_login": "2019-12-03T11:32:21Z",
+                        "created_at": "2019-12-05T11:39:35.1050381+08:00",
+                        "updated_at": "2019-12-05T11:39:35.1050381+08:00",
+                        "last_login": "2019-12-05T03:39:35Z",
                         "NickName": "admin_context",
                         "Name": "admin_context",
-                        "Password": "$2a$10$eY55vB7QfFZAwZtMD4wy.eZ5E6jKqrBFFDbkk65EeR08HAlKl13Eq",
+                        "Password": "$2a$10$e1Vmo4u2gBIsye8O4uv51OLWfwgosczFaqcLu6tyBLZKvh2QkUVrC",
                         "Phone": "1234567891011",
                         "RegisterCity": "Qing Dao S.D."
                     }
@@ -1995,12 +2064,12 @@ this is the market backend powered by minimum
             }
 
 
-## Get [/v1/user/:id]
+## Put [/v1/user/:id]
 
 
- + GET: Get User
- + DELETE: Delete User
  + PUT: Put User
+ + DELETE: Delete User
+ + GET: Get User
 
 
 ### Get [GET]
@@ -2009,7 +2078,7 @@ this is the market backend powered by minimum
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzUzNzYzNDEsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1MzcyNzMxLCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.8_HNj_3zKThHW-rJpkrXV1MkyGUpTRfnsD_PfXXufsM
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzU1MjA3NzUsImlzcyI6Ik15cmlhZC1EcmVhbWluIiwibmJmIjoxNTc1NTE3MTY1LCJJc1JlZnJlc2hUb2tlbiI6ZmFsc2UsIlJlZnJlc2hUYXJnZXQiOm51bGwsIkN1c3RvbUZpZWxkIjp7IlVJRCI6MX19.FzPo12U42tLi5e3UcLpn7ic4frYuhX6m8AvS4n9l28c
             Content-Type: text/plain
 
     + Body
@@ -2028,12 +2097,12 @@ this is the market backend powered by minimum
                 "code": 0,
                 "user": {
                     "ID": 1,
-                    "created_at": "2019-12-03T19:32:21.4288213+08:00",
-                    "updated_at": "2019-12-03T19:32:21.4288213+08:00",
-                    "last_login": "2019-12-03T11:32:21Z",
+                    "created_at": "2019-12-05T11:39:35.1050381+08:00",
+                    "updated_at": "2019-12-05T11:39:35.1050381+08:00",
+                    "last_login": "2019-12-05T03:39:35Z",
                     "NickName": "admin_context",
                     "Name": "admin_context",
-                    "Password": "$2a$10$eY55vB7QfFZAwZtMD4wy.eZ5E6jKqrBFFDbkk65EeR08HAlKl13Eq",
+                    "Password": "$2a$10$e1Vmo4u2gBIsye8O4uv51OLWfwgosczFaqcLu6tyBLZKvh2QkUVrC",
                     "Phone": "1234567891011",
                     "RegisterCity": "Qing Dao S.D."
                 }

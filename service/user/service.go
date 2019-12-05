@@ -25,8 +25,7 @@ type Service struct {
 }
 
 func NewService(logger types.Logger, provider *model.Provider,
-	middleware *jwt.Middleware, cfg *config.ServerConfig)
-	(a control.UserService, err error) {
+	middleware *jwt.Middleware, cfg *config.ServerConfig) (a control.UserService, err error) {
 	srv := new(Service)
 	srv.userDB = provider.UserDB()
 	srv.goodsDB = provider.GoodsDB()
