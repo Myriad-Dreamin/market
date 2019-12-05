@@ -26,7 +26,3 @@ func testUserChangePassword(t *tester.TesterContext) {
 func testUserSell(t *tester.TesterContext) {
 
 }
-
-func testUserBuy(t *tester.TesterContext) {
-
-}

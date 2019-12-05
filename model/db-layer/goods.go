@@ -131,7 +131,14 @@ func (goodsDB *GoodsDB) Buy(id, uid uint) (int, string) {
 	if tx.Error != nil {
 		return types.CodeBeginTransactionError, tx.Error.Error()
 	}
-	goods, err := goodsDB.ID(id)
+	//goods, err := goodsDB.ID(id)
+	var goods = new(Goods)
+	rdb := tx.First(&goods, id)
+	err := rdb.Error
+	if rdb.RecordNotFound() {
+		goods = nil
+		err = nil
+	}
 	if code, errs := errorc.MaybeSelectError(goods, err); code != types.CodeOK {
 		tx.Rollback()
 		if tx.Error != nil {
@@ -155,19 +162,21 @@ func (goodsDB *GoodsDB) Buy(id, uid uint) (int, string) {
 	}
 	goods.Status = types.GoodsStatusPending
 	goods.Buyer = uid
-	if code, errs := errorc.UpdateFields(goods, goodsStatusField); code != types.CodeOK {
-		tx.Rollback()
-		if tx.Error != nil {
-			fmt.Println("rollback error", tx.Error)
+	err = tx.Model(&goods).Select(goodsStatusField).Updates(&goods).Error
+	if err != nil {
+		errr := tx.Rollback().Error
+		if errr != nil {
+			fmt.Println("rollback error", errr)
 		}
-		return code, errs
+		return types.CodeUpdateError, err.Error()
 	}
-
-
-
-	tx.RollbackUnlessCommitted()
-	if tx.Error != nil {
-		return types.CodeCommitTransactionError, tx.Error.Error()
+	err = tx.Commit().Error
+	if err != nil {
+		errr := tx.Rollback().Error
+		if errr != nil {
+			fmt.Println("rollback error", errr)
+		}
+		return types.CodeCommitTransactionError, err.Error()
 	} else {
 		return types.CodeOK, ""
 	}

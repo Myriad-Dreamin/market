@@ -25,6 +25,8 @@ type UserIDRouter struct {
 	Get            *mgin.LeafRouter
 	Put            *mgin.LeafRouter
 	Delete         *mgin.LeafRouter
+	Buy *mgin.LeafRouter
+	Sell *mgin.LeafRouter
 }
 
 func BuildUserRouter(parent *RootRouter, serviceProvider *service.Provider) (router *UserRouter) {
@@ -58,6 +60,9 @@ func (*UserIDRouter) subBuild(parent *UserRouter, serviceProvider *service.Provi
 	router.ChangePassword = router.AuthRouter.PUT("/password", userService.ChangePassword)
 	router.Put = router.AuthRouter.PUT("", userService.Put)
 	router.Delete = router.AuthRouter.DELETE("", userService.Delete)
+	router.Buy = router.AuthRouter.POST("/buy", userService.Buy)
+	router.Sell = router.AuthRouter.POST("/sell", userService.Sell)
+
 	return
 }
 
