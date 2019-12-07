@@ -12,6 +12,8 @@ type Service struct {
 	logger types.Logger
 }
 
+func (srv *Service) StatisticSignatureXXX() interface{} { return srv }
+
 func NewService(logger types.Logger, _ *model.Provider, cfg *config.ServerConfig) (a *Service, err error) {
 	a = new(Service)
 	a.logger = logger

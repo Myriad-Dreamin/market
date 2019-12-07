@@ -12,3 +12,28 @@ type Auth interface {
 	// /refresh-token GET
 	RefreshToken(c *gin.Context)
 }
+
+type ObjectService interface {
+	ObjectSignatureXXX() interface{}
+
+	// @Title Post
+	// @Description Post Object
+	Post(c *gin.Context)
+
+	// @Title Put
+	// @Description Put Object
+	Put(c *gin.Context)
+
+	// @Title Delete
+	// @Description Delete Object
+	Delete(c *gin.Context)
+
+	// @Title Get
+	// @Description Get Object
+	Get(c *gin.Context)
+
+	// @Title List
+	// @Description List Object
+	List(c *gin.Context)
+
+}

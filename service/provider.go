@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"github.com/Myriad-Dreamin/minimum-lib/module"
 	"path"
+	"reflect"
 )
 
 type SubController interface {
@@ -26,12 +27,12 @@ func JustProvide(controllers ...interface{}) SubController {
 // @DocName Minimum-Market
 // @Description this is the market backend powered by minimum
 type Provider struct {
-	statisticService *StatisticService
+	statisticService StatisticService
 	module.BaseModuler
 
-	objectService *ObjectService
-	needsService  *NeedsService
-	goodsService  *GoodsService
+	objectService ObjectService
+	needsService  NeedsService
+	goodsService  GoodsService
 	userService   UserService
 
 	subControllers []SubController
@@ -52,21 +53,23 @@ func (s *Provider) Register(name string, service interface{}) {
 	if ss, ok := service.(SubController); ok {
 		s.subControllers = append(s.subControllers, ss)
 	}
+	fmt.Println("QAQ", reflect.TypeOf(service))
 
 	switch ss := service.(type) {
-	case *StatisticService:
+	case StatisticService:
 		s.statisticService = ss
 		s.subControllers = append(s.subControllers, JustProvide(&ss))
-	case *NeedsService:
+	case NeedsService:
 		s.needsService = ss
 		s.subControllers = append(s.subControllers, JustProvide(&ss))
-	case *GoodsService:
+	case GoodsService:
+		fmt.Println("QAQ")
 		s.goodsService = ss
 		s.subControllers = append(s.subControllers, JustProvide(&ss))
 	case UserService:
 		s.userService = ss
 		s.subControllers = append(s.subControllers, JustProvide(&ss))
-	case *ObjectService:
+	case ObjectService:
 		s.objectService = ss
 		s.subControllers = append(s.subControllers, JustProvide(&ss))
 	default:

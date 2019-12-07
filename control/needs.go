@@ -11,17 +11,32 @@ import "github.com/gin-gonic/gin"
  * list: 根据filter得到商品列表
  */
 type NeedsService interface {
-	// / POST
+	NeedsSignatureXXX() interface{}
+
+	// @Title Post
+	// @Description Post Needs
 	Post(c *gin.Context)
-	// / PUT
+
+	// @Title Put
+	// @Description Put Needs
 	Put(c *gin.Context)
-	// /:id DELETE
+
+	// @Title Delete
+	// @Description Delete Needs
 	Delete(c *gin.Context)
-	// /:id GET
+
+	// @Title Force Delete
+	// @Description Force Delete Needs
+	ForceDelete(c *gin.Context)
+
+	// @Title Get
+	// @Description Get Needs
 	Get(c *gin.Context)
-	// / GET
+
+	// @Title List
+	// @Description List Needs
 	List(c *gin.Context)
 
-	// Sell(c *gin.Context)
+	// Buy(c *gin.Context)
 }
 

@@ -12,6 +12,7 @@ import "github.com/gin-gonic/gin"
  * list: 根据filter得到商品列表
  */
 type GoodsService interface {
+	GoodsSignatureXXX() interface{}
 
 	// @Title Post
 	// @Description Post Goods

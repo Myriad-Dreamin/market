@@ -11,6 +11,7 @@ import "github.com/gin-gonic/gin"
  * show GET: 统计信息
  */
 type StatisticService interface {
+	StatisticSignatureXXX() interface{}
 
 	// /stat/goods/fee GET
 

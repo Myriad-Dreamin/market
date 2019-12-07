@@ -12,6 +12,8 @@ import "github.com/gin-gonic/gin"
  * delete DELETE 删除用户
  */
 type UserService interface {
+	UserSignatureXXX() interface{}
+
 	// @Title Login
 	// @Description Login
 	Login(c *gin.Context)

@@ -16,6 +16,8 @@ type Service struct {
 	logger types.Logger
 }
 
+func (srv *Service) ObjectSignatureXXX() interface{} { return srv }
+
 func NewService(logger types.Logger, provider *model.Provider, cfg *config.ServerConfig) (a *Service, err error) {
 	a = new(Service)
 	a.db = provider.ObjectDB()

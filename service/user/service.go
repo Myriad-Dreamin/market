@@ -24,6 +24,8 @@ type Service struct {
 	middleware *jwt.Middleware
 }
 
+func (srv *Service) UserSignatureXXX() interface{} { return srv }
+
 func NewService(logger types.Logger, provider *model.Provider,
 	middleware *jwt.Middleware, cfg *config.ServerConfig) (a control.UserService, err error) {
 	srv := new(Service)

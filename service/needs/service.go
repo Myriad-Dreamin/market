@@ -22,6 +22,9 @@ type Service struct {
 	key string
 }
 
+func (srv *Service) NeedsSignatureXXX() interface{} { return srv }
+
+
 func NewService(logger types.Logger, provider *model.Provider, cfg *config.ServerConfig) (a *Service, err error) {
 	a = new(Service)
 	a.needsDB = provider.NeedsDB()

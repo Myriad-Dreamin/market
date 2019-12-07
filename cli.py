@@ -186,14 +186,14 @@ class MinimumCli:
         self.replace(
             service_provider_file,
             'type Provider struct {',
-            'type Provider struct {\n\t%sService *%sService' % (self.camel, self.up_camel),
+            'type Provider struct {\n\t%sService %sService' % (self.camel, self.up_camel),
         )
 
         self.replace(
             service_provider_file,
             'switch ss := service.(type) {',
             'switch ss := service.(type) {'
-            '\n\tcase *%sService:'
+            '\n\tcase %sService:'
             '\n\t\ts.%sService = ss'
             '\n\t\ts.subControllers = append(s.subControllers, JustProvide(&ss))' % (self.up_camel, self.camel),
         )
