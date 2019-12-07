@@ -5,6 +5,7 @@ import (
 	"github.com/Myriad-Dreamin/market/config"
 	"github.com/Myriad-Dreamin/market/model"
 	"github.com/Myriad-Dreamin/market/types"
+	"github.com/gin-gonic/gin"
 )
 
 type Service struct {
@@ -12,7 +13,7 @@ type Service struct {
 	logger types.Logger
 }
 
-func (srv *Service) StatisticSignatureXXX() interface{} { return srv }
+func (svc *Service) StatisticSignatureXXX() interface{} { return svc }
 
 func NewService(logger types.Logger, _ *model.Provider, cfg *config.ServerConfig) (a *Service, err error) {
 	a = new(Service)
