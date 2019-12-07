@@ -17,17 +17,17 @@ TODO
 */
 
 type BuyRequest struct {
-	GoodsID uint `json:"goid" form:"goid"`
 }
 
 func (srv *Service) Buy(c *gin.Context) {
 	var req BuyRequest
-	if !ginhelper.BindRequest(c, &req) {
+	id, ok := ginhelper.ParseUintAndBind(c, "goid", &req)
+	if !ok {
 		return
 	}
 	var claims = ginhelper.GetCustomFields(c)
 
-	code, err := srv.goodsDB.Buy(req.GoodsID, uint(claims.UID))
+	code, err := srv.goodsDB.Buy(id, uint(claims.UID))
 	if code != types.CodeOK {
 		c.AbortWithStatusJSON(http.StatusOK, types.ErrorSerializer{
 			Code:  code,

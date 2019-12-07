@@ -1,7 +1,6 @@
 package dblayer
 
 import (
-	"fmt"
 	"github.com/Myriad-Dreamin/core-oj/config"
 	"github.com/Myriad-Dreamin/dorm"
 	"github.com/Myriad-Dreamin/market/types"
@@ -30,7 +29,6 @@ func Register(rdb *gorm.DB, logger types.Logger) error {
 	if err = (*rawDB).Ping(); err != nil {
 		return err
 	}
-	fmt.Println(rawDB)
 	xdb, err := dorm.FromRaw(*rawDB, adapt(logger), dorm.Escaper('"'))
 	if err != nil {
 		return err

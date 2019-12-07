@@ -1,7 +1,6 @@
 package tests
 
 import (
-	"github.com/Myriad-Dreamin/market/test/tester"
 	"testing"
 )
 

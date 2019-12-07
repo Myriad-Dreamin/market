@@ -15,18 +15,18 @@ TODO
 */
 
 type SellRequest struct {
-	NeedsID uint `json:"nid" form:"nid"`
 }
 
 func (srv *Service) Sell(c *gin.Context) {
 
 	var req SellRequest
-	if !ginhelper.BindRequest(c, &req) {
+	id, ok := ginhelper.ParseUintAndBind(c, "nid", &req)
+	if !ok {
 		return
 	}
 	var claims = ginhelper.GetCustomFields(c)
 
-	code, err := srv.needsDB.Sell(req.NeedsID, uint(claims.UID))
+	code, err := srv.needsDB.Sell(id, uint(claims.UID))
 	if code != types.CodeOK {
 		c.AbortWithStatusJSON(http.StatusOK, types.ErrorSerializer{
 			Code:  code,

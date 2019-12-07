@@ -8,8 +8,8 @@ import (
 type UserRouter struct {
 	*mgin.Router
 	AuthRouter *mgin.Router
-	Auth     *mgin.Middleware
-	IDRouter *UserIDRouter
+	Auth       *mgin.Middleware
+	IDRouter   *UserIDRouter
 
 	Login    *mgin.LeafRouter
 	Register *mgin.LeafRouter
@@ -19,22 +19,40 @@ type UserRouter struct {
 type UserIDRouter struct {
 	*mgin.Router
 	AuthRouter *mgin.Router
-	Auth *mgin.Middleware
+	Auth       *mgin.Middleware
+	GoodsIDRouter *UserGoodsIDRouter
+	NeedsIDRouter *UserNeedsIDRouter
 
 	ChangePassword *mgin.LeafRouter
 	Get            *mgin.LeafRouter
 	Put            *mgin.LeafRouter
 	Delete         *mgin.LeafRouter
-	Buy *mgin.LeafRouter
-	Sell *mgin.LeafRouter
+}
+
+type UserGoodsIDRouter struct {
+	*mgin.Router
+	AuthRouter *mgin.Router
+	Auth       *mgin.Middleware
+
+	Buy            *mgin.LeafRouter
+	ConfirmBuy     *mgin.LeafRouter
+}
+
+type UserNeedsIDRouter struct {
+	*mgin.Router
+	AuthRouter *mgin.Router
+	Auth       *mgin.Middleware
+
+	Sell           *mgin.LeafRouter
+	ConfirmSell    *mgin.LeafRouter
 }
 
 func BuildUserRouter(parent *RootRouter, serviceProvider *service.Provider) (router *UserRouter) {
 	userService := serviceProvider.UserService()
 	router = &UserRouter{
-		Router: parent.Router.Extend("user"),
+		Router:     parent.Router.Extend("user"),
 		AuthRouter: parent.AuthRouter.Extend("user"),
-		Auth:   parent.Auth.Copy(),
+		Auth:       parent.Auth.Copy(),
 	}
 	router.GetList = router.GET("user-list", userService.List)
 	router.Register = router.POST("/user", userService.Register)
@@ -51,19 +69,50 @@ func (*UserIDRouter) subBuild(parent *UserRouter, serviceProvider *service.Provi
 	userService := serviceProvider.UserService()
 
 	router = &UserIDRouter{
-		Router: parent.Group("/user/:id"),
+		Router:     parent.Group("/user/:id"),
 		AuthRouter: parent.AuthRouter.Group("/user/:id"),
-		Auth:   parent.Auth.MustGroup("user", "id"),
+		Auth:       parent.Auth.MustGroup("user", "id"),
 	}
 
 	router.Get = router.GET("", userService.Get)
 	router.ChangePassword = router.AuthRouter.PUT("/password", userService.ChangePassword)
 	router.Put = router.AuthRouter.PUT("", userService.Put)
 	router.Delete = router.AuthRouter.DELETE("", userService.Delete)
-	router.Buy = router.AuthRouter.POST("/buy", userService.Buy)
-	router.Sell = router.AuthRouter.POST("/sell", userService.Sell)
+
+	router.GoodsIDRouter = router.GoodsIDRouter.subBuild(router, serviceProvider)
+	router.NeedsIDRouter = router.NeedsIDRouter.subBuild(router, serviceProvider)
 
 	return
+}
+
+func (t *UserGoodsIDRouter) subBuild(parent *UserIDRouter, serviceProvider *service.Provider) *UserGoodsIDRouter {
+
+	userService := serviceProvider.UserService()
+
+	router := &UserGoodsIDRouter{
+		Router:     parent.Group("/goods/:goid"),
+		AuthRouter: parent.AuthRouter.Group("/goods/:goid"),
+		Auth:       parent.Auth.MustGroup("goods", "goid"),
+	}
+
+	router.Buy = router.AuthRouter.POST("/buy", userService.Buy)
+	router.ConfirmBuy = router.AuthRouter.POST("/confirm-buy", userService.ConfirmBuy)
+	return router
+}
+
+func (t *UserNeedsIDRouter) subBuild(parent *UserIDRouter, serviceProvider *service.Provider) *UserNeedsIDRouter {
+
+	userService := serviceProvider.UserService()
+
+	router := &UserNeedsIDRouter{
+		Router:     parent.Group("/needs/:nid"),
+		AuthRouter: parent.AuthRouter.Group("/needs/:nid"),
+		Auth:       parent.Auth.MustGroup("needs", "nid"),
+	}
+
+	router.Sell = router.AuthRouter.POST("/sell", userService.Sell)
+	router.ConfirmSell = router.AuthRouter.POST("/confirm-sell", userService.ConfirmSell)
+	return router
 }
 
 func (s *Provider) UserRouter() *UserRouter {

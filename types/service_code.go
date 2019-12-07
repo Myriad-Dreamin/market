@@ -70,6 +70,7 @@ const (
 	CodeGoodsStatusFinished
 	CodeGoodsLifeTimeout
 	CodeGoodsStatusNotBeUnfinished
+	CodeGoodsStatusNotBePending
 )
 
 

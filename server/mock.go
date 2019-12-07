@@ -235,8 +235,16 @@ func (mocker *Mocker) report(err error) {
 	}
 }
 
+type emptyBody struct {}
+
+func (body emptyBody) Read(p []byte) (n int, err error) {
+	return 0, io.EOF
+}
+
+var _emptyBody = emptyBody{}
+
 func (mocker *Mocker) Method(method, path string, params ...interface{}) mock.ResponseI {
-	var body io.Reader
+	var body io.Reader = _emptyBody
 	var contentType string
 	var serveParams []interface{}
 	for i := range params {

@@ -1,6 +1,7 @@
 package dblayer
 
 import (
+	"github.com/Myriad-Dreamin/dorm"
 	"github.com/Myriad-Dreamin/market/config"
 	"github.com/Myriad-Dreamin/market/types"
 	"github.com/jinzhu/gorm"
@@ -53,6 +54,14 @@ func (d *Object) UpdateFields(fields []string) (int64, error) {
 	return objectTraits.UpdateFields(d, fields)
 }
 
+func (d *Object) UpdateFields_(db *dorm.DB, fields []string) (int64, error) {
+	return objectTraits.UpdateFields_(db, d, fields)
+}
+
+func (d *Object) UpdateFields__(db dorm.SQLCommon, fields []string) (int64, error) {
+	return objectTraits.UpdateFields__(db, d, fields)
+}
+
 func (d *Object) Delete() (int64, error) {
 	return objectTraits.Delete(d)
 }
@@ -69,6 +78,10 @@ func GetObjectDB(logger types.Logger, _ *config.ServerConfig) (*ObjectDB, error)
 
 func (objectDB *ObjectDB) ID(id uint) (object *Object, err error) {
 	return wrapToObject(objectTraits.ID(id))
+}
+
+func (objectDB *ObjectDB) ID_(db *gorm.DB, id uint) (goods *Object, err error) {
+	return wrapToObject(objectTraits.ID_(db, id))
 }
 
 type ObjectQuery struct {

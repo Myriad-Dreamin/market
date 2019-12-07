@@ -1,7 +1,7 @@
 package dblayer
 
 import (
-	"fmt"
+	"github.com/Myriad-Dreamin/dorm"
 	"github.com/Myriad-Dreamin/market/config"
 	"github.com/Myriad-Dreamin/market/lib/errorc"
 	"github.com/Myriad-Dreamin/market/types"
@@ -64,6 +64,14 @@ func (d *Goods) UpdateFields(fields []string) (int64, error) {
 	return goodsTraits.UpdateFields(d, fields)
 }
 
+func (d *Goods) UpdateFields_(db *dorm.DB, fields []string) (int64, error) {
+	return goodsTraits.UpdateFields_(db, d, fields)
+}
+
+func (d *Goods) UpdateFields__(db dorm.SQLCommon, fields []string) (int64, error) {
+	return goodsTraits.UpdateFields__(db, d, fields)
+}
+
 func (d *Goods) Delete() (int64, error) {
 	return goodsTraits.Delete(d)
 }
@@ -80,6 +88,10 @@ func GetGoodsDB(logger types.Logger, _ *config.ServerConfig) (*GoodsDB, error) {
 
 func (goodsDB *GoodsDB) ID(id uint) (goods *Goods, err error) {
 	return wrapToGoods(goodsTraits.ID(id))
+}
+
+func (goodsDB *GoodsDB) ID_(db *gorm.DB, id uint) (goods *Goods, err error) {
+	return wrapToGoods(goodsTraits.ID_(db, id))
 }
 
 type GoodsQuery struct {
@@ -131,53 +143,49 @@ func (goodsDB *GoodsDB) Buy(id, uid uint) (int, string) {
 	if tx.Error != nil {
 		return types.CodeBeginTransactionError, tx.Error.Error()
 	}
-	//goods, err := goodsDB.ID(id)
-	var goods = new(Goods)
-	rdb := tx.First(&goods, id)
-	err := rdb.Error
-	if rdb.RecordNotFound() {
-		goods = nil
-		err = nil
-	}
+	goods, err := goodsDB.ID_(tx, id)
 	if code, errs := errorc.MaybeSelectError(goods, err); code != types.CodeOK {
-		tx.Rollback()
-		if tx.Error != nil {
-			fmt.Println("rollback error", tx.Error)
-		}
+		rollback(tx)
 		return code, errs
 	}
 	if goods.Status != types.GoodsStatusUnFinished {
-		tx.Rollback()
-		if tx.Error != nil {
-			fmt.Println("rollback error", tx.Error)
-		}
+		rollback(tx)
 		return types.CodeGoodsStatusNotBeUnfinished, goods.Status.String()
 	}
 	if goods.EndAt.Before(time.Now()) {
-		tx.Rollback()
-		if tx.Error != nil {
-			fmt.Println("rollback error", tx.Error)
-		}
+		rollback(tx)
 		return types.CodeGoodsLifeTimeout, "expired time"
 	}
 	goods.Status = types.GoodsStatusPending
 	goods.Buyer = uid
-	err = tx.Model(&goods).Select(goodsStatusField).Updates(&goods).Error
+	_, err = goods.UpdateFields__(tx.CommonDB(), goodsStatusField)
 	if err != nil {
-		errr := tx.Rollback().Error
-		if errr != nil {
-			fmt.Println("rollback error", errr)
-		}
+		rollback(tx)
 		return types.CodeUpdateError, err.Error()
 	}
-	err = tx.Commit().Error
-	if err != nil {
-		errr := tx.Rollback().Error
-		if errr != nil {
-			fmt.Println("rollback error", errr)
-		}
-		return types.CodeCommitTransactionError, err.Error()
-	} else {
-		return types.CodeOK, ""
+	return commitOrRollback(tx)
+}
+
+func (goodsDB *GoodsDB) ConfirmBuy(id uint, confirmOrCancel bool, uid uint) (int, string) {
+	tx := db.Begin()
+	if tx.Error != nil {
+		return types.CodeBeginTransactionError, tx.Error.Error()
 	}
+	goods, err := goodsDB.ID_(tx, id)
+	if code, errs := errorc.MaybeSelectError(goods, err); code != types.CodeOK {
+		rollback(tx)
+		return code, errs
+	}
+	if goods.Status != types.GoodsStatusPending {
+		rollback(tx)
+		return types.CodeGoodsStatusNotBePending, goods.Status.String()
+	}
+	goods.Status = types.GoodsStatusFinished
+	//todo: add fees
+	_, err = goods.UpdateFields__(tx.CommonDB(), goodsStatusField)
+	if err != nil {
+		rollback(tx)
+		return types.CodeUpdateError, err.Error()
+	}
+	return commitOrRollback(tx)
 }

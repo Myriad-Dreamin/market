@@ -3,7 +3,6 @@ package tests
 import (
 	"fmt"
 	goodsservice "github.com/Myriad-Dreamin/market/service/goods"
-	userservice "github.com/Myriad-Dreamin/market/service/user"
 	"github.com/Myriad-Dreamin/market/test/tester"
 	"github.com/Myriad-Dreamin/market/types"
 	"strconv"
@@ -23,9 +22,7 @@ func testUserBuy(t *tester.TesterContext) {
 	t.HandlerError0(resp.JSON(&x))
 
 
-	resp = t.Post("/v1/user/1/buy", userservice.BuyRequest{
-		GoodsID: x.Goods.ID,
-	})
+	resp = t.Post("/v1/user/1/goods/" + strconv.Itoa(int(x.Goods.ID)) + "/buy")
 	fmt.Println(resp)
 
 	resp = t.Get("/v1/goods/" + strconv.Itoa(int(x.Goods.ID)))
