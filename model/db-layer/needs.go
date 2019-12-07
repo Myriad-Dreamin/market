@@ -193,8 +193,13 @@ func (needsDB *NeedsDB) ConfirmSell(id uint, confirmOrCancel bool, uid uint) (in
 		rollback(tx)
 		return types.CodeGoodsStatusNotBePending, needs.Status.String()
 	}
-	needs.Status = types.GoodsStatusFinished
-	//todo: add fees
+
+	if confirmOrCancel {
+		needs.Status = types.GoodsStatusFinished
+		//todo: add fees
+	} else {
+		needs.Status = types.GoodsStatusCancelled
+	}
 	_, err = needs.UpdateFields__(tx.CommonDB(), needsStatusField)
 	if err != nil {
 		rollback(tx)

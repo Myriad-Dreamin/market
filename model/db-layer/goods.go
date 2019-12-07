@@ -180,8 +180,13 @@ func (goodsDB *GoodsDB) ConfirmBuy(id uint, confirmOrCancel bool, uid uint) (int
 		rollback(tx)
 		return types.CodeGoodsStatusNotBePending, goods.Status.String()
 	}
-	goods.Status = types.GoodsStatusFinished
-	//todo: add fees
+	if confirmOrCancel {
+		goods.Status = types.GoodsStatusFinished
+		//todo: add fees
+	} else {
+		goods.Status = types.GoodsStatusCancelled
+	}
+
 	_, err = goods.UpdateFields__(tx.CommonDB(), goodsStatusField)
 	if err != nil {
 		rollback(tx)

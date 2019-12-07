@@ -12,11 +12,12 @@ func _() {
 	_ = x[GoodsStatusUnFinished-1]
 	_ = x[GoodsStatusPending-2]
 	_ = x[GoodsStatusFinished-3]
+	_ = x[GoodsStatusCancelled-4]
 }
 
-const _GoodsStatus_name = "GoodsStatusUnknownGoodsStatusUnFinishedGoodsStatusPendingGoodsStatusFinished"
+const _GoodsStatus_name = "GoodsStatusUnknownGoodsStatusUnFinishedGoodsStatusPendingGoodsStatusFinishedGoodsStatusCancelled"
 
-var _GoodsStatus_index = [...]uint8{0, 18, 39, 57, 76}
+var _GoodsStatus_index = [...]uint8{0, 18, 39, 57, 76, 96}
 
 func (i GoodsStatus) String() string {
 	if i >= GoodsStatus(len(_GoodsStatus_index)-1) {

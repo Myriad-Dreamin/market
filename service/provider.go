@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"github.com/Myriad-Dreamin/minimum-lib/module"
 	"path"
-	"reflect"
 )
 
 type SubController interface {
@@ -53,7 +52,6 @@ func (s *Provider) Register(name string, service interface{}) {
 	if ss, ok := service.(SubController); ok {
 		s.subControllers = append(s.subControllers, ss)
 	}
-	fmt.Println("QAQ", reflect.TypeOf(service))
 
 	switch ss := service.(type) {
 	case StatisticService:
@@ -63,7 +61,6 @@ func (s *Provider) Register(name string, service interface{}) {
 		s.needsService = ss
 		s.subControllers = append(s.subControllers, JustProvide(&ss))
 	case GoodsService:
-		fmt.Println("QAQ")
 		s.goodsService = ss
 		s.subControllers = append(s.subControllers, JustProvide(&ss))
 	case UserService:

@@ -9,6 +9,7 @@ const (
 	GoodsStatusUnFinished
 	GoodsStatusPending
 	GoodsStatusFinished
+	GoodsStatusCancelled
 )
 
 
