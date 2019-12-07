@@ -5,9 +5,6 @@ import (
 	"testing"
 )
 
-const needsEsIdK = "needs/es/id"
-const needsEsDeleteIdK = "needs/es/id"
-
 func TestNeeds(t *testing.T) {
 
 	_ = t.Run("TestNeedsPost", testNeedsPost) &&

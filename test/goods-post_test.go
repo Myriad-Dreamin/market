@@ -8,15 +8,6 @@ import (
 	"time"
 )
 
-
-func RangeInt(l,r int) []int {
-	var x = make([]int, r-l)
-	for i := l; i < r; i++ {
-		x[i-l] = i
-	}
-	return x
-}
-
 func testGoodsPost(t *testing.T) {
 	ctx := srv.Context(t).AssertNoError(true)
 	var (

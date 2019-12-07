@@ -9,8 +9,6 @@ import (
 	"testing"
 )
 
-var srv *tester.Tester
-
 func TestMain(m *testing.M) {
 	sugar.WithFile(func(logFile *os.File) {
 		var options = []server.Option{

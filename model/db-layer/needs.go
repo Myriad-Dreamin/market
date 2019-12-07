@@ -138,11 +138,18 @@ func (needsDB *NeedsQuery) Query() (needss []Needs, err error) {
 var needsStatusField = []string{"status", "seller"}
 
 func (needsDB *NeedsDB) Sell(id, uid uint) (int, string) {
+
 	tx := db.Begin()
 	if tx.Error != nil {
 		return types.CodeBeginTransactionError, tx.Error.Error()
 	}
-	needs, err := needsDB.ID(id)
+	needs := new(Needs)
+	rdb := tx.First(&needs, id)
+	err := rdb.Error
+	if rdb.RecordNotFound() {
+		needs = nil
+		err = nil
+	}
 	if code, errs := errorc.MaybeSelectError(needs, err); code != types.CodeOK {
 		tx.Rollback()
 		if tx.Error != nil {
@@ -165,19 +172,25 @@ func (needsDB *NeedsDB) Sell(id, uid uint) (int, string) {
 		return types.CodeGoodsLifeTimeout, "expired time"
 	}
 	needs.Status = types.GoodsStatusPending
-	if code, errs := errorc.UpdateFields(needs, needsStatusField); code != types.CodeOK {
-		tx.Rollback()
-		if tx.Error != nil {
-			fmt.Println("rollback error", tx.Error)
+	needs.Seller = uid
+	err = tx.Model(&needs).Select(needsStatusField).Updates(&needs).Error
+
+	if err != nil {
+		errr := tx.Rollback().Error
+		if errr != nil {
+			fmt.Println("rollback error", errr)
 		}
-		return code, errs
+		return types.CodeUpdateError, err.Error()
 	}
 
 
-
-	tx.RollbackUnlessCommitted()
-	if tx.Error != nil {
-		return types.CodeCommitTransactionError, tx.Error.Error()
+	err = tx.Commit().Error
+	if err != nil {
+		errr := tx.Rollback().Error
+		if errr != nil {
+			fmt.Println("rollback error", errr)
+		}
+		return types.CodeCommitTransactionError, err.Error()
 	} else {
 		return types.CodeOK, ""
 	}

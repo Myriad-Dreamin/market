@@ -4,5 +4,5 @@ package statisticservice
 import instance "github.com/Myriad-Dreamin/go-magic-package/instance"
 
 func init() {
-	instance.Register("github.com/Myriad-Dreamin/market/service/statistic", `/home/kamiyoru/work/gosrc/src/github.com/Myriad-Dreamin/market/service/statistic`)
+	instance.Register("github.com/Myriad-Dreamin/market/service/statistic", `E:\project\go\src\github.com\Myriad-Dreamin\market\service\statistic`)
 }

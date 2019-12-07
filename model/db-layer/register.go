@@ -1,6 +1,7 @@
 package dblayer
 
 import (
+	"fmt"
 	"github.com/Myriad-Dreamin/core-oj/config"
 	"github.com/Myriad-Dreamin/dorm"
 	"github.com/Myriad-Dreamin/market/types"
@@ -23,12 +24,14 @@ func migrates() error {
 func Register(rdb *gorm.DB, logger types.Logger) error {
 	var err error
 	*db = *rdb.Debug()
-	*rawDB = *db.DB()
+	*rawDB = db.DB()
+	//*rawDB = *db.DB()
 
-	if err = rawDB.Ping(); err != nil {
+	if err = (*rawDB).Ping(); err != nil {
 		return err
 	}
-	xdb, err := dorm.FromRaw(rawDB, adapt(logger))
+	fmt.Println(rawDB)
+	xdb, err := dorm.FromRaw(*rawDB, adapt(logger), dorm.Escaper('"'))
 	if err != nil {
 		return err
 	}
@@ -40,6 +43,6 @@ func Register(rdb *gorm.DB, logger types.Logger) error {
 
 func Configuration(cfg *config.Configuration) {
 
-	rawDB.SetMaxIdleConns(100)
-	rawDB.SetMaxOpenConns(100)
+	(*rawDB).SetMaxIdleConns(100)
+	(*rawDB).SetMaxOpenConns(100)
 }

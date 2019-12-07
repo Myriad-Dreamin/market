@@ -14,15 +14,19 @@ TODO
 卖家支付中介费（成交价格*0.01）。
 */
 
+type SellRequest struct {
+	NeedsID uint `json:"nid" form:"nid"`
+}
+
 func (srv *Service) Sell(c *gin.Context) {
-	var req BuyRequest
-	id, ok := ginhelper.ParseUintAndBind(c, "nid", &req)
-	if !ok {
+
+	var req SellRequest
+	if !ginhelper.BindRequest(c, &req) {
 		return
 	}
 	var claims = ginhelper.GetCustomFields(c)
 
-	code, err := srv.needsDB.Sell(id, uint(claims.UID))
+	code, err := srv.needsDB.Sell(req.NeedsID, uint(claims.UID))
 	if code != types.CodeOK {
 		c.AbortWithStatusJSON(http.StatusOK, types.ErrorSerializer{
 			Code:  code,

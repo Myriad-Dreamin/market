@@ -7,8 +7,8 @@ import (
 )
 
 type ChangePasswordRequest struct {
-	OldPassword string `form:"old-password" json:"old-password" binding:"required,email"`
-	NewPassword string `form:"new-password" json:"new-password" binding:"required,email"`
+	OldPassword string `form:"old-password" json:"old-password" binding:"required"`
+	NewPassword string `form:"new-password" json:"new-password" binding:"required"`
 }
 
 func (srv *Service) ChangePassword(c *gin.Context) {
