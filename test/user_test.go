@@ -1,6 +1,7 @@
 package tests
 
 import (
+	"github.com/Myriad-Dreamin/market/test/tester"
 	"testing"
 )
 
@@ -15,5 +16,10 @@ func TestUser(t *testing.T) {
 		t.Run("ConfirmBuy", srv.HandleTestWithOutError(testUserConfirmBuy)) &&
 		t.Run("ConfirmSell", srv.HandleTestWithOutError(testUserConfirmSell)) &&
 		t.Run("ChangePassword", srv.HandleTestWithOutError(testUserChangePassword)) &&
+		t.Run("Put", srv.HandleTestWithOutError(testUserPut)) &&
 		t.Run("Delete", srv.HandleTestWithOutError(testUserDelete))
+}
+
+func testUserPut(t *tester.TesterContext) {
+
 }
