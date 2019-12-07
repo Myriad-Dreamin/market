@@ -51,4 +51,11 @@ type UserService interface {
 	// @Description Sell Needs
 	Sell(c *gin.Context)
 
+	// @Title ConfirmBuy
+	// @Description ConfirmBuy Goods
+	ConfirmBuy(c *gin.Context)
+
+	// @Title ConfirmSell
+	// @Description ConfirmSell Needs
+	ConfirmSell(c *gin.Context)
 }

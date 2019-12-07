@@ -1,17 +1,20 @@
 package tests
 
 import (
+	"github.com/Myriad-Dreamin/market/test/tester"
 	"testing"
 )
 
 
 
 func TestUser(t *testing.T) {
-	_ = t.Run("TestUserRegisterLogin", srv.HandleTestWithOutError(testUserRegisterLogin)) &&
-		t.Run("TestUserGet", testUserGet) &&
-		t.Run("TestUserList", testUserList) &&
-		t.Run("TestUserBuy", srv.HandleTestWithOutError(testUserBuy)) &&
-		t.Run("TestUserSell", srv.HandleTestWithOutError(testUserSell)) &&
-		t.Run("TestUserChangePassword", srv.HandleTestWithOutError(testUserChangePassword)) &&
-		t.Run("TestUserDelete", srv.HandleTestWithOutError(testUserDelete))
+	_ = t.Run("RegisterLogin", srv.HandleTestWithOutError(testUserRegisterLogin)) &&
+		t.Run("Get", testUserGet) &&
+		t.Run("List", testUserList) &&
+		t.Run("Buy", srv.HandleTestWithOutError(testUserBuy)) &&
+		t.Run("Sell", srv.HandleTestWithOutError(testUserSell)) &&
+		t.Run("ConfirmBuy", srv.HandleTestWithOutError(testUserConfirmBuy)) &&
+		t.Run("ConfirmSell", srv.HandleTestWithOutError(testUserConfirmSell)) &&
+		t.Run("ChangePassword", srv.HandleTestWithOutError(testUserChangePassword)) &&
+		t.Run("Delete", srv.HandleTestWithOutError(testUserDelete))
 }
