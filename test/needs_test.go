@@ -1,7 +1,6 @@
 package tests
 
 import (
-	"github.com/Myriad-Dreamin/market/test/tester"
 	"testing"
 )
 
@@ -13,8 +12,4 @@ func TestNeeds(t *testing.T) {
 		t.Run("TestNeedsGetList", testNeedsGetList) &&
 		t.Run("TestNeedsFilters", srv.HandleTestWithOutError(testNeedsFilters)) &&
 		t.Run("TestNeedsDelete", srv.HandleTestWithOutError(testNeedsDelete))
-}
-
-func testNeedsFilters(t *tester.TesterContext) {
-
 }
