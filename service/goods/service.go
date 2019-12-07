@@ -13,6 +13,7 @@ import (
 type Service struct {
 	base_service.CRUDService
 	base_service.ListService
+	forceDelete base_service.DServiceInterface
 	goodsDB    *model.GoodsDB
 	userDB     *model.UserDB
 	logger     types.Logger
@@ -29,6 +30,7 @@ func NewService(logger types.Logger, provider *model.Provider, cfg *config.Serve
 	a.cfg = cfg
 	a.key = "goid"
 	a.CRUDService = base_service.NewCRUDService(a, a.key)
+	a.forceDelete = base_service.NewDService(forceDeleteService{a}, a.key)
 	a.ListService = base_service.NewListService(a, a.key)
 	a.filterFunc = goods_service.ListFilter(a.goodsDB)
 	return

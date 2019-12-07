@@ -10,8 +10,10 @@ var srv *tester.Tester
 const (
 	goodsEsIdK       = "goods/es/id"
 	goodsEsDeleteIdK = "goods/es/id"
+	goodsBuyIdK       = "goods/buy/id"
 	needsEsIdK       = "needs/es/id"
 	needsEsDeleteIdK = "needs/es/id"
+	needsSellIdK = "needs/sell/id"
 	normalUserIdKey  = "user/normal/key"
 	normalUserPassword = "11112222"
 	normalUserNewPassword = "111122222"

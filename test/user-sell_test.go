@@ -20,15 +20,17 @@ func testUserSell(t *tester.TesterContext) {
 	})
 	var x needsservice.PostReply
 	t.HandlerError0(resp.JSON(&x))
+	id := x.Needs.ID
 
 
-	resp = t.Post("/v1/user/1/needs/" + strconv.Itoa(int(x.Needs.ID)) + "/sell")
+	resp = t.Post("/v1/user/1/needs/" + strconv.Itoa(int(id)) + "/sell")
 
 	fmt.Println(resp)
 
-	resp = t.Get("/v1/needs/" + strconv.Itoa(int(x.Needs.ID)))
+	resp = t.Get("/v1/needs/" + strconv.Itoa(int(id)))
 	reply := t.DecodeJSON(resp.Body(), new(needsservice.GetReply)).(*needsservice.GetReply)
 	fmt.Println(reply.Needs.Buyer, reply.Needs.Seller, reply.Needs.Status)
 
-	//_ = t.Delete("/v1/needs/" + strconv.Itoa(int(x.Needs.ID)))
+	//_ = t.Delete("/v1/needs/" + strconv.Itoa(int(id)))
+	srv.Set(needsSellIdK, id)
 }

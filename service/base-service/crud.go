@@ -6,17 +6,10 @@ import (
 	"net/http"
 )
 
-type CRUDEntity interface {
-	Create() (int64, error)
-	UpdateFields(fields []string) (int64, error)
-	Delete() (int64, error)
-}
-
 type CRUDObjectToolLite interface {
-	CreateEntity(id uint) CRUDEntity
-	GetEntity(id uint) (CRUDEntity, error)
+	FObject
+	DObject
 	SerializePost(c *gin.Context) CRUDEntity
-	DeleteHook(c *gin.Context, obj CRUDEntity) bool
 	ResponsePost(obj CRUDEntity) interface{}
 	ResponseGet(obj CRUDEntity) interface{}
 	GetPutRequest() interface{}
@@ -26,33 +19,18 @@ type CRUDObjectToolLite interface {
 type CRUDService struct {
 	Tool CRUDObjectToolLite
 	k    string
+	DServiceInterface
 }
 
 func NewCRUDService(tool CRUDObjectToolLite, k string) CRUDService {
 	return CRUDService{
 		Tool: tool,
 		k:    k,
+		DServiceInterface: NewDService(tool, k),
 	}
 }
 
-func (srv *CRUDService) Delete(c *gin.Context) {
-	id, ok := ginhelper.ParseUint(c, srv.k)
-	if !ok {
-		return
-	}
-	obj, err := srv.Tool.GetEntity(id)
-	if ginhelper.MaybeSelectError(c, obj, err) {
-		return
-	}
-	if !srv.Tool.DeleteHook(c, obj) {
-		return
-	}
 
-	if ginhelper.DeleteObj(c, obj) {
-		c.JSON(http.StatusOK, &ginhelper.ResponseOK)
-	} else {
-	}
-}
 
 func (srv *CRUDService) Get(c *gin.Context) {
 	id, ok := ginhelper.ParseUint(c, srv.k)
