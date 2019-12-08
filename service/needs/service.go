@@ -33,7 +33,7 @@ func NewService(logger types.Logger, provider *model.Provider, cfg *config.Serve
 	a.key = "nid"
 	a.CRUDService = base_service.NewCRUDService(a, a.key)
 	a.forceDelete = base_service.NewDService(forceDeleteService{a}, a.key)
-	a.ListService = base_service.NewListService(a, a.needsDB, a.key)
+	a.ListService = base_service.NewListService(a, a.needsDB.FilterI)
 	return
 }
 

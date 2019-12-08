@@ -14,21 +14,17 @@ type ListableObjectToolLite interface {
 
 type ListService struct {
 	tool ListableObjectToolLite
-	filterDB FilterDB
-	k    string
+	filterFunc FilterFunc
 }
 
-func NewListService(tool ListableObjectToolLite, filterDB FilterDB, k string) ListService {
+func NewListService(tool ListableObjectToolLite, filterFunc FilterFunc) ListService {
 	return ListService{
 		tool: tool,
-		filterDB: filterDB,
-		k:    k,
+		filterFunc: filterFunc,
 	}
 }
 
-type FilterDB interface {
-	FilterI(f interface{}) (interface{}, error)
-}
+type FilterFunc = func(f interface{}) (interface{}, error)
 
 type ListReply struct {
 	Code   int         `json:"code"`
@@ -41,7 +37,7 @@ func (srv *ListService) List(c *gin.Context) {
 	if !ginhelper.BindRequest(c, f) {
 		return
 	}
-	result, err := srv.filterDB.FilterI(f)
+	result, err := srv.filterFunc(f)
 	if err != nil {
 		c.AbortWithStatusJSON(http.StatusOK, types.ErrorSerializer{
 			Code:  types.CodeSelectError,

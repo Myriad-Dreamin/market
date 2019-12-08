@@ -36,7 +36,7 @@ func NewService(logger types.Logger, provider *model.Provider,
 	srv.middleware = middleware
 	srv.cfg = cfg
 	srv.CRUDService = base_service.NewCRUDService(srv, "id")
-	srv.ListService = base_service.NewListService(srv, srv.userDB, "id")
+	srv.ListService = base_service.NewListService(srv, srv.userDB.FilterI)
 	a = srv
 	return
 }

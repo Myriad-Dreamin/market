@@ -4,15 +4,19 @@ package statisticservice
 import (
 	"github.com/Myriad-Dreamin/market/config"
 	"github.com/Myriad-Dreamin/market/model"
+	base_service "github.com/Myriad-Dreamin/market/service/base-service"
 	"github.com/Myriad-Dreamin/market/types"
 	"github.com/gin-gonic/gin"
 )
 
 type Service struct {
-	cfg        *config.ServerConfig
-	logger     types.Logger
-	statFeeDB  *model.StatFeeDB
-	filterFunc func(c *gin.Context) interface{}
+	cfg                        *config.ServerConfig
+	logger                     types.Logger
+	statFeeDB                  *model.StatFeeDB
+	filterFunc                 func(c *gin.Context) interface{}
+	statGoodsFeeService        base_service.ListService
+	statGoodsFeeXYService      base_service.ListService
+	statGoodsFeeCountXYService base_service.ListService
 }
 
 func (svc *Service) StatisticSignatureXXX() interface{} { return svc }
@@ -22,6 +26,9 @@ func NewService(logger types.Logger, provider *model.Provider, cfg *config.Serve
 	a.logger = logger
 	a.cfg = cfg
 	a.statFeeDB = provider.StatFeeDB()
+	a.statGoodsFeeService = base_service.NewListService(statGoodsFeeService{}, a.statFeeDB.FilterFeeI)
+	a.statGoodsFeeXYService = base_service.NewListService(statGoodsFeeXYService{}, a.statFeeDB.FilterFeeI)
+	a.statGoodsFeeCountXYService = base_service.NewListService(statGoodsFeeCountXYService{}, a.statFeeDB.FilterFeeCountI)
 	//a.filterFunc = base_service.ListFilter(a.statFeeDB)
 	return
 }

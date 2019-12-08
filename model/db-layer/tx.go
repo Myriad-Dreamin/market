@@ -22,4 +22,3 @@ func commitOrRollback(tx *gorm.DB) (int, string) {
 		return types.CodeOK, ""
 	}
 }
-

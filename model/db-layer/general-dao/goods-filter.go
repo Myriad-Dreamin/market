@@ -82,7 +82,7 @@ func NewGoodsModel(modelInterface GoodsModelOperatingModel) GoodsModel {
 	return GoodsModel{i: modelInterface}
 }
 
-func (model GoodsModel) GoodsFilter(f *GoodsFilter, goodss interface{}) (err error) {
-	err = GoodsFilterOption(model.i.GetGormDB(), f).Find(goodss).Error
+func (model GoodsModel) GoodsFilter(f *GoodsFilter, objs interface{}) (err error) {
+	err = GoodsFilterOption(model.i.GetGormDB(), f).Find(objs).Error
 	return
 }

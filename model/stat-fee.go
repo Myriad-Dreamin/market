@@ -8,6 +8,9 @@ import (
 
 type StatFee = dblayer.StatFee
 type StatFeeDB = dblayer.StatFeeDB
+type StatFeeRequest = dblayer.StatFeeRequest
+type StatFeeXYResult = dblayer.StatFeeXYResult
+type StatFeeCountXYResult = dblayer.StatFeeCountXYResult
 
 func NewStatFeeDB(logger types.Logger, cfg *config.ServerConfig) (*StatFeeDB, error) {
 	return dblayer.NewStatFeeDB(logger, cfg)

@@ -12,8 +12,9 @@ type Service struct {
 	base_service.CRUDService
 	base_service.ListService
 	db     *model.ObjectDB
-	cfg *config.ServerConfig
+	cfg    *config.ServerConfig
 	logger types.Logger
+	key    string
 }
 
 func (srv *Service) CreateFilter() interface{} {
@@ -24,10 +25,11 @@ func (srv *Service) ObjectSignatureXXX() interface{} { return srv }
 
 func NewService(logger types.Logger, provider *model.Provider, cfg *config.ServerConfig) (a *Service, err error) {
 	a = new(Service)
+	a.key = "oid"
 	a.db = provider.ObjectDB()
 	a.logger = logger
 	a.cfg = cfg
-	a.CRUDService = base_service.NewCRUDService(a, "oid")
-	a.ListService = base_service.NewListService(a, a.db, "oid")
+	a.CRUDService = base_service.NewCRUDService(a, a.key)
+	a.ListService = base_service.NewListService(a, a.db.FilterI)
 	return
 }
