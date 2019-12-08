@@ -24,6 +24,7 @@ type NeedsIDRouter struct {
 	Put    *mgin.LeafRouter
 	Delete *mgin.LeafRouter
 	ForceDelete *mgin.LeafRouter
+	PostPicture *mgin.LeafRouter
 }
 
 func BuildNeedsRouter(parent *RootRouter, serviceProvider *service.Provider) (router *NeedsRouter) {
@@ -56,6 +57,7 @@ func (*NeedsIDRouter) subBuild(parent *NeedsRouter, serviceProvider *service.Pro
 	router.Put = router.AuthRouter.PUT("", needsService.Put)
 	router.Delete = router.AuthRouter.DELETE("", needsService.Delete)
 	router.ForceDelete = router.AuthRouter.DELETE("/force", needsService.ForceDelete)
+	router.PostPicture = router.AuthRouter.PUT("/picture", needsService.PostPicture)
 	return
 }
 

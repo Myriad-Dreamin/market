@@ -58,6 +58,18 @@ type ServerConfig struct {
 	RedisConfig    RedisConfig    `json:"redis" yaml:"redis" toml:"redis" xml:"redis"`
 }
 
+func Default() *ServerConfig {
+	return &ServerConfig{
+		LoadType: "json",
+		BaseParametersConfig:BaseParametersConfig{
+			GoodsMinimumEndDuration: time.Hour,
+			GoodsPicturePath:        "goods-picture",
+			NeedsPicturePath:        "needs-picture",
+		},
+	}
+}
+
+
 func Load(config *ServerConfig, configPath string) error {
 	return LoadStatic(config, configPath)
 }

@@ -169,3 +169,4 @@ func (tester *Tester) HandleTestWithOutError(testFunc MinimumStyleTestFunc) GoSt
 		testFunc(tester.Context(t).AssertNoError(true))
 	}
 }
+

@@ -37,6 +37,9 @@ type NeedsService interface {
 	// @Description List Needs
 	List(c *gin.Context)
 
-	// Buy(c *gin.Context)
+
+	// @Title Post Picture
+	// @Description Post Picture of Goods
+	PostPicture(c *gin.Context)
 }
 

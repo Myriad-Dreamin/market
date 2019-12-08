@@ -38,6 +38,11 @@ type GoodsService interface {
 	// @Description List Goods
 	List(c *gin.Context)
 
+
+	// @Title Put Picture
+	// @Description Put Picture of Goods
+	PutPicture(c *gin.Context)
+
 	// Buy(c *gin.Context)
 }
 

@@ -8,7 +8,7 @@ import (
 	"strconv"
 )
 
-func (srv *Service) PostPicture(c *gin.Context) {
+func (srv *Service) PutPicture(c *gin.Context) {
 	id, ok := ginhelper.ParseUint(c, srv.key)
 	if !ok {
 		return
@@ -22,6 +22,7 @@ func (srv *Service) PostPicture(c *gin.Context) {
 		})
 		return
 	}
+
 
 	if err = c.SaveUploadedFile(file, srv.cfg.BaseParametersConfig.GoodsPicturePath + strconv.Itoa(int(id))); err != nil {
 		c.JSON(http.StatusOK, gin.H{

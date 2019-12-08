@@ -20,6 +20,7 @@ func TestMain(m *testing.M) {
 		srv.PrintRequest(true)
 		srv.CollectResults(true)
 		srv.MainM(m)
+		srv.DropMock()
 		err := doc_gen.FromGinResults(&doc_gen.GinInfo{
 			Result:             srv.DumpResults(),
 			Host:               "127.0.0.1",

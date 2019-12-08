@@ -45,8 +45,9 @@ func Mock(options ...Option) (srv *Mocker) {
 	srv = new(Mocker)
 	srv.Server = newServer(options)
 	srv.header = make(map[string]string)
-	srv.Cfg = new(config.ServerConfig)
+	srv.Cfg = config.Default()
 	if !(srv.InstantiateLogger() &&
+		srv.PrepareFileSystem() &&
 		srv.MockDatabase()) {
 		srv = nil
 		return
@@ -402,3 +403,9 @@ func (mocker *Mocker) FetchError(resp mock.ResponseI) Error {
 func init() {
 	parser.SetPackageMapper(instance.Get)
 }
+
+func (mocker *Mocker) DropMock() {
+	mocker.DropFileSystem()
+}
+
+

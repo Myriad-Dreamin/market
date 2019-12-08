@@ -98,6 +98,7 @@ func New(cfgPath string, options ...Option) (srv *Server) {
 	srv = newServer(options)
 	if !(srv.InstantiateLogger() &&
 		srv.LoadConfig(cfgPath) &&
+		srv.PrepareFileSystem() &&
 		srv.PrepareDatabase()) {
 		srv = nil
 		return
