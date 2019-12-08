@@ -18,6 +18,10 @@ func (srv *Service) ResponsePost(obj base_service.CRUDEntity) interface{} {
 	return GoodsToPostReply(obj.(*model.Goods))
 }
 
+func (srv *Service) createFilter() interface{} {
+	return new(model.GoodsFilter)
+}
+
 func (srv *Service) DeleteHook(c *gin.Context, goods base_service.CRUDEntity) bool {
 	return srv.deleteHook(c, goods.(*model.Goods))
 }

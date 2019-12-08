@@ -103,8 +103,8 @@ func (goodsDB *GoodsDB) Filter(f *GoodsFilter) (goodss []Goods, err error) {
 	return
 }
 
-func (goodsDB *GoodsDB) FilterI(f *GoodsFilter) (interface{}, error) {
-	return goodsDB.Filter(f)
+func (goodsDB *GoodsDB) FilterI(f interface{}) (interface{}, error) {
+	return goodsDB.Filter(f.(*GoodsFilter))
 }
 
 func (goodsDB *GoodsDB) QueryChain() *GoodsQuery {

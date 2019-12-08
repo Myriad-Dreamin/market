@@ -5,7 +5,6 @@ import (
 	"github.com/Myriad-Dreamin/market/config"
 	"github.com/Myriad-Dreamin/market/model"
 	base_service "github.com/Myriad-Dreamin/market/service/base-service"
-	goods_service "github.com/Myriad-Dreamin/market/service/goods-service"
 	"github.com/Myriad-Dreamin/market/types"
 	"github.com/gin-gonic/gin"
 )
@@ -35,7 +34,7 @@ func NewService(logger types.Logger, provider *model.Provider, cfg *config.Serve
 	a.CRUDService = base_service.NewCRUDService(a, a.key)
 	a.forceDelete = base_service.NewDService(forceDeleteService{a}, a.key)
 	a.ListService = base_service.NewListService(a, a.key)
-	a.filterFunc = goods_service.ListFilter(a.goodsDB)
+	a.filterFunc = base_service.ListFilter(a.createFilter, a.goodsDB)
 	return
 }
 

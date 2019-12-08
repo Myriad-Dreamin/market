@@ -14,6 +14,10 @@ func (srv *Service) GetEntity(id uint) (base_service.CRUDEntity, error) {
 	return srv.needsDB.ID(id)
 }
 
+func (srv *Service) createFilter() interface{} {
+	return new(model.GoodsFilter)
+}
+
 func (srv *Service) ResponsePost(obj base_service.CRUDEntity) interface{} {
 	return NeedsToPostReply(obj.(*model.Needs))
 }

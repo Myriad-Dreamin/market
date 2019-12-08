@@ -11,8 +11,16 @@ type StatFeeRequest struct {
 }
 
 
-
-
+//func (srv *Service) FilterOn(c *gin.Context) (interface{}, error) {
+//
+//	result := srv.filterFunc(c)
+//	if c.IsAborted() {
+//		return nil, nil
+//	}
+//
+//	return srv.GoodssToListReply(c, result.([]model.Goods)), nil
+//}
+//
 func (svc *Service) StatGoodsFee(c *gin.Context) {
 
 }

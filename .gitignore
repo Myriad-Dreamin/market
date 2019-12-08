@@ -2,7 +2,7 @@ venv/
 .idea
 __pycache__
 
-# ingore register mapping
+# ignore register mapping
 package-probe/
 init-package-probe.go
 **/register-instance-map.go
