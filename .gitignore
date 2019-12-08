@@ -1,5 +1,8 @@
 venv/
 .idea
 __pycache__
+
+# ingore register mapping
+package-probe/
 init-package-probe.go
-*/register-instance-map.go
+**/register-instance-map.go
