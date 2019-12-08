@@ -20,12 +20,12 @@ type GoodsIDRouter struct {
 	AuthRouter *mgin.Router
 	Auth *mgin.Middleware
 
-	Get    *mgin.LeafRouter
-	Inspect    *mgin.LeafRouter
-	Put    *mgin.LeafRouter
-	Delete *mgin.LeafRouter
+	Get         *mgin.LeafRouter
+	Inspect     *mgin.LeafRouter
+	Put         *mgin.LeafRouter
+	Delete      *mgin.LeafRouter
 	ForceDelete *mgin.LeafRouter
-	PostPicture *mgin.LeafRouter
+	PutPicture  *mgin.LeafRouter
 }
 
 func BuildGoodsRouter(parent *RootRouter, serviceProvider *service.Provider) (router *GoodsRouter) {
@@ -60,7 +60,7 @@ func (*GoodsIDRouter) subBuild(parent *GoodsRouter, serviceProvider *service.Pro
 	// todo
 	router.Delete = router.AuthRouter.DELETE("", goodsService.Delete)
 	router.ForceDelete = router.AuthRouter.DELETE("/force", goodsService.ForceDelete)
-	router.PostPicture = router.AuthRouter.PUT("/picture", goodsService.PutPicture)
+	router.PutPicture = router.AuthRouter.PUT("/picture", goodsService.PutPicture)
 	return
 }
 

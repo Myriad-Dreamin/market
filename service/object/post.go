@@ -33,3 +33,7 @@ func (srv *Service) SerializePost(c *gin.Context) base_service.CRUDEntity {
 	// fill here
 	return obj
 }
+
+func (srv *Service) AfterPost(obj interface{}) interface{} {
+	return obj
+}

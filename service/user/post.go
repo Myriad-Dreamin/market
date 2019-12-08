@@ -1,6 +1,7 @@
 package userservice
 
 import (
+	"github.com/Myriad-Dreamin/market/auth"
 	"github.com/Myriad-Dreamin/market/model"
 	base_service "github.com/Myriad-Dreamin/market/service/base-service"
 	ginhelper "github.com/Myriad-Dreamin/market/service/gin-helper"
@@ -11,6 +12,10 @@ import (
 type PostReply struct {
 	Code int         `json:"code"`
 	User *model.User `json:"user"`
+}
+
+func (p PostReply) GetID() uint {
+	return p.User.ID
 }
 
 func UserToPostReply(obj *model.User) *PostReply {
@@ -36,4 +41,41 @@ func (srv *Service) SerializePost(c *gin.Context) base_service.CRUDEntity {
 	var obj = new(model.User)
 	// fill here
 	return obj
+}
+
+type PostReplyI interface {
+	GetID() uint
+}
+
+func (srv *Service) AfterPost(reply PostReplyI) interface{} {
+	if b, err := auth.UserEntity.AddReadPolicy(srv.enforcer, auth.UserEntity.CreateObj(reply.GetID()), reply.GetID());
+		err != nil {
+		if !b {
+			srv.logger.Debug("add failed")
+		}
+		return types.ErrorSerializer{
+			Code:  types.CodeAddReadPrivilegeError,
+			Error: err.Error(),
+		}
+	} else {
+		if !b {
+			srv.logger.Debug("add failed")
+		}
+	}
+
+	if b, err := auth.UserEntity.AddWritePolicy(srv.enforcer, auth.UserEntity.CreateObj(reply.GetID()), reply.GetID());
+		err != nil {
+		if !b {
+			srv.logger.Debug("add failed")
+		}
+		return types.ErrorSerializer{
+			Code:  types.CodeAddWritePrivilegeError,
+			Error: err.Error(),
+		}
+	} else {
+		if !b {
+			srv.logger.Debug("add failed")
+		}
+	}
+	return reply
 }

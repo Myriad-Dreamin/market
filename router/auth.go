@@ -13,6 +13,7 @@ func ApplyAuth(router *RootRouter) {
 	gig.Put.Use(gig.Auth.Build(auth.GoodsEntity.Write()))
 	gig.Delete.Use(gig.Auth.Build(auth.GoodsEntity.Write()))
 	gig.ForceDelete.Use(gig.Auth.AdminOnly())
+	gig.PutPicture.Use(gig.Auth.Build(auth.GoodsEntity.Write()))
 
 	//
 	var nig = router.NeedsRouter.IDRouter
@@ -20,6 +21,7 @@ func ApplyAuth(router *RootRouter) {
 	nig.Put.Use(nig.Auth.Build(auth.NeedsEntity.Write()))
 	nig.Delete.Use(nig.Auth.Build(auth.NeedsEntity.Write()))
 	nig.ForceDelete.Use(nig.Auth.AdminOnly())
+	nig.PutPicture.Use(nig.Auth.Build(auth.NeedsEntity.Write()))
 
 }
 

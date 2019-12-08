@@ -31,6 +31,10 @@ type RegisterReply struct {
 	ID uint `json:"id"`
 }
 
+func (p RegisterReply) GetID() uint {
+	return p.ID
+}
+
 /**
 Register v1/user/register POST
 
@@ -89,10 +93,10 @@ func (srv *Service) Register(c *gin.Context) {
 		})
 		return
 	}
-	c.JSON(http.StatusOK, &RegisterReply{
+	c.JSON(http.StatusOK, srv.AfterPost(&RegisterReply{
 		Code: types.CodeOK,
 		ID:   user.ID,
-	})
+	}))
 
 	_, err = rbac.AddGroupingPolicy("user:"+strconv.Itoa(int(user.ID)), "norm")
 	if err != nil {

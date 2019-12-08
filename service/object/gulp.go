@@ -15,7 +15,7 @@ func (srv *Service) GetEntity(id uint) (base_service.CRUDEntity, error) {
 }
 
 func (srv *Service) ResponsePost(obj base_service.CRUDEntity) interface{} {
-	return ObjectToPostReply(obj.(*model.Object))
+	return srv.AfterPost(ObjectToPostReply(obj.(*model.Object)))
 }
 
 func (srv *Service) DeleteHook(c *gin.Context, obj base_service.CRUDEntity) bool {
