@@ -10,7 +10,7 @@ import (
 // 删除已发布未成交的自己物品信息
 
 func (srv *Service) deleteHook(c *gin.Context, object *model.Goods) (canDelete bool) {
-	if object.Buyer != 0 {
+	if object.Status == types.GoodsStatusFinished {
 		c.AbortWithStatusJSON(http.StatusOK, types.ErrorSerializer{
 			Code:  types.CodeDeleteError,
 			Error: "this goods has been sold",

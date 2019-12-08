@@ -50,6 +50,8 @@ const (
 
 	CodeChangeOwnerError
 	CodeGroupCreateError
+	CodeAddReadPrivilegeError
+	CodeAddWritePrivilegeError
 )
 
 const (

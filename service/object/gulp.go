@@ -26,6 +26,10 @@ func (srv *Service) ResponseGet(obj base_service.CRUDEntity) interface{} {
 	return ObjectToGetReply(obj.(*model.Object))
 }
 
+func (srv *Service) ResponseInspect(obj base_service.CRUDEntity) interface{} {
+	return ObjectToGetReply(obj.(*model.Object))
+}
+
 func (srv *Service) GetPutRequest() interface{} {
 	return new(PutRequest)
 }

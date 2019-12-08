@@ -16,8 +16,8 @@ func testUserConfirmBuy(t *tester.TesterContext) {
 	fmt.Println(resp)
 
 	resp = t.Get("/v1/goods/" + strconv.Itoa(int(id)))
-	reply := t.DecodeJSON(resp.Body(), new(goodsservice.GetReply)).(*goodsservice.GetReply)
-	fmt.Println(reply.Goods.Buyer, reply.Goods.Seller, reply.Goods.Status)
+	_ = t.DecodeJSON(resp.Body(), new(goodsservice.GetReply)).(*goodsservice.GetReply)
+	//fmt.Println(reply.Buyer, reply.Seller, reply.Status)
 	t.Delete("/v1/goods/" + strconv.Itoa(id) + "/force")
 }
 

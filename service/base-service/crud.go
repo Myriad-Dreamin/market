@@ -12,6 +12,7 @@ type CRUDObjectToolLite interface {
 	SerializePost(c *gin.Context) CRUDEntity
 	ResponsePost(obj CRUDEntity) interface{}
 	ResponseGet(obj CRUDEntity) interface{}
+	ResponseInspect(obj CRUDEntity) interface{}
 	GetPutRequest() interface{}
 	FillPutFields(c *gin.Context, object CRUDEntity, req interface{}) []string
 }
@@ -43,6 +44,19 @@ func (srv *CRUDService) Get(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, srv.Tool.ResponseGet(obj))
+}
+
+func (srv *CRUDService) Inspect(c *gin.Context) {
+	id, ok := ginhelper.ParseUint(c, srv.k)
+	if !ok {
+		return
+	}
+	obj, err := srv.Tool.GetEntity(id)
+	if ginhelper.MaybeSelectError(c, obj, err) {
+		return
+	}
+
+	c.JSON(http.StatusOK, srv.Tool.ResponseInspect(obj))
 }
 
 func (srv *CRUDService) Put(c *gin.Context) {

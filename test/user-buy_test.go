@@ -16,7 +16,7 @@ func testUserBuy(t *tester.TesterContext) {
 		Name:        "es000000000000000",
 		MinPrice:    1,
 		IsFixed:     false,
-		Description: "",
+		Description: " ",
 	})
 	var x goodsservice.PostReply
 	t.HandlerError0(resp.JSON(&x))
@@ -26,8 +26,8 @@ func testUserBuy(t *tester.TesterContext) {
 	fmt.Println(resp)
 
 	resp = t.Get("/v1/goods/" + strconv.Itoa(int(id)))
-	reply := t.DecodeJSON(resp.Body(), new(goodsservice.GetReply)).(*goodsservice.GetReply)
-	fmt.Println(reply.Goods.Buyer, reply.Goods.Seller, reply.Goods.Status)
+	_ = t.DecodeJSON(resp.Body(), new(goodsservice.GetReply)).(*goodsservice.GetReply)
+	//fmt.Println(reply.Buyer, reply.Seller, reply.Status)
 
 	//_ = t.Delete("/v1/goods/" + strconv.Itoa(int(id)))
 	srv.Set(goodsBuyIdK, id)

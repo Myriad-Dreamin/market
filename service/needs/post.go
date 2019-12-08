@@ -1,6 +1,7 @@
 package needsservice
 
 import (
+	"github.com/Myriad-Dreamin/market/auth"
 	"github.com/Myriad-Dreamin/market/model"
 	base_service "github.com/Myriad-Dreamin/market/service/base-service"
 	ginhelper "github.com/Myriad-Dreamin/market/service/gin-helper"
@@ -51,3 +52,38 @@ func (srv *Service) SerializePost(c *gin.Context) base_service.CRUDEntity {
 
 	return obj
 }
+
+
+func (srv *Service) AfterPost(reply *PostReply) interface{} {
+	if b, err := auth.NeedsEntity.AddReadPolicy(srv.enforcer, auth.UserEntity.CreateObj(reply.Needs.Buyer), reply.Needs.ID);
+		err != nil {
+		if !b {
+			srv.logger.Debug("add failed")
+		}
+		return types.ErrorSerializer{
+			Code:  types.CodeAddReadPrivilegeError,
+			Error: err.Error(),
+		}
+	} else {
+		if !b {
+			srv.logger.Debug("add failed")
+		}
+	}
+
+	if b, err := auth.NeedsEntity.AddWritePolicy(srv.enforcer, auth.UserEntity.CreateObj(reply.Needs.Buyer), reply.Needs.ID);
+		err != nil {
+		if !b {
+			srv.logger.Debug("add failed")
+		}
+		return types.ErrorSerializer{
+			Code:  types.CodeAddWritePrivilegeError,
+			Error: err.Error(),
+		}
+	} else {
+		if !b {
+			srv.logger.Debug("add failed")
+		}
+	}
+	return reply
+}
+

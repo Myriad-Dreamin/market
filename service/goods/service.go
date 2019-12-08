@@ -13,21 +13,22 @@ type Service struct {
 	base_service.CRUDService
 	base_service.ListService
 	forceDelete base_service.DServiceInterface
-	goodsDB    *model.GoodsDB
-	userDB     *model.UserDB
-	logger     types.Logger
-	cfg        *config.ServerConfig
-	filterFunc func(c *gin.Context) interface{}
-	key        string
+	goodsDB     *model.GoodsDB
+	userDB      *model.UserDB
+	enforcer    *model.Enforcer
+	logger      types.Logger
+	cfg         *config.ServerConfig
+	filterFunc  func(c *gin.Context) interface{}
+	key         string
 }
 
 func (srv *Service) GoodsSignatureXXX() interface{} { return srv }
-
 
 func NewService(logger types.Logger, provider *model.Provider, cfg *config.ServerConfig) (a *Service, err error) {
 	a = new(Service)
 	a.goodsDB = provider.GoodsDB()
 	a.userDB = provider.UserDB()
+	a.enforcer = provider.Enforcer()
 	a.logger = logger
 	a.cfg = cfg
 	a.key = "goid"
@@ -36,8 +37,3 @@ func NewService(logger types.Logger, provider *model.Provider, cfg *config.Serve
 	a.ListService = base_service.NewListService(a, a.goodsDB.FilterI)
 	return
 }
-
-/*
-type Goods struct {
-}
-*/

@@ -13,12 +13,13 @@ type Service struct {
 	base_service.CRUDService
 	base_service.ListService
 	forceDelete base_service.DServiceInterface
-	needsDB *model.NeedsDB
-	userDB *model.UserDB
-	logger     types.Logger
-	cfg *config.ServerConfig
-	filterFunc func(c *gin.Context) interface{}
-	key string
+	needsDB     *model.NeedsDB
+	userDB      *model.UserDB
+	logger      types.Logger
+	enforcer    *model.Enforcer
+	cfg         *config.ServerConfig
+	filterFunc  func(c *gin.Context) interface{}
+	key         string
 }
 
 func (srv *Service) NeedsSignatureXXX() interface{} { return srv }
@@ -28,6 +29,7 @@ func NewService(logger types.Logger, provider *model.Provider, cfg *config.Serve
 	a = new(Service)
 	a.needsDB = provider.NeedsDB()
 	a.userDB = provider.UserDB()
+	a.enforcer = provider.Enforcer()
 	a.logger = logger
 	a.cfg = cfg
 	a.key = "nid"

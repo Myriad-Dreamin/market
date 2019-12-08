@@ -8,7 +8,7 @@ import (
 	"strconv"
 )
 
-func (srv *Service) PostPicture(c *gin.Context) {
+func (srv *Service) PutPicture(c *gin.Context) {
 	id, ok := ginhelper.ParseUint(c, srv.key)
 	if !ok {
 		return

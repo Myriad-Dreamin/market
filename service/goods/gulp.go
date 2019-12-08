@@ -19,7 +19,7 @@ func (srv *Service) CreateFilter() interface{} {
 }
 
 func (srv *Service) ResponsePost(obj base_service.CRUDEntity) interface{} {
-	return GoodsToPostReply(obj.(*model.Goods))
+	return srv.AfterPost(GoodsToPostReply(obj.(*model.Goods)))
 }
 
 func (srv *Service) DeleteHook(c *gin.Context, goods base_service.CRUDEntity) bool {
@@ -28,6 +28,10 @@ func (srv *Service) DeleteHook(c *gin.Context, goods base_service.CRUDEntity) bo
 
 func (srv *Service) ResponseGet(obj base_service.CRUDEntity) interface{} {
 	return GoodsToGetReply(obj.(*model.Goods))
+}
+
+func (srv *Service) ResponseInspect(obj base_service.CRUDEntity) interface{} {
+	return GoodsToInspectReply(obj.(*model.Goods))
 }
 
 func (srv *Service) GetPutRequest() interface{} {
