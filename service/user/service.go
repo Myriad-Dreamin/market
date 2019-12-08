@@ -23,7 +23,6 @@ type Service struct {
 	cfg        *config.ServerConfig
 	middleware *jwt.Middleware
 }
-
 func (srv *Service) UserSignatureXXX() interface{} { return srv }
 
 func NewService(logger types.Logger, provider *model.Provider,
@@ -37,7 +36,7 @@ func NewService(logger types.Logger, provider *model.Provider,
 	srv.middleware = middleware
 	srv.cfg = cfg
 	srv.CRUDService = base_service.NewCRUDService(srv, "id")
-	srv.ListService = base_service.NewListService(srv, "id")
+	srv.ListService = base_service.NewListService(srv, srv.userDB, "id")
 	a = srv
 	return
 }

@@ -10,7 +10,7 @@ require (
 	github.com/Myriad-Dreamin/functional-go v0.0.0-20191102095642-532e6dc9bfd5
 	github.com/Myriad-Dreamin/gin-middleware v0.0.0-20191001110659-e6949e7c287e
 	github.com/Myriad-Dreamin/go-magic-package v0.0.0-20191102120213-a407f918fece
-	github.com/Myriad-Dreamin/go-model-traits v0.0.0-20191205110330-07c56e89959f
+	github.com/Myriad-Dreamin/go-model-traits v0.0.0-20191208040739-427777bf553e
 	github.com/Myriad-Dreamin/go-parse-package v1.0.0
 	github.com/Myriad-Dreamin/minimum-lib v0.0.0-20191207173228-86732a54109c
 	github.com/casbin/casbin/v2 v2.1.0

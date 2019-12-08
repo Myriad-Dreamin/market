@@ -2,8 +2,8 @@ package dblayer
 
 import (
 	"github.com/Myriad-Dreamin/market/config"
-	"github.com/Myriad-Dreamin/minimum-lib/crypto"
 	"github.com/Myriad-Dreamin/market/types"
+	"github.com/Myriad-Dreamin/minimum-lib/crypto"
 	"github.com/jinzhu/gorm"
 	"time"
 )
@@ -13,10 +13,6 @@ func wrapToUser(user interface{}, err error) (*User, error) {
 		return nil, err
 	}
 	return user.(*User), err
-}
-
-func UserFactory() interface{} {
-	return new(User)
 }
 
 var (
@@ -100,6 +96,15 @@ func NewUserDB(logger types.Logger, _ *config.ServerConfig) (*UserDB, error) {
 
 func GetUserDB(logger types.Logger, _ *config.ServerConfig) (*UserDB, error) {
 	return new(UserDB), nil
+}
+
+func (userDB *UserDB) Filter(f *Filter) (user []User, err error) {
+	err = userTraits.Filter(f, &user)
+	return
+}
+
+func (userDB *UserDB) FilterI(f interface{}) (interface{}, error) {
+	return userDB.Filter(f.(*Filter))
 }
 
 func (userDB *UserDB) ID(id uint) (user *User, err error) {

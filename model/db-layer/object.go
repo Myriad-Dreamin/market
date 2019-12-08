@@ -15,10 +15,6 @@ func wrapToObject(object interface{}, err error) (*Object, error) {
 	return object.(*Object), err
 }
 
-func ObjectFactory() interface{} {
-	return new(Object)
-}
-
 var (
 	objectTraits = NewObjectTraits(Object{})
 )
@@ -74,6 +70,15 @@ func NewObjectDB(logger types.Logger, _ *config.ServerConfig) (*ObjectDB, error)
 
 func GetObjectDB(logger types.Logger, _ *config.ServerConfig) (*ObjectDB, error) {
 	return new(ObjectDB), nil
+}
+
+func (objectDB *ObjectDB) Filter(f *Filter) (user []Object, err error) {
+	err = objectTraits.Filter(f, &user)
+	return
+}
+
+func (objectDB *ObjectDB) FilterI(f interface{}) (interface{}, error) {
+	return objectDB.Filter(f.(*Filter))
 }
 
 func (objectDB *ObjectDB) ID(id uint) (object *Object, err error) {

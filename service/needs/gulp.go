@@ -14,7 +14,7 @@ func (srv *Service) GetEntity(id uint) (base_service.CRUDEntity, error) {
 	return srv.needsDB.ID(id)
 }
 
-func (srv *Service) createFilter() interface{} {
+func (srv *Service) CreateFilter() interface{} {
 	return new(model.GoodsFilter)
 }
 

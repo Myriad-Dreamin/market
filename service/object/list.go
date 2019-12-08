@@ -2,7 +2,6 @@ package objectservice
 
 import (
 	"github.com/Myriad-Dreamin/market/model"
-	ginhelper "github.com/Myriad-Dreamin/market/service/gin-helper"
 	"github.com/Myriad-Dreamin/market/types"
 	"github.com/gin-gonic/gin"
 )
@@ -19,17 +18,6 @@ func ObjectsToListReply(obj []model.Object) (reply *ListReply) {
 	return
 }
 
-func (srv *Service) FilterOn(c *gin.Context) (interface{}, error) {
-	// parse c
-
-	page, pageSize, ok := ginhelper.RosolvePageVariable(c)
-	if !ok {
-		return nil, nil
-	}
-
-	objs, err := srv.db.QueryChain().Page(page, pageSize).Query()
-	if err != nil {
-		return nil, err
-	}
-	return ObjectsToListReply(objs), nil
+func (srv *Service) ProcessListResults(_ *gin.Context, result interface{}) interface{} {
+	return ObjectsToListReply(result.([]model.Object))
 }

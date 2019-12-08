@@ -16,6 +16,10 @@ type Service struct {
 	logger types.Logger
 }
 
+func (srv *Service) CreateFilter() interface{} {
+	return new(model.Filter)
+}
+
 func (srv *Service) ObjectSignatureXXX() interface{} { return srv }
 
 func NewService(logger types.Logger, provider *model.Provider, cfg *config.ServerConfig) (a *Service, err error) {
@@ -24,6 +28,6 @@ func NewService(logger types.Logger, provider *model.Provider, cfg *config.Serve
 	a.logger = logger
 	a.cfg = cfg
 	a.CRUDService = base_service.NewCRUDService(a, "oid")
-	a.ListService = base_service.NewListService(a, "oid")
+	a.ListService = base_service.NewListService(a, a.db, "oid")
 	return
 }

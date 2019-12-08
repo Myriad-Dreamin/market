@@ -14,12 +14,12 @@ func (srv *Service) GetEntity(id uint) (base_service.CRUDEntity, error) {
 	return srv.goodsDB.ID(id)
 }
 
-func (srv *Service) ResponsePost(obj base_service.CRUDEntity) interface{} {
-	return GoodsToPostReply(obj.(*model.Goods))
+func (srv *Service) CreateFilter() interface{} {
+	return new(model.GoodsFilter)
 }
 
-func (srv *Service) createFilter() interface{} {
-	return new(model.GoodsFilter)
+func (srv *Service) ResponsePost(obj base_service.CRUDEntity) interface{} {
+	return GoodsToPostReply(obj.(*model.Goods))
 }
 
 func (srv *Service) DeleteHook(c *gin.Context, goods base_service.CRUDEntity) bool {
