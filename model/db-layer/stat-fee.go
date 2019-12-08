@@ -26,13 +26,15 @@ var (
 
 type StatFee struct {
 	ID        uint      `dorm:"id" gorm:"column:id;primary_key;not_null"`
-	CreatedAt time.Time `dorm:"created_at" gorm:"column:created_at;default:CURRENT_TIMESTAMP;not null" json:"created_at"`
+
+	Month time.Time `dorm:"month" gorm:"column:month;not null" json:"month"`
+	Province string `dorm:"province" gorm:"column:province;not_null"`
+	City string `dorm:"city" gorm:"column:city;not_null"`
+
 	UpdatedAt time.Time `dorm:"updated_at" gorm:"column:updated_at;default:CURRENT_TIMESTAMP;not null;" json:"updated_at"`
 
 	BuyFeeSum int64 `dorm:"buy_fee_sum" gorm:"column:buy_fee_sum;not_null"`
 	SellFeeSum int64 `dorm:"sell_fee_sum" gorm:"column:sell_fee_sum;not_null"`
-	Province string `dorm:"province" gorm:"column:province;not_null"`
-	City string `dorm:"city" gorm:"column:city;not_null"`
 	FinishCount int64 `dorm:"finish_count" gorm:"column:finish_count;not_null"`
 }
 
@@ -41,28 +43,33 @@ func (StatFee) TableName() string {
 	return "stat_fee"
 }
 
-func (StatFee) migrate() error {
-	return statFeeTraits.Migrate()
+func (st StatFee) migrate() error {
+	if err := statFeeTraits.Migrate(); err != nil {
+		return err
+	}
+
+
+	return db.Model(&st).AddUniqueIndex("mpc", "month", "province", "city").Error
 }
 
-func (d StatFee) GetID() uint {
-	return d.ID
+func (st StatFee) GetID() uint {
+	return st.ID
 }
 
-func (d *StatFee) Create() (int64, error) {
-	return statFeeTraits.Create(d)
+func (st *StatFee) Create() (int64, error) {
+	return statFeeTraits.Create(st)
 }
 
-func (d *StatFee) Update() (int64, error) {
-	return statFeeTraits.Update(d)
+func (st *StatFee) Update() (int64, error) {
+	return statFeeTraits.Update(st)
 }
 
-func (d *StatFee) UpdateFields(fields []string) (int64, error) {
-	return statFeeTraits.UpdateFields(d, fields)
+func (st *StatFee) UpdateFields(fields []string) (int64, error) {
+	return statFeeTraits.UpdateFields(st, fields)
 }
 
-func (d *StatFee) Delete() (int64, error) {
-	return statFeeTraits.Delete(d)
+func (st *StatFee) Delete() (int64, error) {
+	return statFeeTraits.Delete(st)
 }
 
 type StatFeeDB struct{}
@@ -106,7 +113,40 @@ func (statFeeDB *StatFeeQuery) Preload() *StatFeeQuery {
 	return statFeeDB
 }
 
+func (statFeeDB *StatFeeQuery) LETime(t time.Time) *StatFeeQuery {
+	statFeeDB.db = statFeeDB.db.Where("month <= ?", t)
+	return statFeeDB
+}
+
+func (statFeeDB *StatFeeQuery) GETime(t time.Time) *StatFeeQuery {
+	statFeeDB.db = statFeeDB.db.Where("month >= ?", t)
+	return statFeeDB
+}
+
+func (statFeeDB *StatFeeQuery) InProvince(pv string ) *StatFeeQuery {
+	statFeeDB.db = statFeeDB.db.Where("province = ?", pv)
+	return statFeeDB
+}
+
+func (statFeeDB *StatFeeQuery) InCity(ct string ) *StatFeeQuery {
+	statFeeDB.db = statFeeDB.db.Where("city = ?", ct)
+	return statFeeDB
+}
+
+func (statFeeDB *StatFeeQuery) GroupBy(s string) *StatFeeQuery {
+	statFeeDB.db = statFeeDB.db.Group(s)
+	return statFeeDB
+}
+
 func (statFeeDB *StatFeeQuery) Query() (statFees []StatFee, err error) {
 	err = statFeeDB.db.Find(&statFees).Error
 	return
 }
+
+
+func (statFeeDB *StatFeeQuery) Scan(desc interface{}) (err error) {
+	err = statFeeDB.db.Scan(desc).Error
+	return
+}
+
+

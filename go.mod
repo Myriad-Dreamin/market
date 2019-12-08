@@ -12,7 +12,7 @@ require (
 	github.com/Myriad-Dreamin/go-magic-package v0.0.0-20191102120213-a407f918fece
 	github.com/Myriad-Dreamin/go-model-traits v0.0.0-20191205110330-07c56e89959f
 	github.com/Myriad-Dreamin/go-parse-package v1.0.0
-	github.com/Myriad-Dreamin/minimum-lib v0.0.0-20191118091634-2bc5ed4be065
+	github.com/Myriad-Dreamin/minimum-lib v0.0.0-20191207173228-86732a54109c
 	github.com/casbin/casbin/v2 v2.1.0
 	github.com/gin-contrib/cors v1.3.0
 	github.com/gin-gonic/gin v1.4.1-0.20190628155452-f65018d7b1f1

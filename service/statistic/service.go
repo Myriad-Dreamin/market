@@ -5,7 +5,6 @@ import (
 	"github.com/Myriad-Dreamin/market/config"
 	"github.com/Myriad-Dreamin/market/model"
 	"github.com/Myriad-Dreamin/market/types"
-	"github.com/gin-gonic/gin"
 )
 
 type Service struct {

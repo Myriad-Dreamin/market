@@ -115,3 +115,8 @@ func (objectDB *ObjectQuery) Query() (objects []Object, err error) {
 	err = objectDB.db.Find(&objects).Error
 	return
 }
+
+func (objectDB *ObjectQuery) Scan(desc interface{}) (err error) {
+	err = objectDB.db.Scan(desc).Error
+	return
+}

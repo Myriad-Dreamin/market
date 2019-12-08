@@ -160,18 +160,23 @@ func (rc) Close() error {
 func (mocker *Mocker) mockServe(r *Request, params ...interface{}) (w *mock.Response) {
 
 	w = mock.NewResponse()
-	var b []byte
-	var err error
-	var comment string
+	var (
+		b []byte
+		err error
+		comment string
+		abortRecord = false
+	)
 
 	for i := range params {
 		switch p := params[i].(type) {
 		case mock.Comment:
 			comment = string(p)
+		case mock.AbortRecord:
+			abortRecord = bool(p)
 		}
 	}
 
-	if mocker.collectResults {
+	if !abortRecord && mocker.collectResults {
 		if r.Body != nil {
 			b, err = ioutil.ReadAll(r.Body)
 			_ = r.Body.Close()
@@ -186,7 +191,6 @@ func (mocker *Mocker) mockServe(r *Request, params ...interface{}) (w *mock.Resp
 
 	if mocker.contextHelper != nil && mocker.assertNoError {
 		if !mocker.NoErr(w) {
-
 			mocker.contextHelper.Fatal("stopped by assertion")
 		}
 	}
@@ -197,7 +201,7 @@ func (mocker *Mocker) mockServe(r *Request, params ...interface{}) (w *mock.Resp
 		mocker.println("Response Header:", w.Header())
 	}
 
-	if mocker.collectResults {
+	if !abortRecord && mocker.collectResults {
 		c := make([]byte, w.Body().Len())
 		copy(c, w.Body().Bytes())
 		pattern := w.Header().Get("Gin-Context-Matched-Path-Method")
@@ -244,9 +248,12 @@ func (body emptyBody) Read(p []byte) (n int, err error) {
 var _emptyBody = emptyBody{}
 
 func (mocker *Mocker) Method(method, path string, params ...interface{}) mock.ResponseI {
-	var body io.Reader = _emptyBody
-	var contentType string
-	var serveParams []interface{}
+	var (
+		body io.Reader = _emptyBody
+		contentType string
+		serveParams []interface{}
+		r *http.Request
+	)
 	for i := range params {
 		switch p := params[i].(type) {
 		case string, []byte:
@@ -264,10 +271,10 @@ func (mocker *Mocker) Method(method, path string, params ...interface{}) mock.Re
 		case io.Reader:
 			body = p
 		case *http.Request:
-			return mocker.mockServe(p, serveParams...)
+			r = p
 		case http.Request:
-			return mocker.mockServe(&p, serveParams...)
-		case mock.Comment:
+			r = &p
+		case mock.Comment, mock.AbortRecord:
 			serveParams = append(serveParams, p)
 		default:
 			buf := bytes.NewBuffer(nil)
@@ -278,14 +285,17 @@ func (mocker *Mocker) Method(method, path string, params ...interface{}) mock.Re
 			contentType = "application/json"
 		}
 	}
-	r, err := http.NewRequest(method, path, body)
-	if err != nil {
-		mocker.report(err)
-		return nil
-	}
-	r.Header.Set("Content-Type", contentType)
-	for k, v := range mocker.header {
-		r.Header.Set(k, v)
+	if r == nil {
+		var err error
+		r, err = http.NewRequest(method, path, body)
+		if err != nil {
+			mocker.report(err)
+			return nil
+		}
+		r.Header.Set("Content-Type", contentType)
+		for k, v := range mocker.header {
+			r.Header.Set(k, v)
+		}
 	}
 	return mocker.mockServe(r, serveParams...)
 }

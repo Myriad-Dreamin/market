@@ -32,20 +32,4 @@ type StatisticService interface {
 	// @Title Statistic Goods Count XY List
 	// @Description Statistic Goods Count XY List
 	StatGoodsCountXYList(c *gin.Context)
-
-	// @Title Statistic Goods Fee
-	// @Description Statistic Goods Fee
-	StatNeedsFee(c *gin.Context)
-
-	// /stat/goods/fee-xy GET
-
-	// @Title Statistic Needs Fee XY List
-	// @Description Statistic Needs Fee XY List
-	StatNeedsFeeXYList(c *gin.Context)
-
-	// /stat/goods/fee GET
-
-	// @Title Statistic Needs Count XY List
-	// @Description Statistic Needs Count XY List
-	StatNeedsCountXYList(c *gin.Context)
 }

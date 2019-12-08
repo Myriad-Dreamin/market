@@ -27,8 +27,8 @@ github.com/Myriad-Dreamin/go-model-traits v0.0.0-20191205110330-07c56e89959f/go.
 github.com/Myriad-Dreamin/go-parse-package v1.0.0 h1:g+9U+tgoImXzCwCQc/XNV29igpZ0IgxZUUOCB7NkvFI=
 github.com/Myriad-Dreamin/go-parse-package v1.0.0/go.mod h1:kb2R+hypYiYQm3D4JqY/IuI4GG9cdh735vW/AMJyFgE=
 github.com/Myriad-Dreamin/market v0.0.0-20191102045134-4a108d71ca6f/go.mod h1:bFqLiwxZQmGNxA8XKnnr6KdC9w5ET7cJJ9mWUMDdr/0=
-github.com/Myriad-Dreamin/minimum-lib v0.0.0-20191118091634-2bc5ed4be065 h1:rNZEAa2etoGUSGnmdrM1QFhgkrWNfELeJb16nrb7nj4=
-github.com/Myriad-Dreamin/minimum-lib v0.0.0-20191118091634-2bc5ed4be065/go.mod h1:36hE5fjQyweYldwI5Vi6GUh+2pDFmrOP31NkceYAwFE=
+github.com/Myriad-Dreamin/minimum-lib v0.0.0-20191207173228-86732a54109c h1:u0rdCaf++SQ7AmNKX0Tds9BlI054gmxRO7wO7pJ7SwE=
+github.com/Myriad-Dreamin/minimum-lib v0.0.0-20191207173228-86732a54109c/go.mod h1:36hE5fjQyweYldwI5Vi6GUh+2pDFmrOP31NkceYAwFE=
 github.com/PuerkitoBio/purell v1.1.0/go.mod h1:c11w/QuzBsJSee3cPx9rAFu61PvFxuPbtSwDGJws/X0=
 github.com/PuerkitoBio/purell v1.1.1/go.mod h1:c11w/QuzBsJSee3cPx9rAFu61PvFxuPbtSwDGJws/X0=
 github.com/PuerkitoBio/urlesc v0.0.0-20170810143723-de5bf2ad4578/go.mod h1:uGdkoq3SwY9Y+13GIhn11/XLaGBb4BfwItxLd5jeuXE=

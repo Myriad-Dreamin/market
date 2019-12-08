@@ -11,6 +11,7 @@ func migrates() error {
 	for _, migrate := range []func() error{
 		Needs{}.migrate,
 		Goods{}.migrate,
+		StatFee{}.migrate,
 		User{}.migrate,
 	} {
 		if err := migrate(); err != nil {
