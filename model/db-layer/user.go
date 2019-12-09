@@ -1,9 +1,8 @@
 package dblayer
 
 import (
-	"github.com/Myriad-Dreamin/market/config"
-	"github.com/Myriad-Dreamin/market/types"
 	"github.com/Myriad-Dreamin/minimum-lib/crypto"
+	"github.com/Myriad-Dreamin/minimum-lib/module"
 	"github.com/jinzhu/gorm"
 	"time"
 )
@@ -91,11 +90,11 @@ func (d *User) AuthenticatePassword(pswd string) (bool, error) {
 
 type UserDB struct{}
 
-func NewUserDB(logger types.Logger, _ *config.ServerConfig) (*UserDB, error) {
+func NewUserDB(_ module.Module) (*UserDB, error) {
 	return new(UserDB), nil
 }
 
-func GetUserDB(logger types.Logger, _ *config.ServerConfig) (*UserDB, error) {
+func GetUserDB(_ module.Module) (*UserDB, error) {
 	return new(UserDB), nil
 }
 

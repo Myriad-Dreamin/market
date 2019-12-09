@@ -1,9 +1,8 @@
 package splayer
 
 import (
-	"github.com/Myriad-Dreamin/market/config"
 	dblayer "github.com/Myriad-Dreamin/market/model/db-layer"
-	"github.com/Myriad-Dreamin/market/types"
+	"github.com/Myriad-Dreamin/minimum-lib/module"
 )
 
 type Needs = dblayer.Needs
@@ -31,8 +30,8 @@ type NeedsDB struct {
 	dblayer.NeedsDB
 }
 
-func NewNeedsDB(logger types.Logger, cfg *config.ServerConfig) (*NeedsDB, error) {
-	cdb, err := dblayer.NewNeedsDB(logger, cfg)
+func NewNeedsDB(m module.Module) (*NeedsDB, error) {
+	cdb, err := dblayer.NewNeedsDB(m)
 	if err != nil {
 		return nil, err
 	}
@@ -41,8 +40,8 @@ func NewNeedsDB(logger types.Logger, cfg *config.ServerConfig) (*NeedsDB, error)
 	return db, nil
 }
 
-func GetNeedsDB(logger types.Logger, cfg *config.ServerConfig) (*NeedsDB, error) {
-	cdb, err := dblayer.GetNeedsDB(logger, cfg)
+func GetNeedsDB(m module.Module) (*NeedsDB, error) {
+	cdb, err := dblayer.GetNeedsDB(m)
 	if err != nil {
 		return nil, err
 	}

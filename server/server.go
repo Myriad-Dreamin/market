@@ -91,8 +91,8 @@ func newServer(options []Option) *Server {
 	}
 
 	srv.ServiceProvider = new(service.Provider)
-	srv.ModelProvider = model.NewProvider("/database")
-	srv.RouterProvider = router.NewProvider("/IRouter")
+	srv.ModelProvider = model.NewProvider(config.ModulePath.Provider.Model)
+	srv.RouterProvider = router.NewProvider(config.ModulePath.Provider.Router)
 
 	_ = model.SetProvider(srv.ModelProvider)
 	srv.Module.Provide(config.ModulePath.Provider.Service, srv.ServiceProvider)

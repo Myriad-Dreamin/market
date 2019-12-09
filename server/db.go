@@ -15,10 +15,10 @@ type dbResult struct {
 func (srv *Server) registerDatabaseService() bool {
 
 	for _, dbResult := range []dbResult{
-		{"needsDB", functional.Decay(model.NewNeedsDB(srv.Logger, srv.Cfg))},
-		{"goodsDB", functional.Decay(model.NewGoodsDB(srv.Logger, srv.Cfg))},
-		{"userDB", functional.Decay(model.NewUserDB(srv.Logger, srv.Cfg))},
-		{"objectDB", functional.Decay(model.NewObjectDB(srv.Logger, srv.Cfg))},
+		{"needsDB", functional.Decay(model.NewNeedsDB(srv.Module))},
+		{"goodsDB", functional.Decay(model.NewGoodsDB(srv.Module))},
+		{"userDB", functional.Decay(model.NewUserDB(srv.Module))},
+		{"objectDB", functional.Decay(model.NewObjectDB(srv.Module))},
 	} {
 		if dbResult.Err != nil {
 			srv.Logger.Debug(fmt.Sprintf("init %T DB error", dbResult.First), "error", dbResult.Err)

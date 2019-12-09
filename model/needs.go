@@ -1,18 +1,17 @@
 package model
 
 import (
-	"github.com/Myriad-Dreamin/market/config"
 	splayer "github.com/Myriad-Dreamin/market/model/sp-layer"
-	"github.com/Myriad-Dreamin/market/types"
+	"github.com/Myriad-Dreamin/minimum-lib/module"
 )
 
 type Needs = splayer.Needs
 type NeedsDB = splayer.NeedsDB
 
-func NewNeedsDB(logger types.Logger, cfg *config.ServerConfig) (*NeedsDB, error) {
-	return splayer.NewNeedsDB(logger, cfg)
+func NewNeedsDB(m module.Module) (*NeedsDB, error) {
+	return splayer.NewNeedsDB(m)
 }
 
-func GetNeedsDB(logger types.Logger, cfg *config.ServerConfig) (*NeedsDB, error) {
-	return splayer.GetNeedsDB(logger, cfg)
+func GetNeedsDB(m module.Module) (*NeedsDB, error) {
+	return splayer.GetNeedsDB(m)
 }

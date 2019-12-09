@@ -2,8 +2,7 @@ package dblayer
 
 import (
 	gorm_crud_dao "github.com/Myriad-Dreamin/go-model-traits/gorm-crud-dao"
-	"github.com/Myriad-Dreamin/market/config"
-	"github.com/Myriad-Dreamin/market/types"
+	"github.com/Myriad-Dreamin/minimum-lib/module"
 	"github.com/jinzhu/gorm"
 	"time"
 )
@@ -74,11 +73,11 @@ func (st *StatFee) Delete() (int64, error) {
 
 type StatFeeDB struct{}
 
-func NewStatFeeDB(logger types.Logger, _ *config.ServerConfig) (*StatFeeDB, error) {
+func NewStatFeeDB(_ module.Module) (*StatFeeDB, error) {
 	return new(StatFeeDB), nil
 }
 
-func GetStatFeeDB(logger types.Logger, _ *config.ServerConfig) (*StatFeeDB, error) {
+func GetStatFeeDB(_ module.Module) (*StatFeeDB, error) {
 	return new(StatFeeDB), nil
 }
 

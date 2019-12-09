@@ -1,9 +1,8 @@
 package splayer
 
 import (
-	"github.com/Myriad-Dreamin/market/config"
 	dblayer "github.com/Myriad-Dreamin/market/model/db-layer"
-	"github.com/Myriad-Dreamin/market/types"
+	"github.com/Myriad-Dreamin/minimum-lib/module"
 )
 
 type Object = dblayer.Object
@@ -31,8 +30,8 @@ type ObjectDB struct {
 	dblayer.ObjectDB
 }
 
-func NewObjectDB(logger types.Logger, cfg *config.ServerConfig) (*ObjectDB, error) {
-	cdb, err := dblayer.NewObjectDB(logger, cfg)
+func NewObjectDB(m module.Module) (*ObjectDB, error) {
+	cdb, err := dblayer.NewObjectDB(m)
 	if err != nil {
 		return nil, err
 	}
@@ -41,8 +40,8 @@ func NewObjectDB(logger types.Logger, cfg *config.ServerConfig) (*ObjectDB, erro
 	return db, nil
 }
 
-func GetObjectDB(logger types.Logger, cfg *config.ServerConfig) (*ObjectDB, error) {
-	cdb, err := dblayer.GetObjectDB(logger, cfg)
+func GetObjectDB(m module.Module) (*ObjectDB, error) {
+	cdb, err := dblayer.GetObjectDB(m)
 	if err != nil {
 		return nil, err
 	}

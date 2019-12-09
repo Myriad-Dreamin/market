@@ -2,9 +2,9 @@ package dblayer
 
 import (
 	"github.com/Myriad-Dreamin/dorm"
-	"github.com/Myriad-Dreamin/market/config"
 	"github.com/Myriad-Dreamin/market/lib/errorc"
 	"github.com/Myriad-Dreamin/market/types"
+	"github.com/Myriad-Dreamin/minimum-lib/module"
 	"github.com/jinzhu/gorm"
 	"time"
 )
@@ -79,11 +79,11 @@ func (d *Goods) Delete() (int64, error) {
 
 type GoodsDB struct{}
 
-func NewGoodsDB(logger types.Logger, _ *config.ServerConfig) (*GoodsDB, error) {
+func NewGoodsDB(_ module.Module) (*GoodsDB, error) {
 	return new(GoodsDB), nil
 }
 
-func GetGoodsDB(logger types.Logger, _ *config.ServerConfig) (*GoodsDB, error) {
+func GetGoodsDB(_ module.Module) (*GoodsDB, error) {
 	return new(GoodsDB), nil
 }
 
