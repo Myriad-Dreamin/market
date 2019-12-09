@@ -207,7 +207,7 @@ func (goodsDB *GoodsDB) Buy(id, uid uint, price uint64) (int, string) {
 	return commitOrRollback(tx)
 }
 
-func (goodsDB *GoodsDB) ConfirmBuy(id uint, confirmOrCancel bool, uid uint) (int, string) {
+func (goodsDB *GoodsDB) ConfirmBuy(id uint, confirm bool, uid uint) (int, string) {
 	tx := db.Begin()
 	if tx.Error != nil {
 		return types.CodeBeginTransactionError, tx.Error.Error()
@@ -221,7 +221,7 @@ func (goodsDB *GoodsDB) ConfirmBuy(id uint, confirmOrCancel bool, uid uint) (int
 		rollback(tx)
 		return types.CodeGoodsStatusNotBePending, goods.Status.String()
 	}
-	if confirmOrCancel {
+	if confirm {
 		goods.Status = types.GoodsStatusFinished
 		//todo: add fees
 	} else {

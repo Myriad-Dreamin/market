@@ -22,8 +22,8 @@ github.com/Myriad-Dreamin/gin-middleware v0.0.0-20191001110659-e6949e7c287e h1:S
 github.com/Myriad-Dreamin/gin-middleware v0.0.0-20191001110659-e6949e7c287e/go.mod h1:7VGIeMy+H3Yt4jpyPLdSvgemq++kSO8sP4PlPbotXOI=
 github.com/Myriad-Dreamin/go-magic-package v0.0.0-20191102120213-a407f918fece h1:Jwhp+c0XukMtoZSo8YRpDQkS7yn99J9uVGqavUCXi2E=
 github.com/Myriad-Dreamin/go-magic-package v0.0.0-20191102120213-a407f918fece/go.mod h1:gKZz9vKJhIc2PGWK0Vxg9Cv1jJmvbspechLEvRORxoQ=
-github.com/Myriad-Dreamin/go-model-traits v0.0.0-20191208040739-427777bf553e h1:TQuZp2QgG3vi3HJRME6hDOtAm1AkYtND3jQhJ1YcK80=
-github.com/Myriad-Dreamin/go-model-traits v0.0.0-20191208040739-427777bf553e/go.mod h1:rsNfGfVzS4/h5PguW5xBoIYyQ4XtEwRoo7FGajrNN50=
+github.com/Myriad-Dreamin/go-model-traits v0.0.0-20191209220601-85cd28b274b0 h1:vYQpI7lLzA545kvs7ZXaqQkaNqRY6Avt6LeoDSduC+I=
+github.com/Myriad-Dreamin/go-model-traits v0.0.0-20191209220601-85cd28b274b0/go.mod h1:rsNfGfVzS4/h5PguW5xBoIYyQ4XtEwRoo7FGajrNN50=
 github.com/Myriad-Dreamin/go-parse-package v1.0.0 h1:g+9U+tgoImXzCwCQc/XNV29igpZ0IgxZUUOCB7NkvFI=
 github.com/Myriad-Dreamin/go-parse-package v1.0.0/go.mod h1:kb2R+hypYiYQm3D4JqY/IuI4GG9cdh735vW/AMJyFgE=
 github.com/Myriad-Dreamin/market v0.0.0-20191102045134-4a108d71ca6f/go.mod h1:bFqLiwxZQmGNxA8XKnnr6KdC9w5ET7cJJ9mWUMDdr/0=

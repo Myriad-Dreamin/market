@@ -16,9 +16,10 @@ type RegisterRequest struct {
 	// Password: 密码
 	Password string `form:"password" json:"password" binding:"required"`
 	// NickName: 昵称
-	NickName     string `form:"nick_name" json:"nick_name" binding:"required"`
-	Phone        string `form:"phone" json:"phone" binding:"required"`
-	RegisterCity string `form:"register_city" json:"register_city" binding:"required"`
+	NickName         string `form:"nick_name" json:"nick_name" binding:"required"`
+	Phone            string `form:"phone" json:"phone" binding:"required"`
+	RegisterProvince string `form:"register_province" json:"register_province" binding:"required"`
+	RegisterCity     string `form:"register_city" json:"register_city" binding:"required"`
 	//Email string `form:"email" json:"email" binding:"email"`
 	// Gender: 0表示保密, 1表示女, 2表示男, 3~255表示其他
 	//Gender uint8 `form:"gender" json:"gender"`
@@ -35,26 +36,6 @@ func (p RegisterReply) GetID() uint {
 	return p.ID
 }
 
-/**
-Register v1/user/register POST
-
-params:
-- `name` string: the name of registering user
-- `password` string: the password of this user's account
-- `nick_name` string: the nick_name of this user
-- `gender` uint8: 0 and 3~255 represents for secret,1 represents for female,2 represents
-	for male
-
-returns:
-- `code` int: the operation results
-	- types.CodeBindError(1): wrong input, description will be
-	attached to the segment of `error`
-	- types.CodeInsertError(100): insert error, description will be
-	attached to the segment of `error`
-	- types.CodeDuplicatePrimaryKey(104): insert error, throw by mysql plugin
-- `error` string: options description of bad code
-- `id` uint: the id of this user
-*/
 func (srv *Service) Register(c controller.MContext) {
 	var req = new(RegisterRequest)
 	if !ginhelper.BindRequest(c, req) {
@@ -75,6 +56,7 @@ func (srv *Service) Register(c controller.MContext) {
 
 	user.NickName = req.NickName
 	user.Phone = req.Phone
+	user.RegisterProvince = req.RegisterProvince
 	user.RegisterCity = req.RegisterCity
 	//user.Gender = req.Gender
 	//user.Email = req.Email

@@ -13,11 +13,12 @@ func testUserRegisterLogin(t *tester.TesterContext) {
 		pswd  = normalUserPassword
 	)
 	resp := t.Post("/v1/user", userservice.RegisterRequest{
-		Name:         name,
-		Password:     pswd,
-		NickName:     nick,
-		Phone:        phone,
-		RegisterCity: "tan arch",
+		Name:             name,
+		Password:         pswd,
+		NickName:         nick,
+		Phone:            phone,
+		RegisterProvince: "tan bran",
+		RegisterCity:     "tan arch",
 	})
 	id := t.DecodeJSON(resp.Body(),
 		new(userservice.RegisterReply)).(*userservice.RegisterReply).ID

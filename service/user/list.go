@@ -7,7 +7,7 @@ import (
 )
 
 type ListReply struct {
-	Code  int          `json:"code"`
+	Code  int        `json:"code"`
 	Users []GetReply `json:"users"`
 }
 
@@ -20,7 +20,6 @@ func UsersToListReply(obj []model.User) (reply *ListReply) {
 	}
 	return
 }
-
 
 func (srv *Service) ProcessListResults(c controller.MContext, result interface{}) interface{} {
 	return UsersToListReply(result.([]model.User))

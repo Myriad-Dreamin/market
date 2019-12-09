@@ -3,7 +3,7 @@ package needsservice
 import (
 	"github.com/Myriad-Dreamin/market/lib/controller"
 	"github.com/Myriad-Dreamin/market/model"
-	ginhelper "github.com/Myriad-Dreamin/market/service/gin-helper"
+	"github.com/Myriad-Dreamin/market/service/reply"
 	"github.com/Myriad-Dreamin/market/types"
 	"time"
 )
@@ -15,19 +15,19 @@ type NeedsUserReply struct {
 }
 
 type NeedsReply struct {
-	ID          uint              `json:"id" form:"id"`
-	CreatedAt   time.Time         `json:"created_at" form:"created_at"`
-	UpdatedAt   time.Time         `json:"updated_at" form:"updated_at"`
-	EndAt       time.Time         `json:"end_at" form:"end_at"`
-	Buyer       *NeedsUserReply   `json:"buyer" form:"buyer"`
-	EndDuration time.Duration     `json:"ddd" form:"ddd"`
-	Type        uint16            `json:"g_type" form:"g_type"`
-	Name        string            `json:"name" form:"name"`
-	CurPrice    uint64            `json:"cur_price" form:"cur_price"`
-	MaxPrice    uint64            `json:"max_price" form:"max_price"`
-	IsFixed     bool              `json:"is_fixed" form:"is_fixed"`
-	Description string            `json:"description" form:"description"`
-	Status      types.GoodsStatus `json:"status" form:"status"`
+	ID          uint                 `json:"id" form:"id"`
+	CreatedAt   time.Time            `json:"created_at" form:"created_at"`
+	UpdatedAt   time.Time            `json:"updated_at" form:"updated_at"`
+	EndAt       time.Time            `json:"end_at" form:"end_at"`
+	Buyer       *reply.ShortUserInfo `json:"buyer" form:"buyer"`
+	EndDuration time.Duration        `json:"ddd" form:"ddd"`
+	Type        uint16               `json:"g_type" form:"g_type"`
+	Name        string               `json:"name" form:"name"`
+	CurPrice    uint64               `json:"cur_price" form:"cur_price"`
+	MaxPrice    uint64               `json:"max_price" form:"max_price"`
+	IsFixed     bool                 `json:"is_fixed" form:"is_fixed"`
+	Description string               `json:"description" form:"description"`
+	Status      types.GoodsStatus    `json:"status" form:"status"`
 }
 
 type ListReply struct {
@@ -42,21 +42,6 @@ func (srv *Service) NeedssToListReply(c controller.MContext, obj []model.Needs) 
 	return
 }
 
-func (srv *Service) fetchUser(c controller.MContext, u uint) *NeedsUserReply {
-	if u == 0 {
-		return nil
-	}
-	usr, err := srv.userDB.ID(u)
-	if ginhelper.MaybeSelectError(c, usr, err) {
-		return nil
-	}
-	return &NeedsUserReply{
-		ID:           usr.ID,
-		NickName:     usr.NickName,
-		RegisterCity: usr.RegisterCity,
-	}
-}
-
 func (srv *Service) FromNeedss(c controller.MContext, needss []model.Needs) (gr []NeedsReply) {
 	for i := range needss {
 		gr = append(gr, NeedsReply{
@@ -64,7 +49,7 @@ func (srv *Service) FromNeedss(c controller.MContext, needss []model.Needs) (gr 
 			CreatedAt:   needss[i].CreatedAt,
 			UpdatedAt:   needss[i].UpdatedAt,
 			EndAt:       needss[i].EndAt,
-			Buyer:       srv.fetchUser(c, needss[i].Buyer),
+			Buyer:       reply.FetchUser(c, srv.userDB, needss[i].Buyer),
 			Type:        needss[i].Type,
 			Name:        needss[i].Name,
 			EndDuration: needss[i].EndDuration,

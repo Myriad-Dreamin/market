@@ -91,11 +91,12 @@ func (tester *Tester) Release() {
 
 func (tester *Tester) MakeAdminContext() bool {
 	resp := tester.Post("/v1/user", userservice.RegisterRequest{
-		Name:         "admin_context",
-		Password:     "Admin12345",
-		NickName:     "admin_context",
-		Phone:        "1234567891011",
-		RegisterCity: "Qing Dao S.D.",
+		Name:             "admin_context",
+		Password:         "Admin12345678",
+		NickName:         "admin_context",
+		Phone:            "1234567891011",
+		RegisterProvince: "Shan Dong sty",
+		RegisterCity:     "Qing Dao S.D.",
 	}, mock.Comment("admin register for test"))
 	if !tester.NoErr(resp) {
 		return false
@@ -110,7 +111,7 @@ func (tester *Tester) MakeAdminContext() bool {
 	resp = tester.Post("/v1/login",
 		userservice.LoginRequest{
 			ID:       r.ID,
-			Password: "Admin12345",
+			Password: "Admin12345678",
 		}, mock.Comment("admin login for test"))
 	if !tester.NoErr(resp) {
 		return false
@@ -155,8 +156,8 @@ func (tester *Tester) Main(doSomething func()) {
 	doSomething()
 }
 
-type GoStyleTestFunc func (*testing.T)
-type MinimumStyleTestFunc func (ctx *TesterContext)
+type GoStyleTestFunc func(*testing.T)
+type MinimumStyleTestFunc func(ctx *TesterContext)
 
 func (tester *Tester) HandleTest(testFunc MinimumStyleTestFunc) GoStyleTestFunc {
 	return func(t *testing.T) {
@@ -169,4 +170,3 @@ func (tester *Tester) HandleTestWithOutError(testFunc MinimumStyleTestFunc) GoSt
 		testFunc(tester.Context(t).AssertNoError(true))
 	}
 }
-
