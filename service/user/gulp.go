@@ -1,9 +1,9 @@
 package userservice
 
 import (
+	"github.com/Myriad-Dreamin/market/lib/controller"
 	"github.com/Myriad-Dreamin/market/model"
 	base_service "github.com/Myriad-Dreamin/market/service/base-service"
-	"github.com/gin-gonic/gin"
 )
 
 func (srv *Service) CreateEntity(id uint) base_service.CRUDEntity {
@@ -22,7 +22,7 @@ func (srv *Service) ResponsePost(obj base_service.CRUDEntity) interface{} {
 	return UserToPostReply(obj.(*model.User))
 }
 
-func (srv *Service) DeleteHook(c *gin.Context, obj base_service.CRUDEntity) bool {
+func (srv *Service) DeleteHook(c controller.MContext, obj base_service.CRUDEntity) bool {
 	return srv.deleteHook(c, obj.(*model.User))
 }
 
@@ -38,6 +38,6 @@ func (srv *Service) GetPutRequest() interface{} {
 	return new(PutRequest)
 }
 
-func (srv *Service) FillPutFields(c *gin.Context, user base_service.CRUDEntity, req interface{}) []string {
+func (srv *Service) FillPutFields(c controller.MContext, user base_service.CRUDEntity, req interface{}) []string {
 	return srv.fillPutFields(c, user.(*model.User), req.(*PutRequest))
 }

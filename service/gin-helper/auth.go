@@ -1,13 +1,13 @@
 package ginhelper
 
 import (
+	"github.com/Myriad-Dreamin/market/lib/controller"
 	"github.com/Myriad-Dreamin/market/model"
 	"github.com/Myriad-Dreamin/market/types"
-	"github.com/gin-gonic/gin"
 	"net/http"
 )
 
-func ResetPassword(c *gin.Context, obj *model.User, password string) bool {
+func ResetPassword(c controller.MContext, obj *model.User, password string) bool {
 	_, err := obj.ResetPassword(password)
 	if err != nil {
 		c.AbortWithStatusJSON(http.StatusInternalServerError, &types.ErrorSerializer{
@@ -19,7 +19,7 @@ func ResetPassword(c *gin.Context, obj *model.User, password string) bool {
 	return true
 }
 
-func AuthenticatePassword(c *gin.Context, user *model.User, password string) bool {
+func AuthenticatePassword(c controller.MContext, user *model.User, password string) bool {
 	if ok, err := user.AuthenticatePassword(password); err != nil {
 		c.AbortWithStatusJSON(http.StatusInternalServerError, &types.ErrorSerializer{
 			Code:  types.CodeAuthenticatePasswordError,

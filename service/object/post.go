@@ -1,11 +1,11 @@
 package objectservice
 
 import (
+	"github.com/Myriad-Dreamin/market/lib/controller"
 	"github.com/Myriad-Dreamin/market/model"
 	base_service "github.com/Myriad-Dreamin/market/service/base-service"
 	ginhelper "github.com/Myriad-Dreamin/market/service/gin-helper"
 	"github.com/Myriad-Dreamin/market/types"
-	"github.com/gin-gonic/gin"
 )
 
 type PostReply struct {
@@ -23,7 +23,7 @@ func ObjectToPostReply(obj *model.Object) *PostReply {
 type PostRequest struct {
 }
 
-func (srv *Service) SerializePost(c *gin.Context) base_service.CRUDEntity {
+func (srv *Service) SerializePost(c controller.MContext) base_service.CRUDEntity {
 	var req PostRequest
 	if !ginhelper.BindRequest(c, &req) {
 		return nil

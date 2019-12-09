@@ -1,7 +1,7 @@
 package service
 
 import (
-	"github.com/Myriad-Dreamin/gin-middleware/auth/jwt"
+	"github.com/Myriad-Dreamin/market/lib/jwt"
 	"github.com/Myriad-Dreamin/market/config"
 	"github.com/Myriad-Dreamin/market/control"
 	"github.com/Myriad-Dreamin/market/model"

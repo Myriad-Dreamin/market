@@ -1,8 +1,8 @@
 package base_service
 
 import (
+	"github.com/Myriad-Dreamin/market/lib/controller"
 	ginhelper "github.com/Myriad-Dreamin/market/service/gin-helper"
-	"github.com/gin-gonic/gin"
 	"net/http"
 )
 
@@ -12,7 +12,7 @@ type DObjectToolLite interface {
 }
 
 type DServiceInterface interface {
-	Delete(c *gin.Context)
+	Delete(c controller.MContext)
 }
 
 type DService struct {
@@ -27,7 +27,7 @@ func NewDService(tool DObjectToolLite, k string) DService {
 	}
 }
 
-func (srv DService) Delete(c *gin.Context) {
+func (srv DService) Delete(c controller.MContext) {
 	id, ok := ginhelper.ParseUint(c, srv.k)
 	if !ok {
 		return

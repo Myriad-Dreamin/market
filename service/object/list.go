@@ -1,9 +1,9 @@
 package objectservice
 
 import (
+	"github.com/Myriad-Dreamin/market/lib/controller"
 	"github.com/Myriad-Dreamin/market/model"
 	"github.com/Myriad-Dreamin/market/types"
-	"github.com/gin-gonic/gin"
 )
 
 type ListReply struct {
@@ -18,6 +18,6 @@ func ObjectsToListReply(obj []model.Object) (reply *ListReply) {
 	return
 }
 
-func (srv *Service) ProcessListResults(_ *gin.Context, result interface{}) interface{} {
+func (srv *Service) ProcessListResults(_ controller.MContext, result interface{}) interface{} {
 	return ObjectsToListReply(result.([]model.Object))
 }

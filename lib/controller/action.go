@@ -1,38 +1,37 @@
-package mgin
+package controller
 
 import (
 	"errors"
 	"fmt"
-	"github.com/gin-gonic/gin"
 	"net/http"
 	"strconv"
 )
 
-type Checker func(c *gin.Context, enforceVariables ...interface{}) bool
-type AuthFailedFunc func(c *gin.Context, errorString string)
-type ValidateFunc func(c *gin.Context, sbj string) bool
-type WrappedValidateFunc func(c *gin.Context) bool
+type Checker func(c MContext, enforceVariables ...interface{}) bool
+type AuthFailedFunc func(c MContext, errorString string)
+type ValidateFunc func(c MContext, sbj string) bool
+type WrappedValidateFunc func(c MContext) bool
 
 type common struct {
 	object      string
 	placeholder string
-	MissID      func(c *gin.Context)
+	MissID      func(c MContext)
 	Check       Checker
 }
 
 type ObjectMiddleware struct {
 	*common
-	validate func(c *gin.Context, sbj, obj string) bool
+	validate func(c MContext, sbj, obj string) bool
 }
 
-func defaultMissID(c *gin.Context) {
+func defaultMissID(c MContext) {
 	c.AbortWithStatus(http.StatusBadRequest)
 }
-func defaultAuthFailed(c *gin.Context, errorString string) {
+func defaultAuthFailed(c MContext, errorString string) {
 	c.AbortWithStatusJSON(http.StatusUnauthorized, errorString)
 }
 
-func NewObjectMiddleware(object, placeholder string, MissID gin.HandlerFunc, checker Checker) *ObjectMiddleware {
+func NewObjectMiddleware(object, placeholder string, MissID HandlerFunc, checker Checker) *ObjectMiddleware {
 	if MissID == nil {
 		MissID = defaultMissID
 	}
@@ -46,7 +45,7 @@ func NewObjectMiddleware(object, placeholder string, MissID gin.HandlerFunc, che
 			MissID:      MissID,
 			Check:       checker,
 		},
-		validate: func(c *gin.Context, sbj, obj string) bool { return true },
+		validate: func(c MContext, sbj, obj string) bool { return true },
 	}
 }
 
@@ -59,7 +58,7 @@ func (objFac *ObjectMiddleware) ToObjectString(id string) string {
 }
 
 func (objFac *ObjectMiddleware) Validate() ValidateFunc {
-	return func(c *gin.Context, sbj string) bool {
+	return func(c MContext, sbj string) bool {
 		if id := c.Param(objFac.placeholder); len(id) == 0 {
 			objFac.MissID(c)
 			return false
@@ -72,7 +71,7 @@ func (objFac *ObjectMiddleware) Validate() ValidateFunc {
 
 func (objFac *ObjectMiddleware) Absorb(action string) {
 	oldValidation := objFac.validate
-	objFac.validate = func(c *gin.Context, subject, object string) bool {
+	objFac.validate = func(c MContext, subject, object string) bool {
 		if !oldValidation(c, subject, object) {
 			return false
 		}
@@ -91,7 +90,7 @@ type Validator interface {
 type commonX struct {
 	uTable       string
 	idKey        string
-	reportMissID gin.HandlerFunc
+	reportMissID HandlerFunc
 	authFailed   AuthFailedFunc
 	checker      Checker
 }
@@ -103,7 +102,7 @@ type Middleware struct {
 }
 
 func fromValidatorAndAuthFailed(validator Validator, AuthFailed AuthFailedFunc) Checker {
-	return func(c *gin.Context, enforceVariables ...interface{}) bool {
+	return func(c MContext, enforceVariables ...interface{}) bool {
 		if ok, err := validator.Enforce(enforceVariables...); err != nil {
 			AuthFailed(c, err.Error())
 			return false
@@ -123,7 +122,7 @@ func newMiddlewareFromCommonX(reqs Requirements, commonX *commonX) *Middleware {
 	}
 }
 
-func NewMiddleware(validator Validator, uTable, idKey string, MissID gin.HandlerFunc, AuthFailed AuthFailedFunc) *Middleware {
+func NewMiddleware(validator Validator, uTable, idKey string, MissID HandlerFunc, AuthFailed AuthFailedFunc) *Middleware {
 	if AuthFailed == nil {
 		AuthFailed = defaultAuthFailed
 	}
@@ -170,8 +169,8 @@ func (mw *Middleware) MustGroup(object, placeholder string, reqs ...Requirement)
 	panic(fmt.Errorf("cannot register %v(%v) object", object, placeholder))
 }
 
-func (mw *Middleware) useValidate(validate ValidateFunc) gin.HandlerFunc {
-	return func(c *gin.Context) {
+func (mw *Middleware) useValidate(validate ValidateFunc) HandlerFunc {
+	return func(c MContext) {
 		subjectID := c.GetString(mw.idKey)
 		if len(subjectID) == 0 {
 			_ = c.AbortWithError(http.StatusForbidden, errors.New("missing uid"))
@@ -188,10 +187,10 @@ type Requirement struct {
 	Action string
 }
 
-type RetrieveFunc func(c *gin.Context) string
+type RetrieveFunc func(c MContext) string
 
 func (r Requirement) RetrieveFunc(placeholder string) RetrieveFunc {
-	return func(c *gin.Context) string {
+	return func(c MContext) string {
 		if id := c.Param(placeholder); len(id) == 0 {
 			return ""
 		}
@@ -209,7 +208,7 @@ func (r Requirements) PlusX(reqs Requirements) Requirements {
 }
 
 func (mw *Middleware) AdminOnlyValidate() ValidateFunc {
-	return func(c *gin.Context, sbj string) bool {
+	return func(c MContext, sbj string) bool {
 		return mw.checker(c, sbj, "_", "auth")
 	}
 }
@@ -223,14 +222,14 @@ func (mw *Middleware) BuildValidate(reqs ...Requirement) ValidateFunc {
 		}
 	}
 
-	validate := func(c *gin.Context, sbj string) bool {
+	validate := func(c MContext, sbj string) bool {
 		return true
 	}
 
 	for _, omw := range mw.objectMiddleware {
 		nextValidate := omw.Validate()
 		thisValidate := validate
-		validate = func(c *gin.Context, sbj string) bool {
+		validate = func(c MContext, sbj string) bool {
 			if !thisValidate(c, sbj) {
 				return false
 			}
@@ -242,7 +241,7 @@ func (mw *Middleware) BuildValidate(reqs ...Requirement) ValidateFunc {
 }
 
 func (mw *Middleware) Wrap(validate ValidateFunc) WrappedValidateFunc {
-	return func(c *gin.Context) bool {
+	return func(c MContext) bool {
 		subjectID := c.GetString(mw.idKey)
 		if len(subjectID) == 0 {
 			_ = c.AbortWithError(http.StatusForbidden, errors.New("missing uid"))
@@ -255,10 +254,10 @@ func (mw *Middleware) Wrap(validate ValidateFunc) WrappedValidateFunc {
 	}
 }
 
-func (mw *Middleware) AdminOnly() gin.HandlerFunc {
+func (mw *Middleware) AdminOnly() HandlerFunc {
 	return mw.useValidate(mw.AdminOnlyValidate())
 }
 
-func (mw *Middleware) Build(reqs ...Requirement) gin.HandlerFunc {
+func (mw *Middleware) Build(reqs ...Requirement) HandlerFunc {
 	return mw.useValidate(mw.BuildValidate(reqs...))
 }

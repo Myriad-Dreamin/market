@@ -1,36 +1,36 @@
 package router
 
 import (
-	"github.com/Myriad-Dreamin/market/lib/router"
+	"github.com/Myriad-Dreamin/market/lib/controller"
 	"github.com/Myriad-Dreamin/market/service"
 )
 
 type ObjectRouter struct {
-	*mgin.Router
-	AuthRouter *mgin.Router
-	Auth     *mgin.Middleware
+	*controller.Router
+	AuthRouter *controller.Router
+	Auth     *controller.Middleware
 	IDRouter *ObjectIDRouter
 
-	Post    *mgin.LeafRouter
-	GetList *mgin.LeafRouter
+	Post    *controller.LeafRouter
+	GetList *controller.LeafRouter
 }
 
 type ObjectIDRouter struct {
-	*mgin.Router
-	AuthRouter *mgin.Router
-	Auth *mgin.Middleware
+	*controller.Router
+	AuthRouter *controller.Router
+	Auth *controller.Middleware
 
-	Get    *mgin.LeafRouter
-	Put    *mgin.LeafRouter
-	Delete *mgin.LeafRouter
+	Get    *controller.LeafRouter
+	Put    *controller.LeafRouter
+	Delete *controller.LeafRouter
 }
 
 func BuildObjectRouter(parent *RootRouter, serviceProvider *service.Provider) (router *ObjectRouter) {
 	objectService := serviceProvider.ObjectService()
 	router = &ObjectRouter{
-		Router: parent.Router.Extend("object"),
+		Router:     parent.Router.Extend("object"),
 		AuthRouter: parent.AuthRouter.Extend("object"),
-		Auth:   parent.Auth.Copy(),
+		Auth:       parent.Auth.Copy(),
 	}
 	router.GetList = router.GET("object-list", objectService.List)
 	router.Post = router.AuthRouter.POST("/object", objectService.Post)
@@ -46,9 +46,9 @@ func (*ObjectIDRouter) subBuild(parent *ObjectRouter, serviceProvider *service.P
 	objectService := serviceProvider.ObjectService()
 
 	router = &ObjectIDRouter{
-		Router: parent.Group("/object/:oid"),
+		Router:     parent.Group("/object/:oid"),
 		AuthRouter: parent.AuthRouter.Group("/object/:oid"),
-		Auth:   parent.Auth.MustGroup("object", "oid"),
+		Auth:       parent.Auth.MustGroup("object", "oid"),
 	}
 
 	router.Get = router.GET("", objectService.Get)

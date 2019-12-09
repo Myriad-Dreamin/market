@@ -3,6 +3,7 @@ package tests
 import (
 	goodsservice "github.com/Myriad-Dreamin/market/service/goods"
 	"github.com/Myriad-Dreamin/market/types"
+	"github.com/Myriad-Dreamin/minimum-lib/mock"
 	"strconv"
 	"testing"
 	"time"
@@ -61,7 +62,7 @@ func testGoodsPostWithError(t *testing.T) {
 		MinPrice:    min_price,
 		IsFixed:     is_fixed,
 		Description: "",
-	})
+	}, mock.Comment("type invalid"))
 	err := ctx.FetchError(resp)
 	if err.RespCode != 200 || err.Code != types.CodeInvalidParameters {
 		t.Error("code not be 200: ", err)
@@ -73,20 +74,7 @@ func testGoodsPostWithError(t *testing.T) {
 		MinPrice:    min_price,
 		IsFixed:     is_fixed,
 		Description: "",
-	})
-	err = ctx.FetchError(resp)
-	if err.RespCode != 200 || err.Code != types.CodeInvalidParameters {
-		t.Error(err)
-	}
-
-	resp = ctx.Post("/v1/goods", goodsservice.PostRequest{
-		EndAt:       end_at,
-		Type:        tp,
-		Name:        "",
-		MinPrice:    min_price,
-		IsFixed:     is_fixed,
-		Description: "",
-	})
+	}, mock.Comment("name required"))
 	err = ctx.FetchError(resp)
 	if err.RespCode != 200 || err.Code != types.CodeInvalidParameters {
 		t.Error(err)
@@ -98,7 +86,7 @@ func testGoodsPostWithError(t *testing.T) {
 		"name": "es1",
 		"min_price": -1,
 		"is_fixed": false,
-	})
+	}, mock.Comment("price negative"))
 	err = ctx.FetchError(resp)
 	if err.RespCode != 200 || err.Code != types.CodeInvalidParameters {
 		t.Error(err)
@@ -111,7 +99,7 @@ func testGoodsPostWithError(t *testing.T) {
 		MinPrice:    min_price,
 		IsFixed:     is_fixed,
 		Description: "",
-	})
+	}, mock.Comment("short alive duration"))
 	err = ctx.FetchError(resp)
 	if err.RespCode != 200 || err.Code != types.CodeInvalidParameters {
 		t.Error(err)

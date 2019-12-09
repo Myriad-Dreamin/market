@@ -3,10 +3,11 @@ package server
 import (
 	"context"
 	"github.com/DeanThompson/ginpprof"
-	"github.com/Myriad-Dreamin/gin-middleware/auth/jwt"
 	"github.com/Myriad-Dreamin/market/config"
+	"github.com/Myriad-Dreamin/market/control"
+	"github.com/Myriad-Dreamin/market/lib/controller"
+	"github.com/Myriad-Dreamin/market/lib/jwt"
 	"github.com/Myriad-Dreamin/market/lib/plugin"
-	router2 "github.com/Myriad-Dreamin/market/lib/router"
 	"github.com/Myriad-Dreamin/market/model"
 	dblayer "github.com/Myriad-Dreamin/market/model/db-layer"
 	"github.com/Myriad-Dreamin/market/router"
@@ -30,14 +31,14 @@ type Server struct {
 
 	DB           *gorm.DB
 	RedisPool    *redis.Pool
-	RouterEngine *gin.Engine
+	RouterEngine *control.HttpEngine
 	Router       *router.RootRouter
 
 	contestPath string
 
 	jwtMW *jwt.Middleware
 	//var authMW *privileger.MiddleWare
-	routerAuthMW *router2.Middleware
+	routerAuthMW *controller.Middleware
 	corsMW       gin.HandlerFunc
 
 	Module           module.Module
@@ -46,6 +47,10 @@ type Server struct {
 	RouterProvider   *router.Provider
 
 	plugins []plugin.Plugin
+}
+
+func NewServer(cfg *config.ServerConfig) *Server {
+	return &Server{Cfg: cfg}
 }
 
 func (srv *Server) Terminate() {
@@ -88,7 +93,7 @@ func newServer(options []Option) *Server {
 	srv.Module = make(module.Module)
 	srv.ServiceProvider = new(service.Provider)
 	srv.DatabaseProvider = model.NewProvider("/database")
-	srv.RouterProvider = router.NewProvider("/Router")
+	srv.RouterProvider = router.NewProvider("/IRouter")
 
 	_ = model.SetProvider(srv.DatabaseProvider)
 	return srv
@@ -170,7 +175,7 @@ func (srv *Server) Serve(port string) {
 		}
 	}()
 
-	srv.Router.Root.Build(srv.RouterEngine)
+	control.BuildHttp(srv.Router.Root, srv.RouterEngine)
 	srv.Module.Debug(srv.Logger)
 
 	ctx, cancel := context.WithCancel(context.Background())
@@ -191,7 +196,7 @@ func (srv *Server) Serve(port string) {
 	wg.Add(1)
 	go func() {
 		if err := srv.RouterEngine.Run(port); err != nil {
-			srv.Logger.Debug("Router run error", "error", err)
+			srv.Logger.Debug("IRouter run error", "error", err)
 		}
 		wg.Done()
 	}()

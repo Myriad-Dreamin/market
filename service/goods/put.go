@@ -1,9 +1,9 @@
 package goodsservice
 
 import (
+	"github.com/Myriad-Dreamin/market/lib/controller"
 	"github.com/Myriad-Dreamin/market/model"
 	"github.com/Myriad-Dreamin/market/types"
-	"github.com/gin-gonic/gin"
 	"net/http"
 	"time"
 )
@@ -17,7 +17,7 @@ type PutRequest struct {
 	Description string    `json:"description" form:"description"`
 }
 
-func (srv *Service) fillPutFields(c *gin.Context, goods *model.Goods, req *PutRequest) (fields []string) {
+func (srv *Service) fillPutFields(c controller.MContext, goods *model.Goods, req *PutRequest) (fields []string) {
 	if goods.EndAt.Sub(time.Now()) <= time.Minute {
 		c.AbortWithStatusJSON(http.StatusOK, types.ErrorSerializer{
 			Code:  types.CodeGoodsLifeTimeout,

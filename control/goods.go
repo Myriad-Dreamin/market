@@ -1,7 +1,8 @@
 package control
 
-import "github.com/gin-gonic/gin"
-
+import (
+	"github.com/Myriad-Dreamin/market/lib/controller"
+)
 
 /* goods
  * post: 登记商品
@@ -26,35 +27,35 @@ type GoodsService interface {
 	//     + `is_fixed bool`: If `is_fixed` is false, then the item will be auctioned. And after the end time, you can confirm and sell at the highest price. Otherwise, then the item will be sold on a first-come-first-get basis. In this case, you should also confirm the transaction.
 	//
 	//     + `description string`: a short description of the goods.
-	Post(c *gin.Context)
+	Post(c controller.MContext)
 
 	// @Title Goods Put
 	// @Description Put Goods
-	Put(c *gin.Context)
+	Put(c controller.MContext)
 
 	// @Title Goods Delete
 	// @Description This is the public interface for deleting goods. You cannot use this interface to delete a transaction that has already been completed (`goods.Status == types.GoodsStatusFinished`). the request url is `v1/goods/:goid.DELETE` where `:goid` is the corresponding goods number
-	Delete(c *gin.Context)
+	Delete(c controller.MContext)
 
 	// @Title Goods Force Delete
 	// @Description This is the private interface for deleting an goods. Only administrators can call this api. It can delete any goods, so when you call it, you should know what you are doing. the request url is `v1/goods/:goid/force.DELETE` where `:goid` is the corresponding goods number
-	ForceDelete(c *gin.Context)
+	ForceDelete(c controller.MContext)
 
 	// @Title Goods Get
 	// @Description This is a public interface for getting goods information, and only returns limited information. If you want to get all information of specified goods, you can access the Inspect interface. the request url is `v1/goods/:goid.GET` where `:goid` is the corresponding goods number
-	Get(c *gin.Context)
+	Get(c controller.MContext)
 
 	// @Title Goods Inspect
 	// @Description This is a public interface for getting goods information, and will returns all the information. the request url is `v1/goods/:goid/inspect.GET` where `:goid` is the corresponding goods number
-	Inspect(c *gin.Context)
+	Inspect(c controller.MContext)
 
 	// @Title Goods List
 	// @Description List Goods
-	List(c *gin.Context)
+	List(c controller.MContext)
 
 
 	// @Title Upload Goods' Picture
 	// @Description This interface is used to upload pictures of goods. It is not merged into the Put interface just because the man who writes backend is too lazy. the request url is `v1/goods/:goid/picture.PUT` where `:goid` is the corresponding goods number
-	PutPicture(c *gin.Context)
+	PutPicture(c controller.MContext)
 }
 

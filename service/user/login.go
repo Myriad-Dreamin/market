@@ -1,10 +1,10 @@
 package userservice
 
 import (
+	"github.com/Myriad-Dreamin/market/lib/controller"
 	"github.com/Myriad-Dreamin/market/model"
 	ginhelper "github.com/Myriad-Dreamin/market/service/gin-helper"
 	"github.com/Myriad-Dreamin/market/types"
-	"github.com/gin-gonic/gin"
 	"net/http"
 	"strconv"
 	"time"
@@ -80,7 +80,7 @@ generating the token for logging
 authenticating the password
 */
 
-func (srv *Service) Login(c *gin.Context) {
+func (srv *Service) Login(c controller.MContext) {
 	var req = new(LoginRequest)
 
 	if !ginhelper.BindRequest(c, req) {

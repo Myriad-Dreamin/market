@@ -1,8 +1,8 @@
 package userservice
 
 import (
+	"github.com/Myriad-Dreamin/market/lib/controller"
 	ginhelper "github.com/Myriad-Dreamin/market/service/gin-helper"
-	"github.com/gin-gonic/gin"
 	"net/http"
 )
 
@@ -11,7 +11,7 @@ type ChangePasswordRequest struct {
 	NewPassword string `form:"new-password" json:"new-password" binding:"required"`
 }
 
-func (srv *Service) ChangePassword(c *gin.Context) {
+func (srv *Service) ChangePassword(c controller.MContext) {
 	var req = new(ChangePasswordRequest)
 	id, ok := ginhelper.ParseUintAndBind(c, "id", req)
 	if !ok {

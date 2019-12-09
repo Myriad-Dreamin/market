@@ -1,9 +1,9 @@
 package statisticservice
 
 import (
+	"github.com/Myriad-Dreamin/market/lib/controller"
 	"github.com/Myriad-Dreamin/market/model"
 	"github.com/Myriad-Dreamin/market/types"
-	"github.com/gin-gonic/gin"
 )
 
 type StatFeeReply struct {
@@ -15,7 +15,7 @@ func ToStatFeeReply() StatFeeReply {
 }
 
 
-func (svc *Service) StatGoodsFee(c *gin.Context) {
+func (svc *Service) StatGoodsFee(c controller.MContext) {
 	svc.statGoodsFeeService.List(c)
 	return
 }
@@ -27,6 +27,6 @@ func (svc statGoodsFeeService) CreateFilter() interface{} {
 	return new(model.StatFeeRequest)
 }
 
-func (svc statGoodsFeeService) ProcessListResults(c *gin.Context, r interface{}) interface{} {
+func (svc statGoodsFeeService) ProcessListResults(c controller.MContext, r interface{}) interface{} {
 	return ToStatFeeReply()
 }

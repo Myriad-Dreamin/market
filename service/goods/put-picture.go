@@ -1,6 +1,7 @@
 package goodsservice
 
 import (
+	"github.com/Myriad-Dreamin/market/lib/controller"
 	ginhelper "github.com/Myriad-Dreamin/market/service/gin-helper"
 	"github.com/Myriad-Dreamin/market/types"
 	"github.com/gin-gonic/gin"
@@ -8,7 +9,7 @@ import (
 	"strconv"
 )
 
-func (srv *Service) PutPicture(c *gin.Context) {
+func (srv *Service) PutPicture(c controller.MContext) {
 	id, ok := ginhelper.ParseUint(c, srv.key)
 	if !ok {
 		return

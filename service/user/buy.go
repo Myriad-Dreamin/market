@@ -1,9 +1,9 @@
 package userservice
 
 import (
+	"github.com/Myriad-Dreamin/market/lib/controller"
 	ginhelper "github.com/Myriad-Dreamin/market/service/gin-helper"
 	"github.com/Myriad-Dreamin/market/types"
-	"github.com/gin-gonic/gin"
 	"net/http"
 )
 
@@ -19,7 +19,7 @@ TODO
 type BuyRequest struct {
 }
 
-func (srv *Service) Buy(c *gin.Context) {
+func (srv *Service) Buy(c controller.MContext) {
 	var req BuyRequest
 	id, ok := ginhelper.ParseUintAndBind(c, "goid", &req)
 	if !ok {

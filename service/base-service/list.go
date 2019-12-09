@@ -1,15 +1,15 @@
 package base_service
 
 import (
+	"github.com/Myriad-Dreamin/market/lib/controller"
 	ginhelper "github.com/Myriad-Dreamin/market/service/gin-helper"
 	"github.com/Myriad-Dreamin/market/types"
-	"github.com/gin-gonic/gin"
 	"net/http"
 )
 
 type ListableObjectToolLite interface {
 	CreateFilter() interface{}
-	ProcessListResults(c *gin.Context, r interface{}) interface{}
+	ProcessListResults(c controller.MContext, r interface{}) interface{}
 }
 
 type ListService struct {
@@ -32,7 +32,7 @@ type ListReply struct {
 }
 
 
-func (srv *ListService) List(c *gin.Context) {
+func (srv *ListService) List(c controller.MContext) {
 	var f = srv.tool.CreateFilter()
 	if !ginhelper.BindRequest(c, f) {
 		return

@@ -5,5 +5,6 @@ const (
 	GoodsTypeElectronic
 	GoodsTypeDaily
 	GoodsTypeBook
+	GoodsTypeLength
 )
 

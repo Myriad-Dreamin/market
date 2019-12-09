@@ -1,17 +1,17 @@
 package router
 
 import (
-	"github.com/Myriad-Dreamin/market/lib/router"
+	"github.com/Myriad-Dreamin/market/lib/controller"
 	"github.com/Myriad-Dreamin/market/service"
 )
 
 type StatisticRouter struct {
-	*mgin.Router
-	AuthRouter *mgin.Router
-	Auth     *mgin.Middleware
+	*controller.Router
+	AuthRouter *controller.Router
+	Auth     *controller.Middleware
 
-	FeeXY *mgin.LeafRouter
-	CountXY *mgin.LeafRouter
+	FeeXY *controller.LeafRouter
+	CountXY *controller.LeafRouter
 }
 
 func BuildStatisticRouter(parent *RootRouter, serviceProvider *service.Provider) (router *StatisticRouter) {
@@ -19,9 +19,9 @@ func BuildStatisticRouter(parent *RootRouter, serviceProvider *service.Provider)
 	statisticService := serviceProvider.StatisticService()
 
 	router = &StatisticRouter{
-		Router: parent.Router.Group("statistic"),
+		Router:     parent.Router.Group("statistic"),
 		AuthRouter: parent.AuthRouter.Group("statistic"),
-		Auth:   parent.Auth.Copy(),
+		Auth:       parent.Auth.Copy(),
 	}
 
 	router.FeeXY = router.AuthRouter.GET("/fee", statisticService.StatGoodsFeeXY)

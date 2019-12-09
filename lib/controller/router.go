@@ -1,13 +1,19 @@
-package mgin
+//go:generate stringer -type=MethodType
+package controller
 
 import (
 	"fmt"
-	"github.com/gin-gonic/gin"
 	"net/http"
+	"path/filepath"
+	"reflect"
+	"runtime"
+	"strings"
 )
 
+type MethodType uint8
+
 const (
-	Any uint8 = iota
+	Any MethodType = iota
 	GET
 	POST
 	DELETE
@@ -21,19 +27,19 @@ const (
 )
 
 type LeafRouter struct {
-	leafType        uint8
+	leafType        MethodType
 	rawRelativePath string
 	option          interface{}
-	middleware      []gin.HandlerFunc
-	afterHandlers   []gin.HandlerFunc
+	middleware      []HandlerFunc
+	afterHandlers   []HandlerFunc
 }
 
-func (l *LeafRouter) Use(handlers ...gin.HandlerFunc) *LeafRouter {
+func (l *LeafRouter) Use(handlers ...HandlerFunc) *LeafRouter {
 	l.middleware = append(l.middleware, handlers...)
 	return l
 }
 
-func (l *LeafRouter) Build(g gin.IRouter) {
+func (l *LeafRouter) Build(g IRouter) {
 
 	switch l.leafType {
 	case GET:
@@ -61,7 +67,28 @@ func (l *LeafRouter) Build(g gin.IRouter) {
 	}
 }
 
-func NewLeafRouter(leafType uint8, path string, handlers ...gin.HandlerFunc) *LeafRouter {
+func nameOfFunction(f interface{}) string {
+	return runtime.FuncForPC(reflect.ValueOf(f).Pointer()).Name()
+}
+
+
+func (l *LeafRouter) RouteInfo(path string) RouteInfo {
+	return RouteInfo{
+		Method:      l.leafType.String(),
+		Path:        strings.ReplaceAll(path, "\\", "/"),
+		Handler:     nameOfFunction(l.Last()),
+		HandlerFunc: l.Last(),
+	}
+}
+
+func (l *LeafRouter) Last() HandlerFunc {
+	if len(l.afterHandlers) == 0 {
+		return nil
+	}
+	return l.afterHandlers[len(l.afterHandlers) - 1]
+}
+
+func NewLeafRouter(leafType MethodType, path string, handlers ...HandlerFunc) *LeafRouter {
 	return &LeafRouter{
 		leafType:        leafType,
 		rawRelativePath: path,
@@ -69,7 +96,7 @@ func NewLeafRouter(leafType uint8, path string, handlers ...gin.HandlerFunc) *Le
 	}
 }
 
-func NewLeafRouterOp(leafType uint8, path string, option interface{}, handlers ...gin.HandlerFunc) *LeafRouter {
+func NewLeafRouterOp(leafType MethodType, path string, option interface{}, handlers ...HandlerFunc) *LeafRouter {
 	switch leafType {
 	case Static:
 		if _, ok := option.(string); !ok {
@@ -93,19 +120,19 @@ func NewLeafRouterOp(leafType uint8, path string, option interface{}, handlers .
 }
 
 type Router struct {
-	handlers           []gin.HandlerFunc
+	handlers           []HandlerFunc
 	SubRouter          map[string]*Router
 	SameLevelSubRouter map[string]*Router
 	Leafs              map[string]*LeafRouter
 }
 
-func NewRouterGroup(handlers ...gin.HandlerFunc) *Router {
+func NewRouterGroup(handlers ...HandlerFunc) *Router {
 	return &Router{
 		handlers: handlers,
 	}
 }
 
-func (c *Router) Build(g gin.IRouter) {
+func (c *Router) Build(g IRouter) {
 	g.Use(c.handlers...)
 	for k, sr := range c.SubRouter {
 		sr.Build(g.Group(k))
@@ -118,7 +145,7 @@ func (c *Router) Build(g gin.IRouter) {
 	}
 }
 
-func (c *Router) Group(relativePath string, handlers ...gin.HandlerFunc) (r *Router) {
+func (c *Router) Group(relativePath string, handlers ...HandlerFunc) (r *Router) {
 	if c.SubRouter == nil {
 		c.SubRouter = make(map[string]*Router)
 	} else if _, ok := c.SubRouter[relativePath]; ok {
@@ -129,7 +156,7 @@ func (c *Router) Group(relativePath string, handlers ...gin.HandlerFunc) (r *Rou
 	return
 }
 
-func (c *Router) Extend(name string, handlers ...gin.HandlerFunc) (r *Router) {
+func (c *Router) Extend(name string, handlers ...HandlerFunc) (r *Router) {
 	if c.SameLevelSubRouter == nil {
 		c.SameLevelSubRouter = make(map[string]*Router)
 	} else if _, ok := c.SameLevelSubRouter[name]; ok {
@@ -140,12 +167,12 @@ func (c *Router) Extend(name string, handlers ...gin.HandlerFunc) (r *Router) {
 	return
 }
 
-func (c *Router) Use(handlers ...gin.HandlerFunc) *Router {
+func (c *Router) Use(handlers ...HandlerFunc) *Router {
 	c.handlers = append(c.handlers, handlers...)
 	return c
 }
 
-func (c *Router) leaf(leafType uint8, relativePath string, handlers ...gin.HandlerFunc) (r *LeafRouter) {
+func (c *Router) leaf(leafType MethodType, relativePath string, handlers ...HandlerFunc) (r *LeafRouter) {
 	if c.Leafs == nil {
 		c.Leafs = make(map[string]*LeafRouter)
 	} else if _, ok := c.Leafs[relativePath+string(leafType)]; ok {
@@ -156,7 +183,7 @@ func (c *Router) leaf(leafType uint8, relativePath string, handlers ...gin.Handl
 	return
 }
 
-func (c *Router) leafOp(leafType uint8, relativePath string, op interface{}, handlers ...gin.HandlerFunc) (r *LeafRouter) {
+func (c *Router) leafOp(leafType MethodType, relativePath string, op interface{}, handlers ...HandlerFunc) (r *LeafRouter) {
 	if c.Leafs == nil {
 		c.Leafs = make(map[string]*LeafRouter)
 	} else if _, ok := c.Leafs[relativePath]; ok {
@@ -167,42 +194,72 @@ func (c *Router) leafOp(leafType uint8, relativePath string, op interface{}, han
 	return
 }
 
-func (c *Router) GET(relativePath string, handlers ...gin.HandlerFunc) *LeafRouter {
+func (c *Router) GET(relativePath string, handlers ...HandlerFunc) *LeafRouter {
 	return c.leaf(GET, relativePath, handlers...)
 }
 
-func (c *Router) POST(relativePath string, handlers ...gin.HandlerFunc) *LeafRouter {
+func (c *Router) POST(relativePath string, handlers ...HandlerFunc) *LeafRouter {
 	return c.leaf(POST, relativePath, handlers...)
 }
 
-func (c *Router) DELETE(relativePath string, handlers ...gin.HandlerFunc) *LeafRouter {
+func (c *Router) DELETE(relativePath string, handlers ...HandlerFunc) *LeafRouter {
 	return c.leaf(DELETE, relativePath, handlers...)
 }
 
-func (c *Router) PATCH(relativePath string, handlers ...gin.HandlerFunc) *LeafRouter {
+func (c *Router) PATCH(relativePath string, handlers ...HandlerFunc) *LeafRouter {
 	return c.leaf(PATCH, relativePath, handlers...)
 }
 
-func (c *Router) PUT(relativePath string, handlers ...gin.HandlerFunc) *LeafRouter {
+func (c *Router) PUT(relativePath string, handlers ...HandlerFunc) *LeafRouter {
 	return c.leaf(PUT, relativePath, handlers...)
 }
 
-func (c *Router) OPTIONS(relativePath string, handlers ...gin.HandlerFunc) *LeafRouter {
+func (c *Router) OPTIONS(relativePath string, handlers ...HandlerFunc) *LeafRouter {
 	return c.leaf(OPTIONS, relativePath, handlers...)
 }
 
-func (c *Router) HEAD(relativePath string, handlers ...gin.HandlerFunc) *LeafRouter {
+func (c *Router) HEAD(relativePath string, handlers ...HandlerFunc) *LeafRouter {
 	return c.leaf(HEAD, relativePath, handlers...)
 }
 
-func (c *Router) StaticFile(relativePath string, filepath string, handlers ...gin.HandlerFunc) *LeafRouter {
+func (c *Router) StaticFile(relativePath string, filepath string, handlers ...HandlerFunc) *LeafRouter {
 	return c.leafOp(HEAD, relativePath, filepath, handlers...)
 }
 
-func (c *Router) Static(relativePath string, root string, handlers ...gin.HandlerFunc) *LeafRouter {
+func (c *Router) Static(relativePath string, root string, handlers ...HandlerFunc) *LeafRouter {
 	return c.leafOp(HEAD, relativePath, root, handlers...)
 }
 
-func (c *Router) StaticFS(relativePath string, fs http.FileSystem, handlers ...gin.HandlerFunc) *LeafRouter {
+func (c *Router) StaticFS(relativePath string, fs http.FileSystem, handlers ...HandlerFunc) *LeafRouter {
 	return c.leafOp(HEAD, relativePath, fs, handlers...)
+}
+
+// RouteInfo represents a request route's specification which contains method and path and its handler.
+type RouteInfo struct {
+	Method      string
+	Path        string
+	Handler     string
+	HandlerFunc HandlerFunc
+}
+
+// RoutesInfo defines a RouteInfo array.
+type RoutesInfo []RouteInfo
+
+// Routes returns a slice of registered routes, including some useful information, such as:
+// the http method, path and the handler name.
+func (engine *Router) routes(path string, routes RoutesInfo) RoutesInfo {
+	for spath, router := range engine.SubRouter {
+		routes = router.routes(filepath.Join(path, spath), routes)
+	}
+	for _, router := range engine.SameLevelSubRouter {
+		routes = router.routes(path, routes)
+	}
+	for spath, leaf := range engine.Leafs {
+		routes = append(routes, leaf.RouteInfo(filepath.Join(path, spath[:len(spath)-1])))
+	}
+	return routes
+}
+
+func (engine *Router) Routes() (routes RoutesInfo) {
+	return engine.routes("", nil)
 }

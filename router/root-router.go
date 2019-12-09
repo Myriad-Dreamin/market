@@ -1,19 +1,19 @@
 package router
 
 import (
-	"github.com/Myriad-Dreamin/gin-middleware/auth/jwt"
-	"github.com/Myriad-Dreamin/market/lib/router"
+	"github.com/Myriad-Dreamin/market/lib/controller"
+	"github.com/Myriad-Dreamin/market/lib/jwt"
 	"github.com/Myriad-Dreamin/market/service"
 	"github.com/gin-gonic/gin"
 )
 
 type RootRouter struct {
-	Root       *mgin.Router
-	Router     *mgin.Router
-	AuthRouter *mgin.Router
-	Auth       *mgin.Middleware
+	Root       *controller.Router
+	Router     *controller.Router
+	AuthRouter *controller.Router
+	Auth       *controller.Middleware
 
-	Ping *mgin.LeafRouter
+	Ping *controller.LeafRouter
 	//ObjectRouter *ObjectRouter
 	UserRouter  *UserRouter
 	GoodsRouter *GoodsRouter
@@ -23,14 +23,14 @@ type RootRouter struct {
 
 // @title Ping
 // @description result
-func PingFunc(c *gin.Context) {
+func PingFunc(c controller.MContext) {
 	c.JSON(200, gin.H{
 		"message": "pong",
 	})
 }
 
-func NewRootRouter(serviceProvider *service.Provider, jwtMW *jwt.Middleware, routerAuthMW *mgin.Middleware) (r *RootRouter) {
-	rr := mgin.NewRouterGroup()
+func NewRootRouter(serviceProvider *service.Provider, jwtMW *jwt.Middleware, routerAuthMW *controller.Middleware) (r *RootRouter) {
+	rr := controller.NewRouterGroup()
 	apiRouterV1 := rr.Group("/v1")
 	authRouterV1 := apiRouterV1.Group("", jwtMW.Build())
 

@@ -1,6 +1,8 @@
 package control
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/Myriad-Dreamin/market/lib/controller"
+)
 
 /* user
  * login POST 登陆
@@ -16,48 +18,48 @@ type UserService interface {
 
 	// @Title Login
 	// @Description Login
-	Login(c *gin.Context)
+	Login(c controller.MContext)
 
 	// @Title Register
 	// @Description Register
-	Register(c *gin.Context)
+	Register(c controller.MContext)
 
 	// @Title Put
 	// @Description Put User
-	Put(c *gin.Context)
+	Put(c controller.MContext)
 
 	// @Title ChangePassword
 	// @Description change password of user
-	ChangePassword(c *gin.Context)
+	ChangePassword(c controller.MContext)
 
 	//// /:id/grant PUT
-	//Grant(c *gin.Context)
+	//Grant(c mcontext.MContext)
 
 	// @Title Get
 	// @Description Get User
-	Get(c *gin.Context)
+	Get(c controller.MContext)
 
 	// @Title Delete
 	// @Description Delete User
-	Delete(c *gin.Context)
+	Delete(c controller.MContext)
 
 	// @Title List
 	// @Description List User
-	List(c *gin.Context)
+	List(c controller.MContext)
 
 	// @Title Buy
 	// @Description Buy Goods
-	Buy(c *gin.Context)
+	Buy(c controller.MContext)
 
 	// @Title Sell
 	// @Description Sell Needs
-	Sell(c *gin.Context)
+	Sell(c controller.MContext)
 
 	// @Title ConfirmBuy
 	// @Description ConfirmBuy Goods
-	ConfirmBuy(c *gin.Context)
+	ConfirmBuy(c controller.MContext)
 
 	// @Title ConfirmSell
 	// @Description ConfirmSell Needs
-	ConfirmSell(c *gin.Context)
+	ConfirmSell(c controller.MContext)
 }

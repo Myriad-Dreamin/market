@@ -4,9 +4,12 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
+	"fmt"
 	"github.com/Myriad-Dreamin/go-magic-package/instance"
 	parser "github.com/Myriad-Dreamin/go-parse-package"
 	"github.com/Myriad-Dreamin/market/config"
+	"github.com/Myriad-Dreamin/market/control"
+	"github.com/Myriad-Dreamin/market/lib/controller"
 	"github.com/Myriad-Dreamin/market/types"
 	"io"
 	"io/ioutil"
@@ -27,7 +30,7 @@ type Mocker struct {
 	*Server
 	cancel             func()
 	header             map[string]string
-	routes             map[string]*mock.Results
+	routes             map[string]*Results
 	contextHelper      abstract_test.ContextHelperInterface
 	shouldPrintRequest bool
 	assertNoError      bool
@@ -85,7 +88,7 @@ func Mock(options ...Option) (srv *Mocker) {
 	}()
 
 	srv.RouterEngine.Use(mock.ContextRecorder())
-	srv.Router.Root.Build(srv.RouterEngine)
+	control.BuildHttp(srv.Router.Root, srv.RouterEngine)
 	srv.Module.Debug(srv.Logger)
 
 	ctx, cancel := context.WithCancel(context.Background())
@@ -108,17 +111,45 @@ func Mock(options ...Option) (srv *Mocker) {
 	srv.cancel = cancel
 	srv.contextHelper = &abstract_test.ContextHelper{Logger: log.New(srv.LoggerWriter, "mocker", log.Ldate|log.Ltime|log.Llongfile|log.LstdFlags)}
 
-	routes := srv.RouterEngine.Routes()
-	srv.routes = make(map[string]*mock.Results)
+	routes := srv.Router.Root.Routes()
+	srv.routes = make(map[string]*Results)
 	for _, route := range routes {
-		srv.routes[route.Path+"@"+route.Method] = &mock.Results{
+		srv.routes[route.Path+"@"+route.Method] = &Results{
 			RouteInfo: route,
 			Recs:      nil,
 		}
 	}
+	fmt.Println(srv.routes)
 
 	return
 }
+
+
+type Results struct {
+	controller.RouteInfo
+	Recs []mock.RecordsI
+}
+
+func (r Results) GetMethod() string {
+	return r.Method
+}
+
+func (r Results) GetPath() string {
+	return r.Path
+}
+
+func (r Results) GetHandlerFunc() interface{} {
+	return r.HandlerFunc
+}
+
+func (r Results) GetHandler() string {
+	return r.Handler
+}
+
+func (r Results) GetRecords() []mock.RecordsI {
+	return r.Recs
+}
+
 
 func (mocker *Mocker) PrintRequest(p bool) {
 	mocker.shouldPrintRequest = p

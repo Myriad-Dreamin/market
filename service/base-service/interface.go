@@ -1,6 +1,8 @@
 package base_service
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/Myriad-Dreamin/market/lib/controller"
+)
 
 type CRUDEntity interface {
 	Create() (int64, error)
@@ -9,7 +11,7 @@ type CRUDEntity interface {
 }
 
 type dHookObject interface {
-	DeleteHook(c *gin.Context, obj CRUDEntity) bool
+	DeleteHook(c controller.MContext, obj CRUDEntity) bool
 }
 
 type FObject interface {

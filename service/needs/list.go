@@ -1,10 +1,10 @@
 package needsservice
 
 import (
+	"github.com/Myriad-Dreamin/market/lib/controller"
 	"github.com/Myriad-Dreamin/market/model"
 	ginhelper "github.com/Myriad-Dreamin/market/service/gin-helper"
 	"github.com/Myriad-Dreamin/market/types"
-	"github.com/gin-gonic/gin"
 	"time"
 )
 
@@ -36,14 +36,14 @@ type ListReply struct {
 	Needss []NeedsReply `json:"needss"`
 }
 
-func (srv *Service) NeedssToListReply(c *gin.Context, obj []model.Needs) (reply *ListReply) {
+func (srv *Service) NeedssToListReply(c controller.MContext, obj []model.Needs) (reply *ListReply) {
 	reply = new(ListReply)
 	reply.Code = types.CodeOK
 	reply.Needss = srv.FromNeedss(c, obj)
 	return
 }
 
-func (srv *Service) fetchUser(c *gin.Context, u uint) *NeedsUserReply {
+func (srv *Service) fetchUser(c controller.MContext, u uint) *NeedsUserReply {
 	if u == 0 {
 		return nil
 	}
@@ -58,7 +58,7 @@ func (srv *Service) fetchUser(c *gin.Context, u uint) *NeedsUserReply {
 	}
 }
 
-func (srv *Service) FromNeedss(c *gin.Context, needss []model.Needs) (gr []NeedsReply) {
+func (srv *Service) FromNeedss(c controller.MContext, needss []model.Needs) (gr []NeedsReply) {
 	for i := range needss {
 		gr = append(gr, NeedsReply{
 			ID:          needss[i].ID,
@@ -82,6 +82,6 @@ func (srv *Service) FromNeedss(c *gin.Context, needss []model.Needs) (gr []Needs
 	return
 }
 
-func (srv *Service) ProcessListResults(c *gin.Context, results interface{}) interface{} {
+func (srv *Service) ProcessListResults(c controller.MContext, results interface{}) interface{} {
 	return srv.NeedssToListReply(c, results.([]model.Needs))
 }

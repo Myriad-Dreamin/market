@@ -1,17 +1,17 @@
 package userservice
 
 import (
+	"github.com/Myriad-Dreamin/market/lib/controller"
 	ginhelper "github.com/Myriad-Dreamin/market/service/gin-helper"
 	"github.com/Myriad-Dreamin/market/types"
-	"github.com/gin-gonic/gin"
 	"net/http"
 )
 
 type ConfirmSellRequest struct {
-	ConfirmOrCancel bool `json:"cc" form:"cc" binding:"exists"`
+	ConfirmOrCancel bool `json:"cc" form:"cc" validate:"exists"`
 }
 
-func (srv *Service) ConfirmSell(c *gin.Context) {
+func (srv *Service) ConfirmSell(c controller.MContext) {
 	var req ConfirmSellRequest
 	id, ok := ginhelper.ParseUintAndBind(c, "nid", &req)
 	if !ok {

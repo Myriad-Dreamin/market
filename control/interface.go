@@ -1,6 +1,8 @@
 package control
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/Myriad-Dreamin/market/lib/controller"
+)
 
 //go:generate package-attach-to-path -generate_register_map
 
@@ -10,7 +12,7 @@ import "github.com/gin-gonic/gin"
  */
 type Auth interface {
 	// /refresh-token GET
-	RefreshToken(c *gin.Context)
+	RefreshToken(c controller.MContext)
 }
 
 type ObjectService interface {
@@ -18,22 +20,22 @@ type ObjectService interface {
 
 	// @Title Post
 	// @Description Post Object
-	Post(c *gin.Context)
+	Post(c controller.MContext)
 
 	// @Title Put
 	// @Description Put Object
-	Put(c *gin.Context)
+	Put(c controller.MContext)
 
 	// @Title Delete
 	// @Description Delete Object
-	Delete(c *gin.Context)
+	Delete(c controller.MContext)
 
 	// @Title Get
 	// @Description Get Object
-	Get(c *gin.Context)
+	Get(c controller.MContext)
 
 	// @Title List
 	// @Description List Object
-	List(c *gin.Context)
+	List(c controller.MContext)
 
 }

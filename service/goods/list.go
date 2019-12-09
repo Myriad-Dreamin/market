@@ -1,10 +1,10 @@
 package goodsservice
 
 import (
+	"github.com/Myriad-Dreamin/market/lib/controller"
 	"github.com/Myriad-Dreamin/market/model"
 	ginhelper "github.com/Myriad-Dreamin/market/service/gin-helper"
 	"github.com/Myriad-Dreamin/market/types"
-	"github.com/gin-gonic/gin"
 	"time"
 )
 
@@ -34,14 +34,14 @@ type ListReply struct {
 	Goodss []GoodsReply `json:"goodss"`
 }
 
-func (srv *Service) GoodssToListReply(c *gin.Context, obj []model.Goods) (reply *ListReply) {
+func (srv *Service) GoodssToListReply(c controller.MContext, obj []model.Goods) (reply *ListReply) {
 	reply = new(ListReply)
 	reply.Code = types.CodeOK
 	reply.Goodss = srv.FromGoodss(c, obj)
 	return
 }
 
-func (srv *Service) fetchUser(c *gin.Context, u uint) *GoodsUserReply {
+func (srv *Service) fetchUser(c controller.MContext, u uint) *GoodsUserReply {
 	if u == 0 {
 		return nil
 	}
@@ -56,7 +56,7 @@ func (srv *Service) fetchUser(c *gin.Context, u uint) *GoodsUserReply {
 	}
 }
 
-func (srv *Service) FromGoodss(c *gin.Context, goodss []model.Goods) (gr []GoodsReply) {
+func (srv *Service) FromGoodss(c controller.MContext, goodss []model.Goods) (gr []GoodsReply) {
 	for i := range goodss {
 		gr = append(gr, GoodsReply{
 			ID:          goodss[i].ID,
@@ -79,6 +79,6 @@ func (srv *Service) FromGoodss(c *gin.Context, goodss []model.Goods) (gr []Goods
 	return
 }
 
-func (srv *Service) ProcessListResults(c *gin.Context, result interface{}) interface{} {
+func (srv *Service) ProcessListResults(c controller.MContext, result interface{}) interface{} {
 	return srv.GoodssToListReply(c, result.([]model.Goods))
 }

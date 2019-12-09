@@ -1,9 +1,9 @@
 package auth
 
 import (
-	"github.com/Myriad-Dreamin/market/lib/router"
+	"github.com/Myriad-Dreamin/market/lib/controller"
 	"github.com/casbin/casbin/v2"
-"strconv"
+	"strconv"
 )
 
 type goodsEntity struct {}
@@ -12,8 +12,8 @@ func (goodsEntity) CreateObj(groupID uint) string {
 	return "goods:" + strconv.Itoa(int(groupID))
 }
 
-func (goodsEntity) Read() mgin.Requirement {
-	return mgin.Requirement{Entity: "goods", Action: "r/.*"}
+func (goodsEntity) Read() controller.Requirement {
+	return controller.Requirement{Entity: "goods", Action: "r/.*"}
 }
 
 func (goodsEntity) AddReadPolicy(e *casbin.SyncedEnforcer, subject string, aim uint) (bool, error) {
@@ -28,8 +28,8 @@ func (goodsEntity) HasReadPolicy(e *casbin.SyncedEnforcer, subject string, aim u
 	return e.HasPolicy(subject, GoodsEntity.CreateObj(aim), "r/.*")
 }
 
-func (goodsEntity) Write() mgin.Requirement {
-	return mgin.Requirement{Entity: "goods", Action: "w/.*"}
+func (goodsEntity) Write() controller.Requirement {
+	return controller.Requirement{Entity: "goods", Action: "w/.*"}
 }
 
 func (goodsEntity) AddWritePolicy(e *casbin.SyncedEnforcer, subject string, aim uint) (bool, error) {
@@ -44,8 +44,8 @@ func (goodsEntity) HasWritePolicy(e *casbin.SyncedEnforcer, subject string, aim 
 	return e.HasPolicy(subject, GoodsEntity.CreateObj(aim), "w/.*")
 }
 
-func (goodsEntity) JustSimpleWrite() mgin.Requirement {
-	return mgin.Requirement{Entity: "goods", Action: "w/s"}
+func (goodsEntity) JustSimpleWrite() controller.Requirement {
+	return controller.Requirement{Entity: "goods", Action: "w/s"}
 }
 
 func (goodsEntity) AddJustSimpleWritePolicy(e *casbin.SyncedEnforcer, subject string, aim uint) (bool, error) {

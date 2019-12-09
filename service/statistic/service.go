@@ -3,17 +3,17 @@ package statisticservice
 
 import (
 	"github.com/Myriad-Dreamin/market/config"
+	"github.com/Myriad-Dreamin/market/lib/controller"
 	"github.com/Myriad-Dreamin/market/model"
 	base_service "github.com/Myriad-Dreamin/market/service/base-service"
 	"github.com/Myriad-Dreamin/market/types"
-	"github.com/gin-gonic/gin"
 )
 
 type Service struct {
 	cfg                        *config.ServerConfig
 	logger                     types.Logger
 	statFeeDB                  *model.StatFeeDB
-	filterFunc                 func(c *gin.Context) interface{}
+	filterFunc                 func(c controller.MContext) interface{}
 	statGoodsFeeService        base_service.ListService
 	statGoodsFeeXYService      base_service.ListService
 	statGoodsFeeCountXYService base_service.ListService

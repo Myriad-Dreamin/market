@@ -1,11 +1,11 @@
 package userservice
 
 import (
+	"github.com/Myriad-Dreamin/market/lib/controller"
 	"github.com/Myriad-Dreamin/market/model"
 	ginhelper "github.com/Myriad-Dreamin/market/service/gin-helper"
 	"github.com/Myriad-Dreamin/market/types"
 	"github.com/Myriad-Dreamin/minimum-lib/rbac"
-	"github.com/gin-gonic/gin"
 	"net/http"
 	"strconv"
 )
@@ -55,7 +55,7 @@ returns:
 - `error` string: options description of bad code
 - `id` uint: the id of this user
 */
-func (srv *Service) Register(c *gin.Context) {
+func (srv *Service) Register(c controller.MContext) {
 	var req = new(RegisterRequest)
 	if !ginhelper.BindRequest(c, req) {
 		return

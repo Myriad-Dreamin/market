@@ -1,10 +1,10 @@
 package tests
 
 import (
-	doc_gen "github.com/Myriad-Dreamin/minimum-lib/generate/doc-gen"
-	"github.com/Myriad-Dreamin/minimum-lib/sugar"
 	"github.com/Myriad-Dreamin/market/server"
 	"github.com/Myriad-Dreamin/market/test/tester"
+	doc_gen "github.com/Myriad-Dreamin/minimum-lib/generate/doc-gen"
+	"github.com/Myriad-Dreamin/minimum-lib/sugar"
 	"os"
 	"testing"
 )

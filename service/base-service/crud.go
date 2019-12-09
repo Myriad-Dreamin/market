@@ -1,20 +1,20 @@
 package base_service
 
 import (
+	"github.com/Myriad-Dreamin/market/lib/controller"
 	ginhelper "github.com/Myriad-Dreamin/market/service/gin-helper"
-	"github.com/gin-gonic/gin"
 	"net/http"
 )
 
 type CRUDObjectToolLite interface {
 	FObject
 	DObject
-	SerializePost(c *gin.Context) CRUDEntity
+	SerializePost(c controller.MContext) CRUDEntity
 	ResponsePost(obj CRUDEntity) interface{}
 	ResponseGet(obj CRUDEntity) interface{}
 	ResponseInspect(obj CRUDEntity) interface{}
 	GetPutRequest() interface{}
-	FillPutFields(c *gin.Context, object CRUDEntity, req interface{}) []string
+	FillPutFields(c controller.MContext, object CRUDEntity, req interface{}) []string
 }
 
 type CRUDService struct {
@@ -33,7 +33,7 @@ func NewCRUDService(tool CRUDObjectToolLite, k string) CRUDService {
 
 
 
-func (srv *CRUDService) Get(c *gin.Context) {
+func (srv *CRUDService) Get(c controller.MContext) {
 	id, ok := ginhelper.ParseUint(c, srv.k)
 	if !ok {
 		return
@@ -46,7 +46,7 @@ func (srv *CRUDService) Get(c *gin.Context) {
 	c.JSON(http.StatusOK, srv.Tool.ResponseGet(obj))
 }
 
-func (srv *CRUDService) Inspect(c *gin.Context) {
+func (srv *CRUDService) Inspect(c controller.MContext) {
 	id, ok := ginhelper.ParseUint(c, srv.k)
 	if !ok {
 		return
@@ -59,7 +59,7 @@ func (srv *CRUDService) Inspect(c *gin.Context) {
 	c.JSON(http.StatusOK, srv.Tool.ResponseInspect(obj))
 }
 
-func (srv *CRUDService) Put(c *gin.Context) {
+func (srv *CRUDService) Put(c controller.MContext) {
 	var req = srv.Tool.GetPutRequest()
 	id, ok := ginhelper.ParseUintAndBind(c, srv.k, req)
 	if !ok {
@@ -81,7 +81,7 @@ func (srv *CRUDService) Put(c *gin.Context) {
 	}
 }
 
-func (srv *CRUDService) Post(c *gin.Context) {
+func (srv *CRUDService) Post(c controller.MContext) {
 	var obj = srv.Tool.SerializePost(c)
 	if c.IsAborted() {
 		return

@@ -3,10 +3,10 @@ package goodsservice
 
 import (
 	"github.com/Myriad-Dreamin/market/config"
+	"github.com/Myriad-Dreamin/market/lib/controller"
 	"github.com/Myriad-Dreamin/market/model"
 	base_service "github.com/Myriad-Dreamin/market/service/base-service"
 	"github.com/Myriad-Dreamin/market/types"
-	"github.com/gin-gonic/gin"
 )
 
 type Service struct {
@@ -18,7 +18,7 @@ type Service struct {
 	enforcer    *model.Enforcer
 	logger      types.Logger
 	cfg         *config.ServerConfig
-	filterFunc  func(c *gin.Context) interface{}
+	filterFunc  func(c controller.MContext) interface{}
 	key         string
 }
 

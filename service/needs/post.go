@@ -2,11 +2,12 @@ package needsservice
 
 import (
 	"github.com/Myriad-Dreamin/market/auth"
+	"github.com/Myriad-Dreamin/market/lib/controller"
 	"github.com/Myriad-Dreamin/market/model"
 	base_service "github.com/Myriad-Dreamin/market/service/base-service"
 	ginhelper "github.com/Myriad-Dreamin/market/service/gin-helper"
 	"github.com/Myriad-Dreamin/market/types"
-	"github.com/gin-gonic/gin"
+	"net/http"
 	"time"
 )
 
@@ -32,9 +33,26 @@ type PostRequest struct {
 	Description string    `json:"description" form:"description"`
 }
 
-func (srv *Service) SerializePost(c *gin.Context) base_service.CRUDEntity {
+func (srv *Service) SerializePost(c controller.MContext) base_service.CRUDEntity {
+
 	var req PostRequest
 	if !ginhelper.BindRequest(c, &req) {
+		return nil
+	}
+
+	if req.EndAt.Sub(time.Now()) < srv.cfg.BaseParametersConfig.NeedsMinimumEndDuration {
+		c.AbortWithStatusJSON(http.StatusOK, &types.ErrorSerializer{
+			Code:  types.CodeInvalidParameters,
+			Error: "could not set end time before a duration shorter than minimum end duration",
+		})
+		return nil
+	}
+
+	if req.MaxPrice < req.MinPrice {
+		c.AbortWithStatusJSON(http.StatusOK, &types.ErrorSerializer{
+			Code:  types.CodeInvalidParameters,
+			Error: "min price must be less than or equal to max price",
+		})
 		return nil
 	}
 

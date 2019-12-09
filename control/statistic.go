@@ -1,7 +1,7 @@
 package control
 
 import (
-	"github.com/gin-gonic/gin"
+	"github.com/Myriad-Dreamin/market/lib/controller"
 )
 
 /*
@@ -19,17 +19,17 @@ type StatisticService interface {
 
 	// @Title Statistic Goods Fee
 	// @Description Statistic Goods Fee
-	StatGoodsFee(c *gin.Context)
+	StatGoodsFee(c controller.MContext)
 
 	// /stat/goods/fee-xy GET
 
 	// @Title Statistic Goods Fee XY List
 	// @Description Statistic Goods Fee XY List
-	StatGoodsFeeXY(c *gin.Context)
+	StatGoodsFeeXY(c controller.MContext)
 
 	// /stat/goods/fee GET
 
 	// @Title Statistic Goods Count XY List
 	// @Description Statistic Goods Count XY List
-	StatGoodsCountXY(c *gin.Context)
+	StatGoodsCountXY(c controller.MContext)
 }

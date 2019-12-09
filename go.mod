@@ -14,8 +14,9 @@ require (
 	github.com/Myriad-Dreamin/go-parse-package v1.0.0
 	github.com/Myriad-Dreamin/minimum-lib v0.0.0-20191208082554-278c396f2604
 	github.com/casbin/casbin/v2 v2.1.0
+	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/gin-contrib/cors v1.3.0
-	github.com/gin-gonic/gin v1.4.1-0.20190628155452-f65018d7b1f1
+	github.com/gin-gonic/gin v1.5.0
 	github.com/go-sql-driver/mysql v1.4.1
 	github.com/gomodule/redigo v2.0.0+incompatible
 	github.com/jinzhu/gorm v1.9.11

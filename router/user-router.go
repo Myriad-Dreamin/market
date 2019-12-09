@@ -1,50 +1,50 @@
 package router
 
 import (
-	"github.com/Myriad-Dreamin/market/lib/router"
+	"github.com/Myriad-Dreamin/market/lib/controller"
 	"github.com/Myriad-Dreamin/market/service"
 )
 
 type UserRouter struct {
-	*mgin.Router
-	AuthRouter *mgin.Router
-	Auth       *mgin.Middleware
+	*controller.Router
+	AuthRouter *controller.Router
+	Auth       *controller.Middleware
 	IDRouter   *UserIDRouter
 
-	Login    *mgin.LeafRouter
-	Register *mgin.LeafRouter
-	GetList  *mgin.LeafRouter
+	Login    *controller.LeafRouter
+	Register *controller.LeafRouter
+	GetList  *controller.LeafRouter
 }
 
 type UserIDRouter struct {
-	*mgin.Router
-	AuthRouter *mgin.Router
-	Auth       *mgin.Middleware
+	*controller.Router
+	AuthRouter *controller.Router
+	Auth       *controller.Middleware
 	GoodsIDRouter *UserGoodsIDRouter
 	NeedsIDRouter *UserNeedsIDRouter
 
-	ChangePassword *mgin.LeafRouter
-	Get            *mgin.LeafRouter
-	Put            *mgin.LeafRouter
-	Delete         *mgin.LeafRouter
+	ChangePassword *controller.LeafRouter
+	Get            *controller.LeafRouter
+	Put            *controller.LeafRouter
+	Delete         *controller.LeafRouter
 }
 
 type UserGoodsIDRouter struct {
-	*mgin.Router
-	AuthRouter *mgin.Router
-	Auth       *mgin.Middleware
+	*controller.Router
+	AuthRouter *controller.Router
+	Auth       *controller.Middleware
 
-	Buy            *mgin.LeafRouter
-	ConfirmBuy     *mgin.LeafRouter
+	Buy            *controller.LeafRouter
+	ConfirmBuy     *controller.LeafRouter
 }
 
 type UserNeedsIDRouter struct {
-	*mgin.Router
-	AuthRouter *mgin.Router
-	Auth       *mgin.Middleware
+	*controller.Router
+	AuthRouter *controller.Router
+	Auth       *controller.Middleware
 
-	Sell           *mgin.LeafRouter
-	ConfirmSell    *mgin.LeafRouter
+	Sell           *controller.LeafRouter
+	ConfirmSell    *controller.LeafRouter
 }
 
 func BuildUserRouter(parent *RootRouter, serviceProvider *service.Provider) (router *UserRouter) {
