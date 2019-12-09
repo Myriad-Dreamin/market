@@ -14,6 +14,7 @@ type GetReply struct {
 	Type        uint16            `json:"g_type"`
 	Name        string            `json:"name"`
 	MinPrice    uint64            `json:"min_price"`
+	CurPrice    uint64            `json:"cur_price"`
 	IsFixed     bool              `json:"is_fixed"`
 	Description string            `json:"description"`
 	Status      types.GoodsStatus `json:"status"`

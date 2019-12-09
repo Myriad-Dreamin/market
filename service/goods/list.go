@@ -23,6 +23,7 @@ type GoodsReply struct {
 	Buyer       *GoodsUserReply   `json:"buyer" form:"buyer"`
 	Type        uint16            `json:"g_type" form:"g_type"`
 	Name        string            `json:"name" form:"name"`
+	CurPrice    uint64            `json:"cur_price" form:"cur_price"`
 	MinPrice    uint64            `json:"min_price" form:"min_price"`
 	IsFixed     bool              `json:"is_fixed" form:"is_fixed"`
 	Description string            `json:"description" form:"description"`

@@ -3,6 +3,8 @@ package jwt
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/Myriad-Dreamin/market/lib/controller"
+	mgin "github.com/Myriad-Dreamin/market/lib/controller/gin"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"net/http/httptest"
@@ -17,7 +19,7 @@ func TestMain(m *testing.M) {
 	jwtMW = NewMiddleWare(func() *CustomClaims {
 		var cc = new(CustomClaims)
 		return cc
-	}, func(c *gin.Context, cc *CustomClaims) error {
+	}, func(c controller.MContext, cc *CustomClaims) error {
 		return nil
 	})
 	jwtMW.ExpireSecond = 1
@@ -39,7 +41,7 @@ func TestMain(m *testing.M) {
 
 
 	router.GET("/refresh", func(c *gin.Context) {
-		newToken, err := jwtMW.RefreshToken(c)
+		newToken, err := jwtMW.RefreshToken(mgin.Context{Context:c})
 		if err != nil {
 			if ErrExpiredToken == err {
 				_ = c.AbortWithError(http.StatusUnauthorized, err)
@@ -54,7 +56,7 @@ func TestMain(m *testing.M) {
 		})
 	})
 	authRouter := router.Group("/")
-	authRouter.Use(jwtMW.Build())
+	authRouter.Use(mgin.ToGinHandler(jwtMW.Build()))
 	authRouter.GET("/ping", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{"pong": ""})
 	})

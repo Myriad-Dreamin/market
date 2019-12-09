@@ -30,6 +30,7 @@ type Goods struct {
 	Buyer       uint   `dorm:"buyer" gorm:"column:buyer;not_null"`
 	Type        uint16 `dorm:"g_type" gorm:"column:g_type;not_null"`
 	Name        string `dorm:"name" gorm:"column:name;not_null"`
+	CurPrice    uint64 `dorm:"cur_price" gorm:"column:cur_price;not_null"`
 	MinPrice    uint64 `dorm:"min_price" gorm:"column:min_price;not_null"`
 	IsFixed     bool   `dorm:"is_fixed" gorm:"column:is_fixed;not_null"`
 	Description string `dorm:"description" gorm:"column:description;not_null"`
@@ -138,7 +139,7 @@ func (goodsDB *GoodsQuery) Query() (goodss []Goods, err error) {
 
 var goodsStatusField = []string{"status", "buyer"}
 
-func (goodsDB *GoodsDB) Buy(id, uid uint) (int, string) {
+func (goodsDB *GoodsDB) BuyFixed(id, uid uint) (int, string) {
 	tx := db.Begin()
 	if tx.Error != nil {
 		return types.CodeBeginTransactionError, tx.Error.Error()
@@ -156,8 +157,48 @@ func (goodsDB *GoodsDB) Buy(id, uid uint) (int, string) {
 		rollback(tx)
 		return types.CodeGoodsLifeTimeout, "expired time"
 	}
+	if goods.IsFixed == false {
+		return types.CodeGoodsBuyTypeInvalid, "unfixed goods form"
+	}
+
 	goods.Status = types.GoodsStatusPending
 	goods.Buyer = uid
+
+	_, err = goods.UpdateFields__(tx.CommonDB(), goodsStatusField)
+	if err != nil {
+		rollback(tx)
+		return types.CodeUpdateError, err.Error()
+	}
+	return commitOrRollback(tx)
+}
+
+func (goodsDB *GoodsDB) Buy(id, uid uint, price uint64) (int, string) {
+	tx := db.Begin()
+	if tx.Error != nil {
+		return types.CodeBeginTransactionError, tx.Error.Error()
+	}
+	goods, err := goodsDB.ID_(tx, id)
+	if code, errs := errorc.MaybeSelectError(goods, err); code != types.CodeOK {
+		rollback(tx)
+		return code, errs
+	}
+	if goods.Status != types.GoodsStatusUnFinished {
+		rollback(tx)
+		return types.CodeGoodsStatusNotBeUnfinished, goods.Status.String()
+	}
+	if goods.EndAt.Before(time.Now()) {
+		rollback(tx)
+		return types.CodeGoodsLifeTimeout, "expired time"
+	}
+	if goods.IsFixed {
+		return types.CodeGoodsBuyTypeInvalid, "fixed goods form"
+	}
+	if goods.CurPrice >= price {
+		return types.CodeGoodsInsufficientValue, "need higher price"
+	}
+	goods.Buyer = uid
+	goods.CurPrice = price
+
 	_, err = goods.UpdateFields__(tx.CommonDB(), goodsStatusField)
 	if err != nil {
 		rollback(tx)

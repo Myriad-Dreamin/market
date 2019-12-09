@@ -73,6 +73,8 @@ const (
 	CodeGoodsLifeTimeout
 	CodeGoodsStatusNotBeUnfinished
 	CodeGoodsStatusNotBePending
+	CodeGoodsBuyTypeInvalid
+	CodeGoodsInsufficientValue
 )
 
 

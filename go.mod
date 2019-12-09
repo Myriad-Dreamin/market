@@ -8,7 +8,6 @@ require (
 	github.com/Myriad-Dreamin/core-oj v1.0.1
 	github.com/Myriad-Dreamin/dorm v0.0.0-20191205101004-33dbc61bb34e
 	github.com/Myriad-Dreamin/functional-go v0.0.0-20191102095642-532e6dc9bfd5
-	github.com/Myriad-Dreamin/gin-middleware v0.0.0-20191001110659-e6949e7c287e
 	github.com/Myriad-Dreamin/go-magic-package v0.0.0-20191102120213-a407f918fece
 	github.com/Myriad-Dreamin/go-model-traits v0.0.0-20191208040739-427777bf553e
 	github.com/Myriad-Dreamin/go-parse-package v1.0.0
@@ -23,6 +22,7 @@ require (
 	github.com/mattn/go-sqlite3 v1.11.1-0.20191008083825-3f45aefa8dc8
 	github.com/pelletier/go-toml v1.5.0
 	github.com/stretchr/testify v1.4.0
+	github.com/tidwall/gjson v1.3.5
 	go.uber.org/zap v1.12.0
 	gopkg.in/yaml.v2 v2.2.4
 )

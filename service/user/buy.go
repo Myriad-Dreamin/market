@@ -16,22 +16,36 @@ TODO
 
 */
 
-type BuyRequest struct {
-}
 
 func (srv *Service) Buy(c controller.MContext) {
-	var req BuyRequest
-	id, ok := ginhelper.ParseUintAndBind(c, "goid", &req)
+	id, ok := ginhelper.ParseUint(c, "goid")
 	if !ok {
 		return
 	}
-	var claims = ginhelper.GetCustomFields(c)
+	res, ok := ginhelper.RawJson(c)
+	if !ok {
+		return
+	}
+	var (
+		claims = ginhelper.GetCustomFields(c)
+		code int
+		errs string
+	)
+	if fixed := res.Get("fixed"); fixed.Exists() && fixed.Bool() {
+		code, errs = srv.goodsDB.BuyFixed(id, uint(claims.UID))
+	} else if price := res.Get("price"); price.Exists() {
+		code, errs = srv.goodsDB.Buy(id, uint(claims.UID), price.Uint())
+	} else {
+		c.AbortWithStatusJSON(http.StatusOK, types.ErrorSerializer{
+			Code:  types.CodeInvalidParameters,
+			Error: "price must be given",
+		})
+	}
 
-	code, err := srv.goodsDB.Buy(id, uint(claims.UID))
 	if code != types.CodeOK {
 		c.AbortWithStatusJSON(http.StatusOK, types.ErrorSerializer{
 			Code:  code,
-			Error: err,
+			Error: errs,
 		})
 	} else {
 		c.JSON(http.StatusOK, ginhelper.ResponseOK)

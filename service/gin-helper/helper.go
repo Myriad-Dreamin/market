@@ -7,6 +7,7 @@ import (
 	"github.com/Myriad-Dreamin/market/lib/jwt"
 	"github.com/Myriad-Dreamin/market/types"
 	"github.com/go-sql-driver/mysql"
+	"github.com/tidwall/gjson"
 	"net/http"
 	"reflect"
 	"strconv"
@@ -66,6 +67,18 @@ func BindRequest(c controller.MContext, req interface{}) bool {
 		return false
 	}
 	return true
+}
+
+func RawJson(c controller.MContext) (gjson.Result, bool) {
+	if b, err := c.GetRawData(); err != nil {
+		c.AbortWithStatusJSON(http.StatusOK, &types.ErrorSerializer{
+			Code:  types.CodeInvalidParameters,
+			Error: err.Error(),
+		})
+		return gjson.Result{}, false
+	} else {
+		return gjson.ParseBytes(b), true
+	}
 }
 
 func ParseUintAndBind(c controller.MContext, key string, req interface{}) (uint, bool) {

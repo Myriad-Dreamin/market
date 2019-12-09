@@ -55,6 +55,7 @@ func (srv *Service) SerializePost(c controller.MContext) base_service.CRUDEntity
 	obj.Type = req.Type
 	obj.Name = req.Name
 	obj.MinPrice = req.MinPrice
+	obj.CurPrice = req.MinPrice
 	obj.IsFixed = req.IsFixed
 	obj.Description = req.Description
 	obj.Status = types.GoodsStatusUnFinished
