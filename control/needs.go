@@ -56,5 +56,9 @@ type NeedsService interface {
 	// @Title Upload Needs' Picture
 	// @Description This interface is used to upload pictures of needs. It is not merged into the Put interface just because the man who writes backend is too lazy. the request url is `v1/needs/:nid/picture.PUT` where `:nid` is the corresponding needs number
 	PutPicture(c controller.MContext)
+
+	// @Title Download Needs' Picture
+	// @Description This interface is used to download pictures of needs. the request url is `v1/needs/:nid/picture.GET` where `:nid` is the corresponding needs number
+	GetPicture(c controller.MContext)
 }
 

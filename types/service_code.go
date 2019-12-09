@@ -57,6 +57,7 @@ const (
 const (
 	CodeUserIDMissing int = iota + 10000
 	CodeUserWrongPassword
+	CodeWeakPassword
 )
 
 const (
@@ -75,6 +76,7 @@ const (
 	CodeGoodsStatusNotBePending
 	CodeGoodsBuyTypeInvalid
 	CodeGoodsInsufficientValue
+	CodeGoodsOverflowValue
 )
 
 

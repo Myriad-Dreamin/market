@@ -20,6 +20,8 @@ type GoodsFilter struct {
 	MinPriceR  *uint      `json:"min_price_r" form:"min_price_r"`
 	MaxPriceL  *uint      `json:"max_price_l" form:"max_price_l"`
 	MaxPriceR  *uint      `json:"max_price_r" form:"max_price_r"`
+	CurPriceL  *uint      `json:"cur_price_l" form:"cur_price_l"`
+	CurPriceR  *uint      `json:"cur_price_r" form:"cur_price_r"`
 	FixedTag   *bool      `json:"fixed" form:"fixed"`
 	EndBefore  *time.Time `json:"end_before" form:"end_before"`
 	BeginAfter *time.Time `json:"begin_after" form:"begin_after"`
@@ -57,6 +59,16 @@ func GoodsFilterOption(db *gorm.DB, f *GoodsFilter) *gorm.DB {
 	} else if f.MaxPriceR != nil {
 		db = db.Where("max_price < ?", *f.MaxPriceR)
 	}
+
+	if f.CurPriceL != nil && f.CurPriceR != nil {
+		db = db.Where("cur_price between ? and ?", *f.CurPriceL, *f.CurPriceR)
+	} else if f.CurPriceL != nil {
+		db = db.Where("cur_price > ?", *f.CurPriceL)
+	} else if f.CurPriceR != nil {
+		db = db.Where("cur_price < ?", *f.CurPriceR)
+	}
+
+
 	if f.FixedTag != nil {
 		db = db.Where("is_fixed = ?", *f.FixedTag)
 	}

@@ -1,7 +1,7 @@
 package server
 
 import (
-	"github.com/Myriad-Dreamin/market/router"
+	"github.com/Myriad-Dreamin/market/control/router"
 	"github.com/gin-gonic/gin"
 )
 

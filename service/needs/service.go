@@ -38,8 +38,3 @@ func NewService(logger types.Logger, provider *model.Provider, cfg *config.Serve
 	a.ListService = base_service.NewListService(a, a.needsDB.FilterI)
 	return
 }
-
-/*
-type Needs struct {
-}
-*/

@@ -7,10 +7,8 @@ import (
 	"net/http"
 )
 
-// 删除已发布未成交的自己物品信息
-
 func (srv *Service) deleteHook(c controller.MContext, object *model.Needs) (canDelete bool) {
-	if object.Seller != 0 {
+	if object.Status == types.GoodsStatusFinished {
 		c.AbortWithStatusJSON(http.StatusOK, types.ErrorSerializer{
 			Code:  types.CodeDeleteError,
 			Error: "this needs has been consumed",

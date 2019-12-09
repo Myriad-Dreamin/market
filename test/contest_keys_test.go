@@ -15,8 +15,8 @@ const (
 	needsEsDeleteIdK = "needs/es/id"
 	needsSellIdK = "needs/sell/id"
 	normalUserIdKey  = "user/normal/key"
-	normalUserPassword = "11112222"
-	normalUserNewPassword = "111122222"
+	normalUserPassword = "yY11112222"
+	normalUserNewPassword = "xX11122222"
 )
 
 var intT = 1

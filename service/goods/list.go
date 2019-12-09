@@ -20,7 +20,6 @@ type GoodsReply struct {
 	UpdatedAt   time.Time         `json:"updated_at" form:"updated_at"`
 	EndAt       time.Time         `json:"end_at" form:"end_at"`
 	Seller      *GoodsUserReply   `json:"seller" form:"seller"`
-	Buyer       *GoodsUserReply   `json:"buyer" form:"buyer"`
 	Type        uint16            `json:"g_type" form:"g_type"`
 	Name        string            `json:"name" form:"name"`
 	CurPrice    uint64            `json:"cur_price" form:"cur_price"`
@@ -65,9 +64,9 @@ func (srv *Service) FromGoodss(c controller.MContext, goodss []model.Goods) (gr 
 			UpdatedAt:   goodss[i].UpdatedAt,
 			EndAt:       goodss[i].EndAt,
 			Seller:      srv.fetchUser(c, goodss[i].Seller),
-			Buyer:       srv.fetchUser(c, goodss[i].Buyer),
 			Type:        goodss[i].Type,
 			Name:        goodss[i].Name,
+			CurPrice:    goodss[i].CurPrice,
 			MinPrice:    goodss[i].MinPrice,
 			IsFixed:     goodss[i].IsFixed,
 			Description: goodss[i].Description,

@@ -19,13 +19,12 @@ type NeedsReply struct {
 	CreatedAt   time.Time         `json:"created_at" form:"created_at"`
 	UpdatedAt   time.Time         `json:"updated_at" form:"updated_at"`
 	EndAt       time.Time         `json:"end_at" form:"end_at"`
-	Seller      *NeedsUserReply   `json:"seller" form:"seller"`
 	Buyer       *NeedsUserReply   `json:"buyer" form:"buyer"`
 	EndDuration time.Duration     `json:"ddd" form:"ddd"`
 	Type        uint16            `json:"g_type" form:"g_type"`
 	Name        string            `json:"name" form:"name"`
-	MinPrice    uint64            `json:"min_price" form:"min_price"`
-	MaxPrice    uint64            `json:"min_price" form:"min_price"`
+	CurPrice    uint64            `json:"cur_price" form:"cur_price"`
+	MaxPrice    uint64            `json:"max_price" form:"max_price"`
 	IsFixed     bool              `json:"is_fixed" form:"is_fixed"`
 	Description string            `json:"description" form:"description"`
 	Status      types.GoodsStatus `json:"status" form:"status"`
@@ -65,12 +64,11 @@ func (srv *Service) FromNeedss(c controller.MContext, needss []model.Needs) (gr 
 			CreatedAt:   needss[i].CreatedAt,
 			UpdatedAt:   needss[i].UpdatedAt,
 			EndAt:       needss[i].EndAt,
-			Seller:      srv.fetchUser(c, needss[i].Seller),
 			Buyer:       srv.fetchUser(c, needss[i].Buyer),
 			Type:        needss[i].Type,
 			Name:        needss[i].Name,
 			EndDuration: needss[i].EndDuration,
-			MinPrice:    needss[i].MinPrice,
+			CurPrice:    needss[i].CurPrice,
 			MaxPrice:    needss[i].MaxPrice,
 			Description: needss[i].Description,
 			Status:      needss[i].Status,

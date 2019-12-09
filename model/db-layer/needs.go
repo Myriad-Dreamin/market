@@ -39,7 +39,7 @@ type Needs struct {
 	Seller      uint          `dorm:"seller" gorm:"column:seller;not_null"`
 	Type        uint16        `dorm:"g_type" gorm:"column:g_type;not_null"`
 	Name        string        `dorm:"name" gorm:"column:name;not_null"`
-	MinPrice    uint64        `dorm:"min_price" gorm:"column:min_price;not_null"`
+	CurPrice    uint64        `dorm:"cur_price" gorm:"column:cur_price;not_null"`
 	MaxPrice    uint64        `dorm:"min_price" gorm:"column:max_price;not_null"`
 	EndDuration time.Duration `dorm:"ddd" gorm:"column:ddd;not_null"`
 	Description string        `dorm:"description" gorm:"column:description;not_null"`
@@ -149,7 +149,7 @@ func (needsDB *NeedsQuery) Query() (needss []Needs, err error) {
 var needsStatusField = []string{"status", "seller"}
 
 
-func (needsDB *NeedsDB) Sell(id, uid uint) (int, string) {
+func (needsDB *NeedsDB) Sell(price uint64, id, uid uint) (int, string) {
 
 	tx := db.Begin()
 	if tx.Error != nil {
@@ -167,8 +167,13 @@ func (needsDB *NeedsDB) Sell(id, uid uint) (int, string) {
 		rollback(tx)
 		return types.CodeGoodsLifeTimeout, "expired time"
 	}
-	needs.Status = types.GoodsStatusPending
+
+	if needs.CurPrice <= price {
+		return types.CodeGoodsOverflowValue, "need lower price"
+	}
+
 	needs.Seller = uid
+	needs.CurPrice = price
 	_, err = needs.UpdateFields__(tx.CommonDB(), needsStatusField)
 
 	if err != nil {

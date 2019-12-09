@@ -14,7 +14,6 @@ func testUserSell(t *tester.TesterContext) {
 		EndAt:       time.Now().Add(time.Hour),
 		Type:        types.GoodsTypeElectronic,
 		Name:        "es000000000000000",
-		MinPrice:    1,
 		MaxPrice:     2,
 		Description: "",
 	})
@@ -27,8 +26,8 @@ func testUserSell(t *tester.TesterContext) {
 
 	fmt.Println(resp)
 
-	resp = t.Get("/v1/needs/" + strconv.Itoa(int(id)))
-	reply := t.DecodeJSON(resp.Body(), new(needsservice.GetReply)).(*needsservice.GetReply)
+	resp = t.Get("/v1/needs/" + strconv.Itoa(int(id)) + "/inspect")
+	reply := t.DecodeJSON(resp.Body(), new(needsservice.InspectReply)).(*needsservice.InspectReply)
 	fmt.Println(reply.Needs.Buyer, reply.Needs.Seller, reply.Needs.Status)
 
 	//_ = t.Delete("/v1/needs/" + strconv.Itoa(int(id)))

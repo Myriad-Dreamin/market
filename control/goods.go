@@ -57,5 +57,9 @@ type GoodsService interface {
 	// @Title Upload Goods' Picture
 	// @Description This interface is used to upload pictures of goods. It is not merged into the Put interface just because the man who writes backend is too lazy. the request url is `v1/goods/:goid/picture.PUT` where `:goid` is the corresponding goods number
 	PutPicture(c controller.MContext)
+
+	// @Title Download Goods' Picture
+	// @Description This interface is used to download pictures of goods. the request url is `v1/goods/:goid/picture.GET` where `:goid` is the corresponding goods number
+	GetPicture(c controller.MContext)
 }
 

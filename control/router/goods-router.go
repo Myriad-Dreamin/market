@@ -26,6 +26,7 @@ type GoodsIDRouter struct {
 	Delete      *controller.LeafRouter
 	ForceDelete *controller.LeafRouter
 	PutPicture  *controller.LeafRouter
+	GetPicture  *controller.LeafRouter
 }
 
 func BuildGoodsRouter(parent *RootRouter, serviceProvider *service.Provider) (router *GoodsRouter) {
@@ -61,6 +62,7 @@ func (*GoodsIDRouter) subBuild(parent *GoodsRouter, serviceProvider *service.Pro
 	router.Delete = router.AuthRouter.DELETE("", goodsService.Delete)
 	router.ForceDelete = router.AuthRouter.DELETE("/force", goodsService.ForceDelete)
 	router.PutPicture = router.AuthRouter.PUT("/picture", goodsService.PutPicture)
+	router.GetPicture = router.AuthRouter.GET("/picture", goodsService.GetPicture)
 	return
 }
 

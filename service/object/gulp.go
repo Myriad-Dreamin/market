@@ -22,7 +22,7 @@ func (srv *Service) DeleteHook(c controller.MContext, obj base_service.CRUDEntit
 	return srv.deleteHook(c, obj.(*model.Object))
 }
 
-func (srv *Service) ResponseGet(obj base_service.CRUDEntity) interface{} {
+func (srv *Service) ResponseGet(_ controller.MContext, obj base_service.CRUDEntity) interface{} {
 	return ObjectToGetReply(obj.(*model.Object))
 }
 

@@ -59,8 +59,6 @@ func (srv *Service) SerializePost(c controller.MContext) base_service.CRUDEntity
 	obj.IsFixed = req.IsFixed
 	obj.Description = req.Description
 	obj.Status = types.GoodsStatusUnFinished
-
-	// fill here
 	return obj
 }
 

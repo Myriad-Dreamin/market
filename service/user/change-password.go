@@ -3,6 +3,7 @@ package userservice
 import (
 	"github.com/Myriad-Dreamin/market/lib/controller"
 	ginhelper "github.com/Myriad-Dreamin/market/service/gin-helper"
+	"github.com/Myriad-Dreamin/market/types"
 	"net/http"
 )
 
@@ -11,10 +12,18 @@ type ChangePasswordRequest struct {
 	NewPassword string `form:"new-password" json:"new-password" binding:"required"`
 }
 
+
 func (srv *Service) ChangePassword(c controller.MContext) {
 	var req = new(ChangePasswordRequest)
 	id, ok := ginhelper.ParseUintAndBind(c, "id", req)
 	if !ok {
+		return
+	}
+	if sug := CheckStrongPassword(req.NewPassword); len(sug) != 0 {
+		c.AbortWithStatusJSON(http.StatusOK, types.ErrorSerializer{
+			Code:  types.CodeWeakPassword,
+			Error: sug,
+		})
 		return
 	}
 

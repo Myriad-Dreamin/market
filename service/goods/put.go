@@ -13,7 +13,6 @@ type PutRequest struct {
 	Type        uint16    `json:"g_type" form:"g_type"`
 	Name        string    `json:"name" form:"name"`
 	MinPrice    *uint64   `json:"min_price" form:"min_price"`
-	IsFixed     *bool     `json:"is_fixed" form:"is_fixed"`
 	Description string    `json:"description" form:"description"`
 }
 
@@ -52,19 +51,19 @@ func (srv *Service) fillPutFields(c controller.MContext, goods *model.Goods, req
 		return
 	}
 
-	if req.IsFixed != nil {
-		if goods.IsFixed && !*req.IsFixed {
-			c.AbortWithStatusJSON(http.StatusOK, types.ErrorSerializer{
-				Code:  types.CodeInvalidParameters,
-				Error: "cant set fixed goods to be not fixed",
-			})
-			return
-		}
-		if goods.IsFixed != *req.IsFixed {
-			fields = append(fields, "is_fixed")
-			goods.IsFixed = *req.IsFixed
-		}
-	}
+	//if req.IsFixed != nil {
+	//	if goods.IsFixed && !*req.IsFixed {
+	//		c.AbortWithStatusJSON(http.StatusOK, types.ErrorSerializer{
+	//			Code:  types.CodeInvalidParameters,
+	//			Error: "cant set fixed goods to be not fixed",
+	//		})
+	//		return
+	//	}
+	//	if goods.IsFixed != *req.IsFixed {
+	//		fields = append(fields, "is_fixed")
+	//		goods.IsFixed = *req.IsFixed
+	//	}
+	//}
 
 	if req.MinPrice != nil {
 		if !goods.IsFixed {
@@ -76,6 +75,11 @@ func (srv *Service) fillPutFields(c controller.MContext, goods *model.Goods, req
 		}
 		fields = append(fields, "min_price")
 		goods.MinPrice = *req.MinPrice
+		if goods.MinPrice < goods.CurPrice {
+			fields = append(fields, "cur_price", "buyer")
+			goods.CurPrice = goods.MinPrice
+			goods.Buyer = 0
+		}
 	}
 
 	if req.Type != types.GoodsTypeUnknown {

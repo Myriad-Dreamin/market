@@ -61,11 +61,16 @@ func (srv *Service) Register(c controller.MContext) {
 		return
 	}
 
+	if sug := CheckStrongPassword(req.Password); len(sug) != 0 {
+		c.AbortWithStatusJSON(http.StatusOK, types.ErrorSerializer{
+			Code:  types.CodeWeakPassword,
+			Error: sug,
+		})
+		return
+	}
+
 	var user = new(model.User)
 	user.Name = req.Name
-	/**
-	要求密码不少于6位，必须含有两个数字，不能与原来的密码相似，不能都为大写或小写
-	*/
 	user.Password = req.Password
 
 	user.NickName = req.NickName

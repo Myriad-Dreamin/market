@@ -28,7 +28,6 @@ type PostRequest struct {
 	EndAt       time.Time `json:"end_at" form:"end_at" binding:"required"`
 	Type        uint16    `json:"g_type" form:"g_type" binding:"required"`
 	Name        string    `json:"name" form:"name" binding:"required"`
-	MinPrice    uint64    `json:"min_price" form:"min_price" binding:"required"`
 	MaxPrice    uint64    `json:"max_price" form:"max_price" binding:"required"`
 	Description string    `json:"description" form:"description"`
 }
@@ -48,14 +47,6 @@ func (srv *Service) SerializePost(c controller.MContext) base_service.CRUDEntity
 		return nil
 	}
 
-	if req.MaxPrice < req.MinPrice {
-		c.AbortWithStatusJSON(http.StatusOK, &types.ErrorSerializer{
-			Code:  types.CodeInvalidParameters,
-			Error: "min price must be less than or equal to max price",
-		})
-		return nil
-	}
-
 	var obj = new(model.Needs)
 	// fill here
 	var claims = ginhelper.GetCustomFields(c)
@@ -63,7 +54,7 @@ func (srv *Service) SerializePost(c controller.MContext) base_service.CRUDEntity
 	obj.EndAt = req.EndAt
 	obj.Type = req.Type
 	obj.Name = req.Name
-	obj.MinPrice = req.MinPrice
+	obj.CurPrice = req.MaxPrice
 	obj.MaxPrice = req.MaxPrice
 	obj.Description = req.Description
 	obj.Status = types.GoodsStatusUnFinished

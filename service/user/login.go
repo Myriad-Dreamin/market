@@ -15,10 +15,8 @@ type LoginRequest struct {
 	ID uint `form:"id" json:"id"`
 	// Name: 用户的唯一名称
 	Name string `form:"user_name" json:"user_name"`
-	// Phone: 用户的邮箱
+	// Phone: 用户的电话
 	Phone string `form:"phone" json:"phone"`
-	// Aborted
-	//Phone    string `form:"phone" json:"phone"`
 	// Password: 用户的密码
 	Password string `form:"password" json:"password" xorm:"'password'" binding:"required"`
 }

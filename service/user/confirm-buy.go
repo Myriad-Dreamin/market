@@ -11,7 +11,6 @@ type ConfirmBuyRequest struct {
 	ConfirmOrCancel bool `json:"cc" form:"cc" validate:"exists"`
 }
 
-
 func (srv *Service) ConfirmBuy(c controller.MContext) {
 	var req ConfirmBuyRequest
 	id, ok := ginhelper.ParseUintAndBind(c, "goid", &req)

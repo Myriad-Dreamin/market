@@ -26,12 +26,12 @@ func (srv *Service) DeleteHook(c controller.MContext, obj base_service.CRUDEntit
 	return srv.deleteHook(c, obj.(*model.Needs))
 }
 
-func (srv *Service) ResponseGet(obj base_service.CRUDEntity) interface{} {
-	return NeedsToGetReply(obj.(*model.Needs))
+func (srv *Service) ResponseGet(c controller.MContext, obj base_service.CRUDEntity) interface{} {
+	return srv.NeedsToGetReply(c, obj.(*model.Needs))
 }
 
 func (srv *Service) ResponseInspect(obj base_service.CRUDEntity) interface{} {
-	return NeedsToGetReply(obj.(*model.Needs))
+	return NeedsToInspectReply(obj.(*model.Needs))
 }
 
 func (srv *Service) GetPutRequest() interface{} {

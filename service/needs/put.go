@@ -12,7 +12,6 @@ type PutRequest struct {
 	EndAt       time.Time `json:"end_at" form:"end_at"`
 	Type        uint16    `json:"g_type" form:"g_type"`
 	Name        string    `json:"name" form:"name"`
-	MinPrice    *uint64   `json:"min_price" form:"min_price"`
 	MaxPrice    *uint64   `json:"max_price" form:"max_price"`
 	Description string    `json:"description" form:"description"`
 }
@@ -52,19 +51,8 @@ func (srv *Service) fillPutFields(c controller.MContext, needs *model.Needs, req
 		return
 	}
 
-	if req.MinPrice != nil {
-		if req.MaxPrice != nil && *req.MaxPrice < *req.MinPrice {
-			c.AbortWithStatusJSON(http.StatusOK, types.ErrorSerializer{
-				Code:  types.CodeInvalidParameters,
-				Error: "max price should not be less than min price",
-			})
-			return
-		}
-		fields = append(fields, "min_price")
-		needs.MinPrice = *req.MinPrice
-	}
 	if req.MaxPrice != nil {
-		if *req.MaxPrice < needs.MinPrice {
+		if *req.MaxPrice < needs.MaxPrice {
 			c.AbortWithStatusJSON(http.StatusOK, types.ErrorSerializer{
 				Code:  types.CodeInvalidParameters,
 				Error: "max price should not be less than min price",
@@ -73,6 +61,11 @@ func (srv *Service) fillPutFields(c controller.MContext, needs *model.Needs, req
 		}
 		fields = append(fields, "max_price")
 		needs.MaxPrice = *req.MaxPrice
+		if needs.MaxPrice < needs.CurPrice {
+			fields = append(fields, "cur_price", "seller")
+			needs.CurPrice = needs.MaxPrice
+			needs.Seller = 0
+		}
 	}
 
 	if req.Type != types.GoodsTypeUnknown {

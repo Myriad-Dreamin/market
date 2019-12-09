@@ -11,7 +11,7 @@ type CRUDObjectToolLite interface {
 	DObject
 	SerializePost(c controller.MContext) CRUDEntity
 	ResponsePost(obj CRUDEntity) interface{}
-	ResponseGet(obj CRUDEntity) interface{}
+	ResponseGet(c controller.MContext, obj CRUDEntity) interface{}
 	ResponseInspect(obj CRUDEntity) interface{}
 	GetPutRequest() interface{}
 	FillPutFields(c controller.MContext, object CRUDEntity, req interface{}) []string
@@ -42,8 +42,11 @@ func (srv *CRUDService) Get(c controller.MContext) {
 	if ginhelper.MaybeSelectError(c, obj, err) {
 		return
 	}
-
-	c.JSON(http.StatusOK, srv.Tool.ResponseGet(obj))
+	x := srv.Tool.ResponseGet(c, obj)
+	if c.IsAborted() {
+		return
+	}
+	c.JSON(http.StatusOK, x)
 }
 
 func (srv *CRUDService) Inspect(c controller.MContext) {

@@ -92,7 +92,7 @@ func (tester *Tester) Release() {
 func (tester *Tester) MakeAdminContext() bool {
 	resp := tester.Post("/v1/user", userservice.RegisterRequest{
 		Name:         "admin_context",
-		Password:     "admin",
+		Password:     "Admin12345",
 		NickName:     "admin_context",
 		Phone:        "1234567891011",
 		RegisterCity: "Qing Dao S.D.",
@@ -110,7 +110,7 @@ func (tester *Tester) MakeAdminContext() bool {
 	resp = tester.Post("/v1/login",
 		userservice.LoginRequest{
 			ID:       r.ID,
-			Password: "admin",
+			Password: "Admin12345",
 		}, mock.Comment("admin login for test"))
 	if !tester.NoErr(resp) {
 		return false
