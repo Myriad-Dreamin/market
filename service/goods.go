@@ -1,17 +1,15 @@
 package service
 
 import (
-	"github.com/Myriad-Dreamin/market/config"
 	"github.com/Myriad-Dreamin/market/control"
-	"github.com/Myriad-Dreamin/market/model"
 	goodsservice "github.com/Myriad-Dreamin/market/service/goods"
-	"github.com/Myriad-Dreamin/market/types"
+	"github.com/Myriad-Dreamin/minimum-lib/module"
 )
 
 type GoodsService = control.GoodsService
 
-func NewGoodsService(logger types.Logger, provider *model.Provider, config *config.ServerConfig) (GoodsService, error) {
-	return goodsservice.NewService(logger, provider, config)
+func NewGoodsService(m module.Module) (GoodsService, error) {
+	return goodsservice.NewService(m)
 }
 
 func (s *Provider) GoodsService() GoodsService {

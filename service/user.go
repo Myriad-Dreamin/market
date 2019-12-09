@@ -1,18 +1,15 @@
 package service
 
 import (
-	"github.com/Myriad-Dreamin/market/lib/jwt"
-	"github.com/Myriad-Dreamin/market/config"
 	"github.com/Myriad-Dreamin/market/control"
-	"github.com/Myriad-Dreamin/market/model"
 	userservice "github.com/Myriad-Dreamin/market/service/user"
-	"github.com/Myriad-Dreamin/market/types"
+	"github.com/Myriad-Dreamin/minimum-lib/module"
 )
 
 type UserService = control.UserService
 
-func NewUserService(logger types.Logger, provider *model.Provider, middleware *jwt.Middleware, config *config.ServerConfig) (UserService, error) {
-	return userservice.NewService(logger, provider, middleware, config)
+func NewUserService(m module.Module) (UserService, error) {
+	return userservice.NewService(m)
 }
 
 func (s *Provider) UserService() UserService {

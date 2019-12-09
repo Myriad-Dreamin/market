@@ -8,12 +8,12 @@ import (
 )
 
 type RootRouter struct {
-	Root       *controller.Router
-	Router     *controller.Router
-	AuthRouter *controller.Router
-	Auth       *controller.Middleware
+	Root       *Router
+	Router     *Router
+	AuthRouter *Router
+	Auth       *Middleware
 
-	Ping *controller.LeafRouter
+	Ping *LeafRouter
 	//ObjectRouter *ObjectRouter
 	UserRouter  *UserRouter
 	GoodsRouter *GoodsRouter
@@ -29,7 +29,7 @@ func PingFunc(c controller.MContext) {
 	})
 }
 
-func NewRootRouter(serviceProvider *service.Provider, jwtMW *jwt.Middleware, routerAuthMW *controller.Middleware) (r *RootRouter) {
+func NewRootRouter(serviceProvider *service.Provider, jwtMW *jwt.Middleware, routerAuthMW *Middleware) (r *RootRouter) {
 	rr := controller.NewRouterGroup()
 	apiRouterV1 := rr.Group("/v1")
 	authRouterV1 := apiRouterV1.Group("", jwtMW.Build())

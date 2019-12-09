@@ -10,6 +10,7 @@ type Provider struct {
 	module.BaseModuler
 	rootRouter   *RootRouter
 	objectRouter *ObjectRouter
+	authRouter *AuthRouter
 	statisticRouter *StatisticRouter
 	userRouter   *UserRouter
 	goodsRouter  *GoodsRouter
@@ -29,6 +30,8 @@ func (s *Provider) Register(name string, router interface{}) {
 		panic(fmt.Errorf("unknown router %T", router))
 	}
 	switch ss := router.(type) {
+	case *AuthRouter:
+		s.authRouter = ss
 	case *RootRouter:
 		s.rootRouter = ss
 	case *GoodsRouter:
@@ -49,6 +52,8 @@ func (s *Provider) Replace(name string, router interface{}) {
 		panic(fmt.Errorf("unknown router %T", router))
 	}
 	switch ss := router.(type) {
+	case *AuthRouter:
+		s.authRouter = ss
 	case *RootRouter:
 		s.rootRouter = ss
 	case *GoodsRouter:

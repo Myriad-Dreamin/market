@@ -8,8 +8,8 @@ import (
 )
 
 type ChangePasswordRequest struct {
-	OldPassword string `form:"old-password" json:"old-password" binding:"required"`
-	NewPassword string `form:"new-password" json:"new-password" binding:"required"`
+	OldPassword string `form:"old_password" json:"old_password" binding:"required"`
+	NewPassword string `form:"new_password" json:"new_password" binding:"required"`
 }
 
 

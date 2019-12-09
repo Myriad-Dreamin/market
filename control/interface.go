@@ -7,13 +7,6 @@ import (
 //go:generate package-attach-to-path -generate_register_map
 
 
-/* auth
- * refresh token GET: 刷新登陆用token
- */
-type Auth interface {
-	// /refresh-token GET
-	RefreshToken(c controller.MContext)
-}
 
 type ObjectService interface {
 	ObjectSignatureXXX() interface{}

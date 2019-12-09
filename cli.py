@@ -54,7 +54,7 @@ class MinimumCli:
 
     def create_pure_service(self, object_name, placeholder):
         self._update_obj_vars(object_name, placeholder)
-        self._create_router(object_name, placeholder, 'router/template/pure-object-router.go.template')
+        self._create_router(object_name, placeholder, 'control/router/template/pure-object-router.go.template')
         self._create_service(object_name, placeholder, 'service/pure-object/')
 
     def create_router(self, object_name, placeholder, __object_router_file=None):
@@ -208,10 +208,10 @@ class MinimumCli:
 
     def _create_router(self, object_name, placeholder, __object_router_file=None):
         self._update_obj_vars(object_name, placeholder)
-        object_router_file = 'router/' + self.m_snake_name + '-router.go'
-        root_provider_file = 'router/provider.go'
+        object_router_file = 'control/router/' + self.m_snake_name + '-router.go'
+        root_provider_file = 'control/router/provider.go'
 
-        self.template_to(__object_router_file or 'router/object-router.go', object_router_file)
+        self.template_to(__object_router_file or 'control/router/object-router.go', object_router_file)
 
         self.replace(
             root_provider_file,

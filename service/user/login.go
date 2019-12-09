@@ -14,7 +14,7 @@ type LoginRequest struct {
 	// ID: 用户的id
 	ID uint `form:"id" json:"id"`
 	// Name: 用户的唯一名称
-	Name string `form:"user_name" json:"user_name"`
+	NickName string `form:"nick_name" json:"nick_name"`
 	// Phone: 用户的电话
 	Phone string `form:"phone" json:"phone"`
 	// Password: 用户的密码
@@ -89,8 +89,8 @@ func (srv *Service) Login(c controller.MContext) {
 	var err error
 	if req.ID != 0 {
 		user, err = srv.userDB.Query(req.ID)
-	} else if len(req.Name) != 0 {
-		user, err = srv.userDB.QueryName(req.Name)
+	} else if len(req.NickName) != 0 {
+		user, err = srv.userDB.QueryNickName(req.NickName)
 	} else if len(req.Phone) != 0 {
 		user, err = srv.userDB.QueryPhone(req.Phone)
 	} else {

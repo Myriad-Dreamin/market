@@ -39,6 +39,13 @@ func (srv *Service) fillPutFields(c controller.MContext, goods *model.Goods, req
 		})
 		return
 	}
+	if goods.Status == types.GoodsStatusCancelled {
+		c.AbortWithStatusJSON(http.StatusOK, types.ErrorSerializer{
+			Code:  types.CodeGoodsStatusCancelled,
+			Error: "goods is sold",
+		})
+		return
+	}
 
 	if req.EndAt.Sub(time.Now()) >= time.Minute {
 		fields = append(fields, "end_at")

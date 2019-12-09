@@ -7,7 +7,6 @@ import (
 	"fmt"
 	"github.com/Myriad-Dreamin/go-magic-package/instance"
 	parser "github.com/Myriad-Dreamin/go-parse-package"
-	"github.com/Myriad-Dreamin/market/config"
 	"github.com/Myriad-Dreamin/market/control"
 	"github.com/Myriad-Dreamin/market/lib/controller"
 	"github.com/Myriad-Dreamin/market/types"
@@ -48,8 +47,8 @@ func Mock(options ...Option) (srv *Mocker) {
 	srv = new(Mocker)
 	srv.Server = newServer(options)
 	srv.header = make(map[string]string)
-	srv.Cfg = config.Default()
 	if !(srv.InstantiateLogger() &&
+		srv.UseDefaultConfig() &&
 		srv.PrepareFileSystem() &&
 		srv.MockDatabase()) {
 		srv = nil
@@ -75,7 +74,7 @@ func Mock(options ...Option) (srv *Mocker) {
 	if err := srv.Module.Install(srv.RouterProvider); err != nil {
 		srv.println("install router provider error", err)
 	}
-	if err := srv.Module.Install(srv.DatabaseProvider); err != nil {
+	if err := srv.Module.Install(srv.ModelProvider); err != nil {
 		srv.println("install database provider error", err)
 	}
 
@@ -87,8 +86,8 @@ func Mock(options ...Option) (srv *Mocker) {
 		}
 	}()
 
-	srv.RouterEngine.Use(mock.ContextRecorder())
-	control.BuildHttp(srv.Router.Root, srv.RouterEngine)
+	srv.HttpEngine.Use(mock.ContextRecorder())
+	control.BuildHttp(srv.Router.Root, srv.HttpEngine)
 	srv.Module.Debug(srv.Logger)
 
 	ctx, cancel := context.WithCancel(context.Background())
@@ -219,7 +218,7 @@ func (mocker *Mocker) mockServe(r *Request, params ...interface{}) (w *mock.Resp
 		}
 	}
 
-	mocker.RouterEngine.ServeHTTP(w, r)
+	mocker.HttpEngine.ServeHTTP(w, r)
 
 	if mocker.contextHelper != nil && mocker.assertNoError {
 		if !mocker.NoErr(w) {

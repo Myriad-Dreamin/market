@@ -24,7 +24,7 @@ func (srv *Server) registerDatabaseService() bool {
 			srv.Logger.Debug(fmt.Sprintf("init %T DB error", dbResult.First), "error", dbResult.Err)
 			return false
 		}
-		srv.DatabaseProvider.Register(dbResult.dbName, dbResult.First)
+		srv.ModelProvider.Register(dbResult.dbName, dbResult.First)
 	}
 	return true
 }
@@ -80,7 +80,7 @@ func (srv *Server) PrepareDatabase() bool {
 		srv.Logger.Debug("rbac to database error", "error", err)
 		return false
 	}
-	srv.DatabaseProvider.Register("enforcer", rbac.GetEnforcer())
+	srv.ModelProvider.Register("enforcer", rbac.GetEnforcer())
 
 	return srv.registerDatabaseService()
 }
@@ -104,7 +104,7 @@ func (srv *Server) MockDatabase() bool {
 		srv.Logger.Debug("rbac to database error", "error", err)
 		return false
 	}
-	srv.DatabaseProvider.Register("enforcer", rbac.GetEnforcer())
+	srv.ModelProvider.Register("enforcer", rbac.GetEnforcer())
 
 	return srv.registerDatabaseService()
 }

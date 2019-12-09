@@ -13,11 +13,12 @@ type serviceResult struct {
 
 func (srv *Server) PrepareService() bool {
 	for _, serviceResult := range []serviceResult{
-		{"statisticService", functional.Decay(service.NewStatisticService(srv.Logger, srv.DatabaseProvider, srv.Cfg))},
-		{"needsService", functional.Decay(service.NewNeedsService(srv.Logger, srv.DatabaseProvider, srv.Cfg))},
-		{"goodsService", functional.Decay(service.NewGoodsService(srv.Logger, srv.DatabaseProvider, srv.Cfg))},
-		{"userService", functional.Decay(service.NewUserService(srv.Logger, srv.DatabaseProvider, srv.jwtMW, srv.Cfg))},
-		{"objectService", functional.Decay(service.NewObjectService(srv.Logger, srv.DatabaseProvider, srv.Cfg))},
+		{"authService", functional.Decay(service.NewAuthService(srv.Module))},
+		{"statisticService", functional.Decay(service.NewStatisticService(srv.Module))},
+		{"needsService", functional.Decay(service.NewNeedsService(srv.Module))},
+		{"goodsService", functional.Decay(service.NewGoodsService(srv.Module))},
+		{"userService", functional.Decay(service.NewUserService(srv.Module))},
+		{"objectService", functional.Decay(service.NewObjectService(srv.Module))},
 	} {
 		// build Router failed when requesting service with database, report and return
 		if serviceResult.Err != nil {

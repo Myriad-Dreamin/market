@@ -26,7 +26,7 @@ func testUserRegisterLogin(t *tester.TesterContext) {
 		Password: pswd,
 	})
 	resp = t.Post("/v1/login", userservice.LoginRequest{
-		Name:     name,
+		NickName: nick,
 		Password: pswd,
 	})
 	resp = t.Post("/v1/login", userservice.LoginRequest{

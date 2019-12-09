@@ -1,32 +1,31 @@
 package router
 
 import (
-	"github.com/Myriad-Dreamin/market/lib/controller"
 	"github.com/Myriad-Dreamin/market/service"
 )
 
 type GoodsRouter struct {
-	Router *controller.Router
-	AuthRouter *controller.Router
-	Auth     *controller.Middleware
+	Router *Router
+	AuthRouter *Router
+	Auth     *Middleware
 	IDRouter *GoodsIDRouter
 
-	Post    *controller.LeafRouter
-	GetList *controller.LeafRouter
+	Post    *LeafRouter
+	GetList *LeafRouter
 }
 
 type GoodsIDRouter struct {
-	Router *controller.Router
-	AuthRouter *controller.Router
-	Auth *controller.Middleware
+	Router *Router
+	AuthRouter *Router
+	Auth *Middleware
 
-	Get         *controller.LeafRouter
-	Inspect     *controller.LeafRouter
-	Put         *controller.LeafRouter
-	Delete      *controller.LeafRouter
-	ForceDelete *controller.LeafRouter
-	PutPicture  *controller.LeafRouter
-	GetPicture  *controller.LeafRouter
+	Get         *LeafRouter
+	Inspect     *LeafRouter
+	Put         *LeafRouter
+	Delete      *LeafRouter
+	ForceDelete *LeafRouter
+	PutPicture  *LeafRouter
+	GetPicture  *LeafRouter
 }
 
 func BuildGoodsRouter(parent *RootRouter, serviceProvider *service.Provider) (router *GoodsRouter) {

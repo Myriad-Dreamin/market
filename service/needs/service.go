@@ -7,6 +7,7 @@ import (
 	"github.com/Myriad-Dreamin/market/model"
 	base_service "github.com/Myriad-Dreamin/market/service/base-service"
 	"github.com/Myriad-Dreamin/market/types"
+	"github.com/Myriad-Dreamin/minimum-lib/module"
 )
 
 type Service struct {
@@ -25,13 +26,14 @@ type Service struct {
 func (srv *Service) NeedsSignatureXXX() interface{} { return srv }
 
 
-func NewService(logger types.Logger, provider *model.Provider, cfg *config.ServerConfig) (a *Service, err error) {
+func NewService(m module.Module) (a *Service, err error) {
 	a = new(Service)
+	provider := m.Require(config.ModulePath.Provider.Model).(*model.Provider)
+	a.logger = m.Require(config.ModulePath.Global.Logger).(types.Logger)
+	a.cfg = m.Require(config.ModulePath.Global.Configuration).(*config.ServerConfig)
 	a.needsDB = provider.NeedsDB()
 	a.userDB = provider.UserDB()
 	a.enforcer = provider.Enforcer()
-	a.logger = logger
-	a.cfg = cfg
 	a.key = "nid"
 	a.CRUDService = base_service.NewCRUDService(a, a.key)
 	a.forceDelete = base_service.NewDService(forceDeleteService{a}, a.key)

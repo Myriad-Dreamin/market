@@ -4,24 +4,19 @@ import (
 	"github.com/Myriad-Dreamin/market/lib/controller"
 )
 
-/* needs
- * post: 登记商品
- * put: 修改商品信息
- * delete: 删除商品信息
- * get: 获取商品信息
- * list: 根据filter得到商品列表
- */
+
+// NeedsService defines the interface of needs service
 type NeedsService interface {
 	NeedsSignatureXXX() interface{}
 
 	// @Title Needs Post
 	// @Description Post a Needs you want to buy from others.
 	// The following is a description of the parameters
-	//     + `g_type uint16`: the type of needs, optional values refer to the link [market types](https://github.com/Myriad-Dreamin/market/blob/master/types/goods_type.go):
+	//     + `g_type uint16`: the type of needs, optional values refer to the link [market types](https://github.com/Myriad-Dreamin/market/blob/master/types/goods_type.go).
 	//
 	//     + `name string`: the name of your needs.
 	//
-	//     + `min_price uint64`: the lowest price required to buy the needs, if you want to buy the needs at least $10.55 then `min_price` will equal to 1055 to avoid the loss of floating precision (10.55 * 100)
+	//     + `end_at time.Time`: the alive time of needs.
 	//
 	//     + `max_price uint64`: the highest price accepted to buy the needs, if you want to buy the needs at least $10.55 then `min_price` will equal to 1055 to avoid the loss of floating precision (10.55 * 100)
 	//
@@ -29,7 +24,17 @@ type NeedsService interface {
 	Post(c controller.MContext)
 
 	// @Title Needs Put
-	// @Description Put Needs
+	// @Description Put a Needs that not be finished. you also can not modify it before a minute of ddl
+	// The following is a description of the parameters
+	//     + `g_type uint16`: the type of needs, optional values refer to the link [market types](https://github.com/Myriad-Dreamin/market/blob/master/types/goods_type.go).
+	//
+	//     + `name string`: the name of your needs.
+	//
+	//     + `end_at time.Time`: the alive time of needs.
+	//
+	//     + `max_price uint64`: the highest price accepted to buy the needs, if you want to buy the needs at least $10.55 then `min_price` will equal to 1055 to avoid the loss of floating precision (10.55 * 100)
+	//
+	//     + `description string`: a short description of the needs.
 	Put(c controller.MContext)
 
 	// @Title Needs Delete

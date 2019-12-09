@@ -2,6 +2,7 @@ package server
 
 import (
 	"fmt"
+	"github.com/Myriad-Dreamin/market/config"
 	"github.com/Myriad-Dreamin/minimum-lib/logger"
 	"go.uber.org/zap/zapcore"
 )
@@ -13,6 +14,7 @@ func (srv *Server) InstantiateLogger() bool {
 		fmt.Println(err)
 		return false
 	}
+	srv.Module.Provide(config.ModulePath.Global.Logger, srv.Logger)
 	return true
 }
 

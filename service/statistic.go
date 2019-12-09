@@ -1,19 +1,17 @@
 package service
 
 import (
-	"github.com/Myriad-Dreamin/market/config"
 	"github.com/Myriad-Dreamin/market/control"
-	"github.com/Myriad-Dreamin/market/model"
 	statisticservice "github.com/Myriad-Dreamin/market/service/statistic"
-	"github.com/Myriad-Dreamin/market/types"
+	"github.com/Myriad-Dreamin/minimum-lib/module"
 )
 
 // go:generate go run github.com/Myriad-Dreamin/minimum-lib/code-gen/test-gen -source ./ -destination ../../test/
 
 type StatisticService = control.StatisticService
 
-func NewStatisticService(logger types.Logger, provider *model.Provider, config *config.ServerConfig) (StatisticService, error) {
-	return statisticservice.NewService(logger, provider, config)
+func NewStatisticService(m module.Module) (StatisticService, error) {
+	return statisticservice.NewService(m)
 }
 
 func (s *Provider) StatisticService() StatisticService {

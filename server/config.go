@@ -9,6 +9,12 @@ func (srv *Server) LoadConfig(cfgPath string) bool {
 		srv.Logger.Debug("parse config error", "error", err)
 		return false
 	}
+	srv.Module.Provide(config.ModulePath.Global.Configuration, srv.Cfg)
+	return true
+}
+func (srv *Server) UseDefaultConfig() bool {
+	srv.Cfg = config.Default()
+	srv.Module.Provide(config.ModulePath.Global.Configuration, srv.Cfg)
 	return true
 }
 

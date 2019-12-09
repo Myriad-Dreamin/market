@@ -4,23 +4,18 @@ import (
 	"github.com/Myriad-Dreamin/market/lib/controller"
 )
 
-/* goods
- * post: 登记商品
- * put: 修改商品信息
- * delete: 删除商品信息
- * force delete: 强制删除商品信息（只有管理员能调用）
- * get: 获取商品信息
- * list: 根据filter得到商品列表
- */
+// GoodsService defines the interface of goods service
 type GoodsService interface {
 	GoodsSignatureXXX() interface{}
 
 	// @Title Goods Post
 	// @Description Post a Goods you want to sell to others.
 	// The following is a description of the parameters
-	//     + `g_type uint16`: the type of goods, optional values refer to the link [market types](https://github.com/Myriad-Dreamin/market/blob/master/types/goods_type.go):
+	//     + `g_type uint16`: the type of goods, optional values refer to the link [market types](https://github.com/Myriad-Dreamin/market/blob/master/types/goods_type.go).
 	//
 	//     + `name string`: the name of your goods.
+	//
+	//     + `end_at time.Time`: the alive time of goods.
 	//
 	//     + `min_price uint64`: the lowest price required to sell the goods, if you want to sell the goods at least $10.55 then `min_price` will equal to 1055 to avoid the loss of floating precision (10.55 * 100)
 	//
@@ -30,7 +25,17 @@ type GoodsService interface {
 	Post(c controller.MContext)
 
 	// @Title Goods Put
-	// @Description Put Goods
+	// @Description Put a Goods that not be finished. you can not reset its price to be fixed or not. you also can not modify it before a minute of ddl
+	// The following is a description of the parameters
+	//     + `g_type uint16`: the type of goods, optional values refer to the link [market types](https://github.com/Myriad-Dreamin/market/blob/master/types/goods_type.go).
+	//
+	//     + `name string`: the name of your goods.
+	//
+	//     + `end_at time.Time`: the alive time of goods.
+	//
+	//     + `min_price uint64`: the lowest price required to sell the goods, if you want to sell the goods at least $10.55 then `min_price` will equal to 1055 to avoid the loss of floating precision (10.55 * 100)
+	//
+	//     + `description string`: a short description of the goods.
 	Put(c controller.MContext)
 
 	// @Title Goods Delete

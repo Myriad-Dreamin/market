@@ -6,6 +6,7 @@ import (
 	"github.com/Myriad-Dreamin/market/model"
 	base_service "github.com/Myriad-Dreamin/market/service/base-service"
 	"github.com/Myriad-Dreamin/market/types"
+	"github.com/Myriad-Dreamin/minimum-lib/module"
 )
 
 type Service struct {
@@ -23,12 +24,13 @@ func (srv *Service) CreateFilter() interface{} {
 
 func (srv *Service) ObjectSignatureXXX() interface{} { return srv }
 
-func NewService(logger types.Logger, provider *model.Provider, cfg *config.ServerConfig) (a *Service, err error) {
+func NewService(m module.Module) (a *Service, err error) {
 	a = new(Service)
+	provider := m.Require(config.ModulePath.Provider.Model).(*model.Provider)
+	a.logger = m.Require(config.ModulePath.Global.Logger).(types.Logger)
+	a.cfg = m.Require(config.ModulePath.Global.Configuration).(*config.ServerConfig)
 	a.key = "oid"
 	a.db = provider.ObjectDB()
-	a.logger = logger
-	a.cfg = cfg
 	a.CRUDService = base_service.NewCRUDService(a, a.key)
 	a.ListService = base_service.NewListService(a, a.db.FilterI)
 	return

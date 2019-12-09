@@ -29,10 +29,10 @@ type Server struct {
 	Logger       types.Logger
 	LoggerWriter io.Writer
 
-	DB           *gorm.DB
-	RedisPool    *redis.Pool
-	RouterEngine *control.HttpEngine
-	Router       *router.RootRouter
+	DB         *gorm.DB
+	RedisPool  *redis.Pool
+	HttpEngine *control.HttpEngine
+	Router     *router.RootRouter
 
 	contestPath string
 
@@ -41,16 +41,16 @@ type Server struct {
 	routerAuthMW *controller.Middleware
 	corsMW       gin.HandlerFunc
 
-	Module           module.Module
-	ServiceProvider  *service.Provider
-	DatabaseProvider *model.Provider
-	RouterProvider   *router.Provider
+	Module          module.Module
+	ServiceProvider *service.Provider
+	ModelProvider   *model.Provider
+	RouterProvider  *router.Provider
 
 	plugins []plugin.Plugin
 }
 
-func NewServer(cfg *config.ServerConfig) *Server {
-	return &Server{Cfg: cfg}
+func NewServer() *Server {
+	return &Server{Module: make(module.Module)}
 }
 
 func (srv *Server) Terminate() {
@@ -75,7 +75,7 @@ type OptionRouterLoggerWriter struct {
 }
 
 func newServer(options []Option) *Server {
-	srv := new(Server)
+	srv := NewServer()
 
 	for i := range options {
 		switch option := options[i].(type) {
@@ -90,12 +90,14 @@ func newServer(options []Option) *Server {
 		srv.LoggerWriter = os.Stdout
 	}
 
-	srv.Module = make(module.Module)
 	srv.ServiceProvider = new(service.Provider)
-	srv.DatabaseProvider = model.NewProvider("/database")
+	srv.ModelProvider = model.NewProvider("/database")
 	srv.RouterProvider = router.NewProvider("/IRouter")
 
-	_ = model.SetProvider(srv.DatabaseProvider)
+	_ = model.SetProvider(srv.ModelProvider)
+	srv.Module.Provide(config.ModulePath.Provider.Service, srv.ServiceProvider)
+	srv.Module.Provide(config.ModulePath.Provider.Model, srv.ModelProvider)
+	srv.Module.Provide(config.ModulePath.Provider.Router, srv.RouterProvider)
 	return srv
 }
 
@@ -128,7 +130,7 @@ func New(cfgPath string, options ...Option) (srv *Server) {
 	if err := srv.Module.Install(srv.RouterProvider); err != nil {
 		srv.println("install router provider error", err)
 	}
-	if err := srv.Module.Install(srv.DatabaseProvider); err != nil {
+	if err := srv.Module.Install(srv.ModelProvider); err != nil {
 		srv.println("install database provider error", err)
 	}
 	//
@@ -157,7 +159,7 @@ func (srv *Server) Inject(plugins ...plugin.Plugin) (injectSuccess bool) {
 		if plg == nil {
 			return false
 		}
-		plg = plg.Inject(srv.ServiceProvider, srv.DatabaseProvider, srv.Module)
+		plg = plg.Inject(srv.ServiceProvider, srv.ModelProvider, srv.Module)
 		if plg == nil {
 			return false
 		}
@@ -175,7 +177,7 @@ func (srv *Server) Serve(port string) {
 		}
 	}()
 
-	control.BuildHttp(srv.Router.Root, srv.RouterEngine)
+	control.BuildHttp(srv.Router.Root, srv.HttpEngine)
 	srv.Module.Debug(srv.Logger)
 
 	ctx, cancel := context.WithCancel(context.Background())
@@ -195,7 +197,7 @@ func (srv *Server) Serve(port string) {
 	var wg sync.WaitGroup
 	wg.Add(1)
 	go func() {
-		if err := srv.RouterEngine.Run(port); err != nil {
+		if err := srv.HttpEngine.Run(port); err != nil {
 			srv.Logger.Debug("IRouter run error", "error", err)
 		}
 		wg.Done()
@@ -206,6 +208,6 @@ func (srv *Server) Serve(port string) {
 }
 
 func (srv *Server) ServeWithPProf(port string) {
-	ginpprof.Wrap(srv.RouterEngine)
+	ginpprof.Wrap(srv.HttpEngine)
 	srv.Serve(port)
 }

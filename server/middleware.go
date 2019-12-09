@@ -1,6 +1,7 @@
 package server
 
 import (
+	"github.com/Myriad-Dreamin/market/config"
 	"github.com/Myriad-Dreamin/market/lib/controller"
 	"github.com/Myriad-Dreamin/market/lib/jwt"
 	ginhelper "github.com/Myriad-Dreamin/market/service/gin-helper"
@@ -22,7 +23,7 @@ func (srv *Server) PrepareMiddleware() bool {
 	srv.jwtMW.ExpireSecond = 3600
 	srv.jwtMW.RefreshSecond = 3600 * 24 * 7
 
-	srv.routerAuthMW = controller.NewMiddleware(srv.DatabaseProvider.Enforcer(),
+	srv.routerAuthMW = controller.NewMiddleware(srv.ModelProvider.Enforcer(),
 		"user:", "uid", ginhelper.MissID, ginhelper.AuthFailed)
 
 	srv.corsMW = cors.New(cors.Config{
@@ -35,5 +36,8 @@ func (srv *Server) PrepareMiddleware() bool {
 		AllowCredentials: true,
 	})
 
+	srv.Module.Provide(config.ModulePath.Middleware.JWT, srv.jwtMW)
+	srv.Module.Provide(config.ModulePath.Middleware.RouteAuth, srv.routerAuthMW)
+	srv.Module.Provide(config.ModulePath.Middleware.CORS, srv.corsMW)
 	return true
 }

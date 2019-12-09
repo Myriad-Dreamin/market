@@ -71,6 +71,7 @@ const (
 const (
 	CodeGoodsStatusUnknown int = iota + 12000
 	CodeGoodsStatusFinished
+	CodeGoodsStatusCancelled
 	CodeGoodsLifeTimeout
 	CodeGoodsStatusNotBeUnfinished
 	CodeGoodsStatusNotBePending
