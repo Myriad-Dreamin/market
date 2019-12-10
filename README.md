@@ -251,8 +251,6 @@ makefile会从context中自动读取以下参数填充模板`docker-compose.temp
 
 context参数如下：
 
-```bash
-
 + `redis-root-password`: redis root的密码，默认值为`12345678`
 
 + `mysql-root-password`: mysql root的密码，默认值为`12345678`
@@ -272,8 +270,6 @@ context参数如下：
 + `config-file`: 配置文件在本机的相对路径，默认值为`config.toml`
 
 + `mysql-norm-password`: mysql 普通admin的密码，默认值为`12345678`
-
-```
 
 如何设置context，可以使用`python cli.py apply_context`命令也可以手动修改`.market-env.json`
 
