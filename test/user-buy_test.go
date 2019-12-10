@@ -15,7 +15,7 @@ func testUserBuy(t *tester.TesterContext) {
 		EndAt:       time.Now().Add(time.Hour),
 		Type:        types.GoodsTypeElectronic,
 		Name:        "es000000000000000",
-		MinPrice:    1,
+		MinPrice:    100000,
 		IsFixed:     true,
 		Description: " ",
 	})
@@ -40,7 +40,7 @@ func testUserBuy(t *tester.TesterContext) {
 		EndAt:       time.Now().Add(time.Hour),
 		Type:        types.GoodsTypeElectronic,
 		Name:        "es00000000000000000000",
-		MinPrice:    1,
+		MinPrice:    100000,
 		IsFixed:     false,
 		Description: " ",
 	})
@@ -48,7 +48,7 @@ func testUserBuy(t *tester.TesterContext) {
 	id = x.Goods.ID
 
 	resp = t.Post("/v1/user/1/goods/" + strconv.Itoa(int(id)) + "/buy", gin.H{
-		"price": 2,
+		"price": 200000,
 	})
 	fmt.Println(resp)
 }

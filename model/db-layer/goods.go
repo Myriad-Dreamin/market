@@ -26,15 +26,15 @@ type Goods struct {
 	UpdatedAt time.Time `dorm:"updated_at" gorm:"column:updated_at;default:CURRENT_TIMESTAMP;not null;"`
 	EndAt     time.Time `dorm:"end_at" gorm:"column:end_at;default:CURRENT_TIMESTAMP;not null;"`
 
-	Seller      uint   `dorm:"seller" gorm:"column:seller;not_null"`
-	Buyer       uint   `dorm:"buyer" gorm:"column:buyer;not_null"`
-	Type        uint16 `dorm:"g_type" gorm:"column:g_type;not_null"`
-	Name        string `dorm:"name" gorm:"column:name;not_null"`
-	CurPrice    uint64 `dorm:"cur_price" gorm:"column:cur_price;not_null"`
-	MinPrice    uint64 `dorm:"min_price" gorm:"column:min_price;not_null"`
-	IsFixed     bool   `dorm:"is_fixed" gorm:"column:is_fixed;not_null"`
-	Description string `dorm:"description" gorm:"column:description;not_null"`
-	Status      types.GoodsStatus  `dorm:"status" gorm:"column:status;not_null"`
+	Seller      uint              `dorm:"seller" gorm:"column:seller;not_null"`
+	Buyer       uint              `dorm:"buyer" gorm:"column:buyer;not_null"`
+	Type        uint16            `dorm:"g_type" gorm:"column:g_type;not_null"`
+	Name        string            `dorm:"name" gorm:"column:name;not_null"`
+	CurPrice    uint64            `dorm:"cur_price" gorm:"column:cur_price;not_null"`
+	MinPrice    uint64            `dorm:"min_price" gorm:"column:min_price;not_null"`
+	IsFixed     bool              `dorm:"is_fixed" gorm:"column:is_fixed;not_null"`
+	Description string            `dorm:"description" gorm:"column:description;not_null"`
+	Status      types.GoodsStatus `dorm:"status" gorm:"column:status;not_null"`
 
 	BuyerFee  uint64 `dorm:"buyer_fee" gorm:"column:buyer_fee;not_null"`
 	SellerFee uint64 `dorm:"seller_fee" gorm:"column:seller_fee;not_null"`
@@ -223,7 +223,75 @@ func (goodsDB *GoodsDB) ConfirmBuy(id uint, confirm bool, uid uint) (int, string
 	}
 	if confirm {
 		goods.Status = types.GoodsStatusFinished
-		//todo: add fees
+		goods.BuyerFee = goods.CurPrice/50
+		goods.SellerFee = goods.BuyerFee >> 1
+
+		buyer, err := wrapToUser(userTraits.ID_(tx, goods.Buyer))
+		if code, errs := errorc.MaybeSelectError(buyer, err); code != types.CodeOK {
+			rollback(tx)
+			return code, errs
+		}
+		seller, err := wrapToUser(userTraits.ID_(tx, goods.Seller))
+		if code, errs := errorc.MaybeSelectError(seller, err); code != types.CodeOK {
+			rollback(tx)
+			return code, errs
+		}
+		now := time.Now()
+		y, m, _ := now.Date()
+
+		x := new(StatFee)
+		x.Month = time.Date(y, m, 1, 0, 0, 0, 0, now.Location())
+		x.Province = buyer.RegisterProvince
+		x.City = buyer.RegisterCity
+		if hs, err := Exists_(tx, x); err != nil {
+			rollback(tx)
+			return types.CodeSelectError, err.Error()
+		} else {
+			x.BuyFeeSum += goods.BuyerFee
+			x.BuyFinishCount++
+			if hs {
+				_, err = x.UpdateFields__(tx.CommonDB(), []string{"buy_fee_sum", "buy_finish_count"})
+				if err != nil {
+					rollback(tx)
+					return types.CodeUpdateError, err.Error()
+				}
+				//fmt.Println("old record")
+			} else {
+				_, err = x.Create_(tx)
+				if err != nil {
+					rollback(tx)
+					return types.CodeUpdateError, err.Error()
+				}
+				//fmt.Println("new record")
+			}
+		}
+
+		x2 := new(StatFee)
+		x2.Month = x.Month
+		x2.Province = seller.RegisterProvince
+		x2.City = seller.RegisterCity
+		if hs, err := Exists_(tx, x2); err != nil {
+			rollback(tx)
+			return types.CodeSelectError, err.Error()
+		} else {
+			x2.SellFeeSum += goods.SellerFee
+			x2.SellFinishCount++
+			if hs {
+				_, err = x2.UpdateFields__(tx.CommonDB(), []string{"sell_fee_sum", "sell_finish_count"})
+				if err != nil {
+					rollback(tx)
+					return types.CodeUpdateError, err.Error()
+				}
+				//fmt.Println("old record")
+			} else {
+				_, err = x2.Create_(tx)
+				if err != nil {
+					rollback(tx)
+					return types.CodeUpdateError, err.Error()
+				}
+				//fmt.Println("new record")
+			}
+		}
 	} else {
 		goods.Status = types.GoodsStatusCancelled
 	}
@@ -234,4 +302,15 @@ func (goodsDB *GoodsDB) ConfirmBuy(id uint, confirm bool, uid uint) (int, string
 		return types.CodeUpdateError, err.Error()
 	}
 	return commitOrRollback(tx)
+}
+
+func Exists_(tx *gorm.DB, v interface{}) (has bool, err error) {
+	rdb := tx.Where(v).First(v)
+	err = rdb.Error
+	if err == nil {
+		has = true
+	} else if err == gorm.ErrRecordNotFound {
+		err = nil
+	}
+	return
 }

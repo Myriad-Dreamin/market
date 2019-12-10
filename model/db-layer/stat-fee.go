@@ -1,6 +1,8 @@
 package dblayer
 
 import (
+	"fmt"
+	"github.com/Myriad-Dreamin/dorm"
 	gorm_crud_dao "github.com/Myriad-Dreamin/go-model-traits/gorm-crud-dao"
 	"github.com/Myriad-Dreamin/minimum-lib/module"
 	"github.com/jinzhu/gorm"
@@ -31,9 +33,10 @@ type StatFee struct {
 
 	UpdatedAt time.Time `dorm:"updated_at" gorm:"column:updated_at;default:CURRENT_TIMESTAMP;not null;" json:"updated_at"`
 
-	BuyFeeSum   int64 `dorm:"buy_fee_sum" gorm:"column:buy_fee_sum;not_null"`
-	SellFeeSum  int64 `dorm:"sell_fee_sum" gorm:"column:sell_fee_sum;not_null"`
-	FinishCount int64 `dorm:"finish_count" gorm:"column:finish_count;not_null"`
+	BuyFeeSum       uint64 `dorm:"buy_fee_sum" gorm:"column:buy_fee_sum;not_null"`
+	SellFeeSum      uint64 `dorm:"sell_fee_sum" gorm:"column:sell_fee_sum;not_null"`
+	BuyFinishCount  uint64 `dorm:"buy_finish_count" gorm:"column:buy_finish_count;not_null"`
+	SellFinishCount uint64 `dorm:"sell_finish_count" gorm:"column:sell_finish_count;not_null"`
 }
 
 const stateFeeName = "stat_fee"
@@ -59,6 +62,10 @@ func (st *StatFee) Create() (int64, error) {
 	return statFeeTraits.Create(st)
 }
 
+func (st *StatFee) Create_(tx *gorm.DB) (interface{}, error) {
+	return statFeeTraits.Create_(tx, st)
+}
+
 func (st *StatFee) Update() (int64, error) {
 	return statFeeTraits.Update(st)
 }
@@ -69,6 +76,14 @@ func (st *StatFee) UpdateFields(fields []string) (int64, error) {
 
 func (st *StatFee) Delete() (int64, error) {
 	return statFeeTraits.Delete(st)
+}
+
+func (st *StatFee) UpdateFields_(db *dorm.DB, fields []string) (int64, error) {
+	return statFeeTraits.UpdateFields_(db, st, fields)
+}
+
+func (st *StatFee) UpdateFields__(db dorm.SQLCommon, fields []string) (int64, error) {
+	return statFeeTraits.UpdateFields__(db, st, fields)
 }
 
 type StatFeeDB struct{}
@@ -82,6 +97,7 @@ func GetStatFeeDB(_ module.Module) (*StatFeeDB, error) {
 }
 
 func StatFeeFilterOption(db *gorm.DB, f *StatFeeRequest) *gorm.DB {
+	fmt.Println("page, pagesize", f.Page, f.PageSize)
 	db = gorm_crud_dao.FilterOption(db, &f.Filter)
 
 	if f.LEThan != nil {
@@ -94,7 +110,7 @@ func StatFeeFilterOption(db *gorm.DB, f *StatFeeRequest) *gorm.DB {
 }
 
 func (statFeeDB *StatFeeDB) FilterFee(f *StatFeeRequest) (results []StatFeeXYResult, err error) {
-	err = StatFeeFilterOption(db.Table(stateFeeName), f).Select("month, sum(buy_fee_sum)").Scan(&results).Error
+	err = StatFeeFilterOption(db.Table(stateFeeName), f).Select("month, sum(buy_fee_sum)+sum(sell_fee_sum) as sum").Scan(&results).Error
 	return
 }
 
@@ -103,7 +119,7 @@ func (statFeeDB *StatFeeDB) FilterFeeI(f interface{}) (interface{}, error) {
 }
 
 func (statFeeDB *StatFeeDB) FilterFeeCount(f *StatFeeRequest) (results []StatFeeCountXYResult, err error) {
-	err = StatFeeFilterOption(db.Table(stateFeeName), f).Select("month, sum(finish_count)").Scan(&results).Error
+	err = StatFeeFilterOption(db.Table(stateFeeName), f).Select("month, sum(buy_finish_count)+sum(sell_finish_count) as count").Scan(&results).Error
 	return
 }
 
@@ -113,6 +129,12 @@ func (statFeeDB *StatFeeDB) FilterFeeCountI(f interface{}) (interface{}, error) 
 
 func (statFeeDB *StatFeeDB) ID(id uint) (statFee *StatFee, err error) {
 	return wrapToStatFee(statFeeTraits.ID(id))
+}
+
+func (statFeeDB *StatFeeDB) First() (statFee *StatFee, err error) {
+	statFee = new(StatFee)
+	err = db.First(statFee).Error
+	return
 }
 
 type StatFeeQuery struct {
@@ -178,17 +200,17 @@ func (statFeeDB *StatFeeQuery) Scan(desc interface{}) (err error) {
 }
 
 type StatFeeCountXYResult struct {
-	Month time.Time `json:"month"`
-	Count int64     `json:"count"`
+	Month time.Time `json:"month" gorm:"column:month"`
+	Count int64     `json:"count" gorm:"column:count"`
 }
 
 type StatFeeXYResult struct {
-	Month time.Time `json:"month"`
-	Sum   int64     `json:"count"`
+	Month time.Time `json:"month" gorm:"column:month"`
+	Sum   int64     `json:"sum" gorm:"column:sum"`
 }
 
 type StatFeeRequest struct {
-	Filter
-	LEThan *time.Time `json:"le" form:"le" binding:"required"`
-	GEThan *time.Time `json:"ge" form:"ge" binding:"required"`
+	Filter `binding:"dive"`
+	LEThan   *time.Time `json:"le" form:"le" binding:"required"`
+	GEThan   *time.Time `json:"ge" form:"ge" binding:"required"`
 }

@@ -8,7 +8,7 @@ import (
 )
 
 type ConfirmBuyRequest struct {
-	ConfirmOrCancel bool `json:"cc" form:"cc" validate:"exists"`
+	Confirm bool `json:"cc" form:"cc" validate:"exists"`
 }
 
 func (srv *Service) ConfirmBuy(c controller.MContext) {
@@ -19,7 +19,7 @@ func (srv *Service) ConfirmBuy(c controller.MContext) {
 	}
 	var claims = ginhelper.GetCustomFields(c)
 
-	code, err := srv.goodsDB.ConfirmBuy(id, req.ConfirmOrCancel, uint(claims.UID))
+	code, err := srv.goodsDB.ConfirmBuy(id, req.Confirm, uint(claims.UID))
 	if code != types.CodeOK {
 		c.AbortWithStatusJSON(http.StatusOK, types.ErrorSerializer{
 			Code:  code,

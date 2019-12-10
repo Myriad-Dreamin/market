@@ -184,7 +184,7 @@ func (needsDB *NeedsDB) Sell(price uint64, id, uid uint) (int, string) {
 	return commitOrRollback(tx)
 }
 
-func (needsDB *NeedsDB) ConfirmSell(id uint, confirmOrCancel bool, uid uint) (int, string) {
+func (needsDB *NeedsDB) ConfirmSell(id uint, confirm bool, uid uint) (int, string) {
 	tx := db.Begin()
 	if tx.Error != nil {
 		return types.CodeBeginTransactionError, tx.Error.Error()
@@ -199,12 +199,81 @@ func (needsDB *NeedsDB) ConfirmSell(id uint, confirmOrCancel bool, uid uint) (in
 		return types.CodeGoodsStatusNotBePending, needs.Status.String()
 	}
 
-	if confirmOrCancel {
+	if confirm {
 		needs.Status = types.GoodsStatusFinished
-		//todo: add fees
+		needs.BuyerFee = needs.CurPrice/50
+		needs.SellerFee = needs.BuyerFee >> 1
+
+		buyer, err := wrapToUser(userTraits.ID_(tx, needs.Buyer))
+		if code, errs := errorc.MaybeSelectError(buyer, err); code != types.CodeOK {
+			rollback(tx)
+			return code, errs
+		}
+		seller, err := wrapToUser(userTraits.ID_(tx, needs.Seller))
+		if code, errs := errorc.MaybeSelectError(seller, err); code != types.CodeOK {
+			rollback(tx)
+			return code, errs
+		}
+		now := time.Now()
+		y, m, _ := now.Date()
+
+		x := new(StatFee)
+		x.Month = time.Date(y, m, 1, 0, 0, 0, 0, now.Location())
+		x.Province = buyer.RegisterProvince
+		x.City = buyer.RegisterCity
+		if hs, err := Exists_(tx, x); err != nil {
+			rollback(tx)
+			return types.CodeSelectError, err.Error()
+		} else {
+			x.BuyFeeSum += needs.BuyerFee
+			x.BuyFinishCount++
+			if hs {
+				_, err = x.UpdateFields__(tx.CommonDB(), []string{"buy_fee_sum", "buy_finish_count"})
+				if err != nil {
+					rollback(tx)
+					return types.CodeUpdateError, err.Error()
+				}
+				//fmt.Println("old record")
+			} else {
+				_, err = x.Create_(tx)
+				if err != nil {
+					rollback(tx)
+					return types.CodeUpdateError, err.Error()
+				}
+				//fmt.Println("new record")
+			}
+		}
+
+		x2 := new(StatFee)
+		x2.Month = x.Month
+		x2.Province = seller.RegisterProvince
+		x2.City = seller.RegisterCity
+		if hs, err := Exists_(tx, x2); err != nil {
+			rollback(tx)
+			return types.CodeSelectError, err.Error()
+		} else {
+			x2.SellFeeSum += needs.SellerFee
+			x2.SellFinishCount++
+			if hs {
+				_, err = x2.UpdateFields__(tx.CommonDB(), []string{"sell_fee_sum", "sell_finish_count"})
+				if err != nil {
+					rollback(tx)
+					return types.CodeUpdateError, err.Error()
+				}
+				//fmt.Println("old record")
+			} else {
+				_, err = x2.Create_(tx)
+				if err != nil {
+					rollback(tx)
+					return types.CodeUpdateError, err.Error()
+				}
+				//fmt.Println("new record")
+			}
+		}
 	} else {
 		needs.Status = types.GoodsStatusCancelled
 	}
+
 	_, err = needs.UpdateFields__(tx.CommonDB(), needsStatusField)
 	if err != nil {
 		rollback(tx)

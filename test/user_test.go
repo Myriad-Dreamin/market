@@ -18,7 +18,9 @@ func TestUser(t *testing.T) {
 		t.Run("ConfirmSell", srv.HandleTestWithOutError(testUserConfirmSell)) &&
 		t.Run("ChangePassword", srv.HandleTestWithOutError(testUserChangePassword)) &&
 		t.Run("Put", srv.HandleTestWithOutError(testUserPut)) &&
-		t.Run("Delete", srv.HandleTestWithOutError(testUserDelete))
+		t.Run("Delete", srv.HandleTestWithOutError(testUserDelete)) &&
+		t.Run("CountXY", srv.HandleTestWithOutError(testGoodsStatisticCountXY)) &&
+		t.Run("FeeXY", srv.HandleTestWithOutError(testGoodsStatisticFeeXY))
 }
 
 func testUserInspect(t *tester.TesterContext) {

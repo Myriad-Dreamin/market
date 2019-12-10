@@ -6,7 +6,6 @@ import (
 	"github.com/Myriad-Dreamin/market/lib/errorc"
 	"github.com/Myriad-Dreamin/market/lib/jwt"
 	"github.com/Myriad-Dreamin/market/types"
-	"github.com/go-sql-driver/mysql"
 	"github.com/tidwall/gjson"
 	"net/http"
 	"reflect"
@@ -16,11 +15,9 @@ import (
 var ResponseOK = types.Response{Code: types.CodeOK}
 
 func CheckInsertError(c controller.MContext, err error) bool {
-	if mysqlError, ok := err.(*mysql.MySQLError); ok {
-		if mysqlError.Number == 1062 {
-			c.AbortWithStatusJSON(http.StatusOK, &types.Response{Code: types.CodeDuplicatePrimaryKey})
-			return true
-		}
+	if code, errs := errorc.CheckInsertError(err); code != types.CodeOK {
+		c.AbortWithStatusJSON(http.StatusOK, types.ErrorSerializer{Code: code, Error:errs})
+		return true
 	}
 	return false
 }
@@ -278,48 +275,21 @@ func DeleteObj(c controller.MContext, deleteObj Deletable) bool {
 	return true
 }
 
-type Creatable interface {
-	Create() (int64, error)
-}
-
-func CreateObj(c controller.MContext, createObj Creatable) bool {
-	affected, err := createObj.Create()
-	if err != nil {
-		if CheckInsertError(c, err) {
-			return false
-		}
-		c.AbortWithStatusJSON(http.StatusInternalServerError, &types.ErrorSerializer{
-			Code:  types.CodeInsertError,
-			Error: err.Error(),
-		})
-		return false
-	} else if affected == 0 {
-		c.AbortWithStatusJSON(http.StatusOK, &types.Response{
-			Code: types.CodeInsertError,
-		})
+func CreateObj(c controller.MContext, createObj errorc.Creatable) bool {
+	if code, errs := errorc.CreateObj(createObj); code != types.CodeOK {
+		c.AbortWithStatusJSON(http.StatusOK, types.ErrorSerializer{Code: code, Error:errs})
 		return false
 	}
 	return true
 }
 
-func CreateObjWithTip(c controller.MContext, createObj Creatable) bool {
-	affected, err := createObj.Create()
-	if err != nil {
-		if CheckInsertError(c, err) {
-			return false
-		}
-		c.AbortWithStatusJSON(http.StatusInternalServerError, &types.ErrorSerializer{
-			Code:  types.CodeInsertError,
-			Error: fmt.Sprintf("create %T failed: %v", createObj, err.Error()),
-		})
-		return false
-	} else if affected == 0 {
-		c.AbortWithStatusJSON(http.StatusOK, &types.Response{
-			Code: types.CodeInsertError,
-		})
+func CreateObjWithTip(c controller.MContext, createObj errorc.Creatable) bool {
+	if code, errs := errorc.CreateObj(createObj); code != types.CodeOK {
+		c.AbortWithStatusJSON(http.StatusOK, types.ErrorSerializer{Code: code, Error:fmt.Sprintf("create %T failed: %v", createObj, errs)})
 		return false
 	}
 	return true
+
 }
 
 type Updatable interface {

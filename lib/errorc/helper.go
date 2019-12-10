@@ -2,6 +2,7 @@ package errorc
 
 import (
 	"github.com/Myriad-Dreamin/market/types"
+	"github.com/go-sql-driver/mysql"
 	"reflect"
 )
 
@@ -29,3 +30,27 @@ func UpdateFields(obj UpdateFieldsable, fields []string) (Code, string) {
 	return types.CodeOK, ""
 }
 
+type Creatable interface {
+	Create() (int64, error)
+}
+
+func CheckInsertError(err error) (Code, string) {
+	if mysqlError, ok := err.(*mysql.MySQLError); ok {
+		if mysqlError.Number == 1062 {
+			return types.CodeDuplicatePrimaryKey, ""
+		}
+	}
+	return types.CodeOK, ""
+}
+
+func CreateObj(createObj Creatable) (Code, string) {
+	affected, err := createObj.Create()
+	if err != nil {
+		if code, errs := CheckInsertError(err); code != types.CodeOK {
+			return code, errs
+		}
+	} else if affected == 0 {
+		return types.CodeInsertError, "affect nothing"
+	}
+	return types.CodeOK, ""
+}
