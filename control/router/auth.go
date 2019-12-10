@@ -1,6 +1,6 @@
 package router
 
-import "github.com/Myriad-Dreamin/market/auth"
+import "github.com/Myriad-Dreamin/market/control/auth"
 
 func ApplyAuth(router *RootRouter) {
 	var uig = router.UserRouter.IDRouter

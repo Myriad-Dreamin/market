@@ -1,7 +1,7 @@
 package userservice
 
 import (
-	"github.com/Myriad-Dreamin/market/auth"
+	"github.com/Myriad-Dreamin/market/control/auth"
 	"github.com/Myriad-Dreamin/market/lib/controller"
 	"github.com/Myriad-Dreamin/market/model"
 	base_service "github.com/Myriad-Dreamin/market/service/base-service"
