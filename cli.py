@@ -1,9 +1,8 @@
 
 import fire
-import shutil
-import os
-import subprocess
-import re
+import shutil, json, os, subprocess, re
+from makefile import Makefile
+from pymake import entry
 
 
 def to_camel_case(snake_str) -> str:
@@ -33,7 +32,6 @@ def pcmds(cmd_str, cwd=None, encoding='utf-8'):
 
 class MinimumCli:
     def __init__(self):
-        self.x = 1
         self.qut_object_name = None
         self.object_name = None
         self.m_snake_name = None
@@ -41,11 +39,29 @@ class MinimumCli:
         self.up_camel = None
         self.placeholder = None
 
+    def make(self, *make_args):
+        return entry(Makefile, make_args)
+
+    def apply_context(self, *key_values, f=None, c=False):
+        key_values = map(lambda x: x if x[1] else x,map(lambda x: x.split('=', 2), key_values))
+        with open('.market-env.json', 'r+') as f1:
+            content = f1.read()
+            context = json.loads('{}' if len(content) == 0 or c else content)
+            if f is not None:
+                with open(f, 'r+') as f2:
+                    content = f2.read()
+                    context.update(json.loads('{}' if len(content) == 0 else content))
+            for key_value in key_values: context[key_value[0]] = key_value[1]
+            f1.seek(0)
+            f1.truncate()
+            json.dump(context, f1, indent=4)
+
     def hello(self):
-        print('hello', self.x)
+        print('minimum-cli v0.1')
 
     def install(self):
         pcmds('go install github.com/Myriad-Dreamin/go-magic-package/package-attach-to-path')
+        self.fast_generate()
 
     def create_service(self, object_name, placeholder, service_folder=None, router_template=None):
         self._update_obj_vars(object_name, placeholder)
@@ -224,6 +240,7 @@ class MinimumCli:
             'switch ss := router.(type) {\n\tcase *%sRouter:\n\t\ts.%sRouter = ss' % (self.up_camel, self.camel),
         )
 
+minimum = MinimumCli()
 
 if __name__ == '__main__':
     fire.Fire(MinimumCli)

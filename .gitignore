@@ -1,7 +1,7 @@
 venv/
 .idea
 __pycache__
-
+pymake.pyc
 # ignore register mapping
 package-probe/
 init-package-probe.go

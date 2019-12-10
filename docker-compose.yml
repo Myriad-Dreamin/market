@@ -1,0 +1,51 @@
+version: "3.7"
+services:
+  redis:
+    image: redis
+    ports:
+      - "23379:6379"
+    environment:
+      - TZ=Asia/Shanghai
+      - LANG=en_US.UTF-8
+    command: redis-server --requirepass 12345678
+    networks:
+      market:
+        ipv4_address: 10.233.233.2
+
+  mysql:
+    image: mysql:5.7
+    ports:
+      - "23306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: 12345678
+      MYSQL_DATABASE: market
+      MYSQL_USER: madmin
+      MYSQL_PASSWORD: 12345678
+    volumes:
+      - E:\project\go\src\github.com\Myriad-Dreamin\market\testdb/conf:/etc/mysql/conf.d
+      - E:\project\go\src\github.com\Myriad-Dreamin\market\testdb/logs:/logs
+      - E:\project\go\src\github.com\Myriad-Dreamin\market\testdb/data:/var/lib/mysql
+    networks:
+      market:
+        ipv4_address: 10.233.233.3
+
+  server:
+    image: minimum-market/backend:alpine
+    volumes:
+      - E:\project\go\src\github.com\Myriad-Dreamin\market\config.toml:/config.toml
+    depends_on:
+      - redis
+      - mysql
+    ports:
+      - "23335:23336"
+    networks:
+      market:
+        ipv4_address: 10.233.233.4
+
+
+networks:
+  market:
+    ipam:
+      driver: default
+      config:
+        - subnet: "10.233.233.0/24"

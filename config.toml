@@ -1,10 +1,10 @@
 # do not push it to your repo!
 [database]
 connection-type="mysql"
-user-name="coreoj-admin"
-password="123456"
-host="localhost"
-database-name="coreoj"
+user-name="madmin"
+password="12345678"
+host="10.233.233.2"
+database-name="market"
 charset="utf8mb4"
 parse-time=true
 max-idle=100
