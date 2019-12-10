@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
-	"fmt"
 	"github.com/Myriad-Dreamin/go-magic-package/instance"
 	parser "github.com/Myriad-Dreamin/go-parse-package"
 	"github.com/Myriad-Dreamin/market/control"
@@ -118,7 +117,6 @@ func Mock(options ...Option) (srv *Mocker) {
 			Recs:      nil,
 		}
 	}
-	fmt.Println(srv.routes)
 
 	return
 }
