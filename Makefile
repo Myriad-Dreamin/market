@@ -1,11 +1,14 @@
 all:
 	go build .
 
-generate:
+build-docker:
+	docker build --tag minimum-market/backend:alpine .
+
+run-docker:
+	docker run -id -p 23336:23336 --name backend minimum-market/backend:alpine
 
 
-.PHONY: all
+.PHONY: all build-docker
 
-# http -> control -> service -> dao -> service -> control -> http
 
 
