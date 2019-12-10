@@ -22,9 +22,9 @@ services:
       MYSQL_USER: madmin
       MYSQL_PASSWORD: 12345678
     volumes:
-      - E:\project\go\src\github.com\Myriad-Dreamin\market\testdb/conf:/etc/mysql/conf.d
-      - E:\project\go\src\github.com\Myriad-Dreamin\market\testdb/logs:/logs
-      - E:\project\go\src\github.com\Myriad-Dreamin\market\testdb/data:/var/lib/mysql
+      - /home/kamiyoru/work/gosrc/src/github.com/Myriad-Dreamin/market/testdb/conf:/etc/mysql/conf.d
+      - /home/kamiyoru/work/gosrc/src/github.com/Myriad-Dreamin/market/testdb/logs:/logs
+      - /home/kamiyoru/work/gosrc/src/github.com/Myriad-Dreamin/market/testdb/data:/var/lib/mysql
     networks:
       market:
         ipv4_address: 10.233.233.3
@@ -32,7 +32,7 @@ services:
   server:
     image: minimum-market/backend:alpine
     volumes:
-      - E:\project\go\src\github.com\Myriad-Dreamin\market\config.toml:/config.toml
+      - /home/kamiyoru/work/gosrc/src/github.com/Myriad-Dreamin/market/config.toml:/config.toml
     depends_on:
       - redis
       - mysql

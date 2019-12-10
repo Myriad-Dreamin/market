@@ -3,7 +3,7 @@
 connection-type="mysql"
 user-name="madmin"
 password="12345678"
-host="10.233.233.3"
+host="localhost:23306"
 database-name="market"
 charset="utf8mb4"
 parse-time=true

@@ -6,3 +6,5 @@ pymake.pyc
 package-probe/
 init-package-probe.go
 **/register-instance-map.go
+docker-compose.yml
+.market-env.json
