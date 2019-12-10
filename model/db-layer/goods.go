@@ -21,11 +21,10 @@ var (
 )
 
 type Goods struct {
-	ID        uint      `dorm:"id" gorm:"column:id;primary_key;not_null"`
-	CreatedAt time.Time `dorm:"created_at" gorm:"column:created_at;default:CURRENT_TIMESTAMP;not null"`
-	UpdatedAt time.Time `dorm:"updated_at" gorm:"column:updated_at;default:CURRENT_TIMESTAMP;not null;"`
-	EndAt     time.Time `dorm:"end_at" gorm:"column:end_at;default:CURRENT_TIMESTAMP;not null;"`
-
+	ID          uint              `dorm:"id" gorm:"column:id;primary_key;not_null"`
+	CreatedAt   time.Time         `dorm:"created_at" gorm:"column:created_at;default:CURRENT_TIMESTAMP;not null"`
+	UpdatedAt   time.Time         `dorm:"updated_at" gorm:"column:updated_at;default:CURRENT_TIMESTAMP;not null;"`
+	EndAt       time.Time         `dorm:"end_at" gorm:"column:end_at;default:CURRENT_TIMESTAMP;not null;"`
 	Seller      uint              `dorm:"seller" gorm:"column:seller;not_null"`
 	Buyer       uint              `dorm:"buyer" gorm:"column:buyer;not_null"`
 	Type        uint16            `dorm:"g_type" gorm:"column:g_type;not_null"`
@@ -35,9 +34,8 @@ type Goods struct {
 	IsFixed     bool              `dorm:"is_fixed" gorm:"column:is_fixed;not_null"`
 	Description string            `dorm:"description" gorm:"column:description;not_null"`
 	Status      types.GoodsStatus `dorm:"status" gorm:"column:status;not_null"`
-
-	BuyerFee  uint64 `dorm:"buyer_fee" gorm:"column:buyer_fee;not_null"`
-	SellerFee uint64 `dorm:"seller_fee" gorm:"column:seller_fee;not_null"`
+	BuyerFee    uint64            `dorm:"buyer_fee" gorm:"column:buyer_fee;not_null"`
+	SellerFee   uint64            `dorm:"seller_fee" gorm:"column:seller_fee;not_null"`
 }
 
 // TableName specification
@@ -223,7 +221,7 @@ func (goodsDB *GoodsDB) ConfirmBuy(id uint, confirm bool, uid uint) (int, string
 	}
 	if confirm {
 		goods.Status = types.GoodsStatusFinished
-		goods.BuyerFee = goods.CurPrice/50
+		goods.BuyerFee = goods.CurPrice / 50
 		goods.SellerFee = goods.BuyerFee >> 1
 
 		buyer, err := wrapToUser(userTraits.ID_(tx, goods.Buyer))
