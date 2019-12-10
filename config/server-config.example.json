@@ -11,6 +11,6 @@
     },
     "label": [
         {"key": "author", "value": "Myriad-Dreamin"},
-        {"key": "validated OS", "value": "ubuntu 18.04 LTS"}
+        {"key": "validated OS", "value": ["ubuntu 18.04 LTS", "windows10"]}
     ]
 }
