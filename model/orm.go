@@ -4,15 +4,15 @@ import (
 	"errors"
 	"github.com/Myriad-Dreamin/market/config"
 	"github.com/Myriad-Dreamin/market/model/db-layer"
-	"github.com/Myriad-Dreamin/market/types"
+	"github.com/Myriad-Dreamin/minimum-lib/module"
 	"github.com/jinzhu/gorm"
 
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 	_ "github.com/mattn/go-sqlite3"
 )
 
-func Register(rdb *gorm.DB, logger types.Logger) error {
-	return dblayer.Register(rdb, logger)
+func Register(rdb *gorm.DB, m module.Module) error {
+	return dblayer.Register(rdb, m)
 }
 
 func booleanString(b bool) string {

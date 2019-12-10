@@ -46,7 +46,7 @@ func (srv *Server) PrepareDatabase() bool {
 		"location", cfg.DatabaseConfig.Location,
 	)
 
-	err = model.Register(srv.DB, srv.Logger)
+	err = model.Register(srv.DB, srv.Module)
 	if err != nil {
 		srv.Logger.Error("register and migrate error", "error", err)
 		return false
@@ -86,6 +86,7 @@ func (srv *Server) PrepareDatabase() bool {
 }
 
 func (srv *Server) MockDatabase() bool {
+	srv.Cfg.DatabaseConfig.Escaper = "\""
 	var err error
 	srv.DB, err = model.MockORM(srv.Cfg)
 	if err != nil {
@@ -93,7 +94,7 @@ func (srv *Server) MockDatabase() bool {
 		return false
 	}
 
-	err = model.Register(srv.DB, srv.Logger)
+	err = model.Register(srv.DB, srv.Module)
 	if err != nil {
 		srv.Logger.Error("register and migrate error", "error", err)
 		return false
