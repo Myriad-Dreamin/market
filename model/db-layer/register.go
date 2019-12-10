@@ -1,9 +1,10 @@
 package dblayer
 
 import (
-	"github.com/Myriad-Dreamin/core-oj/config"
 	"github.com/Myriad-Dreamin/dorm"
+	"github.com/Myriad-Dreamin/market/config"
 	"github.com/Myriad-Dreamin/market/types"
+	"github.com/Myriad-Dreamin/minimum-lib/module"
 	"github.com/jinzhu/gorm"
 )
 
@@ -21,16 +22,21 @@ func migrates() error {
 	return nil
 }
 
-func Register(rdb *gorm.DB, logger types.Logger) error {
+func Register(rdb *gorm.DB, m module.Module) error {
 	var err error
-	*db = *rdb.Debug()
+	*db = *rdb
 	*rawDB = db.DB()
-	//*rawDB = *db.DB()
 
+	// test if it is alive
 	if err = (*rawDB).Ping(); err != nil {
 		return err
 	}
-	xdb, err := dorm.FromRaw(*rawDB, adapt(logger), dorm.Escaper('"'))
+
+	xdb, err := dorm.FromRaw(*rawDB,
+		adapt(m.Require(config.ModulePath.Global.Logger).(types.Logger)),
+		dorm.Escaper(
+			m.Require(config.ModulePath.Global.Configuration).
+			(*config.ServerConfig).DatabaseConfig.Escaper))
 	if err != nil {
 		return err
 	}
@@ -40,8 +46,8 @@ func Register(rdb *gorm.DB, logger types.Logger) error {
 	return migrates()
 }
 
-func Configuration(cfg *config.Configuration) {
+func Configuration(cfg *config.ServerConfig) {
 
-	(*rawDB).SetMaxIdleConns(100)
-	(*rawDB).SetMaxOpenConns(100)
+	(*rawDB).SetMaxIdleConns(cfg.DatabaseConfig.MaxIdle)
+	(*rawDB).SetMaxOpenConns(cfg.DatabaseConfig.MaxActive)
 }

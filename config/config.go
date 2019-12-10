@@ -36,6 +36,9 @@ type DatabaseConfig struct {
 	Charset        string `json:"charset" yaml:"charset" toml:"charset" xml:"charset"`
 	ParseTime      bool   `json:"parse-time" yaml:"parse-time" toml:"parse-time" xml:"parse-time"`
 	Location       string `json:"location" yaml:"location" toml:"location" xml:"location"`
+	MaxIdle        int    `json:"max-idle" yaml:"max-idle" toml:"max-idle" xml:"max-idle"`
+	MaxActive      int    `json:"max-active" yaml:"max-active" toml:"max-active" xml:"max-active"`
+	Escaper        string `json:"escaper" yaml:"escaper" toml:"escaper" xml:"escaper"`
 }
 
 type Label struct {
@@ -46,23 +49,23 @@ type Label struct {
 type BaseParametersConfig struct {
 	GoodsMinimumEndDuration time.Duration `json:"goods-minimum-end-duration" yaml:"goods-minimum-end-duration" toml:"goods-minimum-end-duration" xml:"goods-minimum-end-duration"`
 	NeedsMinimumEndDuration time.Duration `json:"needs-minimum-end-duration" yaml:"needs-minimum-end-duration" toml:"needs-minimum-end-duration" xml:"needs-minimum-end-duration"`
-	GoodsPicturePath string `json:"goods-picture-path" yaml:"goods-picture-path" toml:"goods-picture-path" xml:"goods-picture-path"`
-	NeedsPicturePath string `json:"needs-picture-path" yaml:"needs-picture-path" toml:"needs-picture-path" xml:"needs-picture-path"`
+	GoodsPicturePath        string        `json:"goods-picture-path" yaml:"goods-picture-path" toml:"goods-picture-path" xml:"goods-picture-path"`
+	NeedsPicturePath        string        `json:"needs-picture-path" yaml:"needs-picture-path" toml:"needs-picture-path" xml:"needs-picture-path"`
 }
 
 type ServerConfig struct {
-	LoadType       string         `json:"-" yaml:"-" toml:"-" xml:"-"`
-	Name           xml.Name       `json:"-" yaml:"-" toml:"-" xml:"server-config"`
-	Labels         []Label        `json:"label" yaml:"label" toml:"label" xml:"label"`
-	DatabaseConfig DatabaseConfig `json:"database" yaml:"database" toml:"database" xml:"database"`
+	LoadType             string               `json:"-" yaml:"-" toml:"-" xml:"-"`
+	Name                 xml.Name             `json:"-" yaml:"-" toml:"-" xml:"server-config"`
+	Labels               []Label              `json:"label" yaml:"label" toml:"label" xml:"label"`
+	DatabaseConfig       DatabaseConfig       `json:"database" yaml:"database" toml:"database" xml:"database"`
 	BaseParametersConfig BaseParametersConfig `json:"base-cfg" yaml:"base-cfg" toml:"base-cfg" xml:"base-cfg"`
-	RedisConfig    RedisConfig    `json:"redis" yaml:"redis" toml:"redis" xml:"redis"`
+	RedisConfig          RedisConfig          `json:"redis" yaml:"redis" toml:"redis" xml:"redis"`
 }
 
 func Default() *ServerConfig {
 	return &ServerConfig{
 		LoadType: "json",
-		BaseParametersConfig:BaseParametersConfig{
+		BaseParametersConfig: BaseParametersConfig{
 			GoodsMinimumEndDuration: time.Hour,
 			NeedsMinimumEndDuration: time.Hour,
 			GoodsPicturePath:        "goods-picture",
@@ -70,7 +73,6 @@ func Default() *ServerConfig {
 		},
 	}
 }
-
 
 func Load(config *ServerConfig, configPath string) error {
 	return LoadStatic(config, configPath)
@@ -109,7 +111,7 @@ func LoadStatic(config interface{}, configPath string) error {
 		}
 
 		if _, err := os.Stat(configPath + configX.Type); err == nil {
-			return unmarshal(config, configX.Unmarshal, configPath + configX.Type)
+			return unmarshal(config, configX.Unmarshal, configPath+configX.Type)
 		}
 	}
 
