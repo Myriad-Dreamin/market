@@ -30,7 +30,7 @@ services:
         ipv4_address: 10.233.233.3
 
   server:
-    image: minimum-market/backend:alpine
+    image: myriaddreamin/minimum-market-backend:alpine
     volumes:
       - /home/kamiyoru/work/gosrc/src/github.com/Myriad-Dreamin/market/config.toml:/config.toml
     depends_on:

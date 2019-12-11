@@ -2,7 +2,12 @@
 market backend powered by minimum
 
 ## interface definition
+
 https://github.com/Myriad-Dreamin/market/blob/master/control
+
+## dockerhub地址
+
+https://hub.docker.com/repository/docker/myriaddreamin/minimum-market-backend
 
 ## Documentation
 API文档：
@@ -38,7 +43,7 @@ $ go build -o srv
 
 ```bash
 $ python makefile.py image
-docker build --tag minimum-market/backend:alpine .
+docker build --tag myriaddreamin/minimum-market-backend:alpine .
 Sending build context to Docker daemon  30.33MB
 Step 1/17 : FROM golang:alpine AS build-env
 ---> 69cf534c966a
@@ -121,7 +126,7 @@ Step 17/17 : CMD run.sh
 Removing intermediate container 877c54f3ae80
 ---> 26107e66e56e
 Successfully built 26107e66e56e
-Successfully tagged minimum-market/backend:alpine
+Successfully tagged myriaddreamin/minimum-market-backend:alpine
 ```
 
 #### 测试Docker镜像
@@ -138,7 +143,7 @@ dd1c326a9b52d482d1fc9ebd85a3ff640ad16fbc697816d7e8257df84aadb320
 
 ```bash
 $ python makefile.py run docker/config.toml
-docker run -id -v /home/kamiyoru/work/gosrc/src/github.com/Myriad-Dreamin/market/docker/config.toml:/config.toml --network=host --name backend minimum-market/backend:alpine
+docker run -id -v /home/kamiyoru/work/gosrc/src/github.com/Myriad-Dreamin/market/docker/config.toml:/config.toml --network=host --name backend myriaddreamin/minimum-market-backend:alpine
 39feeefbc7b8abbbdf2c7fc766b02f8c2e2cd77385f075119f59072d4f9a6949
 ```
 
@@ -147,7 +152,7 @@ docker run -id -v /home/kamiyoru/work/gosrc/src/github.com/Myriad-Dreamin/market
 ```bash
 $ docker ps -a
 CONTAINER ID        IMAGE                                 COMMAND                  CREATED             STATUS                   PORTS                                NAMES
-39feeefbc7b8        minimum-market/backend:alpine         "/bin/sh -c run.sh"      7 seconds ago       Up 7 seconds                                                  backend
+39feeefbc7b8        myriaddreamin/minimum-market-backend:alpine         "/bin/sh -c run.sh"      7 seconds ago       Up 7 seconds                                                  backend
 dd1c326a9b52        mysql:5.7                             "docker-entrypoint.s…"   54 seconds ago      Up 53 seconds            33060/tcp, 0.0.0.0:23306->3306/tcp   backend-testdb
 
 ```
@@ -261,7 +266,7 @@ context参数如下：
 
 + `data-path`: mysql data文件夹在本机的相对路径，默认值为`testdb/data`
 
-+ `node-name`: 后端服务的镜像名，默认值为`minimum-market/backend:alpine`
++ `node-name`: 后端服务的镜像名，默认值为`myriaddreamin/minimum-market-backend:alpine`
 
 + `instance-name`: 实例名，在此处无用
 
@@ -282,7 +287,7 @@ $ python makefile.py up
 $ python makefile.py start
 $ docker ps -a
 CONTAINER ID        IMAGE                                 COMMAND                  CREATED             STATUS                   PORTS                                NAMES
-6ab58bddf7f1        minimum-market/backend:alpine         "/bin/sh -c run.sh"      6 minutes ago       Up 58 seconds            0.0.0.0:23335->23336/tcp             market_server_1
+6ab58bddf7f1        myriaddreamin/minimum-market-backend:alpine         "/bin/sh -c run.sh"      6 minutes ago       Up 58 seconds            0.0.0.0:23335->23336/tcp             market_server_1
 466ca6db23ed        mysql:5.7                             "docker-entrypoint.s…"   6 minutes ago       Up About a minute        33060/tcp, 0.0.0.0:23306->3306/tcp   market_mysql_1
 b77c4e24e3c6        redis                                 "docker-entrypoint.s…"   6 minutes ago       Up 59 seconds            0.0.0.0:23379->6379/tcp              market_redis_1
 # 使用服务探针检测容器生命状态

@@ -127,7 +127,7 @@ class Makefile:
         with open('.market-env.json', 'w+') as f:
             c = f.read().encode('utf-8')
             cls.context = json.loads('{}' if len(c) == 0 else c)
-            cls.context['node-name'] = cls.context.get('node-name', 'minimum-market/backend:alpine')
+            cls.context['node-name'] = cls.context.get('node-name', 'myriaddreamin/minimum-market-backend:alpine')
             cls.context['instance-name'] = cls.context.get('instance-name', 'backend')
             
             cls.context['redis-root-password'] = cls.context.get('redis-root-password', '12345678')
