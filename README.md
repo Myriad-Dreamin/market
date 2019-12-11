@@ -371,16 +371,106 @@ POSITIONAL ARGUMENTS
     KEY_VALUES
 
 FLAGS
-    --f=F (required)
-    --c=C (required)
+    --f=F (required) # 从文件引入配置
+    --c=C (required) # 是否覆盖原配置
 ```
 
 此命令用于帮助设置`makefile`的context，context保存在`.market-env.json`中，你可以手动修改。
 
-```python
+```bash
 $ python3 cli.py apply_context mysql-root-password=aabb1234
 # .market-env.json
+```
+
+```json
 {
     "mysql-root-password": "aabb1234"
 }
 ```
+
+#### fast_generate
+
+```bash
+
+NAME
+    cli.py fast_generate
+
+SYNOPSIS
+    cli.py fast_generate <flags>
+
+FLAGS
+    --path=PATH
+    --match=MATCH
+(END)
+```
+
+此命令用于帮助生成`go generate`的代码。第一个参数位置为path，指定开始生成的根目录。match用于制定匹配文件规则，只有match正则匹配到的文件才会被执行`go generate`。此命令用于加速`go generate`，如果你发现有问题，可以不用此命令而代替使用`python cli.py generate`
+
+#### generate
+
+```bash
+
+NAME
+    cli.py generate
+
+SYNOPSIS
+    cli.py generate <flags>
+
+FLAGS
+    --path=PATH
+    --match=MATCH
+(END)
+```
+
+此命令用于帮助生成`go generate`的代码。第一个参数位置为path，指定开始生成的根目录。match用于制定匹配文件规则，只有match正则匹配到的文件才会被执行`go generate`。
+
+#### hello
+
+```bash
+NAME
+    cli.py hello
+
+SYNOPSIS
+    cli.py hello -
+```
+
+此命令用于检测`cli.py`是否可用
+
+#### install
+
+```bash
+NAME
+    cli.py install
+
+SYNOPSIS
+    cli.py install -
+```
+
+此命令用于安装库所需要的额外二进制命令。
+
+```bash
+NAME
+    cli.py make
+
+SYNOPSIS
+    cli.py make [MAKE_ARGS]...
+
+POSITIONAL ARGUMENTS
+    MAKE_ARGS
+```
+
+此命令用于调用`makefile.py`，暂时只有转发，所以使用`makefile.py`与使用`cli.py make`并无二异。
+
+#### test
+
+```bash
+NAME
+    cli.py test
+
+SYNOPSIS
+    cli.py test -
+```
+
+此命令用于测试代码。
+
+
