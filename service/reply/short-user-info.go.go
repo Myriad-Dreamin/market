@@ -22,9 +22,9 @@ func FetchUser(c controller.MContext, userDB *model.UserDB, u uint) *ShortUserIn
 		return nil
 	}
 	return &ShortUserInfo{
-		ID:           usr.ID,
-		NickName:     usr.NickName,
-		RegisterCity: usr.RegisterCity,
+		ID:               usr.ID,
+		NickName:         usr.NickName,
+		RegisterCity:     usr.RegisterCity,
 		RegisterProvince: usr.RegisterProvince,
 	}
 }

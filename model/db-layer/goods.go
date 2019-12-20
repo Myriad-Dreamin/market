@@ -27,7 +27,7 @@ type Goods struct {
 	EndAt       time.Time         `dorm:"end_at" gorm:"column:end_at;default:CURRENT_TIMESTAMP;not null;"`
 	Seller      uint              `dorm:"seller" gorm:"column:seller;not_null"`
 	Buyer       uint              `dorm:"buyer" gorm:"column:buyer;not_null"`
-	Type        uint16            `dorm:"g_type" gorm:"column:g_type;not_null"`
+	Type        types.GoodsType   `dorm:"g_type" gorm:"column:g_type;not_null"`
 	Name        string            `dorm:"name" gorm:"column:name;not_null"`
 	CurPrice    uint64            `dorm:"cur_price" gorm:"column:cur_price;not_null"`
 	MinPrice    uint64            `dorm:"min_price" gorm:"column:min_price;not_null"`

@@ -11,10 +11,9 @@ import (
 
 func testUserConfirmBuy(t *tester.TesterContext) {
 
-
 	id := reflect.ValueOf(srv.Get(goodsBuyIdK)).Convert(intType).Interface().(int)
 
-	resp := t.Post("/v1/user/1/goods/" + strconv.Itoa(int(id)) + "/confirm-buy", userservice.ConfirmBuyRequest{
+	resp := t.Post("/v1/user/1/goods/"+strconv.Itoa(int(id))+"/confirm-buy", userservice.ConfirmBuyRequest{
 		Confirm: true})
 	fmt.Println(resp)
 
@@ -23,4 +22,3 @@ func testUserConfirmBuy(t *tester.TesterContext) {
 	fmt.Println(reply.Goods.Buyer, reply.Goods.Seller, reply.Goods.Status)
 	t.Delete("/v1/goods/" + strconv.Itoa(id) + "/force")
 }
-

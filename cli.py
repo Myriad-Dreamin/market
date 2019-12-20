@@ -61,7 +61,11 @@ class MinimumCli:
 
     def install(self):
         pcmds('go install github.com/Myriad-Dreamin/go-magic-package/package-attach-to-path')
+        pcmds('go install golang.org/x/tools/cmd/stringer')
         self.fast_generate()
+
+    def fmt(self):
+        pcmds('go fmt github.com/Myriad-Dreamin/market/...')
 
     def create_service(self, object_name, placeholder, service_folder=None, router_template=None):
         self._update_obj_vars(object_name, placeholder)

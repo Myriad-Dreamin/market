@@ -21,7 +21,7 @@ type NeedsReply struct {
 	EndAt       time.Time            `json:"end_at" form:"end_at"`
 	Buyer       *reply.ShortUserInfo `json:"buyer" form:"buyer"`
 	EndDuration time.Duration        `json:"ddd" form:"ddd"`
-	Type        uint16               `json:"g_type" form:"g_type"`
+	Type        types.GoodsType      `json:"g_type" form:"g_type"`
 	Name        string               `json:"name" form:"name"`
 	CurPrice    uint64               `json:"cur_price" form:"cur_price"`
 	MaxPrice    uint64               `json:"max_price" form:"max_price"`

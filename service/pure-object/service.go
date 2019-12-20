@@ -8,7 +8,7 @@ import (
 )
 
 type Service struct {
-	cfg *config.ServerConfig
+	cfg    *config.ServerConfig
 	logger types.Logger
 }
 

@@ -8,4 +8,3 @@ type ErrorSerializer struct {
 type Response struct {
 	Code int `json:"code"`
 }
-

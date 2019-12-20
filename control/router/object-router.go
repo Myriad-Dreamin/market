@@ -7,8 +7,8 @@ import (
 type ObjectRouter struct {
 	*Router
 	AuthRouter *Router
-	Auth     *Middleware
-	IDRouter *ObjectIDRouter
+	Auth       *Middleware
+	IDRouter   *ObjectIDRouter
 
 	Post    *LeafRouter
 	GetList *LeafRouter
@@ -17,7 +17,7 @@ type ObjectRouter struct {
 type ObjectIDRouter struct {
 	*Router
 	AuthRouter *Router
-	Auth *Middleware
+	Auth       *Middleware
 
 	Get    *LeafRouter
 	Put    *LeafRouter

@@ -35,8 +35,7 @@ func Register(rdb *gorm.DB, m module.Module) error {
 	xdb, err := dorm.FromRaw(*rawDB,
 		adapt(m.Require(config.ModulePath.Global.Logger).(types.Logger)),
 		dorm.Escaper(
-			m.Require(config.ModulePath.Global.Configuration).
-			(*config.ServerConfig).DatabaseConfig.Escaper))
+			m.Require(config.ModulePath.Global.Configuration).(*config.ServerConfig).DatabaseConfig.Escaper))
 	if err != nil {
 		return err
 	}

@@ -74,5 +74,3 @@ func NewGinRouter(e gin.IRouter) GinRouter {
 func (g GinRouter) Group(path string, handlers ...controller.HandlerFunc) controller.IRouter {
 	return NewGinRouter(g.e.Group(path, ToGinHandlers(handlers)...))
 }
-
-

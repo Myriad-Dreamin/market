@@ -7,6 +7,7 @@ type IRouter interface {
 	IRoutes
 	Group(string, ...HandlerFunc) IRouter
 }
+
 // IRoutes defines all router handle interface.
 type IRoutes interface {
 	Use(...HandlerFunc) IRoutes
@@ -25,4 +26,3 @@ type IRoutes interface {
 	Static(string, string) IRoutes
 	StaticFS(string, http.FileSystem) IRoutes
 }
-

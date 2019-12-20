@@ -16,7 +16,6 @@ TODO
 可以查询当前所有用户基本信息；查询一定条件的物品及其状态信息，点击某一物品标识可显示货主信息；查询购物需求信息，点击某一标识可显示求购用户基本信息；查询一定条件下当前已经成交物品的累计中介费收益信息。
 */
 
-
 func (srv *Service) Buy(c controller.MContext) {
 	id, ok := ginhelper.ParseUint(c, "goid")
 	if !ok {
@@ -28,8 +27,8 @@ func (srv *Service) Buy(c controller.MContext) {
 	}
 	var (
 		claims = ginhelper.GetCustomFields(c)
-		code int
-		errs string
+		code   int
+		errs   string
 	)
 	if fixed := res.Get("fixed"); fixed.Exists() && fixed.Bool() {
 		code, errs = srv.goodsDB.BuyFixed(id, uint(claims.UID))
@@ -52,8 +51,3 @@ func (srv *Service) Buy(c controller.MContext) {
 	}
 	//if goods.Status
 }
-
-
-
-
-

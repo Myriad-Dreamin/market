@@ -8,8 +8,7 @@ import (
 
 type Enforcer = casbin.SyncedEnforcer
 
-
-type goodsEntity struct {}
+type goodsEntity struct{}
 
 func (goodsEntity) CreateObj(groupID uint) string {
 	return "goods:" + strconv.Itoa(int(groupID))

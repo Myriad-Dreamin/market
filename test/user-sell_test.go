@@ -14,13 +14,12 @@ func testUserSell(t *tester.TesterContext) {
 		EndAt:       time.Now().Add(time.Hour),
 		Type:        types.GoodsTypeElectronic,
 		Name:        "es000000000000000",
-		MaxPrice:     2,
+		MaxPrice:    2,
 		Description: "",
 	})
 	var x needsservice.PostReply
 	t.HandlerError0(resp.JSON(&x))
 	id := x.Needs.ID
-
 
 	resp = t.Post("/v1/user/1/needs/" + strconv.Itoa(int(id)) + "/sell")
 

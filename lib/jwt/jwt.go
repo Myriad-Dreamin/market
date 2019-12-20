@@ -28,8 +28,8 @@ type Middleware struct {
 	pubKey *rsa.PublicKey
 
 	//MaxRefresh   time.Duration
-	RefreshSecond  int64
-	ExpireSecond int64
+	RefreshSecond int64
+	ExpireSecond  int64
 
 	customClaimsFactory CustomClaimsFactory
 	validFunction       CustomClaimsValidateFunction
@@ -45,7 +45,7 @@ func NewMiddleWare(
 		SigningAlgorithm:             "HS256",
 		JWTHeaderKey:                 "Authorization",
 		JWTHeaderPrefixWithSplitChar: "Bearer ",
-		SigningKeyString: GetSignKey(),
+		SigningKeyString:             GetSignKey(),
 		SigningKey:                   []byte(GetSignKey()),
 		customClaimsFactory:          customClaimsFactory,
 		validFunction:                validFunction,
@@ -151,7 +151,7 @@ func (middleware *Middleware) RefreshToken(c controller.MContext) (string, error
 
 // RefreshToken if ok
 func (middleware *Middleware) RefreshTokenFunc(c controller.MContext, operate func(*CustomClaims) error) func(c controller.MContext) (string, error) {
-	return func (c controller.MContext) (string ,error) {
+	return func(c controller.MContext) (string, error) {
 		claims, err := middleware.CheckIfTokenExpire(c)
 		if err != nil {
 			return "", err

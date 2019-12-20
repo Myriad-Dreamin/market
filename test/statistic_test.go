@@ -14,7 +14,6 @@ func TestStatistic(t *testing.T) {
 		t.Run("FeeXY", srv.HandleTestWithOutError(testGoodsStatisticFeeXY))
 }
 
-
 func testGoodsStatisticFeeXY(t *tester.TesterContext) {
 
 	fmt.Println(srv.ModelProvider.StatFeeDB().First())

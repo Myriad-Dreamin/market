@@ -14,7 +14,7 @@ type GoodsReply struct {
 	UpdatedAt   time.Time            `json:"updated_at" form:"updated_at"`
 	EndAt       time.Time            `json:"end_at" form:"end_at"`
 	Seller      *reply.ShortUserInfo `json:"seller" form:"seller"`
-	Type        uint16               `json:"g_type" form:"g_type"`
+	Type        types.GoodsType      `json:"g_type" form:"g_type"`
 	Name        string               `json:"name" form:"name"`
 	CurPrice    uint64               `json:"cur_price" form:"cur_price"`
 	MinPrice    uint64               `json:"min_price" form:"min_price"`

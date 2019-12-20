@@ -5,19 +5,20 @@ import (
 )
 
 type GoodsRouter struct {
-	Router *Router
+	Router     *Router
 	AuthRouter *Router
-	Auth     *Middleware
-	IDRouter *GoodsIDRouter
+	Auth       *Middleware
+	IDRouter   *GoodsIDRouter
 
-	Post    *LeafRouter
-	GetList *LeafRouter
+	Post     *LeafRouter
+	GetList  *LeafRouter
+	GetTypes *LeafRouter
 }
 
 type GoodsIDRouter struct {
-	Router *Router
+	Router     *Router
 	AuthRouter *Router
-	Auth *Middleware
+	Auth       *Middleware
 
 	Get         *LeafRouter
 	Inspect     *LeafRouter
@@ -31,11 +32,12 @@ type GoodsIDRouter struct {
 func BuildGoodsRouter(parent *RootRouter, serviceProvider *service.Provider) (router *GoodsRouter) {
 	goodsService := serviceProvider.GoodsService()
 	router = &GoodsRouter{
-		Router: parent.Router.Extend("goods"),
+		Router:     parent.Router.Extend("goods"),
 		AuthRouter: parent.AuthRouter.Extend("goods"),
-		Auth:   parent.Auth.Copy(),
+		Auth:       parent.Auth.Copy(),
 	}
 	router.GetList = router.Router.GET("goods-list", goodsService.List)
+	router.GetTypes = router.Router.GET("goods-types", goodsService.GetTypes)
 	router.Post = router.AuthRouter.POST("/goods", goodsService.Post)
 
 	router.IDRouter = router.IDRouter.subBuild(router, serviceProvider)
@@ -49,9 +51,9 @@ func (*GoodsIDRouter) subBuild(parent *GoodsRouter, serviceProvider *service.Pro
 	goodsService := serviceProvider.GoodsService()
 
 	router = &GoodsIDRouter{
-		Router: parent.Router.Group("/goods/:goid"),
+		Router:     parent.Router.Group("/goods/:goid"),
 		AuthRouter: parent.AuthRouter.Group("/goods/:goid"),
-		Auth:   parent.Auth.MustGroup("goods", "goid"),
+		Auth:       parent.Auth.MustGroup("goods", "goid"),
 	}
 
 	router.Get = router.Router.GET("", goodsService.Get)

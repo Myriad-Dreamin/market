@@ -11,9 +11,8 @@ type StatFeeReply struct {
 }
 
 func ToStatFeeReply() StatFeeReply {
-	return StatFeeReply{Code:types.CodeOK}
+	return StatFeeReply{Code: types.CodeOK}
 }
-
 
 func (svc *Service) StatGoodsFee(c controller.MContext) {
 	svc.statGoodsFeeService.List(c)

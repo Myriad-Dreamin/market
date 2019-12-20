@@ -10,8 +10,9 @@ type NeedsRouter struct {
 	Auth       *Middleware
 	IDRouter   *NeedsIDRouter
 
-	Post    *LeafRouter
-	GetList *LeafRouter
+	Post     *LeafRouter
+	GetList  *LeafRouter
+	GetTypes *LeafRouter
 }
 
 type NeedsIDRouter struct {
@@ -36,6 +37,7 @@ func BuildNeedsRouter(parent *RootRouter, serviceProvider *service.Provider) (ro
 		Auth:       parent.Auth.Copy(),
 	}
 	router.GetList = router.GET("needs-list", needsService.List)
+	router.GetTypes = router.Router.GET("needs-types", needsService.GetTypes)
 	router.Post = router.AuthRouter.POST("/needs", needsService.Post)
 
 	router.IDRouter = router.IDRouter.subBuild(router, serviceProvider)

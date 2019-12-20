@@ -17,8 +17,8 @@ type UserRouter struct {
 
 type UserIDRouter struct {
 	*Router
-	AuthRouter *Router
-	Auth       *Middleware
+	AuthRouter    *Router
+	Auth          *Middleware
 	GoodsIDRouter *UserGoodsIDRouter
 	NeedsIDRouter *UserNeedsIDRouter
 
@@ -33,8 +33,8 @@ type UserGoodsIDRouter struct {
 	AuthRouter *Router
 	Auth       *Middleware
 
-	Buy            *LeafRouter
-	ConfirmBuy     *LeafRouter
+	Buy        *LeafRouter
+	ConfirmBuy *LeafRouter
 }
 
 type UserNeedsIDRouter struct {
@@ -42,8 +42,8 @@ type UserNeedsIDRouter struct {
 	AuthRouter *Router
 	Auth       *Middleware
 
-	Sell           *LeafRouter
-	ConfirmSell    *LeafRouter
+	Sell        *LeafRouter
+	ConfirmSell *LeafRouter
 }
 
 func BuildUserRouter(parent *RootRouter, serviceProvider *service.Provider) (router *UserRouter) {

@@ -6,9 +6,8 @@ import (
 	"github.com/Myriad-Dreamin/market/types"
 )
 
-
 type StatFeeXYReply struct {
-	Code int `json:"code"`
+	Code    int                     `json:"code"`
 	Results []model.StatFeeXYResult `json:"results"`
 }
 
@@ -17,7 +16,7 @@ func (svc *Service) StatGoodsFeeXY(c controller.MContext) {
 }
 
 func ToStatFeeXYReply(results []model.StatFeeXYResult) StatFeeXYReply {
-	return StatFeeXYReply{Code:types.CodeOK, Results:results}
+	return StatFeeXYReply{Code: types.CodeOK, Results: results}
 }
 
 type statGoodsFeeXYService struct {
@@ -30,5 +29,3 @@ func (svc statGoodsFeeXYService) CreateFilter() interface{} {
 func (svc statGoodsFeeXYService) ProcessListResults(_ controller.MContext, r interface{}) interface{} {
 	return ToStatFeeXYReply(r.([]model.StatFeeXYResult))
 }
-
-

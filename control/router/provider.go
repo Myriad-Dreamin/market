@@ -8,13 +8,13 @@ import (
 
 type Provider struct {
 	module.BaseModuler
-	rootRouter   *RootRouter
-	objectRouter *ObjectRouter
-	authRouter *AuthRouter
+	rootRouter      *RootRouter
+	objectRouter    *ObjectRouter
+	authRouter      *AuthRouter
 	statisticRouter *StatisticRouter
-	userRouter   *UserRouter
-	goodsRouter  *GoodsRouter
-	needsRouter  *NeedsRouter
+	userRouter      *UserRouter
+	goodsRouter     *GoodsRouter
+	needsRouter     *NeedsRouter
 }
 
 func NewProvider(namespace string) *Provider {

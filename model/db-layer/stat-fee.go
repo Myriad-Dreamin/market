@@ -211,6 +211,6 @@ type StatFeeXYResult struct {
 
 type StatFeeRequest struct {
 	Filter `binding:"dive"`
-	LEThan   *time.Time `json:"le" form:"le" binding:"required"`
-	GEThan   *time.Time `json:"ge" form:"ge" binding:"required"`
+	LEThan *time.Time `json:"le" form:"le" binding:"required"`
+	GEThan *time.Time `json:"ge" form:"ge" binding:"required"`
 }

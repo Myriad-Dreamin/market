@@ -1,4 +1,4 @@
- package tests
+package tests
 
 import (
 	"fmt"
@@ -11,7 +11,7 @@ func testGoodsFilters(t *tester.TesterContext) {
 	t.PrintRequest(true)
 	queryWithName := "/v1/goods-list?page=1&page_size=20&name=es0001"
 	resp := t.Get(queryWithName, mock.Comment(
-fmt.Sprintf(`url(%s), query the goods that with name es0001`, queryWithName)))
+		fmt.Sprintf(`url(%s), query the goods that with name es0001`, queryWithName)))
 
 	reply := t.DecodeJSON(resp.Body(), new(goodsservice.ListReply)).(*goodsservice.ListReply)
 	fmt.Println(reply)
@@ -22,4 +22,3 @@ fmt.Sprintf(`url(%s), query the goods that with name es0001`, queryWithName)))
 	fmt.Println(reply)
 	t.PrintRequest(false)
 }
-

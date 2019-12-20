@@ -4,7 +4,6 @@ import (
 	"github.com/Myriad-Dreamin/market/lib/controller"
 )
 
-
 // UserService defines the interface of user service
 
 type UserService interface {

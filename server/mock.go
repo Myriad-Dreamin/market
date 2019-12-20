@@ -121,7 +121,6 @@ func Mock(options ...Option) (srv *Mocker) {
 	return
 }
 
-
 type Results struct {
 	controller.RouteInfo
 	Recs []mock.RecordsI
@@ -146,7 +145,6 @@ func (r Results) GetHandler() string {
 func (r Results) GetRecords() []mock.RecordsI {
 	return r.Recs
 }
-
 
 func (mocker *Mocker) PrintRequest(p bool) {
 	mocker.shouldPrintRequest = p
@@ -190,9 +188,9 @@ func (mocker *Mocker) mockServe(r *Request, params ...interface{}) (w *mock.Resp
 
 	w = mock.NewResponse()
 	var (
-		b []byte
-		err error
-		comment string
+		b           []byte
+		err         error
+		comment     string
 		abortRecord = false
 	)
 
@@ -268,7 +266,7 @@ func (mocker *Mocker) report(err error) {
 	}
 }
 
-type emptyBody struct {}
+type emptyBody struct{}
 
 func (body emptyBody) Read(p []byte) (n int, err error) {
 	return 0, io.EOF
@@ -278,10 +276,10 @@ var _emptyBody = emptyBody{}
 
 func (mocker *Mocker) Method(method, path string, params ...interface{}) mock.ResponseI {
 	var (
-		body io.Reader = _emptyBody
+		body        io.Reader = _emptyBody
 		contentType string
 		serveParams []interface{}
-		r *http.Request
+		r           *http.Request
 	)
 	for i := range params {
 		switch p := params[i].(type) {
@@ -435,5 +433,3 @@ func init() {
 func (mocker *Mocker) DropMock() {
 	mocker.DropFileSystem()
 }
-
-

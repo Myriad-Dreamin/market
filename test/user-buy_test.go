@@ -23,7 +23,7 @@ func testUserBuy(t *tester.TesterContext) {
 	t.HandlerError0(resp.JSON(&x))
 	id := x.Goods.ID
 
-	resp = t.Post("/v1/user/1/goods/" + strconv.Itoa(int(id)) + "/buy", gin.H{
+	resp = t.Post("/v1/user/1/goods/"+strconv.Itoa(int(id))+"/buy", gin.H{
 		"fixed": true,
 	})
 	fmt.Println(resp)
@@ -47,9 +47,8 @@ func testUserBuy(t *tester.TesterContext) {
 	t.HandlerError0(resp.JSON(&x))
 	id = x.Goods.ID
 
-	resp = t.Post("/v1/user/1/goods/" + strconv.Itoa(int(id)) + "/buy", gin.H{
+	resp = t.Post("/v1/user/1/goods/"+strconv.Itoa(int(id))+"/buy", gin.H{
 		"price": 200000,
 	})
 	fmt.Println(resp)
 }
-
