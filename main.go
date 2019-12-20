@@ -4,6 +4,8 @@ package main
 import (
 	"flag"
 	"github.com/Myriad-Dreamin/market/server"
+	"github.com/Myriad-Dreamin/market/config"
+	"github.com/Myriad-Dreamin/market/types"
 	_ "net/http/pprof"
 )
 
@@ -13,6 +15,7 @@ var (
 )
 
 func main() {
+	types.SetCityObjectMap(config.Cities)
 	srv := server.New("./config")
 	if srv == nil {
 		return

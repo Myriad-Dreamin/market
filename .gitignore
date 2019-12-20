@@ -8,3 +8,4 @@ init-package-probe.go
 **/register-instance-map.go
 docker-compose.yml
 .market-env.json
+city_object.json

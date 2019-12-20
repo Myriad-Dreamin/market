@@ -1,9 +1,8 @@
 
 import fire
-import shutil, json, os, subprocess, re
+import shutil, json, os, subprocess, re, urllib.request
 from makefile import Makefile
 from pymake import entry
-
 
 def to_camel_case(snake_str):
     components = snake_str.split('_')
@@ -58,6 +57,30 @@ class MinimumCli:
 
     def hello(self):
         print('minimum-cli v0.1')
+
+    def get_cities(self):
+        urllib.request.urlretrieve('https://raw.githubusercontent.com/wecatch/china_regions/master/json/city_object.json', 'city_object.json')
+
+    def generate_cities(self):
+        with open('city_object.json') as f:
+            cities = json.load(f,encoding='utf-8')
+
+        with open('./config/cities.go', 'w+') as f:
+            f.write('''
+package config
+
+import "github.com/Myriad-Dreamin/market/types"
+
+''')
+
+            f.write('var Cities = map[string]types.CityObject{\n' + \
+                ''.join(['''	"%s": {
+        Province: "%s",
+        Name: "%s",
+        ID: "%s",
+    },
+''' % (k, v[u'province'], v[u'name'], v[u'id']) for k, v in cities.items()]) + \
+        '}')
 
     def install(self):
         pcmds('go install github.com/Myriad-Dreamin/go-magic-package/package-attach-to-path')
