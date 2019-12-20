@@ -71,7 +71,6 @@ func nameOfFunction(f interface{}) string {
 	return runtime.FuncForPC(reflect.ValueOf(f).Pointer()).Name()
 }
 
-
 func (l *LeafRouter) RouteInfo(path string) RouteInfo {
 	return RouteInfo{
 		Method:      l.leafType.String(),
@@ -85,7 +84,7 @@ func (l *LeafRouter) Last() HandlerFunc {
 	if len(l.afterHandlers) == 0 {
 		return nil
 	}
-	return l.afterHandlers[len(l.afterHandlers) - 1]
+	return l.afterHandlers[len(l.afterHandlers)-1]
 }
 
 func NewLeafRouter(leafType MethodType, path string, handlers ...HandlerFunc) *LeafRouter {

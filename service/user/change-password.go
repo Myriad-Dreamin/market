@@ -12,7 +12,6 @@ type ChangePasswordRequest struct {
 	NewPassword string `form:"new_password" json:"new_password" binding:"required"`
 }
 
-
 func (srv *Service) ChangePassword(c controller.MContext) {
 	var req = new(ChangePasswordRequest)
 	id, ok := ginhelper.ParseUintAndBind(c, "id", req)

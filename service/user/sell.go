@@ -36,4 +36,3 @@ func (srv *Service) Sell(c controller.MContext) {
 		c.JSON(http.StatusOK, ginhelper.ResponseOK)
 	}
 }
-

@@ -9,13 +9,12 @@ import (
 	"time"
 )
 
-
 func testNeedsPost(t *testing.T) {
 	ctx := srv.Context(t).AssertNoError(true)
 	var (
-		end_at  = time.Now().Add(time.Hour * 24)
-		tp = types.GoodsTypeElectronic
-		name = "es000"
+		end_at           = time.Now().Add(time.Hour * 24)
+		tp               = types.GoodsTypeElectronic
+		name             = "es000"
 		max_price uint64 = 100
 	)
 	_ = ctx.Post("/v1/needs", needsservice.PostRequest{
@@ -30,7 +29,7 @@ func testNeedsPost(t *testing.T) {
 			EndAt:       end_at,
 			Type:        tp,
 			Name:        name + strconv.Itoa(i),
-			MaxPrice:     max_price,
+			MaxPrice:    max_price,
 			Description: "",
 		})
 		var x needsservice.PostReply
@@ -46,15 +45,15 @@ func testNeedsPost(t *testing.T) {
 func testNeedsPostWithError(t *testing.T) {
 	ctx := srv.Context(t).AssertNoError(false)
 	var (
-		end_at  = time.Now().Add(time.Hour * 24)
-		tp = types.GoodsTypeElectronic
+		end_at           = time.Now().Add(time.Hour * 24)
+		tp               = types.GoodsTypeElectronic
 		max_price uint64 = 100
 	)
 	resp := ctx.Post("/v1/needs", needsservice.PostRequest{
 		EndAt:       end_at,
 		Type:        types.GoodsTypeUnknown,
 		Name:        "es0",
-		MaxPrice:     max_price,
+		MaxPrice:    max_price,
 		Description: "",
 	}, mock.Comment("type invalid"))
 	err := ctx.FetchError(resp)
@@ -66,7 +65,7 @@ func testNeedsPostWithError(t *testing.T) {
 		EndAt:       end_at,
 		Type:        tp,
 		Name:        "",
-		MaxPrice:     max_price,
+		MaxPrice:    max_price,
 		Description: "",
 	}, mock.Comment("name required"))
 	err = ctx.FetchError(resp)
@@ -75,9 +74,9 @@ func testNeedsPostWithError(t *testing.T) {
 	}
 
 	resp = ctx.Post("/v1/needs", map[string]interface{}{
-		"end_at": end_at,
-		"g_type": tp,
-		"name": "es1",
+		"end_at":    end_at,
+		"g_type":    tp,
+		"name":      "es1",
 		"max_price": -1,
 	}, mock.Comment("max price negative"))
 	err = ctx.FetchError(resp)
@@ -89,7 +88,7 @@ func testNeedsPostWithError(t *testing.T) {
 		EndAt:       time.Now(),
 		Type:        tp,
 		Name:        "es0",
-		MaxPrice:     max_price,
+		MaxPrice:    max_price,
 		Description: "",
 	}, mock.Comment("short alive duration"))
 	err = ctx.FetchError(resp)

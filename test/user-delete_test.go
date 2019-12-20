@@ -17,6 +17,3 @@ func testUserDelete(t *tester.TesterContext) {
 	t.Equal(NotFound.RespCode, http.StatusOK, "must result in 200")
 	t.Equal(NotFound.Code, types.CodeNotFound, "not be the ErrNotFound")
 }
-
-
-

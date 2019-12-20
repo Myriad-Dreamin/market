@@ -19,4 +19,3 @@ func testNeedsFilters(t *tester.TesterContext) {
 	fmt.Println(reply)
 	t.PrintRequest(false)
 }
-

@@ -48,8 +48,7 @@ type PostReplyI interface {
 }
 
 func (srv *Service) AfterPost(reply PostReplyI) interface{} {
-	if b, err := auth.UserEntity.AddReadPolicy(srv.enforcer, auth.UserEntity.CreateObj(reply.GetID()), reply.GetID());
-		err != nil {
+	if b, err := auth.UserEntity.AddReadPolicy(srv.enforcer, auth.UserEntity.CreateObj(reply.GetID()), reply.GetID()); err != nil {
 		if !b {
 			srv.logger.Debug("add failed")
 		}
@@ -63,8 +62,7 @@ func (srv *Service) AfterPost(reply PostReplyI) interface{} {
 		}
 	}
 
-	if b, err := auth.UserEntity.AddWritePolicy(srv.enforcer, auth.UserEntity.CreateObj(reply.GetID()), reply.GetID());
-		err != nil {
+	if b, err := auth.UserEntity.AddWritePolicy(srv.enforcer, auth.UserEntity.CreateObj(reply.GetID()), reply.GetID()); err != nil {
 		if !b {
 			srv.logger.Debug("add failed")
 		}

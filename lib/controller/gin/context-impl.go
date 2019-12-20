@@ -29,10 +29,3 @@ func (c Context) AbortWithError(code int, err error) controller.Error {
 func (c Context) Error(err error) controller.Error {
 	return GinError{c.Context.Error(err)}
 }
-
-
-
-
-
-
-

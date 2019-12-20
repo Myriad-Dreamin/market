@@ -5,8 +5,6 @@ import (
 	"testing"
 )
 
-
-
 func TestUser(t *testing.T) {
 	_ = t.Run("RegisterLogin", srv.HandleTestWithOutError(testUserRegisterLogin)) &&
 		t.Run("Get", testUserGet) &&

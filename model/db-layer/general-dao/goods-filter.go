@@ -8,7 +8,6 @@ import (
 	"time"
 )
 
-
 type GoodsFilter struct {
 	traits.Filter
 	BySeller   uint       `json:"seller" form:"seller"`
@@ -67,7 +66,6 @@ func GoodsFilterOption(db *gorm.DB, f *GoodsFilter) *gorm.DB {
 	} else if f.CurPriceR != nil {
 		db = db.Where("cur_price < ?", *f.CurPriceR)
 	}
-
 
 	if f.FixedTag != nil {
 		db = db.Where("is_fixed = ?", *f.FixedTag)

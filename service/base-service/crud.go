@@ -25,13 +25,11 @@ type CRUDService struct {
 
 func NewCRUDService(tool CRUDObjectToolLite, k string) CRUDService {
 	return CRUDService{
-		Tool: tool,
-		k:    k,
+		Tool:              tool,
+		k:                 k,
 		DServiceInterface: NewDService(tool, k),
 	}
 }
-
-
 
 func (srv *CRUDService) Get(c controller.MContext) {
 	id, ok := ginhelper.ParseUint(c, srv.k)

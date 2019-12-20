@@ -16,7 +16,7 @@ var ResponseOK = types.Response{Code: types.CodeOK}
 
 func CheckInsertError(c controller.MContext, err error) bool {
 	if code, errs := errorc.CheckInsertError(err); code != types.CodeOK {
-		c.AbortWithStatusJSON(http.StatusOK, types.ErrorSerializer{Code: code, Error:errs})
+		c.AbortWithStatusJSON(http.StatusOK, types.ErrorSerializer{Code: code, Error: errs})
 		return true
 	}
 	return false
@@ -277,7 +277,7 @@ func DeleteObj(c controller.MContext, deleteObj Deletable) bool {
 
 func CreateObj(c controller.MContext, createObj errorc.Creatable) bool {
 	if code, errs := errorc.CreateObj(createObj); code != types.CodeOK {
-		c.AbortWithStatusJSON(http.StatusOK, types.ErrorSerializer{Code: code, Error:errs})
+		c.AbortWithStatusJSON(http.StatusOK, types.ErrorSerializer{Code: code, Error: errs})
 		return false
 	}
 	return true
@@ -285,7 +285,7 @@ func CreateObj(c controller.MContext, createObj errorc.Creatable) bool {
 
 func CreateObjWithTip(c controller.MContext, createObj errorc.Creatable) bool {
 	if code, errs := errorc.CreateObj(createObj); code != types.CodeOK {
-		c.AbortWithStatusJSON(http.StatusOK, types.ErrorSerializer{Code: code, Error:fmt.Sprintf("create %T failed: %v", createObj, errs)})
+		c.AbortWithStatusJSON(http.StatusOK, types.ErrorSerializer{Code: code, Error: fmt.Sprintf("create %T failed: %v", createObj, errs)})
 		return false
 	}
 	return true

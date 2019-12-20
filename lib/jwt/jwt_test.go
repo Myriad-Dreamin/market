@@ -28,20 +28,19 @@ func TestMain(m *testing.M) {
 	router = gin.Default()
 
 	router.GET("/", func(c *gin.Context) {
-		a,b,e := jwtMW.GenerateTokenWithRefreshToken(nil)
+		a, b, e := jwtMW.GenerateTokenWithRefreshToken(nil)
 		if e != nil {
 			_ = c.AbortWithError(http.StatusInternalServerError, e)
 			return
 		}
 		c.JSON(http.StatusOK, gin.H{
-			"token": a,
+			"token":         a,
 			"refresh_token": b,
 		})
 	})
 
-
 	router.GET("/refresh", func(c *gin.Context) {
-		newToken, err := jwtMW.RefreshToken(mgin.Context{Context:c})
+		newToken, err := jwtMW.RefreshToken(mgin.Context{Context: c})
 		if err != nil {
 			if ErrExpiredToken == err {
 				_ = c.AbortWithError(http.StatusUnauthorized, err)
@@ -82,7 +81,6 @@ func TestMiddleware_GenerateToken(t *testing.T) {
 	}
 
 	fmt.Println("result", tokens)
-
 
 	w = httptest.NewRecorder()
 	req, err = http.NewRequest("GET", "/ping", nil)
@@ -185,11 +183,3 @@ func TestMiddleware_GenerateToken(t *testing.T) {
 	}
 	fmt.Println("result", result)
 }
-
-
-
-
-
-
-
-

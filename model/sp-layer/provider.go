@@ -2,8 +2,8 @@ package splayer
 
 import (
 	"fmt"
-	"github.com/Myriad-Dreamin/minimum-lib/module"
 	dblayer "github.com/Myriad-Dreamin/market/model/db-layer"
+	"github.com/Myriad-Dreamin/minimum-lib/module"
 	"path"
 )
 

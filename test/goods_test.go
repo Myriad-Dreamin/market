@@ -14,14 +14,10 @@ func TestGoods(t *testing.T) {
 		t.Run("GetList", testGoodsGetList) &&
 		t.Run("Filters", srv.HandleTestWithOutError(testGoodsFilters)) &&
 		t.Run("UploadPicture", srv.HandleTestWithOutError(testGoodsUploadPicture)) &&
-		t.Run("Delete", srv.HandleTestWithOutError(testGoodsDelete))
+		t.Run("Delete", srv.HandleTestWithOutError(testGoodsDelete)) &&
+		t.Run("GetTypes", srv.HandleTestWithOutError(testGoodsGetTypes))
 }
-
 
 func testGoodsPut(t *tester.TesterContext) {
 
 }
-
-
-
-

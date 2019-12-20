@@ -9,8 +9,8 @@ import (
 type CustomClaims struct {
 	jwt.StandardClaims
 	IsRefreshToken bool
-	RefreshTarget *CustomClaims
-	CustomField interface{}
+	RefreshTarget  *CustomClaims
+	CustomField    interface{}
 }
 
 // CustomClaimsFactory is used to generate custom claims for convenient injected fields

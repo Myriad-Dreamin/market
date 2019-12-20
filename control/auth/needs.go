@@ -5,7 +5,7 @@ import (
 	"strconv"
 )
 
-type needsEntity struct {}
+type needsEntity struct{}
 
 func (needsEntity) CreateObj(groupID uint) string {
 	return "needs:" + strconv.Itoa(int(groupID))

@@ -9,11 +9,11 @@ import (
 )
 
 type PutRequest struct {
-	EndAt       time.Time `json:"end_at" form:"end_at"`
-	Type        uint16    `json:"g_type" form:"g_type"`
-	Name        string    `json:"name" form:"name"`
-	MaxPrice    *uint64   `json:"max_price" form:"max_price"`
-	Description string    `json:"description" form:"description"`
+	EndAt       time.Time       `json:"end_at" form:"end_at"`
+	Type        types.GoodsType `json:"g_type" form:"g_type"`
+	Name        string          `json:"name" form:"name"`
+	MaxPrice    *uint64         `json:"max_price" form:"max_price"`
+	Description string          `json:"description" form:"description"`
 }
 
 func (srv *Service) fillPutFields(c controller.MContext, needs *model.Needs, req *PutRequest) (fields []string) {

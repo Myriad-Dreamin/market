@@ -12,11 +12,11 @@ import (
 func testGoodsPost(t *testing.T) {
 	ctx := srv.Context(t).AssertNoError(true)
 	var (
-		end_at  = time.Now().Add(time.Hour * 24)
-		tp = types.GoodsTypeElectronic
-		name = "es000"
+		end_at           = time.Now().Add(time.Hour * 24)
+		tp               = types.GoodsTypeElectronic
+		name             = "es000"
 		min_price uint64 = 100
-		is_fixed = false
+		is_fixed         = false
 	)
 	_ = ctx.Post("/v1/goods", goodsservice.PostRequest{
 		EndAt:       end_at,
@@ -50,10 +50,10 @@ func testGoodsPostWithError(t *testing.T) {
 	ctx := srv.Context(t).AssertNoError(false)
 	ctx.Cfg.BaseParametersConfig.GoodsMinimumEndDuration = time.Second * 10
 	var (
-		end_at  = time.Now().Add(time.Hour * 24)
-		tp = types.GoodsTypeElectronic
+		end_at           = time.Now().Add(time.Hour * 24)
+		tp               = types.GoodsTypeElectronic
 		min_price uint64 = 100
-		is_fixed = false
+		is_fixed         = false
 	)
 	resp := ctx.Post("/v1/goods", goodsservice.PostRequest{
 		EndAt:       end_at,
@@ -81,11 +81,11 @@ func testGoodsPostWithError(t *testing.T) {
 	}
 
 	resp = ctx.Post("/v1/goods", map[string]interface{}{
-		"end_at": end_at,
-		"g_type": tp,
-		"name": "es1",
+		"end_at":    end_at,
+		"g_type":    tp,
+		"name":      "es1",
 		"min_price": -1,
-		"is_fixed": false,
+		"is_fixed":  false,
 	}, mock.Comment("price negative"))
 	err = ctx.FetchError(resp)
 	if err.RespCode != 200 || err.Code != types.CodeInvalidParameters {

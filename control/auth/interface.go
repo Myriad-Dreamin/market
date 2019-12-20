@@ -38,4 +38,3 @@ type JustSimpleWriteEntityInterface interface {
 	RemoveJustSimpleWritePolicy(e *Enforcer, subject string, aim uint) (bool, error)
 	HasJustSimpleWritePolicy(e *Enforcer, subject string, aim uint) bool
 }
-

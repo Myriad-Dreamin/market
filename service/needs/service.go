@@ -8,6 +8,7 @@ import (
 	base_service "github.com/Myriad-Dreamin/market/service/base-service"
 	"github.com/Myriad-Dreamin/market/types"
 	"github.com/Myriad-Dreamin/minimum-lib/module"
+	"net/http"
 )
 
 type Service struct {
@@ -23,8 +24,17 @@ type Service struct {
 	key         string
 }
 
-func (srv *Service) NeedsSignatureXXX() interface{} { return srv }
+type GoodsTypesReply struct {
+	Types map[string]types.GoodsType `json:"types"`
+}
 
+var goodsTypesReply = GoodsTypesReply{types.GoodsTypesMap}
+
+func (srv *Service) GetTypes(c controller.MContext) {
+	c.JSON(http.StatusOK, goodsTypesReply)
+}
+
+func (srv *Service) NeedsSignatureXXX() interface{} { return srv }
 
 func NewService(m module.Module) (a *Service, err error) {
 	a = new(Service)

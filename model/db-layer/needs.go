@@ -35,15 +35,15 @@ type Needs struct {
 	UpdatedAt time.Time `dorm:"updated_at" gorm:"column:updated_at;default:CURRENT_TIMESTAMP;not null" json:"updated_at"`
 	EndAt     time.Time `dorm:"end_at" gorm:"column:end_at;default:CURRENT_TIMESTAMP;not null;"`
 
-	Buyer       uint          `dorm:"buyer" gorm:"column:buyer;not_null"`
-	Seller      uint          `dorm:"seller" gorm:"column:seller;not_null"`
-	Type        uint16        `dorm:"g_type" gorm:"column:g_type;not_null"`
-	Name        string        `dorm:"name" gorm:"column:name;not_null"`
-	CurPrice    uint64        `dorm:"cur_price" gorm:"column:cur_price;not_null"`
-	MaxPrice    uint64        `dorm:"min_price" gorm:"column:max_price;not_null"`
-	EndDuration time.Duration `dorm:"ddd" gorm:"column:ddd;not_null"`
-	Description string        `dorm:"description" gorm:"column:description;not_null"`
-	Status      types.GoodsStatus         `dorm:"status" gorm:"column:status;not_null"`
+	Buyer       uint              `dorm:"buyer" gorm:"column:buyer;not_null"`
+	Seller      uint              `dorm:"seller" gorm:"column:seller;not_null"`
+	Type        types.GoodsType   `dorm:"g_type" gorm:"column:g_type;not_null"`
+	Name        string            `dorm:"name" gorm:"column:name;not_null"`
+	CurPrice    uint64            `dorm:"cur_price" gorm:"column:cur_price;not_null"`
+	MaxPrice    uint64            `dorm:"min_price" gorm:"column:max_price;not_null"`
+	EndDuration time.Duration     `dorm:"ddd" gorm:"column:ddd;not_null"`
+	Description string            `dorm:"description" gorm:"column:description;not_null"`
+	Status      types.GoodsStatus `dorm:"status" gorm:"column:status;not_null"`
 
 	BuyerFee  uint64 `dorm:"buyer_fee" gorm:"column:buyer_fee;not_null"`
 	SellerFee uint64 `dorm:"seller_fee" gorm:"column:seller_fee;not_null"`
@@ -145,9 +145,7 @@ func (needsDB *NeedsQuery) Query() (needss []Needs, err error) {
 	return
 }
 
-
 var needsStatusField = []string{"status", "seller"}
-
 
 func (needsDB *NeedsDB) Sell(price uint64, id, uid uint) (int, string) {
 
@@ -201,7 +199,7 @@ func (needsDB *NeedsDB) ConfirmSell(id uint, confirm bool, uid uint) (int, strin
 
 	if confirm {
 		needs.Status = types.GoodsStatusFinished
-		needs.BuyerFee = needs.CurPrice/50
+		needs.BuyerFee = needs.CurPrice / 50
 		needs.SellerFee = needs.BuyerFee >> 1
 
 		buyer, err := wrapToUser(userTraits.ID_(tx, needs.Buyer))
@@ -281,4 +279,3 @@ func (needsDB *NeedsDB) ConfirmSell(id uint, confirm bool, uid uint) (int, strin
 	}
 	return commitOrRollback(tx)
 }
-

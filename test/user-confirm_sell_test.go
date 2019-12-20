@@ -17,4 +17,3 @@ func testUserConfirmSell(t *tester.TesterContext) {
 	//fmt.Println(reply.Needs.Buyer, reply.Needs.Seller, reply.Needs.Status)
 	//t.Delete("/v1/needs/" + strconv.Itoa(id) + "/force")
 }
-

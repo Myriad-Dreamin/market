@@ -16,7 +16,6 @@ type PostReply struct {
 	Goods *model.Goods `json:"goods"`
 }
 
-
 func GoodsToPostReply(obj *model.Goods) *PostReply {
 	return &PostReply{
 		Code:  types.CodeOK,
@@ -25,12 +24,12 @@ func GoodsToPostReply(obj *model.Goods) *PostReply {
 }
 
 type PostRequest struct {
-	EndAt       time.Time `json:"end_at" form:"end_at" binding:"required"`
-	Type        uint16    `json:"g_type" form:"g_type" binding:"required"`
-	Name        string    `json:"name" form:"name" binding:"required"`
-	MinPrice    uint64    `json:"min_price" form:"min_price" binding:"required"`
-	IsFixed     bool      `json:"is_fixed" form:"is_fixed" validate:"exists"`
-	Description string    `json:"description" form:"description"`
+	EndAt       time.Time       `json:"end_at" form:"end_at" binding:"required"`
+	Type        types.GoodsType `json:"g_type" form:"g_type" binding:"required"`
+	Name        string          `json:"name" form:"name" binding:"required"`
+	MinPrice    uint64          `json:"min_price" form:"min_price" binding:"required"`
+	IsFixed     bool            `json:"is_fixed" form:"is_fixed" validate:"exists"`
+	Description string          `json:"description" form:"description"`
 }
 
 func (srv *Service) SerializePost(c controller.MContext) base_service.CRUDEntity {
@@ -63,8 +62,7 @@ func (srv *Service) SerializePost(c controller.MContext) base_service.CRUDEntity
 }
 
 func (srv *Service) AfterPost(reply *PostReply) interface{} {
-	if b, err := auth.GoodsEntity.AddReadPolicy(srv.enforcer, auth.UserEntity.CreateObj(reply.Goods.Seller), reply.Goods.ID);
-		err != nil {
+	if b, err := auth.GoodsEntity.AddReadPolicy(srv.enforcer, auth.UserEntity.CreateObj(reply.Goods.Seller), reply.Goods.ID); err != nil {
 		if !b {
 			srv.logger.Debug("add failed")
 		}
@@ -78,8 +76,7 @@ func (srv *Service) AfterPost(reply *PostReply) interface{} {
 		}
 	}
 
-	if b, err := auth.GoodsEntity.AddWritePolicy(srv.enforcer, auth.UserEntity.CreateObj(reply.Goods.Seller), reply.Goods.ID);
-		err != nil {
+	if b, err := auth.GoodsEntity.AddWritePolicy(srv.enforcer, auth.UserEntity.CreateObj(reply.Goods.Seller), reply.Goods.ID); err != nil {
 		if !b {
 			srv.logger.Debug("add failed")
 		}

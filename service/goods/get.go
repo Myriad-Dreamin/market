@@ -14,7 +14,7 @@ type GetReply struct {
 	Seller      *reply.ShortUserInfo `json:"seller" form:"seller"`
 	CreatedAt   time.Time            `json:"created_at"`
 	EndAt       time.Time            `json:"end_at"`
-	Type        uint16               `json:"g_type"`
+	Type        types.GoodsType      `json:"g_type"`
 	Name        string               `json:"name"`
 	MinPrice    uint64               `json:"min_price"`
 	CurPrice    uint64               `json:"cur_price"`

@@ -6,8 +6,6 @@ import (
 
 //go:generate package-attach-to-path -generate_register_map
 
-
-
 type ObjectService interface {
 	ObjectSignatureXXX() interface{}
 
@@ -30,5 +28,4 @@ type ObjectService interface {
 	// @Title List
 	// @Description List Object
 	List(c controller.MContext)
-
 }

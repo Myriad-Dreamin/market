@@ -4,7 +4,6 @@ import (
 	"github.com/Myriad-Dreamin/market/lib/controller"
 )
 
-
 // UserService defines the interface of user service
 
 type UserService interface {
@@ -83,4 +82,8 @@ type UserService interface {
 	// @Title ConfirmSell
 	// @Description ConfirmSell Needs
 	ConfirmSell(c controller.MContext)
+
+	// @Title GetCities
+	// @Description GetCities Needs
+	GetCities(c controller.MContext)
 }

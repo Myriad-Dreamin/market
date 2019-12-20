@@ -38,7 +38,6 @@ const (
 
 	// CodeDeleteError occurs when commit a transaction
 	CodeCommitTransactionError
-
 )
 
 const (
@@ -79,5 +78,3 @@ const (
 	CodeGoodsInsufficientValue
 	CodeGoodsOverflowValue
 )
-
-

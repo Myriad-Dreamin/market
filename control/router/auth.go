@@ -24,4 +24,3 @@ func ApplyAuth(router *RootRouter) {
 	nig.PutPicture.Use(nig.Auth.Build(auth.NeedsEntity.Write()))
 
 }
-

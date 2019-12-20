@@ -9,8 +9,6 @@ import (
 	"github.com/gin-gonic/gin/render"
 
 	"context"
-
-
 )
 
 // ErrorType is an unsigned 64-bit error code as defined in the gin spec.
@@ -31,10 +29,9 @@ const (
 	ErrorTypeNu = 2
 )
 
-
 // Error represents a error's specification.
 type Error interface {
-	GetError()  error
+	GetError() error
 	GetType() ErrorType
 	GetMeta() interface{}
 }
@@ -339,4 +336,3 @@ type MContext interface {
 	GetMeta() interface{}
 	SetMeta(meta interface{})
 }
-

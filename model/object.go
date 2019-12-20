@@ -8,8 +8,6 @@ import (
 type Object = splayer.Object
 type ObjectDB = splayer.ObjectDB
 
-
-
 func NewObjectDB(m module.Module) (*ObjectDB, error) {
 	return splayer.NewObjectDB(m)
 }

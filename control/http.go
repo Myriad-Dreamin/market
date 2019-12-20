@@ -11,4 +11,3 @@ type HttpEngine = gin.Engine
 func BuildHttp(router *controller.Router, engine *HttpEngine) {
 	router.Build(mgin.NewGinRouter(engine))
 }
-

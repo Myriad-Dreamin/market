@@ -13,13 +13,13 @@ type ListableObjectToolLite interface {
 }
 
 type ListService struct {
-	tool ListableObjectToolLite
+	tool       ListableObjectToolLite
 	filterFunc FilterFunc
 }
 
 func NewListService(tool ListableObjectToolLite, filterFunc FilterFunc) ListService {
 	return ListService{
-		tool: tool,
+		tool:       tool,
 		filterFunc: filterFunc,
 	}
 }
@@ -30,7 +30,6 @@ type ListReply struct {
 	Code   int         `json:"code"`
 	Result interface{} `json:"result"`
 }
-
 
 func (srv *ListService) List(c controller.MContext) {
 	var f = srv.tool.CreateFilter()

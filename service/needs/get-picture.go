@@ -14,4 +14,3 @@ func (srv *Service) GetPicture(c controller.MContext) {
 
 	c.File(srv.cfg.BaseParametersConfig.NeedsPicturePath + strconv.Itoa(int(id)))
 }
-

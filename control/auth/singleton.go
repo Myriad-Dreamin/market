@@ -6,4 +6,3 @@ var (
 	GoodsEntity  goodsEntity
 	NeedsEntity  needsEntity
 )
-

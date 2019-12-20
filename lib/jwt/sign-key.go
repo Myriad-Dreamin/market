@@ -1,6 +1,5 @@
 package jwt
 
-
 // signKey for signing algorithm
 var signKey = "Myriad-Dreamin"
 

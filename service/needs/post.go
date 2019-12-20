@@ -11,7 +11,6 @@ import (
 	"time"
 )
 
-
 type PostReply struct {
 	Code  int          `json:"code"`
 	Needs *model.Needs `json:"needs"`
@@ -25,11 +24,11 @@ func NeedsToPostReply(obj *model.Needs) *PostReply {
 }
 
 type PostRequest struct {
-	EndAt       time.Time `json:"end_at" form:"end_at" binding:"required"`
-	Type        uint16    `json:"g_type" form:"g_type" binding:"required"`
-	Name        string    `json:"name" form:"name" binding:"required"`
-	MaxPrice    uint64    `json:"max_price" form:"max_price" binding:"required"`
-	Description string    `json:"description" form:"description"`
+	EndAt       time.Time       `json:"end_at" form:"end_at" binding:"required"`
+	Type        types.GoodsType `json:"g_type" form:"g_type" binding:"required"`
+	Name        string          `json:"name" form:"name" binding:"required"`
+	MaxPrice    uint64          `json:"max_price" form:"max_price" binding:"required"`
+	Description string          `json:"description" form:"description"`
 }
 
 func (srv *Service) SerializePost(c controller.MContext) base_service.CRUDEntity {
@@ -62,10 +61,8 @@ func (srv *Service) SerializePost(c controller.MContext) base_service.CRUDEntity
 	return obj
 }
 
-
 func (srv *Service) AfterPost(reply *PostReply) interface{} {
-	if b, err := auth.NeedsEntity.AddReadPolicy(srv.enforcer, auth.UserEntity.CreateObj(reply.Needs.Buyer), reply.Needs.ID);
-		err != nil {
+	if b, err := auth.NeedsEntity.AddReadPolicy(srv.enforcer, auth.UserEntity.CreateObj(reply.Needs.Buyer), reply.Needs.ID); err != nil {
 		if !b {
 			srv.logger.Debug("add failed")
 		}
@@ -79,8 +76,7 @@ func (srv *Service) AfterPost(reply *PostReply) interface{} {
 		}
 	}
 
-	if b, err := auth.NeedsEntity.AddWritePolicy(srv.enforcer, auth.UserEntity.CreateObj(reply.Needs.Buyer), reply.Needs.ID);
-		err != nil {
+	if b, err := auth.NeedsEntity.AddWritePolicy(srv.enforcer, auth.UserEntity.CreateObj(reply.Needs.Buyer), reply.Needs.ID); err != nil {
 		if !b {
 			srv.logger.Debug("add failed")
 		}
@@ -95,4 +91,3 @@ func (srv *Service) AfterPost(reply *PostReply) interface{} {
 	}
 	return reply
 }
-

@@ -5,7 +5,7 @@ import (
 	"strconv"
 )
 
-type objectEntity struct {}
+type objectEntity struct{}
 
 func (objectEntity) CreateObj(groupID uint) string {
 	return "object:" + strconv.Itoa(int(groupID))

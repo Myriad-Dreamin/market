@@ -7,9 +7,9 @@ import (
 type StatisticRouter struct {
 	*Router
 	AuthRouter *Router
-	Auth     *Middleware
+	Auth       *Middleware
 
-	FeeXY *LeafRouter
+	FeeXY   *LeafRouter
 	CountXY *LeafRouter
 }
 

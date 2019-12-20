@@ -15,10 +15,10 @@ func wrapToUser(user interface{}, err error) (*User, error) {
 }
 
 var (
-	userTraits         = NewUserTraits(User{})
-	userQueryNameFunc  = userTraits.Where1("name = ?")
-	userQueryNickNameFunc  = userTraits.Where1("nick_name = ?")
-	userQueryPhoneFunc = userTraits.Where1("phone = ?")
+	userTraits            = NewUserTraits(User{})
+	userQueryNameFunc     = userTraits.Where1("name = ?")
+	userQueryNickNameFunc = userTraits.Where1("nick_name = ?")
+	userQueryPhoneFunc    = userTraits.Where1("phone = ?")
 )
 
 type User struct {
@@ -32,8 +32,8 @@ type User struct {
 	Password string `dorm:"password" gorm:"column:password;not_null"`
 	Phone    string `dorm:"phone" gorm:"column:phone;unique;not_null"`
 	//Rank         string `dorm:"rank" gorm:"column:rank;unique;not_null"`
-	RegisterProvince string    `dorm:"register_province" gorm:"column:register_province;not_null"`
-	RegisterCity string `dorm:"register_city" gorm:"column:register_city;not_null"`
+	RegisterProvince string `dorm:"register_province" gorm:"column:register_province;not_null"`
+	RegisterCity     string `dorm:"register_city" gorm:"column:register_city;not_null"`
 }
 
 // TableName specification
@@ -163,4 +163,3 @@ func (userDB *UserDB) QueryNickName(id string) (user *User, err error) {
 func (userDB *UserDB) QueryPhone(id string) (user *User, err error) {
 	return wrapToUser(userQueryPhoneFunc(id))
 }
-
