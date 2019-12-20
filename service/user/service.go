@@ -4,6 +4,7 @@ package userservice
 import (
 	"github.com/Myriad-Dreamin/market/config"
 	"github.com/Myriad-Dreamin/market/control"
+	"github.com/Myriad-Dreamin/market/lib/controller"
 	"github.com/Myriad-Dreamin/market/lib/jwt"
 	"github.com/Myriad-Dreamin/market/model"
 	"github.com/Myriad-Dreamin/market/model/sp-layer"
@@ -23,6 +24,10 @@ type Service struct {
 	logger     types.Logger
 	cfg        *config.ServerConfig
 	middleware *jwt.Middleware
+}
+
+func (srv *Service) GetCities(c controller.MContext) {
+	panic("implement me")
 }
 
 func (srv *Service) UserSignatureXXX() interface{} { return srv }
