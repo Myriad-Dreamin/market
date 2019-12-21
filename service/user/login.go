@@ -22,7 +22,7 @@ type LoginRequest struct {
 }
 
 type LoginReply struct {
-	Code         int      `json:"code"`
+	Code         types.CodeType      `json:"code"`
 	Identity     []string `json:"identity"`
 	Phone        string   `json:"phone"`
 	ID           uint     `json:"id"`

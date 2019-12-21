@@ -9,7 +9,7 @@ import (
 )
 
 type GetReply struct {
-	Code        int                  `json:"code"`
+	Code        types.CodeType                  `json:"code"`
 	ID          uint                 `json:"id"`
 	CreatedAt   time.Time            `json:"created_at"`
 	EndAt       time.Time            `json:"end_at"`

@@ -24,12 +24,12 @@ type ObjectIDRouter struct {
 	Delete *LeafRouter
 }
 
-func BuildObjectRouter(parent *RootRouter, serviceProvider *service.Provider) (router *ObjectRouter) {
+func BuildObjectRouter(parent H, serviceProvider *service.Provider) (router *ObjectRouter) {
 	objectService := serviceProvider.ObjectService()
 	router = &ObjectRouter{
-		Router:     parent.Router.Extend("object"),
-		AuthRouter: parent.AuthRouter.Extend("object"),
-		Auth:       parent.Auth.Copy(),
+		Router:     parent.GetRouter().Extend("object"),
+		AuthRouter: parent.GetAuthRouter().Extend("object"),
+		Auth:       parent.GetAuth().Copy(),
 	}
 	router.GetList = router.GET("object-list", objectService.List)
 	router.Post = router.AuthRouter.POST("/object", objectService.Post)

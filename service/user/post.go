@@ -10,7 +10,7 @@ import (
 )
 
 type PostReply struct {
-	Code int         `json:"code"`
+	Code types.CodeType         `json:"code"`
 	User *model.User `json:"user"`
 }
 

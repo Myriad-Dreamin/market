@@ -205,7 +205,7 @@ func (svc *Service) JustSimpleWriteChecker(entityInterface auth.JustSimpleWriteE
 func (svc *Service) AuthSignatureXXX() interface{} { return svc }
 
 type RefreshTokenReply struct {
-	Code  int    `json:"code"`
+	Code  types.CodeType    `json:"code"`
 	Token string `json:"token"`
 }
 

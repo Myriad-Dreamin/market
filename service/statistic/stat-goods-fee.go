@@ -7,7 +7,7 @@ import (
 )
 
 type StatFeeReply struct {
-	Code int `json:"code"`
+	Code types.CodeType `json:"code"`
 }
 
 func ToStatFeeReply() StatFeeReply {

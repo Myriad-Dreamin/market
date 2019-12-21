@@ -12,7 +12,7 @@ import (
 )
 
 type PostReply struct {
-	Code  int          `json:"code"`
+	Code  types.CodeType          `json:"code"`
 	Goods *model.Goods `json:"goods"`
 }
 
@@ -32,13 +32,13 @@ type PostRequest struct {
 	Description string          `json:"description" form:"description"`
 }
 
-func (srv *Service) SerializePost(c controller.MContext) base_service.CRUDEntity {
+func (svc *Service) SerializePost(c controller.MContext) base_service.CRUDEntity {
 	var req PostRequest
 	if !ginhelper.BindRequest(c, &req) {
 		return nil
 	}
 
-	if req.EndAt.Sub(time.Now()) < srv.cfg.BaseParametersConfig.GoodsMinimumEndDuration {
+	if req.EndAt.Sub(time.Now()) < svc.cfg.BaseParametersConfig.GoodsMinimumEndDuration {
 		c.AbortWithStatusJSON(http.StatusOK, &types.ErrorSerializer{
 			Code:  types.CodeInvalidParameters,
 			Error: "could not set end time before a duration shorter than minimum end duration",
@@ -61,10 +61,10 @@ func (srv *Service) SerializePost(c controller.MContext) base_service.CRUDEntity
 	return obj
 }
 
-func (srv *Service) AfterPost(reply *PostReply) interface{} {
-	if b, err := auth.GoodsEntity.AddReadPolicy(srv.enforcer, auth.UserEntity.CreateObj(reply.Goods.Seller), reply.Goods.ID); err != nil {
+func (svc *Service) AfterPost(reply *PostReply) interface{} {
+	if b, err := auth.GoodsEntity.AddReadPolicy(svc.enforcer, auth.UserEntity.CreateObj(reply.Goods.Seller), reply.Goods.ID); err != nil {
 		if !b {
-			srv.logger.Debug("add failed")
+			svc.logger.Debug("add failed")
 		}
 		return types.ErrorSerializer{
 			Code:  types.CodeAddReadPrivilegeError,
@@ -72,13 +72,13 @@ func (srv *Service) AfterPost(reply *PostReply) interface{} {
 		}
 	} else {
 		if !b {
-			srv.logger.Debug("add failed")
+			svc.logger.Debug("add failed")
 		}
 	}
 
-	if b, err := auth.GoodsEntity.AddWritePolicy(srv.enforcer, auth.UserEntity.CreateObj(reply.Goods.Seller), reply.Goods.ID); err != nil {
+	if b, err := auth.GoodsEntity.AddWritePolicy(svc.enforcer, auth.UserEntity.CreateObj(reply.Goods.Seller), reply.Goods.ID); err != nil {
 		if !b {
-			srv.logger.Debug("add failed")
+			svc.logger.Debug("add failed")
 		}
 		return types.ErrorSerializer{
 			Code:  types.CodeAddWritePrivilegeError,
@@ -86,7 +86,7 @@ func (srv *Service) AfterPost(reply *PostReply) interface{} {
 		}
 	} else {
 		if !b {
-			srv.logger.Debug("add failed")
+			svc.logger.Debug("add failed")
 		}
 	}
 	return reply

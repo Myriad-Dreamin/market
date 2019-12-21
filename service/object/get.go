@@ -6,7 +6,7 @@ import (
 )
 
 type GetReply struct {
-	Code   int           `json:"code"`
+	Code   types.CodeType           `json:"code"`
 	Object *model.Object `json:"object"`
 }
 

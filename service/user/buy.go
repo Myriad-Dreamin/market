@@ -27,7 +27,7 @@ func (srv *Service) Buy(c controller.MContext) {
 	}
 	var (
 		claims = ginhelper.GetCustomFields(c)
-		code   int
+		code   types.CodeType
 		errs   string
 	)
 	if fixed := res.Get("fixed"); fixed.Exists() && fixed.Bool() {

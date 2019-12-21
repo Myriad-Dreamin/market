@@ -6,8 +6,8 @@ import (
 	base_service "github.com/Myriad-Dreamin/market/service/base-service"
 )
 
-func (srv *Service) ForceDelete(c controller.MContext) {
-	srv.forceDelete.Delete(c)
+func (svc *Service) ForceDelete(c controller.MContext) {
+	svc.forceDelete.Delete(c)
 	return
 }
 

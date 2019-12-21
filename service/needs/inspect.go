@@ -6,7 +6,7 @@ import (
 )
 
 type InspectReply struct {
-	Code  int          `json:"code"`
+	Code  types.CodeType          `json:"code"`
 	Needs *model.Needs `json:"needs"`
 }
 

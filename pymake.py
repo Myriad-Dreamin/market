@@ -39,14 +39,16 @@ def require(*targets):
 def require_cls(*target): return require(*oqs(*target))
 
 def pipe(cmd, cwd=None):
-    p, line = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=cwd), ' '
-    while len(line) != 0:
+    p, line, line2 = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=cwd), ' ', ' '
+    while len(line) != 0 or len(line2) != 0:
         line = p.stdout.readline()
+        line2 = p.stderr.readline()
         if len(line) != 0:
             print(line.decode('utf-8').strip())
+        if len(line2) != 0:
+            print(line2.decode('utf-8').strip())
     code = p.wait()
     if code != 0:
-        print(p.stderr.read().decode('utf-8').strip())
         print('exit with %d' % code)
 
 def entry(self, args):

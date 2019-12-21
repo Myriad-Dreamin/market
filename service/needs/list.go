@@ -31,7 +31,7 @@ type NeedsReply struct {
 }
 
 type ListReply struct {
-	Code   int          `json:"code"`
+	Code   types.CodeType          `json:"code"`
 	Needss []NeedsReply `json:"needss"`
 }
 

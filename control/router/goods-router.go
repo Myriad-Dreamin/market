@@ -32,9 +32,9 @@ type GoodsIDRouter struct {
 func BuildGoodsRouter(parent *RootRouter, serviceProvider *service.Provider) (router *GoodsRouter) {
 	goodsService := serviceProvider.GoodsService()
 	router = &GoodsRouter{
-		Router:     parent.Router.Extend("goods"),
-		AuthRouter: parent.AuthRouter.Extend("goods"),
-		Auth:       parent.Auth.Copy(),
+		Router:     parent.GetRouter().Extend("goods"),
+		AuthRouter: parent.GetAuthRouter().Extend("goods"),
+		Auth:       parent.GetAuth().Copy(),
 	}
 	router.GetList = router.Router.GET("goods-list", goodsService.List)
 	router.GetTypes = router.Router.GET("goods-types", goodsService.GetTypes)

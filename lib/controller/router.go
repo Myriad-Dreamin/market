@@ -71,13 +71,21 @@ func nameOfFunction(f interface{}) string {
 	return runtime.FuncForPC(reflect.ValueOf(f).Pointer()).Name()
 }
 
+
+
+// @Title StaticFS
+// @Description StaticFS Needs
+func StaticFSDesc(c MContext) {
+
+}
+
 func (l *LeafRouter) RouteInfo(path string) RouteInfo {
 	if l.leafType == StaticFS {
 		return RouteInfo{
 			Method:      "GET",
 			Path:        strings.ReplaceAll(path, "\\", "/") + "/*filepath",
-			Handler:     nameOfFunction(l.Last()),
-			HandlerFunc: l.Last(),
+			Handler:     nameOfFunction(StaticFSDesc),
+			HandlerFunc: StaticFSDesc,
 		}
 	}
 	return RouteInfo{

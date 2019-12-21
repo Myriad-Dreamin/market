@@ -30,11 +30,11 @@ type GoodsTypesReply struct {
 
 var goodsTypesReply = GoodsTypesReply{types.GoodsTypesMap}
 
-func (srv *Service) GetTypes(c controller.MContext) {
+func (svc *Service) GetTypes(c controller.MContext) {
 	c.JSON(http.StatusOK, goodsTypesReply)
 }
 
-func (srv *Service) GoodsSignatureXXX() interface{} { return srv }
+func (svc *Service) GoodsSignatureXXX() interface{} { return svc }
 
 func NewService(m module.Module) (a *Service, err error) {
 	a = new(Service)

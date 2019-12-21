@@ -13,7 +13,7 @@ func rollback(tx *gorm.DB) {
 	}
 }
 
-func commitOrRollback(tx *gorm.DB) (int, string) {
+func commitOrRollback(tx *gorm.DB) (types.CodeType, string) {
 	err := tx.Commit().Error
 	if err != nil {
 		rollback(tx)

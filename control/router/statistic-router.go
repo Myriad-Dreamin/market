@@ -13,14 +13,14 @@ type StatisticRouter struct {
 	CountXY *LeafRouter
 }
 
-func BuildStatisticRouter(parent *RootRouter, serviceProvider *service.Provider) (router *StatisticRouter) {
+func BuildStatisticRouter(parent H, serviceProvider *service.Provider) (router *StatisticRouter) {
 
 	statisticService := serviceProvider.StatisticService()
 
 	router = &StatisticRouter{
-		Router:     parent.Router.Group("statistic"),
-		AuthRouter: parent.AuthRouter.Group("statistic"),
-		Auth:       parent.Auth.Copy(),
+		Router:     parent.GetRouter().Group("statistic"),
+		AuthRouter: parent.GetAuthRouter().Group("statistic"),
+		Auth:       parent.GetAuth().Copy(),
 	}
 
 	router.FeeXY = router.AuthRouter.GET("/fee", statisticService.StatGoodsFeeXY)

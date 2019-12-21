@@ -6,11 +6,11 @@ import (
 	"strconv"
 )
 
-func (srv *Service) GetPicture(c controller.MContext) {
-	id, ok := ginhelper.ParseUint(c, srv.key)
+func (svc *Service) GetPicture(c controller.MContext) {
+	id, ok := ginhelper.ParseUint(c, svc.key)
 	if !ok {
 		return
 	}
 
-	c.File(srv.cfg.BaseParametersConfig.GoodsPicturePath + strconv.Itoa(int(id)))
+	c.File(svc.cfg.BaseParametersConfig.GoodsPicturePath + strconv.Itoa(int(id)))
 }

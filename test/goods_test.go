@@ -17,7 +17,7 @@ func TestGoods(t *testing.T) {
 		t.Run("UploadPicture", srv.HandleTestWithOutError(testGoodsUploadPicture)) &&
 		t.Run("DownloadPicture", srv.HandleTest(testGoodsDownloadPicture)) &&
 		t.Run("Delete", srv.HandleTestWithOutError(testGoodsDelete)) &&
-		t.Run("GetTypes", srv.HandleTestWithOutError(testGoodsGetTypes))
+		t.Run("GetGoodsTypes", srv.HandleTestWithOutError(testGoodsGetTypes))
 }
 
 func testGoodsDownloadPicture(t *tester.TesterContext) {

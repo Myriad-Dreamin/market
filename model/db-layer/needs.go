@@ -147,7 +147,7 @@ func (needsDB *NeedsQuery) Query() (needss []Needs, err error) {
 
 var needsStatusField = []string{"status", "seller"}
 
-func (needsDB *NeedsDB) Sell(price uint64, id, uid uint) (int, string) {
+func (needsDB *NeedsDB) Sell(price uint64, id, uid uint) (types.CodeType, string) {
 
 	tx := db.Begin()
 	if tx.Error != nil {
@@ -182,7 +182,7 @@ func (needsDB *NeedsDB) Sell(price uint64, id, uid uint) (int, string) {
 	return commitOrRollback(tx)
 }
 
-func (needsDB *NeedsDB) ConfirmSell(id uint, confirm bool, uid uint) (int, string) {
+func (needsDB *NeedsDB) ConfirmSell(id uint, confirm bool, uid uint) (types.CodeType, string) {
 	tx := db.Begin()
 	if tx.Error != nil {
 		return types.CodeBeginTransactionError, tx.Error.Error()

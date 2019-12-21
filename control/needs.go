@@ -64,7 +64,7 @@ type NeedsService interface {
 	// @Description This interface is used to download pictures of needs. the request url is `v1/needs/:nid/picture.GET` where `:nid` is the corresponding needs number
 	GetPicture(c controller.MContext)
 
-	// @Title GetTypes
-	// @Description GetTypes
+	// @Title GetGoodsTypes
+	// @Description GetGoodsTypes
 	GetTypes(c controller.MContext)
 }

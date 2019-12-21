@@ -50,9 +50,9 @@ type UserNeedsIDRouter struct {
 func BuildUserRouter(parent *RootRouter, serviceProvider *service.Provider) (router *UserRouter) {
 	userService := serviceProvider.UserService()
 	router = &UserRouter{
-		Router:     parent.Router.Extend("user"),
-		AuthRouter: parent.AuthRouter.Extend("user"),
-		Auth:       parent.Auth.Copy(),
+		Router:     parent.GetRouter().Extend("user"),
+		AuthRouter: parent.GetAuthRouter().Extend("user"),
+		Auth:       parent.GetAuth().Copy(),
 	}
 	router.GetList = router.GET("user-list", userService.List)
 	router.GetCities = router.GET("user-cities", userService.GetCities)

@@ -32,9 +32,9 @@ type NeedsIDRouter struct {
 func BuildNeedsRouter(parent *RootRouter, serviceProvider *service.Provider) (router *NeedsRouter) {
 	needsService := serviceProvider.NeedsService()
 	router = &NeedsRouter{
-		Router:     parent.Router.Extend("needs"),
-		AuthRouter: parent.AuthRouter.Extend("needs"),
-		Auth:       parent.Auth.Copy(),
+		Router:     parent.GetRouter().Extend("needs"),
+		AuthRouter: parent.GetAuthRouter().Extend("needs"),
+		Auth:       parent.GetAuth().Copy(),
 	}
 	router.GetList = router.GET("needs-list", needsService.List)
 	router.GetTypes = router.Router.GET("needs-types", needsService.GetTypes)

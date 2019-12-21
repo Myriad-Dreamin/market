@@ -66,7 +66,7 @@ type GoodsService interface {
 	// @Description This interface is used to download pictures of goods. the request url is `v1/goods/:goid/picture.GET` where `:goid` is the corresponding goods number
 	GetPicture(c controller.MContext)
 
-	// @Title GetTypes
-	// @Description GetTypes
+	// @Title GetGoodsTypes
+	// @Description GetGoodsTypes
 	GetTypes(c controller.MContext)
 }

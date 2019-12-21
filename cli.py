@@ -104,8 +104,9 @@ import "github.com/Myriad-Dreamin/market/types"
 
     def create_pure_service(self, object_name, placeholder):
         self._update_obj_vars(object_name, placeholder)
-        self._create_router(object_name, placeholder, 'control/router/template/pure-object-router.go.template')
-        self._create_service(object_name, placeholder, 'service/pure-object/')
+        self._create_router(object_name, placeholder, 'template/control/pure-object/pure-object-router.go.template')
+        self._create_service(object_name, placeholder, 'template/pure-object/',
+                             'template/control/pure-object/pure-object.go')
 
     def create_router(self, object_name, placeholder, __object_router_file=None):
         self._update_obj_vars(object_name, placeholder)
@@ -149,7 +150,7 @@ import "github.com/Myriad-Dreamin/market/types"
             server_init_db_file,
             'for _, dbResult := range []dbResult{',
             'for _, dbResult := range []dbResult{\n'
-            '\t\t{"%sDB", functional.Decay(model.New%sDB(srv.Logger, srv.Cfg))},' % (self.camel, self.up_camel),
+            '\t\t{"%sDB", functional.Decay(model.New%sDB(srv.Module))},' % (self.camel, self.up_camel),
         )
 
     def template_to(self, src, dst):
@@ -225,13 +226,15 @@ import "github.com/Myriad-Dreamin/market/types"
         self.up_camel = self.camel.title()
         self.placeholder = placeholder
 
-    def _create_service(self, object_name, placeholder, __object_service_folder=None):
+    def _create_service(self, object_name, placeholder, __object_service_folder=None, __control_service_template=None):
         object_service_folder = 'service/' + self.m_snake_name + '/'
         object_service_entry_file = 'service/' + self.m_snake_name + '.go'
+        object_interface_entry_file = 'control/' + self.m_snake_name + '.go'
         service_provider_file = 'service/provider.go'
 
         self.templates_to(__object_service_folder or 'service/object/', object_service_folder)
         self.template_to('service/object.go', object_service_entry_file)
+        self.template_to(__control_service_template or 'control/interface.go', object_interface_entry_file)
 
         self.replace(
             service_provider_file,
@@ -252,8 +255,7 @@ import "github.com/Myriad-Dreamin/market/types"
             server_init_service_file,
             'for _, serviceResult := range []serviceResult{',
             'for _, serviceResult := range []serviceResult{\n'
-            '\t\t{"%sService", functional.Decay(service.New%sService('
-            'srv.Logger, srv.DatabaseProvider, srv.Cfg))},' % (self.camel, self.up_camel),
+            '\t\t{"%sService", functional.Decay(service.New%sService(srv.Module))},' % (self.camel, self.up_camel),
         )
 
     def _create_router(self, object_name, placeholder, __object_router_file=None):
@@ -265,8 +267,8 @@ import "github.com/Myriad-Dreamin/market/types"
 
         self.replace(
             root_provider_file,
-            'objectRouter *ObjectRouter',
-            'objectRouter *ObjectRouter\n\t%sRouter *%sRouter' % (self.camel, self.up_camel),
+            'objectRouter *ObjectRouter\n',
+            'objectRouter *ObjectRouter\n\n\t%sRouter *%sRouter' % (self.camel, self.up_camel),
         )
         self.replace(
             root_provider_file,

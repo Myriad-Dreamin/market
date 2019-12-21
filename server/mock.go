@@ -408,7 +408,7 @@ func (mocker *Mocker) NoErr(resp mock.ResponseI) bool {
 
 type Error struct {
 	RespCode int
-	Code     int    `json:"code"`
+	Code     types.CodeType    `json:"code"`
 	Error    string `json:"error"`
 }
 

@@ -16,7 +16,7 @@ type PutRequest struct {
 	Description string          `json:"description" form:"description"`
 }
 
-func (srv *Service) fillPutFields(c controller.MContext, goods *model.Goods, req *PutRequest) (fields []string) {
+func (svc *Service) fillPutFields(c controller.MContext, goods *model.Goods, req *PutRequest) (fields []string) {
 	if goods.EndAt.Sub(time.Now()) <= time.Minute {
 		c.AbortWithStatusJSON(http.StatusOK, types.ErrorSerializer{
 			Code:  types.CodeGoodsLifeTimeout,

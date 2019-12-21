@@ -26,7 +26,7 @@ type RegisterRequest struct {
 
 type RegisterReply struct {
 	// Code: 操作的结果
-	Code int `json:"code"`
+	Code types.CodeType `json:"code"`
 	// ID: 用户的id
 	ID uint `json:"id"`
 }

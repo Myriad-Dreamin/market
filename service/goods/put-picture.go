@@ -10,8 +10,8 @@ import (
 	"strconv"
 )
 
-func (srv *Service) PutPicture(c controller.MContext) {
-	id, ok := ginhelper.ParseUint(c, srv.key)
+func (svc *Service) PutPicture(c controller.MContext) {
+	id, ok := ginhelper.ParseUint(c, svc.key)
 	if !ok {
 		return
 	}
@@ -25,7 +25,7 @@ func (srv *Service) PutPicture(c controller.MContext) {
 		return
 	}
 
-	if err = c.SaveUploadedFile(file, srv.cfg.BaseParametersConfig.GoodsPicturePath+strconv.Itoa(int(id))+filepath.Ext(file.Filename)); err != nil {
+	if err = c.SaveUploadedFile(file, svc.cfg.BaseParametersConfig.GoodsPicturePath+strconv.Itoa(int(id))+filepath.Ext(file.Filename)); err != nil {
 		c.JSON(http.StatusOK, gin.H{
 			"code": types.CodeFSExecError,
 			"err":  err.Error(),

@@ -137,7 +137,7 @@ func (goodsDB *GoodsQuery) Query() (goodss []Goods, err error) {
 
 var goodsStatusField = []string{"status", "buyer"}
 
-func (goodsDB *GoodsDB) BuyFixed(id, uid uint) (int, string) {
+func (goodsDB *GoodsDB) BuyFixed(id, uid uint) (types.CodeType, string) {
 	tx := db.Begin()
 	if tx.Error != nil {
 		return types.CodeBeginTransactionError, tx.Error.Error()
@@ -170,7 +170,7 @@ func (goodsDB *GoodsDB) BuyFixed(id, uid uint) (int, string) {
 	return commitOrRollback(tx)
 }
 
-func (goodsDB *GoodsDB) Buy(id, uid uint, price uint64) (int, string) {
+func (goodsDB *GoodsDB) Buy(id, uid uint, price uint64) (types.CodeType, string) {
 	tx := db.Begin()
 	if tx.Error != nil {
 		return types.CodeBeginTransactionError, tx.Error.Error()
@@ -205,7 +205,7 @@ func (goodsDB *GoodsDB) Buy(id, uid uint, price uint64) (int, string) {
 	return commitOrRollback(tx)
 }
 
-func (goodsDB *GoodsDB) ConfirmBuy(id uint, confirm bool, uid uint) (int, string) {
+func (goodsDB *GoodsDB) ConfirmBuy(id uint, confirm bool, uid uint) (types.CodeType, string) {
 	tx := db.Begin()
 	if tx.Error != nil {
 		return types.CodeBeginTransactionError, tx.Error.Error()

@@ -43,6 +43,21 @@ type AuthSugarRouter struct {
 	DynamicList map[string]*AuthSugarRouterApiGroup
 }
 
+func BuildAuthRouter(parent *RootRouter, serviceProvider *service.Provider) (router *AuthRouter) {
+	authService := serviceProvider.AuthService()
+
+	router = &AuthRouter{
+		Router:     parent.GetRouter().Group("auth"),
+		AuthRouter: parent.GetAuthRouter().Group("auth"),
+		Auth:       parent.GetAuth().Copy(),
+	}
+	router.RefreshToken = router.AuthRouter.GET("/refresh-token", authService.RefreshToken)
+
+	router.Group = router.Group.subBuild(router, serviceProvider)
+	router.Sugar = router.Sugar.subBuild(router, serviceProvider)
+	return
+}
+
 func (*AuthSugarRouter) subBuild(parent *AuthRouter, serviceProvider *service.Provider) *AuthSugarRouter {
 	authService := serviceProvider.AuthService()
 
@@ -65,21 +80,6 @@ func (*AuthSugarRouter) subBuild(parent *AuthRouter, serviceProvider *service.Pr
 	}
 
 	return router
-}
-
-func BuildAuthRouter(parent *RootRouter, serviceProvider *service.Provider) (router *AuthRouter) {
-	authService := serviceProvider.AuthService()
-
-	router = &AuthRouter{
-		Router:     parent.Router.Group("auth"),
-		AuthRouter: parent.AuthRouter.Group("auth"),
-		Auth:       parent.Auth.Copy(),
-	}
-	router.RefreshToken = router.AuthRouter.GET("/refresh-token", authService.RefreshToken)
-
-	router.Group = router.Group.subBuild(router, serviceProvider)
-	router.Sugar = router.Sugar.subBuild(router, serviceProvider)
-	return
 }
 
 func (*AuthGroupRouter) subBuild(parent *AuthRouter, serviceProvider *service.Provider) (

@@ -6,7 +6,7 @@ import (
 	"reflect"
 )
 
-type Code = int
+type Code = types.CodeType
 
 func MaybeSelectError(anyObj interface{}, err error) (Code, string) {
 	if err != nil {

@@ -7,7 +7,7 @@ import (
 	"net/http"
 )
 
-func (srv *Service) deleteHook(c controller.MContext, object *model.Goods) (canDelete bool) {
+func (svc *Service) deleteHook(c controller.MContext, object *model.Goods) (canDelete bool) {
 	if object.Status == types.GoodsStatusFinished {
 		c.AbortWithStatusJSON(http.StatusOK, types.ErrorSerializer{
 			Code:  types.CodeDeleteError,

@@ -24,25 +24,25 @@ type GoodsReply struct {
 }
 
 type ListReply struct {
-	Code   int          `json:"code"`
+	Code   types.CodeType          `json:"code"`
 	Goodss []GoodsReply `json:"goodss"`
 }
 
-func (srv *Service) GoodssToListReply(c controller.MContext, obj []model.Goods) (reply *ListReply) {
+func (svc *Service) GoodssToListReply(c controller.MContext, obj []model.Goods) (reply *ListReply) {
 	reply = new(ListReply)
 	reply.Code = types.CodeOK
-	reply.Goodss = srv.FromGoodss(c, obj)
+	reply.Goodss = svc.FromGoodss(c, obj)
 	return
 }
 
-func (srv *Service) FromGoodss(c controller.MContext, goodss []model.Goods) (gr []GoodsReply) {
+func (svc *Service) FromGoodss(c controller.MContext, goodss []model.Goods) (gr []GoodsReply) {
 	for i := range goodss {
 		gr = append(gr, GoodsReply{
 			ID:          goodss[i].ID,
 			CreatedAt:   goodss[i].CreatedAt,
 			UpdatedAt:   goodss[i].UpdatedAt,
 			EndAt:       goodss[i].EndAt,
-			Seller:      reply.FetchUser(c, srv.userDB, goodss[i].Seller),
+			Seller:      reply.FetchUser(c, svc.userDB, goodss[i].Seller),
 			Type:        goodss[i].Type,
 			Name:        goodss[i].Name,
 			CurPrice:    goodss[i].CurPrice,
@@ -58,6 +58,6 @@ func (srv *Service) FromGoodss(c controller.MContext, goodss []model.Goods) (gr 
 	return
 }
 
-func (srv *Service) ProcessListResults(c controller.MContext, result interface{}) interface{} {
-	return srv.GoodssToListReply(c, result.([]model.Goods))
+func (svc *Service) ProcessListResults(c controller.MContext, result interface{}) interface{} {
+	return svc.GoodssToListReply(c, result.([]model.Goods))
 }

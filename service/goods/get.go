@@ -9,7 +9,7 @@ import (
 )
 
 type GetReply struct {
-	Code        int                  `json:"code"`
+	Code        types.CodeType                  `json:"code"`
 	ID          uint                 `json:"id"`
 	Seller      *reply.ShortUserInfo `json:"seller" form:"seller"`
 	CreatedAt   time.Time            `json:"created_at"`
@@ -23,11 +23,11 @@ type GetReply struct {
 	Status      types.GoodsStatus    `json:"status"`
 }
 
-func (srv *Service) GoodsToGetReply(c controller.MContext, obj *model.Goods) *GetReply {
+func (svc *Service) GoodsToGetReply(c controller.MContext, obj *model.Goods) *GetReply {
 	return &GetReply{
 		Code:        types.CodeOK,
 		ID:          obj.ID,
-		Seller:      reply.FetchUser(c, srv.userDB, obj.Seller),
+		Seller:      reply.FetchUser(c, svc.userDB, obj.Seller),
 		CreatedAt:   obj.CreatedAt,
 		EndAt:       obj.EndAt,
 		Type:        obj.Type,

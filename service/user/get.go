@@ -7,7 +7,7 @@ import (
 )
 
 type GetReply struct {
-	Code             int       `json:"code"`
+	Code             types.CodeType       `json:"code"`
 	NickName         string    `json:"nick_name" form:"nick_name"`
 	CityCode string    `json:"city_code" form:"city_code"`
 	LastLogin        time.Time `json:"last_login" form:"last_login"`
