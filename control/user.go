@@ -14,12 +14,27 @@ type UserService interface {
 	// The following is a description of the parameters
 	//     + `password string`: password of the user
 	// uid, one of following three parameter must be provided:
-	//     + `id uint`: id of the user
+	//         + `id uint`: id of the user
 	//
-	//     + `nick_name string`: nick-name of the user
+	//         + `nick_name string`: nick-name of the user
 	//
-	//     + `phone string` phone number of the user
+	//         + `phone string` phone number of the user
 	//
+	// The following is a description of the returns
+	//
+	//     + `identity array[string]`: the groups user currently in
+	//
+	//     + `id uint`: the unique user id in database
+	//
+	//     + `phone string`: the phone of user
+	//
+	//     + `nick_name string`: the unique user nick name in this website
+	//
+	//     + `name string`: the true name of user
+	//
+	//     + `token string`: the jwt token identifies an user, which must set in every auth api request's header
+	//
+	//     + `refresh_token string`: the jwt token used to refresh token without requirement of user inputting password to login again
 	Login(c controller.MContext)
 
 	// @Title Register
@@ -27,13 +42,17 @@ type UserService interface {
 	// The following is a description of the parameters
 	//     + `name string`: name of the user
 	//
-	//     + `nick_name string`: nick-name of the user
+	//     + `nick_name string`: nick-name of the user, must be unique
 	//
-	//     + `phone string` phone number of the user
+	//     + `phone string` phone number of the user, must be unique
 	//
 	//     + `password string` password number of the user, which must pass the [password test](https://github.com/Myriad-Dreamin/market/blob/master/service/user/change-password.go).
 	//
 	//     + `register_city string`: register city of the user
+	//
+	// The following is a description of the returns
+	//
+	//     + `id uint`: the unique user id in database
 	//
 	Register(c controller.MContext)
 

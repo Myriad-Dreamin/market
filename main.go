@@ -3,8 +3,8 @@ package main
 
 import (
 	"flag"
-	"github.com/Myriad-Dreamin/market/server"
 	"github.com/Myriad-Dreamin/market/config"
+	"github.com/Myriad-Dreamin/market/server"
 	"github.com/Myriad-Dreamin/market/types"
 	_ "net/http/pprof"
 )

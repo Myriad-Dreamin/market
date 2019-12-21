@@ -12,6 +12,7 @@ import (
 	"github.com/Myriad-Dreamin/market/types"
 	"github.com/Myriad-Dreamin/minimum-lib/module"
 	"github.com/casbin/casbin/v2"
+	"net/http"
 )
 
 type Service struct {
@@ -26,14 +27,21 @@ type Service struct {
 	middleware *jwt.Middleware
 }
 
+type CitiesReply struct {
+	Cities map[string]types.CityObject `json:"cities"`
+}
+
+var citiesReply CitiesReply
+
 func (srv *Service) GetCities(c controller.MContext) {
-	panic("implement me")
+	c.JSON(http.StatusOK, citiesReply)
 }
 
 func (srv *Service) UserSignatureXXX() interface{} { return srv }
 
 func NewService(m module.Module) (a control.UserService, err error) {
 	srv := new(Service)
+	citiesReply = CitiesReply{types.CityObjectMap}
 	provider := m.Require(config.ModulePath.Provider.Model).(*model.Provider)
 	srv.logger = m.Require(config.ModulePath.Global.Logger).(types.Logger)
 	srv.cfg = m.Require(config.ModulePath.Global.Configuration).(*config.ServerConfig)
