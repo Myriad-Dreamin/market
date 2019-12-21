@@ -63,6 +63,7 @@ class MinimumCli:
         urllib.request.urlretrieve('https://raw.githubusercontent.com/wecatch/china_regions/master/json/city_object.json', 'city_object.json')
 
     def redeploy(self):
+        pcmds("git pull")
         pcmds('%s cli.py make image' % MinimumCli.python_interpreter)
         pcmds('%s cli.py make down' % MinimumCli.python_interpreter)
         pcmds('%s cli.py make up' % MinimumCli.python_interpreter)
