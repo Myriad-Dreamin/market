@@ -57,6 +57,7 @@ const (
 	CodeUserIDMissing int = iota + 10000
 	CodeUserWrongPassword
 	CodeWeakPassword
+	CodeInvalidCityCode
 )
 
 const (

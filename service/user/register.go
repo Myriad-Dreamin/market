@@ -49,6 +49,12 @@ func (srv *Service) Register(c controller.MContext) {
 		return
 	}
 
+	if _, ok := srv.cities[req.CityCode]; !ok {
+		c.AbortWithStatusJSON(http.StatusOK, types.ErrorSerializer{
+			Code:  types.CodeInvalidCityCode,
+		})
+	}
+
 	var user = new(model.User)
 	user.Name = req.Name
 	user.Password = req.Password

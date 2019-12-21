@@ -9,6 +9,7 @@ var (
 	middlewareJWT       = filepath.Join(middleware, "jwt")
 	middlewareRouteAuth = filepath.Join(middleware, "route-auth")
 	middlewareCORS      = filepath.Join(middleware, "cors")
+	globalCities = filepath.Join(global, "cities")
 	globalLogger        = filepath.Join(global, "logger")
 	globalConfiguration = filepath.Join(global, "configuration")
 	globalHttpEngine    = filepath.Join(global, "httpEngine")
@@ -22,6 +23,7 @@ var ModulePath = ModulePathS{
 		Logger:        globalLogger,
 		Configuration: globalConfiguration,
 		HttpEngine:    globalHttpEngine,
+		Cities: globalCities,
 	},
 	Provider: providerS{
 		Model:   providerModel,
@@ -45,6 +47,7 @@ type globalS struct {
 	Logger        string
 	Configuration string
 	HttpEngine    string
+	Cities    string
 }
 
 type providerS struct {

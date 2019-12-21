@@ -48,6 +48,7 @@ func Mock(options ...Option) (srv *Mocker) {
 	srv.header = make(map[string]string)
 	if !(srv.InstantiateLogger() &&
 		srv.UseDefaultConfig() &&
+		srv.PrepareGeography() &&
 		srv.PrepareFileSystem() &&
 		srv.MockDatabase()) {
 		srv = nil

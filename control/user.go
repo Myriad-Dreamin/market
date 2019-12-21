@@ -21,7 +21,6 @@ type UserService interface {
 	//         + `phone string` phone number of the user
 	//
 	// The following is a description of the returns
-	//
 	//     + `identity array[string]`: the groups user currently in
 	//
 	//     + `id uint`: the unique user id in database
@@ -48,10 +47,9 @@ type UserService interface {
 	//
 	//     + `password string` password number of the user, which must pass the [password test](https://github.com/Myriad-Dreamin/market/blob/master/service/user/change-password.go).
 	//
-	//     + `register_city string`: register city of the user
+	//     + `city_code string`: code of register city of the user
 	//
 	// The following is a description of the returns
-	//
 	//     + `id uint`: the unique user id in database
 	//
 	Register(c controller.MContext)

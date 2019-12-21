@@ -25,6 +25,7 @@ type Service struct {
 	logger     types.Logger
 	cfg        *config.ServerConfig
 	middleware *jwt.Middleware
+	cities map[string]types.CityObject
 }
 
 type CitiesReply struct {
@@ -41,11 +42,12 @@ func (srv *Service) UserSignatureXXX() interface{} { return srv }
 
 func NewService(m module.Module) (a control.UserService, err error) {
 	srv := new(Service)
-	citiesReply = CitiesReply{types.CityObjectMap}
 	provider := m.Require(config.ModulePath.Provider.Model).(*model.Provider)
 	srv.logger = m.Require(config.ModulePath.Global.Logger).(types.Logger)
 	srv.cfg = m.Require(config.ModulePath.Global.Configuration).(*config.ServerConfig)
 	srv.middleware = m.Require(config.ModulePath.Middleware.JWT).(*jwt.Middleware)
+	srv.cities = m.Require(config.ModulePath.Global.Cities).(map[string]types.CityObject)
+	citiesReply = CitiesReply{srv.cities}
 	srv.userDB = provider.UserDB()
 	srv.goodsDB = provider.GoodsDB()
 	srv.needsDB = provider.NeedsDB()
