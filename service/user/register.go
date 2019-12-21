@@ -53,6 +53,7 @@ func (srv *Service) Register(c controller.MContext) {
 		c.AbortWithStatusJSON(http.StatusOK, types.ErrorSerializer{
 			Code:  types.CodeInvalidCityCode,
 		})
+		return
 	}
 
 	var user = new(model.User)

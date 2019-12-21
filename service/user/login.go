@@ -117,8 +117,10 @@ func (srv *Service) Login(c controller.MContext) {
 		user.LastLogin = time.Now()
 
 		var identities []string
-		if srv.enforcer.HasGroupingPolicy("user:"+strconv.Itoa(int(user.ID)), "admin") {
-			identities = append(identities, "admin")
+		for tst := range types.Groups {
+			if srv.enforcer.HasGroupingPolicy("user:"+strconv.Itoa(int(user.ID)), types.Groups[tst]) {
+				identities = append(identities, types.Groups[tst])
+			}
 		}
 
 		c.JSON(http.StatusOK, UserToLoginReply(user, token, refreshToken, identities))
