@@ -2,15 +2,16 @@
 import os, re, sys, shutil, json
 from pymake import require_cls, oqs, entry, pipe
 
+
 class Makefile:
     current_path = os.path.dirname(os.path.realpath(__file__))
     config_file_name = 'config.toml'
     context = dict()
-    
+
     compose_template_file = 'docker-compose.template.yml'
     compose_file = 'docker-compose.yml'
     silent = False
-    
+
     @classmethod
     def hello(cls, *_):
         print('minimum builder')
@@ -19,7 +20,7 @@ class Makefile:
     def pipe(cls, cmd, *_):
         if not cls.silent: print(cmd)
         pipe(cmd)
-    
+
     @classmethod
     def generate(cls, path='./', match=None, *_):
         match = cls._gen_match(match)
@@ -42,10 +43,11 @@ class Makefile:
     @require_cls('read_context')
     def image(cls, *_):
         cls.pipe('docker build --tag %s .' % cls.context['node-name'])
-    
+
     @classmethod
     def run_testdb(cls, *_):
-        cls.pipe('docker run -id -p 23306:3306 -e MYSQL_ROOT_PASSWORD=12345678 -e MYSQL_DATABASE=market -e MYSQL_USER=madmin -e MYSQL_PASSWORD=12345678 --name backend-testdb mysql:5.7')
+        cls.pipe(
+            'docker run -id -p 23306:3306 -e MYSQL_ROOT_PASSWORD=12345678 -e MYSQL_DATABASE=market -e MYSQL_USER=madmin -e MYSQL_PASSWORD=12345678 --name backend-testdb mysql:5.7')
 
     @classmethod
     def stop_testdb(cls, *_):
@@ -65,10 +67,10 @@ class Makefile:
         if config_file is not None:
             cls.config_file = os.path.abspath(config_file)
             cls.config_file_target = os.path.join("/", os.path.basename(config_file))
-        cls.pipe('docker run -id -v %s:%s --network=host --name %s %s' %\
-            (cls.config_file, cls.config_file_target,
-            cls.context['instance-name'], cls.context['node-name']))
-    
+        cls.pipe('docker run -id -v %s:%s --network=host --name %s %s' % \
+                 (cls.config_file, cls.config_file_target,
+                  cls.context['instance-name'], cls.context['node-name']))
+
     @classmethod
     @require_cls('read_context')
     def start_run(cls, *_):
@@ -87,22 +89,22 @@ class Makefile:
     @classmethod
     @require_cls('template')
     def up(cls, *_):
-	    pipe('docker-compose -f %s up' % (cls.compose_file)) 
+        pipe('docker-compose -f %s up' % (cls.compose_file))
 
     @classmethod
     @require_cls('template')
     def down(cls, *_):
-	    pipe('docker-compose -f %s down' % (cls.compose_file)) 
-        
+        pipe('docker-compose -f %s down' % (cls.compose_file))
+
     @classmethod
     @require_cls('template')
     def start(cls, *_):
-	    pipe('docker-compose -f %s start' % (cls.compose_file)) 
-        
+        pipe('docker-compose -f %s start' % (cls.compose_file))
+
     @classmethod
     @require_cls('template')
     def stop(cls, *_):
-	    pipe('docker-compose -f %s stop' % (cls.compose_file)) 
+        pipe('docker-compose -f %s stop' % (cls.compose_file))
 
     @classmethod
     @require_cls('read_context')
@@ -113,6 +115,10 @@ class Makefile:
             s = s.replace('{{conf-path}}', cls.context['conf-path'])
             s = s.replace('{{logs-path}}', cls.context['logs-path'])
             s = s.replace('{{data-path}}', cls.context['data-path'])
+            s = s.replace('{{goods-picture-path}}', cls.context['goods-picture-path'])
+            s = s.replace('{{needs-picture-path}}', cls.context['needs-picture-path'])
+            s = s.replace('{{goods-picture-path-target}}', cls.context['goods-picture-path-target'])
+            s = s.replace('{{needs-picture-path-target}}', cls.context['needs-picture-path-target'])
             s = s.replace('{{node-name}}', cls.context['node-name'])
             s = s.replace('{{instance-name}}', cls.context['instance-name'])
             s = s.replace('{{target-port}}', str(cls.context['target-port']))
@@ -129,16 +135,26 @@ class Makefile:
             cls.context = json.loads('{}' if len(c) == 0 else c)
             cls.context['node-name'] = cls.context.get('node-name', 'myriaddreamin/minimum-market-backend:alpine')
             cls.context['instance-name'] = cls.context.get('instance-name', 'backend')
-            
+
             cls.context['redis-root-password'] = cls.context.get('redis-root-password', '12345678')
             cls.context['mysql-root-password'] = cls.context.get('mysql-root-password', '12345678')
             cls.context['mysql-norm-password'] = cls.context.get('mysql-norm-password', '12345678')
+
             cls.context['conf-path'] = os.path.join(cls.current_path, cls.context.get('conf-path', 'testdb/conf'))
             cls.context['logs-path'] = os.path.join(cls.current_path, cls.context.get('logs-path', 'testdb/logs'))
             cls.context['data-path'] = os.path.join(cls.current_path, cls.context.get('data-path', 'testdb/data'))
 
+            cls.context['goods-path'] =\
+                os.path.join(cls.current_path, cls.context.get('goods-path', 'testdb/goods-picture'))
+            cls.context['needs-path'] =\
+                os.path.join(cls.current_path, cls.context.get('needs-path', 'testdb/needs-picture'))
+            cls.context['goods-path-target'] =\
+                os.path.join(cls.current_path, cls.context.get('goods-path-target', '/goods-picture'))
+            cls.context['needs-path-target'] =\
+                os.path.join(cls.current_path, cls.context.get('needs-path-target', '/needs-picture'))
+
             cls.context['target-port'] = cls.context.get('target-port', 23335)
-            
+
             cls.config_file_name = cls.context.get('config-file-name', 'config.toml')
             cls.config_file = os.path.join(cls.current_path, cls.config_file_name)
             cls.config_file_target = os.path.join('/', cls.config_file_name)
@@ -152,6 +168,7 @@ class Makefile:
     @require_cls('up')
     def all(cls, *_):
         pass
+
 
 if __name__ == '__main__':
     entry(Makefile, sys.argv[1:])

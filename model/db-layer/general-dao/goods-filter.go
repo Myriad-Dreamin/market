@@ -46,35 +46,35 @@ func GoodsFilterOption(db *gorm.DB, f *GoodsFilter) *gorm.DB {
 	if f.MinPriceL != nil && f.MinPriceR != nil {
 		db = db.Where("min_price between ? and ?", *f.MinPriceL, *f.MinPriceR)
 	} else if f.MinPriceL != nil {
-		db = db.Where("min_price > ?", *f.MinPriceL)
+		db = db.Where("min_price >= ?", *f.MinPriceL)
 	} else if f.MinPriceR != nil {
-		db = db.Where("min_price < ?", *f.MinPriceR)
+		db = db.Where("min_price <= ?", *f.MinPriceR)
 	}
 
 	if f.MaxPriceL != nil && f.MaxPriceR != nil {
 		db = db.Where("max_price between ? and ?", *f.MaxPriceL, *f.MaxPriceR)
 	} else if f.MaxPriceL != nil {
-		db = db.Where("max_price > ?", *f.MaxPriceL)
+		db = db.Where("max_price >= ?", *f.MaxPriceL)
 	} else if f.MaxPriceR != nil {
-		db = db.Where("max_price < ?", *f.MaxPriceR)
+		db = db.Where("max_price <= ?", *f.MaxPriceR)
 	}
 
 	if f.CurPriceL != nil && f.CurPriceR != nil {
 		db = db.Where("cur_price between ? and ?", *f.CurPriceL, *f.CurPriceR)
 	} else if f.CurPriceL != nil {
-		db = db.Where("cur_price > ?", *f.CurPriceL)
+		db = db.Where("cur_price >= ?", *f.CurPriceL)
 	} else if f.CurPriceR != nil {
-		db = db.Where("cur_price < ?", *f.CurPriceR)
+		db = db.Where("cur_price <= ?", *f.CurPriceR)
 	}
 
 	if f.FixedTag != nil {
 		db = db.Where("is_fixed = ?", *f.FixedTag)
 	}
 	if f.EndBefore != nil {
-		db = db.Where("end_at < ?", *f.EndBefore)
+		db = db.Where("end_at <= ?", *f.EndBefore)
 	}
 	if f.BeginAfter != nil {
-		db = db.Where("created_at > ?", *f.BeginAfter)
+		db = db.Where("created_at >= ?", *f.BeginAfter)
 	}
 	return db
 }

@@ -72,6 +72,14 @@ func nameOfFunction(f interface{}) string {
 }
 
 func (l *LeafRouter) RouteInfo(path string) RouteInfo {
+	if l.leafType == StaticFS {
+		return RouteInfo{
+			Method:      "GET",
+			Path:        strings.ReplaceAll(path, "\\", "/") + "/*filepath",
+			Handler:     nameOfFunction(l.Last()),
+			HandlerFunc: l.Last(),
+		}
+	}
 	return RouteInfo{
 		Method:      l.leafType.String(),
 		Path:        strings.ReplaceAll(path, "\\", "/"),
@@ -189,7 +197,7 @@ func (c *Router) leafOp(leafType MethodType, relativePath string, op interface{}
 		panic(fmt.Errorf("must conflict path %v", relativePath))
 	}
 	r = NewLeafRouterOp(leafType, relativePath, op, handlers...)
-	c.Leafs[relativePath] = r
+	c.Leafs[relativePath+string(leafType)] = r
 	return
 }
 
@@ -222,15 +230,15 @@ func (c *Router) HEAD(relativePath string, handlers ...HandlerFunc) *LeafRouter 
 }
 
 func (c *Router) StaticFile(relativePath string, filepath string, handlers ...HandlerFunc) *LeafRouter {
-	return c.leafOp(HEAD, relativePath, filepath, handlers...)
+	return c.leafOp(StaticFile, relativePath, filepath, handlers...)
 }
 
 func (c *Router) Static(relativePath string, root string, handlers ...HandlerFunc) *LeafRouter {
-	return c.leafOp(HEAD, relativePath, root, handlers...)
+	return c.leafOp(Static, relativePath, root, handlers...)
 }
 
 func (c *Router) StaticFS(relativePath string, fs http.FileSystem, handlers ...HandlerFunc) *LeafRouter {
-	return c.leafOp(HEAD, relativePath, fs, handlers...)
+	return c.leafOp(StaticFS, relativePath, fs, handlers...)
 }
 
 // RouteInfo represents a request route's specification which contains method and path and its handler.

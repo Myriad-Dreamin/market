@@ -6,6 +6,7 @@ import (
 	"github.com/Myriad-Dreamin/market/types"
 	"github.com/gin-gonic/gin"
 	"net/http"
+	"path/filepath"
 	"strconv"
 )
 
@@ -24,7 +25,7 @@ func (srv *Service) PutPicture(c controller.MContext) {
 		return
 	}
 
-	if err = c.SaveUploadedFile(file, srv.cfg.BaseParametersConfig.GoodsPicturePath+strconv.Itoa(int(id))); err != nil {
+	if err = c.SaveUploadedFile(file, srv.cfg.BaseParametersConfig.GoodsPicturePath+strconv.Itoa(int(id))+filepath.Ext(file.Filename)); err != nil {
 		c.JSON(http.StatusOK, gin.H{
 			"code": types.CodeFSExecError,
 			"err":  err.Error(),

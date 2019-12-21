@@ -15,7 +15,7 @@ func (srv *Server) BuildRouter() bool {
 	}), gin.Recovery())
 	srv.HttpEngine.Use(srv.corsMW)
 
-	srv.Router = router.NewRootRouter(srv.ServiceProvider, srv.jwtMW, srv.routerAuthMW)
+	srv.Router = router.NewRootRouter(srv.Module)
 	srv.Module.Provide(config.ModulePath.Global.HttpEngine, srv.HttpEngine)
 	return true
 }

@@ -33,6 +33,8 @@ services:
     image: {{node-name}}
     volumes:
       - {{config-file}}:{{config-file-target}}
+      - {{goods-picture-path}}:{{goods-picture-path-target}}
+      - {{needs-picture-path}}:{{needs-picture-path-target}}
     depends_on:
       - redis
       - mysql
