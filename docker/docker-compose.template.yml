@@ -3,19 +3,19 @@ services:
   redis:
     image: redis
     ports:
-      - "23379:6379"
+      - "22379:6379"
     environment:
       - TZ=Asia/Shanghai
       - LANG=en_US.UTF-8
     command: redis-server --requirepass {{redis-root-password}}
     networks:
       market:
-        ipv4_address: 10.233.233.2
+        ipv4_address: 10.233.234.2
 
   mysql:
     image: mysql:5.7
     ports:
-      - "23306:3306"
+      - "22306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: {{mysql-root-password}}
       MYSQL_DATABASE: market
@@ -27,7 +27,7 @@ services:
       - {{data-path}}:/var/lib/mysql
     networks:
       market:
-        ipv4_address: 10.233.233.3
+        ipv4_address: 10.233.234.3
 
   server:
     image: {{node-name}}
@@ -40,7 +40,7 @@ services:
       - "{{target-port}}:23336"
     networks:
       market:
-        ipv4_address: 10.233.233.4
+        ipv4_address: 10.233.234.4
 
 
 networks:
@@ -48,4 +48,4 @@ networks:
     ipam:
       driver: default
       config:
-        - subnet: "10.233.233.0/24"
+        - subnet: "10.233.234.0/24"
