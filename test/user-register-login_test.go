@@ -17,8 +17,7 @@ func testUserRegisterLogin(t *tester.TesterContext) {
 		Password:         pswd,
 		NickName:         nick,
 		Phone:            phone,
-		RegisterProvince: "tan bran",
-		RegisterCity:     "tan arch",
+		CityCode: "110100000000",
 	})
 	id := t.DecodeJSON(resp.Body(),
 		new(userservice.RegisterReply)).(*userservice.RegisterReply).ID

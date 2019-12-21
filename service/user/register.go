@@ -18,8 +18,7 @@ type RegisterRequest struct {
 	// NickName: 昵称
 	NickName         string `form:"nick_name" json:"nick_name" binding:"required"`
 	Phone            string `form:"phone" json:"phone" binding:"required"`
-	RegisterProvince string `form:"register_province" json:"register_province" binding:"required"`
-	RegisterCity     string `form:"register_city" json:"register_city" binding:"required"`
+	CityCode string `form:"city_code" json:"city_code" binding:"required"`
 	//Email string `form:"email" json:"email" binding:"email"`
 	// Gender: 0表示保密, 1表示女, 2表示男, 3~255表示其他
 	//Gender uint8 `form:"gender" json:"gender"`
@@ -56,8 +55,7 @@ func (srv *Service) Register(c controller.MContext) {
 
 	user.NickName = req.NickName
 	user.Phone = req.Phone
-	user.RegisterProvince = req.RegisterProvince
-	user.RegisterCity = req.RegisterCity
+	user.CityCode = req.CityCode
 	//user.Gender = req.Gender
 	//user.Email = req.Email
 

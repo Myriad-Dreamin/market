@@ -29,7 +29,7 @@ const (
 	// with something that was already in the database
 	CodeDuplicatePrimaryKey
 	// CodeUpdateError occurs when update object to database
-	CodeUpdateError
+	CodeUpdateError // 105
 	// CodeDeleteError occurs when delete object from database
 	CodeDeleteError
 

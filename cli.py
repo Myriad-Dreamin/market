@@ -63,9 +63,9 @@ class MinimumCli:
         urllib.request.urlretrieve('https://raw.githubusercontent.com/wecatch/china_regions/master/json/city_object.json', 'city_object.json')
 
     def redeploy(self):
-        pcmds('%s cli.py image' % MinimumCli.python_interpreter)
-        pcmds('%s cli.py down' % MinimumCli.python_interpreter)
-        pcmds('%s cli.py up' % MinimumCli.python_interpreter)
+        pcmds('%s cli.py make image' % MinimumCli.python_interpreter)
+        pcmds('%s cli.py make down' % MinimumCli.python_interpreter)
+        pcmds('%s cli.py make up' % MinimumCli.python_interpreter)
 
     def generate_cities(self):
         with open('city_object.json') as f:

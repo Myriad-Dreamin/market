@@ -239,8 +239,7 @@ func (goodsDB *GoodsDB) ConfirmBuy(id uint, confirm bool, uid uint) (int, string
 
 		x := new(StatFee)
 		x.Month = time.Date(y, m, 1, 0, 0, 0, 0, now.Location())
-		x.Province = buyer.RegisterProvince
-		x.City = buyer.RegisterCity
+		x.CityCode = buyer.CityCode
 		if hs, err := Exists_(tx, x); err != nil {
 			rollback(tx)
 			return types.CodeSelectError, err.Error()
@@ -266,8 +265,7 @@ func (goodsDB *GoodsDB) ConfirmBuy(id uint, confirm bool, uid uint) (int, string
 
 		x2 := new(StatFee)
 		x2.Month = x.Month
-		x2.Province = seller.RegisterProvince
-		x2.City = seller.RegisterCity
+		x2.CityCode = seller.CityCode
 		if hs, err := Exists_(tx, x2); err != nil {
 			rollback(tx)
 			return types.CodeSelectError, err.Error()

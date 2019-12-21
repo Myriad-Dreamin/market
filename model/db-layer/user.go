@@ -32,8 +32,7 @@ type User struct {
 	Password string `dorm:"password" gorm:"column:password;not_null"`
 	Phone    string `dorm:"phone" gorm:"column:phone;unique;not_null"`
 	//Rank         string `dorm:"rank" gorm:"column:rank;unique;not_null"`
-	RegisterProvince string `dorm:"register_province" gorm:"column:register_province;not_null"`
-	RegisterCity     string `dorm:"register_city" gorm:"column:register_city;not_null"`
+	CityCode string `dorm:"city_code" gorm:"column:city_code;not_null"`
 }
 
 // TableName specification

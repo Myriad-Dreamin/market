@@ -28,8 +28,7 @@ type StatFee struct {
 	ID uint `dorm:"id" gorm:"column:id;primary_key;not_null"`
 
 	Month    time.Time `dorm:"month" gorm:"column:month;not null" json:"month"`
-	Province string    `dorm:"province" gorm:"column:province;not_null"`
-	City     string    `dorm:"city" gorm:"column:city;not_null"`
+	CityCode string    `dorm:"city_code" gorm:"column:city_code;not_null"`
 
 	UpdatedAt time.Time `dorm:"updated_at" gorm:"column:updated_at;default:CURRENT_TIMESTAMP;not null;" json:"updated_at"`
 
@@ -51,7 +50,7 @@ func (st StatFee) migrate() error {
 		return err
 	}
 
-	return db.Model(&st).AddUniqueIndex("mpc", "month", "province", "city").Error
+	return db.Model(&st).AddUniqueIndex("mpc", "month", "city_code").Error
 }
 
 func (st StatFee) GetID() uint {
@@ -174,13 +173,8 @@ func (statFeeDB *StatFeeQuery) GETime(t time.Time) *StatFeeQuery {
 	return statFeeDB
 }
 
-func (statFeeDB *StatFeeQuery) InProvince(pv string) *StatFeeQuery {
-	statFeeDB.db = statFeeDB.db.Where("province = ?", pv)
-	return statFeeDB
-}
-
-func (statFeeDB *StatFeeQuery) InCity(ct string) *StatFeeQuery {
-	statFeeDB.db = statFeeDB.db.Where("city = ?", ct)
+func (statFeeDB *StatFeeQuery) InCityCode(ct string) *StatFeeQuery {
+	statFeeDB.db = statFeeDB.db.Where("city_code = ?", ct)
 	return statFeeDB
 }
 

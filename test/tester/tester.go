@@ -95,8 +95,7 @@ func (tester *Tester) MakeAdminContext() bool {
 		Password:         "Admin12345678",
 		NickName:         "admin_context",
 		Phone:            "1234567891011",
-		RegisterProvince: "Shan Dong sty",
-		RegisterCity:     "Qing Dao S.D.",
+		CityCode: "110100000000",
 	}, mock.Comment("admin register for test"))
 	if !tester.NoErr(resp) {
 		return false
