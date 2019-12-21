@@ -144,14 +144,14 @@ class Makefile:
             cls.context['logs-path'] = os.path.join(cls.current_path, cls.context.get('logs-path', 'testdb/logs'))
             cls.context['data-path'] = os.path.join(cls.current_path, cls.context.get('data-path', 'testdb/data'))
 
-            cls.context['goods-path'] =\
-                os.path.join(cls.current_path, cls.context.get('goods-path', 'testdb/goods-picture'))
-            cls.context['needs-path'] =\
-                os.path.join(cls.current_path, cls.context.get('needs-path', 'testdb/needs-picture'))
-            cls.context['goods-path-target'] =\
-                os.path.join(cls.current_path, cls.context.get('goods-path-target', '/goods-picture'))
-            cls.context['needs-path-target'] =\
-                os.path.join(cls.current_path, cls.context.get('needs-path-target', '/needs-picture'))
+            cls.context['goods-picture-path'] =\
+                os.path.join(cls.current_path, cls.context.get('goods-picture-path', 'testdb/goods-picture'))
+            cls.context['needs-picture-path'] =\
+                os.path.join(cls.current_path, cls.context.get('needs-picture-path', 'testdb/needs-picture'))
+            cls.context['goods-picture-path-target'] =\
+                os.path.join(cls.current_path, cls.context.get('goods-picture-path-target', '/goods-picture'))
+            cls.context['needs-picture-path-target'] =\
+                os.path.join(cls.current_path, cls.context.get('needs-picture-path-target', '/needs-picture'))
 
             cls.context['target-port'] = cls.context.get('target-port', 23335)
 
