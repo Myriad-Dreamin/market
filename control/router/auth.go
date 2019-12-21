@@ -3,6 +3,11 @@ package router
 import "github.com/Myriad-Dreamin/market/control/auth"
 
 func ApplyAuth(router *RootRouter) {
+	var agi = router.AuthApiRouter.Group
+	agi.RevokeGroup.Use(agi.Auth.AdminOnly())
+	agi.GrantGroup.Use(agi.Auth.AdminOnly())
+	//agi.CheckGroup.Use(agi.Auth.AdminOnly())
+
 	var uig = router.UserRouter.IDRouter
 	uig.ChangePassword.Use(uig.Auth.Build(auth.UserEntity.Write()))
 	uig.Put.Use(uig.Auth.Build(auth.UserEntity.Write()))

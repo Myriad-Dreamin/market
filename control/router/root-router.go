@@ -15,6 +15,7 @@ type RootRouter struct {
 
 	Ping *LeafRouter
 	//ObjectRouter *ObjectRouter
+	AuthApiRouter *AuthRouter
 	UserRouter      *UserRouter
 	GoodsRouter     *GoodsRouter
 	StatisticRouter *StatisticRouter
@@ -48,6 +49,7 @@ func NewRootRouter(serviceProvider *service.Provider, jwtMW *jwt.Middleware, rou
 	r.NeedsRouter = BuildNeedsRouter(r, serviceProvider)
 	r.GoodsRouter = BuildGoodsRouter(r, serviceProvider)
 	r.StatisticRouter = BuildStatisticRouter(r, serviceProvider)
+	r.AuthApiRouter = BuildAuthRouter(r, serviceProvider)
 
 	ApplyAuth(r)
 	return

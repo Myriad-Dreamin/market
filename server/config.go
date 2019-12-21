@@ -3,7 +3,7 @@ package server
 import "github.com/Myriad-Dreamin/market/config"
 
 func (srv *Server) LoadConfig(cfgPath string) bool {
-	srv.Cfg = new(config.ServerConfig)
+	srv.Cfg = config.Default()
 	err := config.Load(srv.Cfg, cfgPath)
 	if err != nil {
 		srv.Logger.Debug("parse config error", "error", err)

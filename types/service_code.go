@@ -51,6 +51,9 @@ const (
 	CodeGroupCreateError
 	CodeAddReadPrivilegeError
 	CodeAddWritePrivilegeError
+
+	CodeGrantNoEffect
+	CodeGrantError
 )
 
 const (

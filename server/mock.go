@@ -400,6 +400,7 @@ func (mocker *Mocker) NoErr(resp mock.ResponseI) bool {
 	}
 	if len(obj.Error) != 0 || obj.Code != 0 {
 		mocker.contextHelper.Errorf("Code, Error (%v, %v)", obj.Code, obj.Error)
+		return false
 	}
 	return true
 	//if gjson

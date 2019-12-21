@@ -46,11 +46,16 @@ type Label struct {
 	Value string `json:"value" yaml:"value" toml:"value" xml:"value"`
 }
 
+type PathPlaceholder struct {
+	User        string `json:"user" yaml:"user" toml:"user" xml:"user"`
+}
+
 type BaseParametersConfig struct {
 	GoodsMinimumEndDuration time.Duration `json:"goods-minimum-end-duration" yaml:"goods-minimum-end-duration" toml:"goods-minimum-end-duration" xml:"goods-minimum-end-duration"`
 	NeedsMinimumEndDuration time.Duration `json:"needs-minimum-end-duration" yaml:"needs-minimum-end-duration" toml:"needs-minimum-end-duration" xml:"needs-minimum-end-duration"`
 	GoodsPicturePath        string        `json:"goods-picture-path" yaml:"goods-picture-path" toml:"goods-picture-path" xml:"goods-picture-path"`
 	NeedsPicturePath        string        `json:"needs-picture-path" yaml:"needs-picture-path" toml:"needs-picture-path" xml:"needs-picture-path"`
+	PathPlaceholder PathPlaceholder `json:"path-placeholder" yaml:"path-placeholder" toml:"path-placeholder" xml:"path-placeholder"`
 }
 
 type ServerConfig struct {
@@ -70,6 +75,9 @@ func Default() *ServerConfig {
 			NeedsMinimumEndDuration: time.Hour,
 			GoodsPicturePath:        "goods-picture",
 			NeedsPicturePath:        "needs-picture",
+			PathPlaceholder:PathPlaceholder{
+				User:"id",
+			},
 		},
 	}
 }

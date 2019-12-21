@@ -52,7 +52,7 @@ func NewService(m module.Module) (a control.UserService, err error) {
 	srv.goodsDB = provider.GoodsDB()
 	srv.needsDB = provider.NeedsDB()
 	srv.enforcer = provider.Enforcer()
-	srv.CRUDService = base_service.NewCRUDService(srv, "id")
+	srv.CRUDService = base_service.NewCRUDService(srv, srv.cfg.BaseParametersConfig.PathPlaceholder.User)
 	srv.ListService = base_service.NewListService(srv, srv.userDB.FilterI)
 	a = srv
 	return

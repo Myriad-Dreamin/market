@@ -7,8 +7,8 @@ import (
 
 type userEntity struct{}
 
-func (userEntity) CreateObj(groupID uint) string {
-	return "user:" + strconv.Itoa(int(groupID))
+func (userEntity) CreateObj(userID uint) string {
+	return "user:" + strconv.Itoa(int(userID))
 }
 
 func (userEntity) Read() controller.Requirement {
