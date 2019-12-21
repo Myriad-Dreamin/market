@@ -21,6 +21,78 @@ type Service struct {
 	enforcer   *splayer.Enforcer
 }
 
+type ApiGroup struct {
+	*Service
+	groupName string
+}
+
+// @Title Group Grants
+// @Description Group Grants
+func (svc ApiGroup) Grant(c controller.MContext) {
+	id , ok := ginhelper.ParseUint(c, svc.cfg.BaseParametersConfig.PathPlaceholder.User)
+	if !ok {
+		return
+	}
+	if added, err := svc.enforcer.AddGroupingPolicy(auth.UserEntity.CreateObj(id), svc.groupName); !added {
+		c.JSON(http.StatusOK, types.ErrorSerializer{
+			Code:  types.CodeGrantNoEffect,
+			Error: "",
+		})
+	} else if err != nil {
+		c.JSON(http.StatusOK, types.ErrorSerializer{
+			Code:  types.CodeGrantError,
+			Error: err.Error(),
+		})
+	} else {
+		c.JSON(http.StatusOK, ginhelper.ResponseOK)
+	}
+
+}
+
+// @Title Group Revokes
+// @Description Group Revokes
+func (svc ApiGroup) Revoke(c controller.MContext) {
+	id , ok := ginhelper.ParseUint(c, svc.cfg.BaseParametersConfig.PathPlaceholder.User)
+	if !ok {
+		return
+	}
+	if removed, err := svc.enforcer.RemoveGroupingPolicy(auth.UserEntity.CreateObj(id), svc.groupName); !removed {
+		c.JSON(http.StatusOK, types.ErrorSerializer{
+			Code:  types.CodeGrantNoEffect,
+			Error: "",
+		})
+	} else if err != nil {
+		c.JSON(http.StatusOK, types.ErrorSerializer{
+			Code:  types.CodeGrantError,
+			Error: err.Error(),
+		})
+	} else {
+		c.JSON(http.StatusOK, ginhelper.ResponseOK)
+	}
+}
+
+// @Title Group Checks
+// @Description Group Checks
+func (svc ApiGroup) Check(c controller.MContext) {
+	id , ok := ginhelper.ParseUint(c, svc.cfg.BaseParametersConfig.PathPlaceholder.User)
+	if !ok {
+		return
+	}
+	c.JSON(http.StatusOK, CheckReply{Has:svc.enforcer.HasGroupingPolicy(auth.UserEntity.CreateObj(id), svc.groupName)})
+}
+
+func (svc *Service) GroupGranter(groupName string) controller.HandlerFunc {
+	return ApiGroup{svc, groupName}.Grant
+}
+
+func (svc *Service) GroupRevoker(groupName string) controller.HandlerFunc {
+	return ApiGroup{svc, groupName}.Revoke
+}
+
+func (svc *Service) GroupChecker(groupName string) controller.HandlerFunc {
+	return ApiGroup{svc, groupName}.Check
+}
+
 func (svc *Service) Grant(c controller.MContext) {
 	panic("implement me")
 }
@@ -40,7 +112,6 @@ type GroupRequest struct {
 }
 
 func (svc *Service) GrantGroup(c controller.MContext) {
-	//_, err = rbac.AddGroupingPolicy("user:"+strconv.Itoa(int(r2.ID)), types.GroupAdmin)
 	var req GroupRequest
 	id , ok := ginhelper.ParseUintAndBind(c, svc.cfg.BaseParametersConfig.PathPlaceholder.User, &req)
 	if !ok {

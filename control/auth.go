@@ -21,9 +21,29 @@ type AuthService interface {
 	Revoke(c controller.MContext)
 	Check(c controller.MContext)
 
+	// @Title Group Grants
+	// @Description Group Grants
 	GrantGroup(c controller.MContext)
+
+	// @Title Group Revokes
+	// @Description Group Revokes
 	RevokeGroup(c controller.MContext)
+
+	// @Title Group Checks
+	// @Description Group Checks
 	CheckGroup(c controller.MContext)
+
+	// @Title Group Grants
+	// @Description Group Grants
+	GroupGranter(groupName string) controller.HandlerFunc
+
+	// @Title Group Revokes
+	// @Description Group Revokes
+	GroupRevoker(groupName string) controller.HandlerFunc
+
+	// @Title Group Checks
+	// @Description Group Checks
+	GroupChecker(groupName string) controller.HandlerFunc
 
 	ReadGranter(entityInterface auth.ReadEntityInterface) controller.HandlerFunc
 	ReadRevoker(entityInterface auth.ReadEntityInterface) controller.HandlerFunc

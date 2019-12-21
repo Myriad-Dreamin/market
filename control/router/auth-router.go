@@ -2,6 +2,7 @@ package router
 
 import (
 	"github.com/Myriad-Dreamin/market/service"
+	"github.com/Myriad-Dreamin/market/types"
 )
 
 type AuthRouter struct {
@@ -11,6 +12,7 @@ type AuthRouter struct {
 
 	RefreshToken *LeafRouter
 	Group        *AuthGroupRouter
+	Sugar 		*AuthSugarRouter
 }
 
 type AuthGroupRouter struct {
@@ -21,6 +23,48 @@ type AuthGroupRouter struct {
 	GrantGroup  *LeafRouter
 	RevokeGroup *LeafRouter
 	CheckGroup  *LeafRouter
+}
+
+type AuthSugarRouterApiGroup struct {
+	*Router
+	AuthRouter *Router
+	Auth       *Middleware
+
+	Grant *LeafRouter
+	Revoke *LeafRouter
+	Check *LeafRouter
+}
+
+type AuthSugarRouter struct {
+	*Router
+	AuthRouter *Router
+	Auth       *Middleware
+
+	DynamicList map[string]*AuthSugarRouterApiGroup
+}
+
+func (*AuthSugarRouter) subBuild(parent *AuthRouter, serviceProvider *service.Provider) *AuthSugarRouter {
+	authService := serviceProvider.AuthService()
+
+	router := &AuthSugarRouter{
+		Router:     parent.Router.Group("sugar"),
+		AuthRouter: parent.AuthRouter.Group("sugar"),
+		Auth:       parent.Auth.Copy(),
+	}
+	router.DynamicList = make(map[string]*AuthSugarRouterApiGroup)
+	for _, groupName := range types.Groups {
+		dyn := &AuthSugarRouterApiGroup{
+			Router:     router.Router.Group("/group/" + groupName + "/user/:id"),
+			AuthRouter: router.AuthRouter.Group("/group/" + groupName + "/user/:id"),
+			Auth:       router.Auth.MustGroup("user", "id"),
+		}
+		router.DynamicList[groupName] = dyn
+		dyn.Grant = dyn.AuthRouter.PUT("", authService.GroupGranter(groupName))
+		dyn.Check = dyn.Router.GET("", authService.GroupChecker(groupName))
+		dyn.Revoke = dyn.AuthRouter.DELETE("", authService.GroupRevoker(groupName))
+	}
+
+	return router
 }
 
 func BuildAuthRouter(parent *RootRouter, serviceProvider *service.Provider) (router *AuthRouter) {
@@ -34,6 +78,7 @@ func BuildAuthRouter(parent *RootRouter, serviceProvider *service.Provider) (rou
 	router.RefreshToken = router.AuthRouter.GET("/refresh-token", authService.RefreshToken)
 
 	router.Group = router.Group.subBuild(router, serviceProvider)
+	router.Sugar = router.Sugar.subBuild(router, serviceProvider)
 	return
 }
 
