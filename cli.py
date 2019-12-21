@@ -30,6 +30,7 @@ def pcmds(cmd_str, cwd=None, encoding='utf-8'):
 
 
 class MinimumCli:
+    python_interpreter = 'python3'
     def __init__(self):
         self.qut_object_name = None
         self.object_name = None
@@ -60,6 +61,11 @@ class MinimumCli:
 
     def get_cities(self):
         urllib.request.urlretrieve('https://raw.githubusercontent.com/wecatch/china_regions/master/json/city_object.json', 'city_object.json')
+
+    def redeploy(self):
+        pcmds('%s cli.py image' % MinimumCli.python_interpreter)
+        pcmds('%s cli.py down' % MinimumCli.python_interpreter)
+        pcmds('%s cli.py up' % MinimumCli.python_interpreter)
 
     def generate_cities(self):
         with open('city_object.json') as f:
