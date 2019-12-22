@@ -181,7 +181,7 @@ func (goodsDB *GoodsDB) Buy(id, uid uint, price uint64) (types.CodeType, string)
 		rollback(tx)
 		return code, errs
 	}
-	if goods.Status != types.GoodsStatusUnFinished || goods.Status != types.GoodsStatusPending {
+	if goods.Status != types.GoodsStatusUnFinished && goods.Status != types.GoodsStatusPending {
 		rollback(tx)
 		return types.CodeGoodsStatusNotBeUnfinishedOrPending, goods.Status.String()
 	}
