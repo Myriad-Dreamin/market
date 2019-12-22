@@ -192,14 +192,14 @@ func (mocker *Mocker) mockServe(r *Request, params ...interface{}) (w *mock.Resp
 	var (
 		b           []byte
 		err         error
-		comment     string
+		comment     string = "the request url is " + r.URL.String() + ". "
 		abortRecord = false
 	)
 
 	for i := range params {
 		switch p := params[i].(type) {
 		case mock.Comment:
-			comment = string(p)
+			comment = comment + string(p)
 		case mock.AbortRecord:
 			abortRecord = bool(p)
 		}
