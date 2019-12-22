@@ -19,6 +19,7 @@ type GetReply struct {
 	MaxPrice    uint64               `json:"max_price"`
 	CurPrice    uint64               `json:"cur_price"`
 	Description string               `json:"description"`
+	PicName string               `json:"pic_name"`
 	Status      types.GoodsStatus    `json:"status"`
 }
 
@@ -34,6 +35,7 @@ func (srv *Service) NeedsToGetReply(c controller.MContext, obj *model.Needs) *Ge
 		MaxPrice:    obj.MaxPrice,
 		CurPrice:    obj.CurPrice,
 		Description: obj.Description,
+		PicName: obj.PicName,
 		Status:      obj.Status,
 	}
 }

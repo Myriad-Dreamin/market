@@ -317,7 +317,7 @@ func UpdateObj(c controller.MContext, updateObj Updatable) bool {
 }
 
 func UpdateFields(c controller.MContext, obj errorc.UpdateFieldsable, fields []string) bool {
-	return applyContext{c}.applyError(errorc.UpdateFields(obj, fields))
+	return !applyContext{c}.applyError(errorc.UpdateFields(obj, fields))
 }
 
 func GetCustomFields(c controller.MContext) *types.CustomFields {

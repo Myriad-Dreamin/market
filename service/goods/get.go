@@ -20,6 +20,7 @@ type GetReply struct {
 	CurPrice    uint64               `json:"cur_price"`
 	IsFixed     bool                 `json:"is_fixed"`
 	Description string               `json:"description"`
+	PicName string               `json:"pic_name"`
 	Status      types.GoodsStatus    `json:"status"`
 }
 
@@ -36,6 +37,7 @@ func (svc *Service) GoodsToGetReply(c controller.MContext, obj *model.Goods) *Ge
 		CurPrice:    obj.CurPrice,
 		IsFixed:     obj.IsFixed,
 		Description: obj.Description,
+		PicName: obj.PicName,
 		Status:      obj.Status,
 	}
 }

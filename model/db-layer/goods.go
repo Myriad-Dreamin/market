@@ -33,6 +33,7 @@ type Goods struct {
 	MinPrice    uint64            `dorm:"min_price" gorm:"column:min_price;not_null"`
 	IsFixed     bool              `dorm:"is_fixed" gorm:"column:is_fixed;not_null"`
 	Description string            `dorm:"description" gorm:"column:description;not_null"`
+	PicName     string            `dorm:"pic_name" gorm:"column:pic_name;not_null"`
 	Status      types.GoodsStatus `dorm:"status" gorm:"column:status;not_null"`
 	BuyerFee    uint64            `dorm:"buyer_fee" gorm:"column:buyer_fee;not_null"`
 	SellerFee   uint64            `dorm:"seller_fee" gorm:"column:seller_fee;not_null"`
