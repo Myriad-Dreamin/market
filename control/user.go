@@ -10,34 +10,80 @@ import (
 // @Category User - Login
 // @Description Login with password
 // @Path /v1/login
-type UserLoginCate interface {
+type userLoginCate interface {
 }
 
 // @Category User - Register
 // @Description Register
 // @Path /v1/user
-type UserRegisterCate interface {
+type userRegisterCate interface {
 }
 
 // @Category User - Change Password
 // @Description Change Password
 // @Path /v1/user/:id/password
-type UserCgPasswordCate interface {
+type userCgPasswordCate interface {
 }
+
+// @Category User - Buy
+// @Path /v1/user/:id/goods/:goid/buy
+type userBuyCate interface {
+}
+
+// @Category User - Confirm Buy
+// @Path /v1/user/:id/goods/:goid/confirm-buy
+type userConfirmBuyCate interface {
+}
+
+// @Category User - Change Password
+// @Path /v1/user/:id/needs/:nid/sell
+type userSellCate interface {
+}
+
+// @Category User - Change Password
+// @Path /v1/user/:id/needs/:nid/confirm-sell
+type userConfirmSellCate interface {
+}
+
+// @Category User - Delete/Get Api Group
+// @Description hint: the Delete api is Admin-only callable
+// @Path /v1/user/:id/password
+type userIdGroupCate interface {
+}
+
+// @Category User - List
+// @Path /v1/user-list
+type userListCate interface {
+}
+
+//// @Category User - Change Password
+//// @Description Change Password
+//// @Path /v1/user/:id/password
+//type userCate interface {
+//}
 
 
 var UserCates []interface{}
 
 func init() {
 	var (
-		loginCate UserLoginCate = 0
-		registerCate UserRegisterCate = 0
-		cgCate UserCgPasswordCate = 0
+		loginCate userLoginCate = 0
+		registerCate userRegisterCate = 0
+		cgCate userCgPasswordCate = 0
+		d userCgPasswordCate = 0
+		e userBuyCate = 0
+		f userConfirmBuyCate = 0
+		g userSellCate = 0
+		h userConfirmSellCate = 0
+		i userIdGroupCate = 0
+		j userListCate = 0
 	)
 	UserCates = []interface{}{
 		&loginCate,
 		&registerCate,
 		&cgCate,
+		&d, &e, &f, &g,
+		&h, &i, &j, //&k,
 	}
 }
 
