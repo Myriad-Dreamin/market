@@ -172,6 +172,7 @@ func (needsDB *NeedsDB) Sell(price uint64, id, uid uint) (types.CodeType, string
 	}
 
 	needs.Seller = uid
+	needs.Status = types.GoodsStatusPending
 	needs.CurPrice = price
 	_, err = needs.UpdateFields__(tx.CommonDB(), needsStatusField)
 
