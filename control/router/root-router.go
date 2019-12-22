@@ -103,8 +103,8 @@ func NewRootRouter(m module.Module) (r *RootRouter) {
 
 	cfg := m.Require(config.ModulePath.Global.Configuration).(*config.ServerConfig)
 
-	r.GoodsPictureFiles = r.GetAuthRouter().StaticFS("goods-picture", http.Dir(cfg.BaseParametersConfig.GoodsPicturePath))
-	r.NeedsPictureFiles = r.GetAuthRouter().StaticFS("needs-picture", http.Dir(cfg.BaseParametersConfig.NeedsPicturePath))
+	r.GoodsPictureFiles = r.GetRouter().StaticFS("goods-picture", http.Dir(cfg.BaseParametersConfig.GoodsPicturePath))
+	r.NeedsPictureFiles = r.GetRouter().StaticFS("needs-picture", http.Dir(cfg.BaseParametersConfig.NeedsPicturePath))
 
 	ApplyAuth(r)
 	return
