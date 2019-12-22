@@ -181,9 +181,9 @@ func (goodsDB *GoodsDB) Buy(id, uid uint, price uint64) (types.CodeType, string)
 		rollback(tx)
 		return code, errs
 	}
-	if goods.Status != types.GoodsStatusUnFinished {
+	if goods.Status != types.GoodsStatusUnFinished || goods.Status != types.GoodsStatusPending {
 		rollback(tx)
-		return types.CodeGoodsStatusNotBeUnfinished, goods.Status.String()
+		return types.CodeGoodsStatusNotBeUnfinishedOrPending, goods.Status.String()
 	}
 	if goods.EndAt.Before(time.Now()) {
 		rollback(tx)
@@ -196,6 +196,7 @@ func (goodsDB *GoodsDB) Buy(id, uid uint, price uint64) (types.CodeType, string)
 		return types.CodeGoodsInsufficientValue, "need higher price"
 	}
 	goods.Buyer = uid
+	goods.Status = types.GoodsStatusPending
 	goods.CurPrice = price
 
 	_, err = goods.UpdateFields__(tx.CommonDB(), goodsStatusField)

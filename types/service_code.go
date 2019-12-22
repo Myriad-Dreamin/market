@@ -95,6 +95,7 @@ const (
 	CodeGoodsLifeTimeout
 	CodeGoodsStatusNotBeUnfinished
 	CodeGoodsStatusNotBePending
+	CodeGoodsStatusNotBeUnfinishedOrPending
 	CodeGoodsBuyTypeInvalid
 	CodeGoodsInsufficientValue
 	CodeGoodsOverflowValue

@@ -51,10 +51,11 @@ func _() {
 	_ = x[CodeGoodsLifeTimeout-12003]
 	_ = x[CodeGoodsStatusNotBeUnfinished-12004]
 	_ = x[CodeGoodsStatusNotBePending-12005]
-	_ = x[CodeGoodsBuyTypeInvalid-12006]
-	_ = x[CodeGoodsInsufficientValue-12007]
-	_ = x[CodeGoodsOverflowValue-12008]
-	_ = x[CodeGoodsServiceErrorR-12009]
+	_ = x[CodeGoodsStatusNotBeUnfinishedOrPending-12006]
+	_ = x[CodeGoodsBuyTypeInvalid-12007]
+	_ = x[CodeGoodsInsufficientValue-12008]
+	_ = x[CodeGoodsOverflowValue-12009]
+	_ = x[CodeGoodsServiceErrorR-12010]
 }
 
 const (
@@ -63,7 +64,7 @@ const (
 	_CodeType_name_2 = "CodeAuthGenerateTokenErrorCodeAuthenticatePasswordErrorCodeAuthenticatePolicyErrorCodeChangeOwnerErrorCodeGroupCreateErrorCodeAddReadPrivilegeErrorCodeAddWritePrivilegeErrorCodeGrantNoEffectCodeGrantErrorCodeAuthenticationErrorR"
 	_CodeType_name_3 = "CodeUserIDMissingCodeUserWrongPasswordCodeWeakPasswordCodeInvalidCityCodeCodeUserServiceErrorR"
 	_CodeType_name_4 = "CodeSubmissionUploadedCodeFSExecErrorCodeUploadFileErrorCodeConfigModifyErrorCodeStatErrorCodeFileSystemErrorR"
-	_CodeType_name_5 = "CodeGoodsStatusUnknownCodeGoodsStatusFinishedCodeGoodsStatusCancelledCodeGoodsLifeTimeoutCodeGoodsStatusNotBeUnfinishedCodeGoodsStatusNotBePendingCodeGoodsBuyTypeInvalidCodeGoodsInsufficientValueCodeGoodsOverflowValueCodeGoodsServiceErrorR"
+	_CodeType_name_5 = "CodeGoodsStatusUnknownCodeGoodsStatusFinishedCodeGoodsStatusCancelledCodeGoodsLifeTimeoutCodeGoodsStatusNotBeUnfinishedCodeGoodsStatusNotBePendingCodeGoodsStatusNotBeUnfinishedOrPendingCodeGoodsBuyTypeInvalidCodeGoodsInsufficientValueCodeGoodsOverflowValueCodeGoodsServiceErrorR"
 )
 
 var (
@@ -72,7 +73,7 @@ var (
 	_CodeType_index_2 = [...]uint8{0, 26, 55, 82, 102, 122, 147, 173, 190, 204, 228}
 	_CodeType_index_3 = [...]uint8{0, 17, 38, 54, 73, 94}
 	_CodeType_index_4 = [...]uint8{0, 22, 37, 56, 77, 90, 110}
-	_CodeType_index_5 = [...]uint8{0, 22, 45, 69, 89, 119, 146, 169, 195, 217, 239}
+	_CodeType_index_5 = [...]uint16{0, 22, 45, 69, 89, 119, 146, 185, 208, 234, 256, 278}
 )
 
 func (i CodeType) String() string {
@@ -91,7 +92,7 @@ func (i CodeType) String() string {
 	case 11000 <= i && i <= 11005:
 		i -= 11000
 		return _CodeType_name_4[_CodeType_index_4[i]:_CodeType_index_4[i+1]]
-	case 12000 <= i && i <= 12009:
+	case 12000 <= i && i <= 12010:
 		i -= 12000
 		return _CodeType_name_5[_CodeType_index_5[i]:_CodeType_index_5[i+1]]
 	default:
