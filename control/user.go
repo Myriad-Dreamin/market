@@ -102,23 +102,23 @@ type UserService interface {
 	//         + `phone string` phone number of the user
 	//
 	// The following is a description of the returns
-	//     + `identity array[string]`: the groups user currently in
-	//     + `id uint`: the unique user id in database
-	//     + `phone string`: the phone of user
-	//     + `nick_name string`: the unique user nick name in this website
-	//     + `name string`: the true name of user
-	//     + `token string`: the jwt token identifies an user, which must set in every auth api request's header
-	//     + `refresh_token string`: the jwt token used to refresh token without requirement of user inputting password to login again
+	// + `identity array[string]`: the groups user currently in
+	// + `id uint`: the unique user id in database
+	// + `phone string`: the phone of user
+	// + `nick_name string`: the unique user nick name in this website
+	// + `name string`: the true name of user
+	// + `token string`: the jwt token identifies an user, which must set in every auth api request's header
+	// + `refresh_token string`: the jwt token used to refresh token without requirement of user inputting password to login again
 	Login(c controller.MContext)
 
 	// @Title Register
 	// @Description Register an user in market server
 	// The following is a description of the parameters
-	//     + `name string`: name of the user
-	//     + `nick_name string`: nick-name of the user, must be unique
-	//     + `phone string` phone number of the user, must be unique
-	//     + `password string` password number of the user, which must pass the [password test](https://github.com/Myriad-Dreamin/market/blob/master/service/user/change-password.go).
-	//     + `city_code string`: code of register city of the user
+	// + `name string`: name of the user
+	// + `nick_name string`: nick-name of the user, must be unique
+	// + `phone string` phone number of the user, must be unique
+	// + `password string` password number of the user, which must pass the [password test](https://github.com/Myriad-Dreamin/market/blob/master/service/user/change-password.go).
+	// + `city_code string`: code of register city of the user
 	//
 	// The following is a description of the returns
 	//     + `id uint`: the unique user id in database
