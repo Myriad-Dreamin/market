@@ -17,6 +17,7 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/Myriad-Dreamin/gin-middleware/mock"
 	dblayer "github.com/Myriad-Dreamin/market/model/db-layer"
 	abstract_test "github.com/Myriad-Dreamin/minimum-lib/abstract-test"
 	"github.com/Myriad-Dreamin/minimum-lib/mock"
@@ -86,7 +87,7 @@ func Mock(options ...Option) (srv *Mocker) {
 		}
 	}()
 
-	srv.HttpEngine.Use(mock.ContextRecorder())
+	srv.HttpEngine.Use(mockw.ContextRecorder())
 	control.BuildHttp(srv.Router.Root, srv.HttpEngine)
 	srv.Module.Debug(srv.Logger)
 

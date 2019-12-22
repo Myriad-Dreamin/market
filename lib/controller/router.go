@@ -74,9 +74,14 @@ func nameOfFunction(f interface{}) string {
 
 
 // @Title StaticFS
-// @Description StaticFS Needs
+// @Description StaticFS Hook
 func StaticFSDesc(c MContext) {
 
+}
+
+var staticFSDesc = StaticFSDesc
+func SetStaticFSDesc(x HandlerFunc) {
+	staticFSDesc = x
 }
 
 func (l *LeafRouter) RouteInfo(path string) RouteInfo {
@@ -84,8 +89,8 @@ func (l *LeafRouter) RouteInfo(path string) RouteInfo {
 		return RouteInfo{
 			Method:      "GET",
 			Path:        strings.ReplaceAll(path, "\\", "/") + "/*filepath",
-			Handler:     nameOfFunction(StaticFSDesc),
-			HandlerFunc: StaticFSDesc,
+			Handler:     nameOfFunction(staticFSDesc),
+			HandlerFunc: staticFSDesc,
 		}
 	}
 	return RouteInfo{

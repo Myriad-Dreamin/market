@@ -6,6 +6,41 @@ import (
 
 // UserService defines the interface of user service
 
+
+// @Category User - Login
+// @Description Login with password
+// @Path /v1/login
+type UserLoginCate interface {
+}
+
+// @Category User - Register
+// @Description Register
+// @Path /v1/user
+type UserRegisterCate interface {
+}
+
+// @Category User - Change Password
+// @Description Change Password
+// @Path /v1/user/:id/password
+type UserCgPasswordCate interface {
+}
+
+
+var UserCates []interface{}
+
+func init() {
+	var (
+		loginCate UserLoginCate = 0
+		registerCate UserRegisterCate = 0
+		cgCate UserCgPasswordCate = 0
+	)
+	UserCates = []interface{}{
+		&loginCate,
+		&registerCate,
+		&cgCate,
+	}
+}
+
 type UserService interface {
 	UserSignatureXXX() interface{}
 

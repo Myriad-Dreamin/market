@@ -6,6 +6,8 @@ import (
 
 //go:generate package-attach-to-path -generate_register_map
 
+var ObjectCates []interface{}
+
 type ObjectService interface {
 	ObjectSignatureXXX() interface{}
 

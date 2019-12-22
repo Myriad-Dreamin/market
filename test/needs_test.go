@@ -15,8 +15,7 @@ func TestNeeds(t *testing.T) {
 		t.Run("GetList", testNeedsGetList) &&
 		t.Run("Filters", srv.HandleTestWithOutError(testNeedsFilters)) &&
 		t.Run("UploadPicture", srv.HandleTestWithOutError(testNeedsUploadPicture)) &&
-		t.Run("Delete", srv.HandleTestWithOutError(testNeedsDelete)) &&
-		t.Run("GetGoodsTypes", srv.HandleTestWithOutError(testNeedsGetTypes))
+		t.Run("Delete", srv.HandleTestWithOutError(testNeedsDelete))
 }
 
 func testNeedsPut(t *tester.TesterContext) {

@@ -4,6 +4,57 @@ import (
 	"github.com/Myriad-Dreamin/market/lib/controller"
 )
 
+var GoodsCates []interface{}
+
+// @Category Goods - Post
+// @Path /v1/goods
+type goodsPostCate interface {
+}
+
+// @Category Goods - List
+// @Path /v1/goods-list
+type goodsListCate interface {
+}
+
+// @Category Goods - Put/Delete/Get Api Group
+// @Path /v1/goods/:goid
+type goodsIdGroupCate interface {
+}
+
+// @Category Goods - Force Delete
+// @Path /v1/goods/:goid/force
+type goodsForceDeleteCate interface {
+}
+
+// @Category Goods - Inspect
+// @Path /v1/goods/:goid/inspect
+type goodsInspectCate interface {
+}
+
+// @Category Goods - Picture Api Group
+// @Path /v1/goods/:goid/picture
+type goodsIdPictureCate interface {
+}
+
+func init() {
+	var (
+		a goodsPostCate = 0
+		b goodsListCate = 0
+		c goodsIdGroupCate = 0
+		d goodsForceDeleteCate = 0
+		e goodsInspectCate = 0
+		f goodsIdPictureCate = 0
+	)
+	GoodsCates = []interface{}{
+		&a,
+		&b,
+		&c,
+		&d,
+		&e,
+		&f,
+	}
+}
+
 // GoodsService defines the interface of goods service
 type GoodsService interface {
 	GoodsSignatureXXX() interface{}

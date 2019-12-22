@@ -9,6 +9,8 @@ import (
 统计分析功能模块：显示起始年月、终止年月、某个地域不同物品类型成交中介费的明细，并按月以折线图的方式展示每月累计成交笔数、中介费金额的变化趋势
 */
 
+var StatisticCates []interface{}
+
 /* statistic
  * show GET: 统计信息
  */

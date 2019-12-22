@@ -3,6 +3,7 @@ package service
 
 import (
 	"fmt"
+	"github.com/Myriad-Dreamin/market/control"
 	"github.com/Myriad-Dreamin/minimum-lib/module"
 	"path"
 )
@@ -58,25 +59,25 @@ func (s *Provider) Register(name string, service interface{}) {
 	switch ss := service.(type) {
 	case ConstService:
 		s.constService = ss
-		s.subControllers = append(s.subControllers, JustProvide(&ss))
+		s.subControllers = append(s.subControllers, JustProvide(append([]interface{}{&ss}, control.ConstCates...)...))
 	case AuthService:
 		s.authService = ss
-		s.subControllers = append(s.subControllers, JustProvide(&ss))
+		s.subControllers = append(s.subControllers, JustProvide(append([]interface{}{&ss}, control.AuthCates...)...))
 	case StatisticService:
 		s.statisticService = ss
-		s.subControllers = append(s.subControllers, JustProvide(&ss))
+		s.subControllers = append(s.subControllers, JustProvide(append([]interface{}{&ss}, control.StatisticCates...)...))
 	case NeedsService:
 		s.needsService = ss
-		s.subControllers = append(s.subControllers, JustProvide(&ss))
+		s.subControllers = append(s.subControllers, JustProvide(append([]interface{}{&ss}, control.NeedsCates...)...))
 	case GoodsService:
 		s.goodsService = ss
-		s.subControllers = append(s.subControllers, JustProvide(&ss))
+		s.subControllers = append(s.subControllers, JustProvide(append([]interface{}{&ss}, control.GoodsCates...)...))
 	case UserService:
 		s.userService = ss
-		s.subControllers = append(s.subControllers, JustProvide(&ss))
+		s.subControllers = append(s.subControllers, JustProvide(append([]interface{}{&ss}, control.UserCates...)...))
 	case ObjectService:
 		s.objectService = ss
-		s.subControllers = append(s.subControllers, JustProvide(&ss))
+		s.subControllers = append(s.subControllers, JustProvide(append([]interface{}{&ss}, control.ObjectCates...)...))
 	default:
 		panic(fmt.Errorf("unknown service %T", service))
 	}

@@ -4,6 +4,58 @@ import (
 	"github.com/Myriad-Dreamin/market/lib/controller"
 )
 
+
+var NeedsCates []interface{}
+
+// @Category Needs - Post
+// @Path /v1/needs
+type needsPostCate interface {
+}
+
+// @Category Needs - List
+// @Path /v1/needs-list
+type needsListCate interface {
+}
+
+// @Category Needs - Put/Delete/Get Api Group
+// @Path /v1/needs/:nid
+type needsIdGroupCate interface {
+}
+
+// @Category Needs - Force Delete
+// @Path /v1/needs/:nid/force
+type needsForceDeleteCate interface {
+}
+
+// @Category Needs - Inspect
+// @Path /v1/needs/:nid/inspect
+type needsInspectCate interface {
+}
+
+// @Category Needs - Picture Api Group
+// @Path /v1/needs/:nid/picture
+type needsIdPictureCate interface {
+}
+
+func init() {
+	var (
+		a needsPostCate = 0
+		b needsListCate = 0
+		c needsIdGroupCate = 0
+		d needsForceDeleteCate = 0
+		e needsInspectCate = 0
+		f needsIdPictureCate = 0
+	)
+	NeedsCates = []interface{}{
+		&a,
+		&b,
+		&c,
+		&d,
+		&e,
+		&f,
+	}
+}
+
 // NeedsService defines the interface of needs service
 type NeedsService interface {
 	NeedsSignatureXXX() interface{}

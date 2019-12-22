@@ -6,6 +6,6 @@ import (
 )
 
 func testGoodsGetTypes(t *tester.TesterContext) {
-	resp := t.Get("/v1/goods-types")
+	resp := t.Get("/v2/const/goods-types")
 	fmt.Println(resp)
 }
