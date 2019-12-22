@@ -35,7 +35,7 @@ func GoodsFilterOption(db *gorm.DB, f *GoodsFilter) *gorm.DB {
 		db = db.Where("buyer = ?", f.ByBuyer)
 	}
 	if f.HasType != 0 {
-		db = db.Where("type = ?", f.HasType)
+		db = db.Where("g_type = ?", f.HasType)
 	}
 	if f.HasStatus != 0 {
 		db = db.Where("status = ?", f.HasStatus)
