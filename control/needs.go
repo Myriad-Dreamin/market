@@ -4,7 +4,6 @@ import (
 	"github.com/Myriad-Dreamin/market/lib/controller"
 )
 
-
 var NeedsCates []interface{}
 
 // @Category Needs - Post
@@ -39,12 +38,12 @@ type needsIdPictureCate interface {
 
 func init() {
 	var (
-		a needsPostCate = 0
-		b needsListCate = 0
-		c needsIdGroupCate = 0
+		a needsPostCate        = 0
+		b needsListCate        = 0
+		c needsIdGroupCate     = 0
 		d needsForceDeleteCate = 0
-		e needsInspectCate = 0
-		f needsIdPictureCate = 0
+		e needsInspectCate     = 0
+		f needsIdPictureCate   = 0
 	)
 	NeedsCates = []interface{}{
 		&a,

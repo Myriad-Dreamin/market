@@ -92,10 +92,10 @@ func (tester *Tester) Release() {
 
 func (tester *Tester) MakeAdminContext() bool {
 	resp := tester.Post("/v1/user", userservice.RegisterRequest{
-		Name:             "admin_context",
-		Password:         "Admin12345678",
-		NickName:         "admin_context",
-		Phone:            "1234567891011",
+		Name:     "admin_context",
+		Password: "Admin12345678",
+		NickName: "admin_context",
+		Phone:    "1234567891011",
 		CityCode: "110100000000",
 	}, mock.Comment("admin register for test"))
 	if !tester.NoErr(resp) {

@@ -25,7 +25,7 @@ type Service struct {
 	logger     types.Logger
 	cfg        *config.ServerConfig
 	middleware *jwt.Middleware
-	cities map[string]types.CityObject
+	cities     map[string]types.CityObject
 }
 
 type CitiesReply struct {

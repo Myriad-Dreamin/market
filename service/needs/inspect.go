@@ -6,8 +6,8 @@ import (
 )
 
 type InspectReply struct {
-	Code  types.CodeType          `json:"code"`
-	Needs *model.Needs `json:"needs"`
+	Code  types.CodeType `json:"code"`
+	Needs *model.Needs   `json:"needs"`
 }
 
 func NeedsToInspectReply(obj *model.Needs) *InspectReply {

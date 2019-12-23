@@ -12,7 +12,7 @@ import (
 func testUserConfirmSell(t *tester.TesterContext) {
 	id := reflect.ValueOf(srv.Get(needsSellIdK)).Convert(intType).Interface().(int)
 
-	resp := t.Post("/v1/user/1/needs/" + strconv.Itoa(int(id)) + "/confirm-sell", userservice.ConfirmSellRequest{
+	resp := t.Post("/v1/user/1/needs/"+strconv.Itoa(int(id))+"/confirm-sell", userservice.ConfirmSellRequest{
 		ConfirmOrCancel: true,
 	})
 	fmt.Println(resp)

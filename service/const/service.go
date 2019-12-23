@@ -8,9 +8,9 @@ import (
 )
 
 type Service struct {
-	cfg    *config.ServerConfig
-	logger types.Logger
-	cities map[string]types.CityObject
+	cfg         *config.ServerConfig
+	logger      types.Logger
+	cities      map[string]types.CityObject
 	citiesReply CitiesReply
 }
 

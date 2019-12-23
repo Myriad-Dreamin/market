@@ -9,7 +9,7 @@ import (
 )
 
 type GetReply struct {
-	Code        types.CodeType                  `json:"code"`
+	Code        types.CodeType       `json:"code"`
 	ID          uint                 `json:"id"`
 	CreatedAt   time.Time            `json:"created_at"`
 	EndAt       time.Time            `json:"end_at"`
@@ -19,7 +19,7 @@ type GetReply struct {
 	MaxPrice    uint64               `json:"max_price"`
 	CurPrice    uint64               `json:"cur_price"`
 	Description string               `json:"description"`
-	PicName string               `json:"pic_name"`
+	PicName     string               `json:"pic_name"`
 	Status      types.GoodsStatus    `json:"status"`
 }
 
@@ -35,7 +35,7 @@ func (srv *Service) NeedsToGetReply(c controller.MContext, obj *model.Needs) *Ge
 		MaxPrice:    obj.MaxPrice,
 		CurPrice:    obj.CurPrice,
 		Description: obj.Description,
-		PicName: obj.PicName,
+		PicName:     obj.PicName,
 		Status:      obj.Status,
 	}
 }

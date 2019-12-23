@@ -12,8 +12,8 @@ import (
 )
 
 type PostReply struct {
-	Code  types.CodeType          `json:"code"`
-	Goods *model.Goods `json:"goods"`
+	Code  types.CodeType `json:"code"`
+	Goods *model.Goods   `json:"goods"`
 }
 
 func GoodsToPostReply(obj *model.Goods) *PostReply {

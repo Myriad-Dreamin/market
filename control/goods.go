@@ -38,12 +38,12 @@ type goodsIdPictureCate interface {
 
 func init() {
 	var (
-		a goodsPostCate = 0
-		b goodsListCate = 0
-		c goodsIdGroupCate = 0
+		a goodsPostCate        = 0
+		b goodsListCate        = 0
+		c goodsIdGroupCate     = 0
 		d goodsForceDeleteCate = 0
-		e goodsInspectCate = 0
-		f goodsIdPictureCate = 0
+		e goodsInspectCate     = 0
+		f goodsIdPictureCate   = 0
 	)
 	GoodsCates = []interface{}{
 		&a,

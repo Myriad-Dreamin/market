@@ -12,7 +12,7 @@ type AuthRouter struct {
 
 	RefreshToken *LeafRouter
 	Group        *AuthGroupRouter
-	Sugar 		*AuthSugarRouter
+	Sugar        *AuthSugarRouter
 }
 
 type AuthGroupRouter struct {
@@ -30,9 +30,9 @@ type AuthSugarRouterApiGroup struct {
 	AuthRouter *Router
 	Auth       *Middleware
 
-	Grant *LeafRouter
+	Grant  *LeafRouter
 	Revoke *LeafRouter
-	Check *LeafRouter
+	Check  *LeafRouter
 }
 
 type AuthSugarRouter struct {

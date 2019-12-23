@@ -11,11 +11,11 @@ import (
 func TestAuth(t *testing.T) {
 	_ =
 		t.Run("CheckGroup", srv.HandleTestWithOutError(testAuthCheckGroup)) &&
-		t.Run("GrantGroup", srv.HandleTestWithOutError(testAuthGrantGroup)) &&
-		t.Run("RevokeGroup", srv.HandleTestWithOutError(testAuthRevokeGroup)) &&
-		t.Run("GeneratedCheckApiGroup", srv.HandleTestWithOutError(testAuthGeneratedCheckApiGroup)) &&
-		t.Run("GeneratedGrantApiGroup", srv.HandleTestWithOutError(testAuthGeneratedGrantApiGroup)) &&
-		t.Run("GeneratedRevokeApiGroup", srv.HandleTestWithOutError(testAuthGeneratedRevokeApiGroup))
+			t.Run("GrantGroup", srv.HandleTestWithOutError(testAuthGrantGroup)) &&
+			t.Run("RevokeGroup", srv.HandleTestWithOutError(testAuthRevokeGroup)) &&
+			t.Run("GeneratedCheckApiGroup", srv.HandleTestWithOutError(testAuthGeneratedCheckApiGroup)) &&
+			t.Run("GeneratedGrantApiGroup", srv.HandleTestWithOutError(testAuthGeneratedGrantApiGroup)) &&
+			t.Run("GeneratedRevokeApiGroup", srv.HandleTestWithOutError(testAuthGeneratedRevokeApiGroup))
 }
 
 func testAuthGeneratedRevokeApiGroup(t *tester.TesterContext) {
@@ -37,16 +37,11 @@ func testAuthCheckGroup(t *tester.TesterContext) {
 }
 
 func testAuthRevokeGroup(t *tester.TesterContext) {
-	t.Delete("/v1/auth/group/user/1", authservice.GroupRequest{GroupName:"__test_group__"}, mock.Comment("remove the user from group with name"))
-	t.Equal(false, t.DecodeJSON(t.Get("/v1/auth/group/user/1?group=__test_group__", mock.AbortRecord(true)).Body(), new(authservice.CheckReply)).
-	(*authservice.CheckReply).Has, "must be removed")
+	t.Delete("/v1/auth/group/user/1", authservice.GroupRequest{GroupName: "__test_group__"}, mock.Comment("remove the user from group with name"))
+	t.Equal(false, t.DecodeJSON(t.Get("/v1/auth/group/user/1?group=__test_group__", mock.AbortRecord(true)).Body(), new(authservice.CheckReply)).(*authservice.CheckReply).Has, "must be removed")
 }
 
 func testAuthGrantGroup(t *tester.TesterContext) {
-	t.Put("/v1/auth/group/user/1", authservice.GroupRequest{GroupName:"__test_group__"}, mock.Comment("add the user to group with name"))
-	t.Equal(true, t.DecodeJSON(t.Get("/v1/auth/group/user/1?group=__test_group__", mock.AbortRecord(true)).Body(), new(authservice.CheckReply)).
-	(*authservice.CheckReply).Has, "must be added")
+	t.Put("/v1/auth/group/user/1", authservice.GroupRequest{GroupName: "__test_group__"}, mock.Comment("add the user to group with name"))
+	t.Equal(true, t.DecodeJSON(t.Get("/v1/auth/group/user/1?group=__test_group__", mock.AbortRecord(true)).Body(), new(authservice.CheckReply)).(*authservice.CheckReply).Has, "must be added")
 }
-
-
-

@@ -7,19 +7,19 @@ import (
 type ConstRouter struct {
 	*Router
 	AuthRouter *Router
-	Auth     *Middleware
+	Auth       *Middleware
 
 	GetServiceCode *LeafRouter
-	GetCities *LeafRouter
-	GetGoodsTypes *LeafRouter
+	GetCities      *LeafRouter
+	GetGoodsTypes  *LeafRouter
 }
 
 func BuildConstRouter(parent H, serviceProvider *service.Provider) (router *ConstRouter) {
 	constService := serviceProvider.ConstService()
 	router = &ConstRouter{
-		Router: parent.GetRouter().Group("const"),
+		Router:     parent.GetRouter().Group("const"),
 		AuthRouter: parent.GetAuthRouter().Group("const"),
-		Auth:   parent.GetAuth().Copy(),
+		Auth:       parent.GetAuth().Copy(),
 	}
 
 	router.GetServiceCode = router.Router.GET("service-codes", constService.GetServiceCode)

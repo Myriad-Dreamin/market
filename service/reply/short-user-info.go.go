@@ -7,8 +7,8 @@ import (
 )
 
 type ShortUserInfo struct {
-	ID               uint   `json:"id" form:"id"`
-	NickName         string `json:"nick_name" form:"nick_name"`
+	ID       uint   `json:"id" form:"id"`
+	NickName string `json:"nick_name" form:"nick_name"`
 	CityCode string `json:"city_code" form:"city_code"`
 }
 
@@ -21,8 +21,8 @@ func FetchUser(c controller.MContext, userDB *model.UserDB, u uint) *ShortUserIn
 		return nil
 	}
 	return &ShortUserInfo{
-		ID:               usr.ID,
-		NickName:         usr.NickName,
-		CityCode:     usr.CityCode,
+		ID:       usr.ID,
+		NickName: usr.NickName,
+		CityCode: usr.CityCode,
 	}
 }
