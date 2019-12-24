@@ -14,7 +14,6 @@ type BaseH struct {
 	*Router
 	AuthRouter *Router
 	Auth       *Middleware
-
 }
 
 func (r *BaseH) GetRouter() *Router {
@@ -31,29 +30,27 @@ func (r *BaseH) GetAuth() *Middleware {
 
 type RootRouter struct {
 	H
-	Root       *Router
+	Root *Router
 
 	//ObjectRouter *ObjectRouter
-	AuthApiRouter *AuthRouter
+	AuthApiRouter   *AuthRouter
 	UserRouter      *UserRouter
 	GoodsRouter     *GoodsRouter
 	StatisticRouter *StatisticRouter
 	NeedsRouter     *NeedsRouter
 
-	Ping *LeafRouter
+	Ping              *LeafRouter
 	GoodsPictureFiles *LeafRouter
 	NeedsPictureFiles *LeafRouter
 
 	V2 *RootRouterV2
 }
 
-
 type RootRouterV2 struct {
 	H
 
 	ConstRouter *ConstRouter
 }
-
 
 // @title Ping
 // @description result
@@ -71,9 +68,8 @@ func NewRootRouter(m module.Module) (r *RootRouter) {
 	authRouterV1 := apiRouterV1.Group("", b)
 	authRouterV2 := apiRouterV2.Group("", b)
 
-
 	r = &RootRouter{
-		Root:       rr,
+		Root: rr,
 		H: &BaseH{
 			Router:     apiRouterV1,
 			AuthRouter: authRouterV1,
@@ -81,9 +77,9 @@ func NewRootRouter(m module.Module) (r *RootRouter) {
 		},
 		V2: &RootRouterV2{
 			H: &BaseH{
-				Router: apiRouterV2,
+				Router:     apiRouterV2,
 				AuthRouter: authRouterV2,
-				Auth: m.Require(config.ModulePath.Middleware.RouteAuth).(*Middleware),
+				Auth:       m.Require(config.ModulePath.Middleware.RouteAuth).(*Middleware),
 			},
 		},
 	}

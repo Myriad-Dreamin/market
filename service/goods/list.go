@@ -20,12 +20,13 @@ type GoodsReply struct {
 	MinPrice    uint64               `json:"min_price" form:"min_price"`
 	IsFixed     bool                 `json:"is_fixed" form:"is_fixed"`
 	Description string               `json:"description" form:"description"`
+	PicName     string               `json:"pic_name"`
 	Status      types.GoodsStatus    `json:"status" form:"status"`
 }
 
 type ListReply struct {
-	Code   types.CodeType          `json:"code"`
-	Goodss []GoodsReply `json:"goodss"`
+	Code   types.CodeType `json:"code"`
+	Goodss []GoodsReply   `json:"goodss"`
 }
 
 func (svc *Service) GoodssToListReply(c controller.MContext, obj []model.Goods) (reply *ListReply) {
@@ -49,6 +50,7 @@ func (svc *Service) FromGoodss(c controller.MContext, goodss []model.Goods) (gr 
 			MinPrice:    goodss[i].MinPrice,
 			IsFixed:     goodss[i].IsFixed,
 			Description: goodss[i].Description,
+			PicName:     goodss[i].PicName,
 			Status:      goodss[i].Status,
 		})
 		if c.IsAborted() {

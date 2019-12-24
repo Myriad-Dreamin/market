@@ -193,7 +193,7 @@ func (mocker *Mocker) mockServe(r *Request, params ...interface{}) (w *mock.Resp
 		b           []byte
 		err         error
 		comment     string = "the request url is " + r.URL.String() + ". "
-		abortRecord = false
+		abortRecord        = false
 	)
 
 	for i := range params {
@@ -409,8 +409,8 @@ func (mocker *Mocker) NoErr(resp mock.ResponseI) bool {
 
 type Error struct {
 	RespCode int
-	Code     types.CodeType    `json:"code"`
-	Error    string `json:"error"`
+	Code     types.CodeType `json:"code"`
+	Error    string         `json:"error"`
 }
 
 func (mocker *Mocker) FetchError(resp mock.ResponseI) Error {

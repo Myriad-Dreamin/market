@@ -9,8 +9,8 @@ import (
 )
 
 type PostReply struct {
-	Code   types.CodeType           `json:"code"`
-	Object *model.Object `json:"object"`
+	Code   types.CodeType `json:"code"`
+	Object *model.Object  `json:"object"`
 }
 
 func ObjectToPostReply(obj *model.Object) *PostReply {

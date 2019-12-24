@@ -44,7 +44,7 @@ func (svc *Service) PutPicture(c controller.MContext) {
 		}
 	}
 
-	needs.PicName = strconv.Itoa(int(id))+filepath.Ext(file.Filename)
+	needs.PicName = strconv.Itoa(int(id)) + filepath.Ext(file.Filename)
 	if !ginhelper.UpdateFields(c, needs, picField) {
 		return
 	}

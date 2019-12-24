@@ -16,8 +16,8 @@ type RegisterRequest struct {
 	// Password: 密码
 	Password string `form:"password" json:"password" binding:"required"`
 	// NickName: 昵称
-	NickName         string `form:"nick_name" json:"nick_name" binding:"required"`
-	Phone            string `form:"phone" json:"phone" binding:"required"`
+	NickName string `form:"nick_name" json:"nick_name" binding:"required"`
+	Phone    string `form:"phone" json:"phone" binding:"required"`
 	CityCode string `form:"city_code" json:"city_code" binding:"required"`
 	//Email string `form:"email" json:"email" binding:"email"`
 	// Gender: 0表示保密, 1表示女, 2表示男, 3~255表示其他
@@ -59,7 +59,7 @@ func (srv *Service) Register(c controller.MContext) {
 
 	if _, ok := srv.cities[req.CityCode]; !ok {
 		c.AbortWithStatusJSON(http.StatusOK, types.ErrorSerializer{
-			Code:  types.CodeInvalidCityCode,
+			Code: types.CodeInvalidCityCode,
 		})
 		return
 	}

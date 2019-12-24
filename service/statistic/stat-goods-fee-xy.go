@@ -7,7 +7,7 @@ import (
 )
 
 type StatFeeXYReply struct {
-	Code    types.CodeType                     `json:"code"`
+	Code    types.CodeType          `json:"code"`
 	Results []model.StatFeeXYResult `json:"results"`
 }
 

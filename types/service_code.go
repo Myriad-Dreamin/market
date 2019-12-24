@@ -2,6 +2,7 @@
 package types
 
 type CodeType int
+
 const (
 	// Generic Code
 
@@ -16,7 +17,7 @@ const (
 	CodeGetRawDataError
 
 	CodeGenericErrorR
-	CodeGenericErrorL=CodeOK
+	CodeGenericErrorL = CodeOK
 )
 
 const (
@@ -45,7 +46,7 @@ const (
 	CodeCommitTransactionError
 
 	CodeDatabaseErrorR
-	CodeDatabaseErrorL=CodeInsertError
+	CodeDatabaseErrorL = CodeInsertError
 )
 
 const (
@@ -64,7 +65,7 @@ const (
 	CodeGrantError
 
 	CodeAuthenticationErrorR
-	CodeAuthenticationErrorL=CodeAuthGenerateTokenError
+	CodeAuthenticationErrorL = CodeAuthGenerateTokenError
 )
 
 const (
@@ -75,7 +76,7 @@ const (
 	CodeBadPhone
 
 	CodeUserServiceErrorR
-	CodeUserServiceErrorL=CodeUserIDMissing
+	CodeUserServiceErrorL = CodeUserIDMissing
 )
 
 const (
@@ -86,7 +87,7 @@ const (
 	CodeStatError
 
 	CodeFileSystemErrorR
-	CodeFileSystemErrorL=CodeSubmissionUploaded
+	CodeFileSystemErrorL = CodeSubmissionUploaded
 )
 
 const (
@@ -102,15 +103,14 @@ const (
 	CodeGoodsOverflowValue
 
 	CodeGoodsServiceErrorR
-	CodeGoodsServiceErrorL=CodeGoodsStatusUnknown
+	CodeGoodsServiceErrorL = CodeGoodsStatusUnknown
 )
-
 
 var CodeDesc map[CodeType]string
 
 func init() {
 	CodeDesc = make(map[CodeType]string)
-	for _, groupCode := range []struct{
+	for _, groupCode := range []struct {
 		L CodeType
 		R CodeType
 	}{

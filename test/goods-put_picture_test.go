@@ -22,5 +22,5 @@ func testGoodsUploadPicture(t *tester.TesterContext) {
 	t.Put(putURL, mock.NewNamedReader(writer.FormDataContentType(), w),
 		mock.Comment(fmt.Sprintf(
 			"url(%s), put picture to server", putURL)))
-	fmt.Println(t.Get("/v1/goods/" + strconv.Itoa(id), mock.AbortRecord(true)))
+	fmt.Println(t.Get("/v1/goods/"+strconv.Itoa(id), mock.AbortRecord(true)))
 }

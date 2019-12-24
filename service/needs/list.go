@@ -27,12 +27,13 @@ type NeedsReply struct {
 	MaxPrice    uint64               `json:"max_price" form:"max_price"`
 	IsFixed     bool                 `json:"is_fixed" form:"is_fixed"`
 	Description string               `json:"description" form:"description"`
+	PicName     string               `json:"pic_name"`
 	Status      types.GoodsStatus    `json:"status" form:"status"`
 }
 
 type ListReply struct {
-	Code   types.CodeType          `json:"code"`
-	Needss []NeedsReply `json:"needss"`
+	Code   types.CodeType `json:"code"`
+	Needss []NeedsReply   `json:"needss"`
 }
 
 func (srv *Service) NeedssToListReply(c controller.MContext, obj []model.Needs) (reply *ListReply) {
@@ -56,6 +57,7 @@ func (srv *Service) FromNeedss(c controller.MContext, needss []model.Needs) (gr 
 			CurPrice:    needss[i].CurPrice,
 			MaxPrice:    needss[i].MaxPrice,
 			Description: needss[i].Description,
+			PicName:     needss[i].PicName,
 			Status:      needss[i].Status,
 		})
 		if c.IsAborted() {

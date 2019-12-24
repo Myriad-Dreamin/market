@@ -11,4 +11,3 @@ type H interface {
 	GetAuthRouter() *Router
 	GetAuth() *Middleware
 }
-

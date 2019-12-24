@@ -18,10 +18,9 @@ func TestUser(t *testing.T) {
 		t.Run("Put", srv.HandleTestWithOutError(testUserPut)) &&
 		t.Run("Delete", srv.HandleTestWithOutError(testUserDelete)) &&
 		t.Run("CountXY", srv.HandleTestWithOutError(testGoodsStatisticCountXY)) &&
-		t.Run("FeeXY", srv.HandleTestWithOutError(testGoodsStatisticFeeXY))&&
+		t.Run("FeeXY", srv.HandleTestWithOutError(testGoodsStatisticFeeXY)) &&
 		t.Run("Cities", srv.HandleTestWithOutError(testUserCities))
 }
-
 
 func testUserInspect(t *tester.TesterContext) {
 

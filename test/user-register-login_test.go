@@ -13,10 +13,10 @@ func testUserRegisterLogin(t *tester.TesterContext) {
 		pswd  = normalUserPassword
 	)
 	resp := t.Post("/v1/user", userservice.RegisterRequest{
-		Name:             name,
-		Password:         pswd,
-		NickName:         nick,
-		Phone:            phone,
+		Name:     name,
+		Password: pswd,
+		NickName: nick,
+		Phone:    phone,
 		CityCode: "110100000000",
 	})
 	id := t.DecodeJSON(resp.Body(),

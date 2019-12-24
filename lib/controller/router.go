@@ -71,8 +71,6 @@ func nameOfFunction(f interface{}) string {
 	return runtime.FuncForPC(reflect.ValueOf(f).Pointer()).Name()
 }
 
-
-
 // @Title StaticFS
 // @Description StaticFS Hook
 func StaticFSDesc(c MContext) {
@@ -80,6 +78,7 @@ func StaticFSDesc(c MContext) {
 }
 
 var staticFSDesc = StaticFSDesc
+
 func SetStaticFSDesc(x HandlerFunc) {
 	staticFSDesc = x
 }

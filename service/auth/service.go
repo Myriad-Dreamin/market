@@ -29,7 +29,7 @@ type ApiGroup struct {
 // @Title Group Grants
 // @Description Group Grants
 func (svc ApiGroup) Grant(c controller.MContext) {
-	id , ok := ginhelper.ParseUint(c, svc.cfg.BaseParametersConfig.PathPlaceholder.User)
+	id, ok := ginhelper.ParseUint(c, svc.cfg.BaseParametersConfig.PathPlaceholder.User)
 	if !ok {
 		return
 	}
@@ -52,7 +52,7 @@ func (svc ApiGroup) Grant(c controller.MContext) {
 // @Title Group Revokes
 // @Description Group Revokes
 func (svc ApiGroup) Revoke(c controller.MContext) {
-	id , ok := ginhelper.ParseUint(c, svc.cfg.BaseParametersConfig.PathPlaceholder.User)
+	id, ok := ginhelper.ParseUint(c, svc.cfg.BaseParametersConfig.PathPlaceholder.User)
 	if !ok {
 		return
 	}
@@ -74,11 +74,11 @@ func (svc ApiGroup) Revoke(c controller.MContext) {
 // @Title Group Checks
 // @Description Group Checks
 func (svc ApiGroup) Check(c controller.MContext) {
-	id , ok := ginhelper.ParseUint(c, svc.cfg.BaseParametersConfig.PathPlaceholder.User)
+	id, ok := ginhelper.ParseUint(c, svc.cfg.BaseParametersConfig.PathPlaceholder.User)
 	if !ok {
 		return
 	}
-	c.JSON(http.StatusOK, CheckReply{Has:svc.enforcer.HasGroupingPolicy(auth.UserEntity.CreateObj(id), svc.groupName)})
+	c.JSON(http.StatusOK, CheckReply{Has: svc.enforcer.HasGroupingPolicy(auth.UserEntity.CreateObj(id), svc.groupName)})
 }
 
 func (svc *Service) GroupGranter(groupName string) controller.HandlerFunc {
@@ -113,7 +113,7 @@ type GroupRequest struct {
 
 func (svc *Service) GrantGroup(c controller.MContext) {
 	var req GroupRequest
-	id , ok := ginhelper.ParseUintAndBind(c, svc.cfg.BaseParametersConfig.PathPlaceholder.User, &req)
+	id, ok := ginhelper.ParseUintAndBind(c, svc.cfg.BaseParametersConfig.PathPlaceholder.User, &req)
 	if !ok {
 		return
 	}
@@ -134,7 +134,7 @@ func (svc *Service) GrantGroup(c controller.MContext) {
 
 func (svc *Service) RevokeGroup(c controller.MContext) {
 	var req GroupRequest
-	id , ok := ginhelper.ParseUintAndBind(c, svc.cfg.BaseParametersConfig.PathPlaceholder.User, &req)
+	id, ok := ginhelper.ParseUintAndBind(c, svc.cfg.BaseParametersConfig.PathPlaceholder.User, &req)
 	if !ok {
 		return
 	}
@@ -159,11 +159,11 @@ type CheckReply struct {
 
 func (svc *Service) CheckGroup(c controller.MContext) {
 	var req GroupRequest
-	id , ok := ginhelper.ParseUintAndBind(c, svc.cfg.BaseParametersConfig.PathPlaceholder.User, &req)
+	id, ok := ginhelper.ParseUintAndBind(c, svc.cfg.BaseParametersConfig.PathPlaceholder.User, &req)
 	if !ok {
 		return
 	}
-	c.JSON(http.StatusOK, CheckReply{Has:svc.enforcer.HasGroupingPolicy(auth.UserEntity.CreateObj(id), req.GroupName)})
+	c.JSON(http.StatusOK, CheckReply{Has: svc.enforcer.HasGroupingPolicy(auth.UserEntity.CreateObj(id), req.GroupName)})
 }
 
 func (svc *Service) ReadGranter(entityInterface auth.ReadEntityInterface) controller.HandlerFunc {
@@ -205,8 +205,8 @@ func (svc *Service) JustSimpleWriteChecker(entityInterface auth.JustSimpleWriteE
 func (svc *Service) AuthSignatureXXX() interface{} { return svc }
 
 type RefreshTokenReply struct {
-	Code  types.CodeType    `json:"code"`
-	Token string `json:"token"`
+	Code  types.CodeType `json:"code"`
+	Token string         `json:"token"`
 }
 
 func (svc *Service) RefreshToken(c controller.MContext) {

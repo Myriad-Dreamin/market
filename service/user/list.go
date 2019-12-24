@@ -7,8 +7,8 @@ import (
 )
 
 type ListReply struct {
-	Code  types.CodeType        `json:"code"`
-	Users []GetReply `json:"users"`
+	Code  types.CodeType `json:"code"`
+	Users []GetReply     `json:"users"`
 }
 
 func UsersToListReply(obj []model.User) (reply *ListReply) {

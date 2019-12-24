@@ -22,14 +22,14 @@ type LoginRequest struct {
 }
 
 type LoginReply struct {
-	Code         types.CodeType      `json:"code"`
-	Identity     []string `json:"identity"`
-	Phone        string   `json:"phone"`
-	ID           uint     `json:"id"`
-	NickName     string   `json:"nick_name"`
-	Name         string   `json:"name"`
-	Token        string   `json:"token"`
-	RefreshToken string   `json:"refresh_token"`
+	Code         types.CodeType `json:"code"`
+	Identity     []string       `json:"identity"`
+	Phone        string         `json:"phone"`
+	ID           uint           `json:"id"`
+	NickName     string         `json:"nick_name"`
+	Name         string         `json:"name"`
+	Token        string         `json:"token"`
+	RefreshToken string         `json:"refresh_token"`
 }
 
 func UserToLoginReply(user *model.User, token, refreshToken string, identities []string) *LoginReply {

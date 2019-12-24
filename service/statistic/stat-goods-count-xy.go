@@ -8,7 +8,7 @@ import (
 )
 
 type StatFeeCountXYReply struct {
-	Code    types.CodeType                          `json:"code"`
+	Code    types.CodeType               `json:"code"`
 	Results []model.StatFeeCountXYResult `json:"results"`
 }
 

@@ -6,7 +6,6 @@ import (
 
 //go:generate package-attach-to-path -generate_register_map
 
-
 var ConstCates []interface{}
 
 // @Category Const - ServiceCode
@@ -30,8 +29,8 @@ type goodsTypeCate interface {
 func init() {
 	var (
 		a serviceCodeCate = 0
-		b cityCate = 0
-		c goodsTypeCate = 0
+		b cityCate        = 0
+		c goodsTypeCate   = 0
 	)
 	ConstCates = []interface{}{
 		&a,
@@ -39,6 +38,7 @@ func init() {
 		&c,
 	}
 }
+
 type ConstService interface {
 	ConstSignatureXXX() interface{}
 
