@@ -72,6 +72,7 @@ const (
 	CodeUserWrongPassword
 	CodeWeakPassword
 	CodeInvalidCityCode
+	CodeBadPhone
 
 	CodeUserServiceErrorR
 	CodeUserServiceErrorL=CodeUserIDMissing

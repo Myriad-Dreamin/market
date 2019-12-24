@@ -16,6 +16,18 @@ func CheckStrongPassword(pwd string) string {
 	return ""
 }
 
+func CheckPhone(phone string) string {
+	if len(phone) != 11 {
+		return "phone needs length of 11"
+	}
+
+	if SumDigit(phone) != len(phone) {
+		return "phone needs pure digit"
+	}
+
+	return ""
+}
+
 func SumDigit(s string) int {
 	var t int
 	for i := range s {

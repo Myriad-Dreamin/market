@@ -20,7 +20,7 @@ func (srv *Server) PrepareMiddleware() bool {
 		c.Set("uid", strconv.FormatInt(cc.CustomField.(*types.CustomFields).UID, 10))
 		return nil
 	})
-	srv.jwtMW.ExpireSecond = 3600
+	srv.jwtMW.ExpireSecond = 3600 * 24 * 7
 	srv.jwtMW.RefreshSecond = 3600 * 24 * 7
 
 	srv.routerAuthMW = controller.NewMiddleware(srv.ModelProvider.Enforcer(),

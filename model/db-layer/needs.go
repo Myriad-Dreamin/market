@@ -146,7 +146,7 @@ func (needsDB *NeedsQuery) Query() (needss []Needs, err error) {
 	return
 }
 
-var needsStatusField = []string{"status", "seller"}
+var needsStatusField = []string{"status", "seller", "buyer_fee", "seller_fee"}
 
 func (needsDB *NeedsDB) Sell(price uint64, id, uid uint) (types.CodeType, string) {
 

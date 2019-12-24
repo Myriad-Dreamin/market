@@ -136,7 +136,7 @@ func (goodsDB *GoodsQuery) Query() (goodss []Goods, err error) {
 	return
 }
 
-var goodsStatusField = []string{"status", "buyer"}
+var goodsStatusField = []string{"status", "buyer", "buyer_fee", "seller_fee"}
 
 func (goodsDB *GoodsDB) BuyFixed(id, uid uint) (types.CodeType, string) {
 	tx := db.Begin()
