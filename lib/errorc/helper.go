@@ -4,6 +4,7 @@ import (
 	"github.com/Myriad-Dreamin/market/types"
 	"github.com/go-sql-driver/mysql"
 	"reflect"
+	"strconv"
 )
 
 type Code = types.CodeType
@@ -38,6 +39,8 @@ func CheckInsertError(err error) (Code, string) {
 	if mysqlError, ok := err.(*mysql.MySQLError); ok {
 		if mysqlError.Number == 1062 {
 			return types.CodeDuplicatePrimaryKey, ""
+		} else {
+			return types.CodeInsertError, strconv.Itoa(int(mysqlError.Number))
 		}
 	}
 	return types.CodeOK, ""
