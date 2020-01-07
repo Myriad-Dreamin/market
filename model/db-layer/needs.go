@@ -146,7 +146,8 @@ func (needsDB *NeedsQuery) Query() (needss []Needs, err error) {
 	return
 }
 
-var needsStatusField = []string{"status", "seller", "buyer_fee", "seller_fee"}
+var needsStatusSellField = []string{"status", "seller", "cur_price"}
+var needsStatusConfirmSellField = []string{"status", "seller", "buyer_fee", "seller_fee"}
 
 func (needsDB *NeedsDB) Sell(price uint64, id, uid uint) (types.CodeType, string) {
 
@@ -174,7 +175,7 @@ func (needsDB *NeedsDB) Sell(price uint64, id, uid uint) (types.CodeType, string
 	needs.Seller = uid
 	needs.Status = types.GoodsStatusPending
 	needs.CurPrice = price
-	_, err = needs.UpdateFields__(tx.CommonDB(), needsStatusField)
+	_, err = needs.UpdateFields__(tx.CommonDB(), needsStatusSellField)
 
 	if err != nil {
 		rollback(tx)
@@ -272,7 +273,7 @@ func (needsDB *NeedsDB) ConfirmSell(id uint, confirm bool, uid uint) (types.Code
 		needs.Status = types.GoodsStatusCancelled
 	}
 
-	_, err = needs.UpdateFields__(tx.CommonDB(), needsStatusField)
+	_, err = needs.UpdateFields__(tx.CommonDB(), needsStatusConfirmSellField)
 	if err != nil {
 		rollback(tx)
 		return types.CodeUpdateError, err.Error()

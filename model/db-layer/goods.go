@@ -136,7 +136,9 @@ func (goodsDB *GoodsQuery) Query() (goodss []Goods, err error) {
 	return
 }
 
-var goodsStatusField = []string{"status", "buyer", "buyer_fee", "seller_fee"}
+var goodsStatusBuyFixedField = []string{"status", "buyer"}
+var goodsStatusBuyField = []string{"status", "buyer", "cur_price"}
+var goodsStatusConfirmBuyField = []string{"status", "buyer", "buyer_fee", "seller_fee"}
 
 func (goodsDB *GoodsDB) BuyFixed(id, uid uint) (types.CodeType, string) {
 	tx := db.Begin()
@@ -163,7 +165,7 @@ func (goodsDB *GoodsDB) BuyFixed(id, uid uint) (types.CodeType, string) {
 	goods.Status = types.GoodsStatusPending
 	goods.Buyer = uid
 
-	_, err = goods.UpdateFields__(tx.CommonDB(), goodsStatusField)
+	_, err = goods.UpdateFields__(tx.CommonDB(), goodsStatusBuyFixedField)
 	if err != nil {
 		rollback(tx)
 		return types.CodeUpdateError, err.Error()
@@ -199,7 +201,7 @@ func (goodsDB *GoodsDB) Buy(id, uid uint, price uint64) (types.CodeType, string)
 	goods.Status = types.GoodsStatusPending
 	goods.CurPrice = price
 
-	_, err = goods.UpdateFields__(tx.CommonDB(), goodsStatusField)
+	_, err = goods.UpdateFields__(tx.CommonDB(), goodsStatusBuyField)
 	if err != nil {
 		rollback(tx)
 		return types.CodeUpdateError, err.Error()
@@ -294,7 +296,7 @@ func (goodsDB *GoodsDB) ConfirmBuy(id uint, confirm bool, uid uint) (types.CodeT
 		goods.Status = types.GoodsStatusCancelled
 	}
 
-	_, err = goods.UpdateFields__(tx.CommonDB(), goodsStatusField)
+	_, err = goods.UpdateFields__(tx.CommonDB(), goodsStatusConfirmBuyField)
 	if err != nil {
 		rollback(tx)
 		return types.CodeUpdateError, err.Error()
