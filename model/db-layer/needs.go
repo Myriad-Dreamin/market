@@ -40,7 +40,7 @@ type Needs struct {
 	Type        types.GoodsType   `dorm:"g_type" gorm:"column:g_type;not_null"`
 	Name        string            `dorm:"name" gorm:"column:name;not_null"`
 	CurPrice    uint64            `dorm:"cur_price" gorm:"column:cur_price;not_null"`
-	MaxPrice    uint64            `dorm:"min_price" gorm:"column:max_price;not_null"`
+	MaxPrice    uint64            `dorm:"max_price" gorm:"column:max_price;not_null"`
 	EndDuration time.Duration     `dorm:"ddd" gorm:"column:ddd;not_null"`
 	Description string            `dorm:"description" gorm:"column:description;not_null"`
 	PicName     string            `dorm:"pic_name" gorm:"column:pic_name;not_null"`
