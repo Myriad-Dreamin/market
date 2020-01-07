@@ -37,9 +37,12 @@ type Creatable interface {
 
 func CheckInsertError(err error) (Code, string) {
 	if mysqlError, ok := err.(*mysql.MySQLError); ok {
-		if mysqlError.Number == 1062 {
+		switch mysqlError.Number {
+		case 1062:
 			return types.CodeDuplicatePrimaryKey, ""
-		} else {
+		case 1366:
+			return types.CodeDatabaseIncorrectStringValue, ""
+		default:
 			return types.CodeInsertError, strconv.Itoa(int(mysqlError.Number))
 		}
 	}

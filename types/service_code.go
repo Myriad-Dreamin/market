@@ -45,6 +45,9 @@ const (
 	// CodeDeleteError occurs when commit a transaction
 	CodeCommitTransactionError
 
+	//
+	CodeDatabaseIncorrectStringValue
+
 	CodeDatabaseErrorR
 	CodeDatabaseErrorL = CodeInsertError
 )

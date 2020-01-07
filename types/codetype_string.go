@@ -23,7 +23,8 @@ func _() {
 	_ = x[CodeDeleteError-106]
 	_ = x[CodeBeginTransactionError-107]
 	_ = x[CodeCommitTransactionError-108]
-	_ = x[CodeDatabaseErrorR-109]
+	_ = x[CodeDatabaseIncorrectStringValue-109]
+	_ = x[CodeDatabaseErrorR-110]
 	_ = x[CodeAuthGenerateTokenError-1000]
 	_ = x[CodeAuthenticatePasswordError-1001]
 	_ = x[CodeAuthenticatePolicyError-1002]
@@ -61,7 +62,7 @@ func _() {
 
 const (
 	_CodeType_name_0 = "CodeOKCodeBindErrorCodeUnserializeDataErrorCodeInvalidParametersCodeGetRawDataErrorCodeGenericErrorR"
-	_CodeType_name_1 = "CodeInsertErrorCodeSelectErrorCodeNotFoundCodeDeleteNoEffectCodeDuplicatePrimaryKeyCodeUpdateErrorCodeDeleteErrorCodeBeginTransactionErrorCodeCommitTransactionErrorCodeDatabaseErrorR"
+	_CodeType_name_1 = "CodeInsertErrorCodeSelectErrorCodeNotFoundCodeDeleteNoEffectCodeDuplicatePrimaryKeyCodeUpdateErrorCodeDeleteErrorCodeBeginTransactionErrorCodeCommitTransactionErrorCodeDatabaseIncorrectStringValueCodeDatabaseErrorR"
 	_CodeType_name_2 = "CodeAuthGenerateTokenErrorCodeAuthenticatePasswordErrorCodeAuthenticatePolicyErrorCodeChangeOwnerErrorCodeGroupCreateErrorCodeAddReadPrivilegeErrorCodeAddWritePrivilegeErrorCodeGrantNoEffectCodeGrantErrorCodeAuthenticationErrorR"
 	_CodeType_name_3 = "CodeUserIDMissingCodeUserWrongPasswordCodeWeakPasswordCodeInvalidCityCodeCodeBadPhoneCodeUserServiceErrorR"
 	_CodeType_name_4 = "CodeSubmissionUploadedCodeFSExecErrorCodeUploadFileErrorCodeConfigModifyErrorCodeStatErrorCodeFileSystemErrorR"
@@ -70,7 +71,7 @@ const (
 
 var (
 	_CodeType_index_0 = [...]uint8{0, 6, 19, 43, 64, 83, 100}
-	_CodeType_index_1 = [...]uint8{0, 15, 30, 42, 60, 83, 98, 113, 138, 164, 182}
+	_CodeType_index_1 = [...]uint8{0, 15, 30, 42, 60, 83, 98, 113, 138, 164, 196, 214}
 	_CodeType_index_2 = [...]uint8{0, 26, 55, 82, 102, 122, 147, 173, 190, 204, 228}
 	_CodeType_index_3 = [...]uint8{0, 17, 38, 54, 73, 85, 106}
 	_CodeType_index_4 = [...]uint8{0, 22, 37, 56, 77, 90, 110}
@@ -81,7 +82,7 @@ func (i CodeType) String() string {
 	switch {
 	case 0 <= i && i <= 5:
 		return _CodeType_name_0[_CodeType_index_0[i]:_CodeType_index_0[i+1]]
-	case 100 <= i && i <= 109:
+	case 100 <= i && i <= 110:
 		i -= 100
 		return _CodeType_name_1[_CodeType_index_1[i]:_CodeType_index_1[i+1]]
 	case 1000 <= i && i <= 1009:
