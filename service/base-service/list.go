@@ -42,6 +42,7 @@ func (srv *ListService) List(c controller.MContext) {
 			Code:  types.CodeSelectError,
 			Error: err.Error(),
 		})
+		return
 	}
 
 	result = srv.tool.ProcessListResults(c, result)
