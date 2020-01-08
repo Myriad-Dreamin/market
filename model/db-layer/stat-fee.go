@@ -109,7 +109,7 @@ func StatFeeFilterOption(db *gorm.DB, f *StatFeeRequest) *gorm.DB {
 }
 
 func (statFeeDB *StatFeeDB) FilterFee(f *StatFeeRequest) (results []StatFeeXYResult, err error) {
-	err = StatFeeFilterOption(db.Table(stateFeeName), f).Select("month, sum(buy_fee_sum)+sum(sell_fee_sum) as sum").Scan(&results).Error
+	err = StatFeeFilterOption(db.Table(stateFeeName), f).Select("month, sum(buy_fee_sum)+sum(sell_fee_sum) as sum").Group("month").Scan(&results).Error
 	return
 }
 
@@ -118,7 +118,7 @@ func (statFeeDB *StatFeeDB) FilterFeeI(f interface{}) (interface{}, error) {
 }
 
 func (statFeeDB *StatFeeDB) FilterFeeCount(f *StatFeeRequest) (results []StatFeeCountXYResult, err error) {
-	err = StatFeeFilterOption(db.Table(stateFeeName), f).Select("month, sum(buy_finish_count)+sum(sell_finish_count) as count").Scan(&results).Error
+	err = StatFeeFilterOption(db.Table(stateFeeName), f).Select("month, sum(buy_finish_count)+sum(sell_finish_count) as count").Group("month").Scan(&results).Error
 	return
 }
 
