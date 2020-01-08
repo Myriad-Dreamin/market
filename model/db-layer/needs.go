@@ -221,6 +221,7 @@ func (needsDB *NeedsDB) ConfirmSell(id uint, confirm bool, uid uint) (types.Code
 		x := new(StatFee)
 		x.Month = time.Date(y, m, 1, 0, 0, 0, 0, now.Location())
 		x.CityCode = buyer.CityCode
+		x.GoodsType = needs.Type
 		if hs, err := Exists_(tx, x); err != nil {
 			rollback(tx)
 			return types.CodeSelectError, err.Error()
@@ -247,6 +248,7 @@ func (needsDB *NeedsDB) ConfirmSell(id uint, confirm bool, uid uint) (types.Code
 		x2 := new(StatFee)
 		x2.Month = x.Month
 		x2.CityCode = seller.CityCode
+		x2.GoodsType = needs.Type
 		if hs, err := Exists_(tx, x2); err != nil {
 			rollback(tx)
 			return types.CodeSelectError, err.Error()

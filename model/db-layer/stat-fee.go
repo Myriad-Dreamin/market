@@ -1,9 +1,9 @@
 package dblayer
 
 import (
-	"fmt"
 	"github.com/Myriad-Dreamin/dorm"
 	gorm_crud_dao "github.com/Myriad-Dreamin/go-model-traits/gorm-crud-dao"
+	"github.com/Myriad-Dreamin/market/types"
 	"github.com/Myriad-Dreamin/minimum-lib/module"
 	"github.com/jinzhu/gorm"
 	"time"
@@ -29,7 +29,8 @@ type StatFee struct {
 
 	Month    time.Time `dorm:"month" gorm:"column:month;not null" json:"month"`
 	CityCode string    `dorm:"city_code" gorm:"column:city_code;not_null"`
-
+	GoodsType        types.GoodsType   `dorm:"g_type" gorm:"column:g_type;not_null"`
+	
 	UpdatedAt time.Time `dorm:"updated_at" gorm:"column:updated_at;default:CURRENT_TIMESTAMP;not null;" json:"updated_at"`
 
 	BuyFeeSum       uint64 `dorm:"buy_fee_sum" gorm:"column:buy_fee_sum;not_null"`
@@ -96,8 +97,8 @@ func GetStatFeeDB(_ module.Module) (*StatFeeDB, error) {
 }
 
 func StatFeeFilterOption(db *gorm.DB, f *StatFeeRequest) *gorm.DB {
-	fmt.Println("page, pagesize", f.Page, f.PageSize)
-	db = gorm_crud_dao.FilterOption(db, &f.Filter)
+	// fmt.Println("page, pagesize", f.Page, f.PageSize)
+	db = gorm_crud_dao.FilterOption(db, &f.Filter).Group("month")
 
 	if f.LEThan != nil {
 		db = db.Where("month <= ?", f.LEThan)
@@ -105,11 +106,21 @@ func StatFeeFilterOption(db *gorm.DB, f *StatFeeRequest) *gorm.DB {
 	if f.GEThan != nil {
 		db = db.Where("month >= ?", f.GEThan)
 	}
+
+	if len(f.CityCode) != 0 {
+		db = db.Where("city_code = ?", f.CityCode)
+	}
+	if f.GoodsType != types.GoodsTypeUnknown {
+		db = db.Where("g_type = ?", f.GoodsType)
+	}
+
 	return db
 }
 
 func (statFeeDB *StatFeeDB) FilterFee(f *StatFeeRequest) (results []StatFeeXYResult, err error) {
-	err = StatFeeFilterOption(db.Table(stateFeeName), f).Select("month, sum(buy_fee_sum)+sum(sell_fee_sum) as sum").Group("month").Scan(&results).Error
+	err = StatFeeFilterOption(db.Table(stateFeeName), f).
+		Select("month, sum(buy_fee_sum)+sum(sell_fee_sum) as sum").
+		Scan(&results).Error
 	return
 }
 
@@ -118,7 +129,9 @@ func (statFeeDB *StatFeeDB) FilterFeeI(f interface{}) (interface{}, error) {
 }
 
 func (statFeeDB *StatFeeDB) FilterFeeCount(f *StatFeeRequest) (results []StatFeeCountXYResult, err error) {
-	err = StatFeeFilterOption(db.Table(stateFeeName), f).Select("month, sum(buy_finish_count)+sum(sell_finish_count) as count").Group("month").Scan(&results).Error
+	err = StatFeeFilterOption(db.Table(stateFeeName), f).
+		Select("month, sum(buy_finish_count)+sum(sell_finish_count) as count").
+		Scan(&results).Error
 	return
 }
 
@@ -178,6 +191,11 @@ func (statFeeDB *StatFeeQuery) InCityCode(ct string) *StatFeeQuery {
 	return statFeeDB
 }
 
+func (statFeeDB *StatFeeQuery) WithType(ct string) *StatFeeQuery {
+	statFeeDB.db = statFeeDB.db.Where("g_type = ?", ct)
+	return statFeeDB
+}
+
 func (statFeeDB *StatFeeQuery) GroupBy(s string) *StatFeeQuery {
 	statFeeDB.db = statFeeDB.db.Group(s)
 	return statFeeDB
@@ -207,4 +225,7 @@ type StatFeeRequest struct {
 	Filter `binding:"dive"`
 	LEThan *time.Time `json:"le" form:"le" binding:"required"`
 	GEThan *time.Time `json:"ge" form:"ge" binding:"required"`
+
+	CityCode string `json:"city_code" form:"city_code"`
+	GoodsType types.GoodsType `json:"g_type" form:"g_type"`
 }

@@ -209,6 +209,8 @@ func (goodsDB *GoodsDB) Buy(id, uid uint, price uint64) (types.CodeType, string)
 	return commitOrRollback(tx)
 }
 
+
+var statFeeBuyFields = []string{"buy_fee_sum", "buy_finish_count"}
 func (goodsDB *GoodsDB) ConfirmBuy(id uint, confirm bool, uid uint) (types.CodeType, string) {
 	tx := db.Begin()
 	if tx.Error != nil {
@@ -244,6 +246,7 @@ func (goodsDB *GoodsDB) ConfirmBuy(id uint, confirm bool, uid uint) (types.CodeT
 		x := new(StatFee)
 		x.Month = time.Date(y, m, 1, 0, 0, 0, 0, now.Location())
 		x.CityCode = buyer.CityCode
+		x.GoodsType = goods.Type
 		if hs, err := Exists_(tx, x); err != nil {
 			rollback(tx)
 			return types.CodeSelectError, err.Error()
@@ -251,7 +254,7 @@ func (goodsDB *GoodsDB) ConfirmBuy(id uint, confirm bool, uid uint) (types.CodeT
 			x.BuyFeeSum += goods.BuyerFee
 			x.BuyFinishCount++
 			if hs {
-				_, err = x.UpdateFields__(tx.CommonDB(), []string{"buy_fee_sum", "buy_finish_count"})
+				_, err = x.UpdateFields__(tx.CommonDB(), statFeeBuyFields)
 				if err != nil {
 					rollback(tx)
 					return types.CodeUpdateError, err.Error()
@@ -270,6 +273,7 @@ func (goodsDB *GoodsDB) ConfirmBuy(id uint, confirm bool, uid uint) (types.CodeT
 		x2 := new(StatFee)
 		x2.Month = x.Month
 		x2.CityCode = seller.CityCode
+		x2.GoodsType = goods.Type
 		if hs, err := Exists_(tx, x2); err != nil {
 			rollback(tx)
 			return types.CodeSelectError, err.Error()
