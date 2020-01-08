@@ -27,12 +27,12 @@ var (
 type StatFee struct {
 	ID uint `dorm:"id" gorm:"column:id;primary_key;not_null"`
 
+	UpdatedAt time.Time `dorm:"updated_at" gorm:"column:updated_at;default:CURRENT_TIMESTAMP;not null;" json:"updated_at"`
 	Month    time.Time `dorm:"month" gorm:"column:month;not null" json:"month"`
 	CityCode string    `dorm:"city_code" gorm:"column:city_code;not_null"`
 	GoodsType        types.GoodsType   `dorm:"g_type" gorm:"column:g_type;not_null"`
 	
-	UpdatedAt time.Time `dorm:"updated_at" gorm:"column:updated_at;default:CURRENT_TIMESTAMP;not null;" json:"updated_at"`
-
+	
 	BuyFeeSum       uint64 `dorm:"buy_fee_sum" gorm:"column:buy_fee_sum;not_null"`
 	SellFeeSum      uint64 `dorm:"sell_fee_sum" gorm:"column:sell_fee_sum;not_null"`
 	BuyFinishCount  uint64 `dorm:"buy_finish_count" gorm:"column:buy_finish_count;not_null"`
@@ -51,7 +51,7 @@ func (st StatFee) migrate() error {
 		return err
 	}
 
-	return db.Model(&st).AddUniqueIndex("mpc", "month", "city_code").Error
+	return db.Model(&st).AddUniqueIndex("mpcg", "month", "city_code", "g_type").Error
 }
 
 func (st StatFee) GetID() uint {
