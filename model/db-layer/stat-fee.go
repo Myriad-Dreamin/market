@@ -27,8 +27,8 @@ var (
 type StatFee struct {
 	ID uint `dorm:"id" gorm:"column:id;primary_key;not_null"`
 
-	UpdatedAt time.Time `dorm:"updated_at" gorm:"column:updated_at;default:CURRENT_TIMESTAMP;not null;" json:"updated_at"`
-	Month    time.Time `dorm:"month" gorm:"column:month;not null" json:"month"`
+	UpdatedAt time.Time `dorm:"updated_at" gorm:"column:updated_at;default:CURRENT_TIMESTAMP;not null" json:"updated_at"`
+	Month    time.Time `dorm:"month" gorm:"column:month;default:CURRENT_TIMESTAMP;not null" json:"month"`
 	CityCode string    `dorm:"city_code" gorm:"column:city_code;not_null"`
 	GoodsType        types.GoodsType   `dorm:"g_type" gorm:"column:g_type;not_null"`
 	
