@@ -49,7 +49,7 @@ func (svc *Service) PutPicture(c controller.MContext) {
 		return
 	}
 
-	if err = c.SaveUploadedFile(file, svc.cfg.BaseParametersConfig.GoodsPicturePath+needs.PicName); err != nil {
+	if err = c.SaveUploadedFile(file, svc.cfg.BaseParametersConfig.NeedsPicturePath+needs.PicName); err != nil {
 		c.JSON(http.StatusOK, gin.H{
 			"code": types.CodeFSExecError,
 			"err":  err.Error(),
