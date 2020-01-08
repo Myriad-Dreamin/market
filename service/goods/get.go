@@ -22,6 +22,8 @@ type GetReply struct {
 	Description string               `json:"description"`
 	PicName     string               `json:"pic_name"`
 	Status      types.GoodsStatus    `json:"status"`
+	BuyerFee uint64 `json:"buyer_fee"`
+	SellerFee uint64 `json:"seller_fee"`
 }
 
 func (svc *Service) GoodsToGetReply(c controller.MContext, obj *model.Goods) *GetReply {
@@ -39,5 +41,7 @@ func (svc *Service) GoodsToGetReply(c controller.MContext, obj *model.Goods) *Ge
 		Description: obj.Description,
 		PicName:     obj.PicName,
 		Status:      obj.Status,
+		BuyerFee: obj.BuyerFee,
+		SellerFee: obj.SellerFee,
 	}
 }

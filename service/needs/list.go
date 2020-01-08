@@ -29,6 +29,8 @@ type NeedsReply struct {
 	Description string               `json:"description" form:"description"`
 	PicName     string               `json:"pic_name"`
 	Status      types.GoodsStatus    `json:"status" form:"status"`
+	BuyerFee uint64 `json:"buyer_fee"`
+	SellerFee uint64 `json:"seller_fee"`
 }
 
 type ListReply struct {
@@ -59,6 +61,8 @@ func (srv *Service) FromNeedss(c controller.MContext, needss []model.Needs) (gr 
 			Description: needss[i].Description,
 			PicName:     needss[i].PicName,
 			Status:      needss[i].Status,
+			SellerFee:      needss[i].SellerFee,
+			BuyerFee:      needss[i].BuyerFee,
 		})
 		if c.IsAborted() {
 			return

@@ -22,6 +22,8 @@ type GoodsReply struct {
 	Description string               `json:"description" form:"description"`
 	PicName     string               `json:"pic_name"`
 	Status      types.GoodsStatus    `json:"status" form:"status"`
+	BuyerFee uint64 `json:"buyer_fee"`
+	SellerFee uint64 `json:"seller_fee"`
 }
 
 type ListReply struct {
@@ -52,6 +54,8 @@ func (svc *Service) FromGoodss(c controller.MContext, goodss []model.Goods) (gr 
 			Description: goodss[i].Description,
 			PicName:     goodss[i].PicName,
 			Status:      goodss[i].Status,
+			BuyerFee:      goodss[i].BuyerFee,
+			SellerFee:      goodss[i].SellerFee,
 		})
 		if c.IsAborted() {
 			return
