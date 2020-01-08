@@ -60,6 +60,7 @@ func (srv *Service) Register(c controller.MContext) {
 	if _, ok := srv.cities[req.CityCode]; !ok {
 		c.AbortWithStatusJSON(http.StatusOK, types.ErrorSerializer{
 			Code: types.CodeInvalidCityCode,
+			Error: "invalid city code",
 		})
 		return
 	}
