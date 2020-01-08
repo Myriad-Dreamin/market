@@ -160,8 +160,9 @@ func (needsDB *NeedsDB) Sell(price uint64, id, uid uint) (types.CodeType, string
 		rollback(tx)
 		return code, errs
 	}
-	if needs.Status != types.GoodsStatusUnFinished {
-		return types.CodeGoodsStatusNotBeUnfinished, needs.Status.String()
+	if needs.Status != types.GoodsStatusUnFinished && needs.Status != types.GoodsStatusPending {
+		rollback(tx)
+		return types.CodeGoodsStatusNotBeUnfinishedOrPending, needs.Status.String()
 	}
 	if needs.EndAt.Before(time.Now()) {
 		rollback(tx)
