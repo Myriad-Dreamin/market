@@ -4,6 +4,7 @@ import (
 	"github.com/Myriad-Dreamin/dorm"
 	"github.com/Myriad-Dreamin/market/lib/errorc"
 	"github.com/Myriad-Dreamin/market/types"
+	"github.com/Myriad-Dreamin/market/config"
 	"github.com/Myriad-Dreamin/minimum-lib/module"
 	"github.com/jinzhu/gorm"
 	"time"
@@ -203,8 +204,8 @@ func (needsDB *NeedsDB) ConfirmSell(id uint, confirm bool, uid uint) (types.Code
 
 	if confirm {
 		needs.Status = types.GoodsStatusFinished
-		needs.BuyerFee = needs.CurPrice / 50
-		needs.SellerFee = needs.BuyerFee >> 1
+		needs.BuyerFee = uint64(float64(needs.CurPrice) * config.GoodsBuyerRaito + 0.5)
+		needs.SellerFee = uint64(float64(needs.CurPrice) * config.GoodsSellerRaito + 0.5)
 
 		buyer, err := wrapToUser(userTraits.ID_(tx, needs.Buyer))
 		if code, errs := errorc.MaybeSelectError(buyer, err); code != types.CodeOK {
